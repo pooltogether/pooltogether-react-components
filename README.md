@@ -25,22 +25,36 @@ React UI components using **tailwindcss**
 
 ## Usage:
 
-<!-- - Make sure to import the css file `import '@pooltogether/pooltogether-react-tailwind-ui/dist/index.css'` -->
-
 ``` js
 import React from 'react'
 import { Button } from '@pooltogether/pooltogether-react-tailwind-ui'
 
-const Button = () => (
+<Button
+  color='blue'
+  type='submit'
+>
+  Submit
+</Button>
+
+// -------------------
+
+import React from 'react'
+import Link from 'next/link'
+import { ButtonLink } from '@pooltogether/pooltogether-react-tailwind-ui'
+
+<Link
+  href={href}
+  as={as}
+  scroll={false}
+>
   <Button
     color='blue'
     type='submit'
   >
     Submit
   </Button>
-)
+</Link>
 
-export default Button
 
 ```
 
