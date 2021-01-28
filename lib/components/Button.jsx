@@ -1,7 +1,7 @@
 import React from 'react'
-import omit from 'lodash'
+import { omit } from 'lodash'
 
-import { getButtonClasses } from './ButtonLink.jsx'
+import { getButtonClasses } from 'lib/components/ButtonLink'
 
 export function Button(props) {
   const classes = getButtonClasses(props)
@@ -21,15 +21,8 @@ export function Button(props) {
   ])
 
   return <button
-    {...newProps}
     className={classes}
   >
     {props.children}
   </button>
 }
-
-// textSize = 'xxxs'
-// padding = 'px-4 py-1'
-// disabled = { txPending || refetching || !claimable}
-// className = 'w-full'
-// onClick = { handleClaim }

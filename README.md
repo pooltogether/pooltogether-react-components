@@ -77,3 +77,10 @@ In the library:
 - You can run `npm start` to start **pooltogether-react-tailwind-ui** in watch mode and it will compile any new components you add.
 
 - `npm test` will run jest
+
+# TODO:
+
+* integrate prettier/husky with our default prettier config
+* figure out if Link needs to be dependency injected through props for <PageTitleAndBreadcrumbs /> :(
+* copy unit tests over and get them running in this lib
+* figure out how to integrate <PoolCurrencyIcon />

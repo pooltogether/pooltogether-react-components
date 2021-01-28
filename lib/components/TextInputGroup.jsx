@@ -2,8 +2,8 @@ import React from 'react'
 import classnames from 'classnames'
 import FeatherIcon from 'feather-icons-react'
 
-import { Input } from './Input.jsx'
-import { DEFAULT_INPUT_GROUP_CLASSES, DEFAULT_INPUT_LABEL_CLASSES } from '../constants'
+import { Input } from 'lib/components/Input'
+import { DEFAULT_INPUT_GROUP_CLASSES, DEFAULT_INPUT_LABEL_CLASSES } from 'lib/constants'
 
 export const TextInputGroupType = Object.freeze({
   text: 'text',
