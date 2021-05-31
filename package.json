@@ -6,7 +6,6 @@
   "license": "MIT",
   "main": "dist/index.js",
   "files": [
-    "lib",
     "dist",
     "config.js",
     "README.md"
@@ -49,10 +48,9 @@
     "@rollup/plugin-replace": "^2.3.4",
     "deepmerge": "^4.2.2",
     "rollup": "^2.38.0",
+    "rollup-plugin-css-porter": "^1.0.2",
     "rollup-plugin-filesize": "^9.1.0",
-    "rollup-plugin-postcss": "^4.0.0",
-    "rollup-plugin-uglify": "^6.0.4",
-    "uglify-es": "^3.3.9"
+    "rollup-plugin-postcss": "^4.0.0"
   },
   "dependencies": {
     "@reach/menu-button": "^0.12.1",
@@ -67,6 +65,7 @@
     "react-dom": "^16.8.0",
     "react-loader-spinner": "^3.1.14",
     "react-spinners": "^0.10.4",
+    "rollup-plugin-import-css": "^2.0.1",
     "tailwindcss": "^2.0.1"
   },
   "lint-staged": {

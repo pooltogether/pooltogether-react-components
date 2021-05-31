@@ -1,7 +1,9 @@
 # PoolTogether React Tailwind UI Components
+
 React UI components using **tailwindcss**
 
 ## Components:
+
 - Alert
 - Breadcrumbs
 - Button
@@ -22,40 +24,41 @@ React UI components using **tailwindcss**
 
 `yarn add @pooltogether/pooltogether-react-tailwind-ui`
 
-
 ## Usage:
 
-``` js
-import React from 'react'
-import { Button } from '@pooltogether/pooltogether-react-tailwind-ui'
+```js
+// tailwind.config.js
+const pooltogetherTheme = require("@pooltogether/pooltogether-react-tailwind-ui");
+module.exports = pooltogetherTheme({
+  purge: [],
+  theme: {
+    extend: {},
+  },
+  variants: {},
+  plugins: [],
+});
+```
 
-<Button
-  color='blue'
-  type='submit'
->
-  Submit
-</Button>
+```js
+// _app.jsx
+import "@pooltogether/pooltogether-react-tailwind-ui/dist/index.css";
+```
+
+```js
+import React from "react";
+import { Button } from "@pooltogether/pooltogether-react-tailwind-ui";
+
+<Button type="submit">Submit</Button>;
 
 // -------------------
 
-import React from 'react'
-import Link from 'next/link'
-import { ButtonLink } from '@pooltogether/pooltogether-react-tailwind-ui'
+import React from "react";
+import Link from "next/link";
+import { ButtonLink } from "@pooltogether/pooltogether-react-tailwind-ui";
 
-<Link
-  href={href}
-  as={as}
-  scroll={false}
->
-  <Button
-    color='blue'
-    type='submit'
-  >
-    Submit
-  </Button>
-</Link>
-
-
+<Link href={href} as={as} scroll={false}>
+  <Button type="submit">Submit</Button>
+</Link>;
 ```
 
 ## Running Locally:
@@ -71,16 +74,15 @@ In the library:
 
 `yarn link react && yarn link react-dom`
 
+- You can run `yarn link` inside **pooltogether-react-tailwind-ui** and then `yarn link @pooltogether/pooltogether-react-tailwind-ui` inside a project you have created to test the components locally.
 
-- You can run `npm link` inside **pooltogether-react-tailwind-ui** and then `npm link @pooltogether/pooltogether-react-tailwind-ui` inside a project you have created to test the components locally.
+- You can run `yarn start` to start **pooltogether-react-tailwind-ui** in watch mode and it will compile any new components you add.
 
-- You can run `npm start` to start **pooltogether-react-tailwind-ui** in watch mode and it will compile any new components you add.
-
-- `npm test` will run jest
+- `yarn test` will run jest
 
 # TODO:
 
-* integrate prettier/husky with our default prettier config
-* figure out if Link needs to be dependency injected through props for <PageTitleAndBreadcrumbs /> :(
-* copy unit tests over and get them running in this lib
-* figure out how to integrate <PoolCurrencyIcon />
+- integrate prettier/husky with our default prettier config
+- figure out if Link needs to be dependency injected through props for <PageTitleAndBreadcrumbs /> :(
+- copy unit tests over and get them running in this lib
+- figure out how to integrate <PoolCurrencyIcon />
