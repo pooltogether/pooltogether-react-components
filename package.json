@@ -20,12 +20,8 @@
     "components",
     "tailwindcss"
   ],
-  "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0",
-    "tailwindcss": ">=2.0.1"
-  },
   "scripts": {
+    "reinstall": "rm -rf ./node_modules && yarn",
     "start": "rollup -c -w",
     "watch": "yarn start",
     "build": "NODE_ENV=production rollup -c",
@@ -34,9 +30,38 @@
     "format:css": "prettier --write ./*.css ./**/*.css",
     "format:js": "prettier --write ./*.{js,json} ./**/*.{js,json}",
     "format:reason": "refmt --in-place src/**/*.re",
-    "format": "yarn format:js && yarn format:css && yarn format:reason"
+    "format": "yarn format:js && yarn format:css && yarn format:reason",
+    "link-local": "yarn link @pooltogether/hooks && yarn link react && yarn link react-dom && yarn link jotai && yarn link react-i18next && yarn link next && yarn link",
+    "unlink-local": "yarn unlink @pooltogether/hooks && yarn unlink react && yarn unlink react-dom && yarn unlink jotai && yarn unlink react-i18next && yarn unlink next && yarn unlink"
+  },
+  "dependencies": {
+    "@reach/dialog": "^0.15.0",
+    "@reach/menu-button": "^0.15.1",
+    "@reach/popover": "^0.15.0",
+    "@reach/visually-hidden": "0.15.0",
+    "autoprefixer": "^10.2.3",
+    "react-device-detect": "^1.15.0",
+    "react-hotkeys": "^2.0.0",
+    "react-loader-spinner": "^4.0.0",
+    "react-spinners": "^0.10.4",
+    "react-tooltip": "^4.2.21"
+  },
+  "peerDependencies": {
+    "@pooltogether/hooks": "^0.0.23",
+    "jotai": "^0.11.2",
+    "next": "^10.1.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-i18next": "^11.10.0",
+    "tailwindcss": "^2.1.2",
+    "lodash": "^4.17.20",
+    "js-cookie": "^2.2.1",
+    "framer-motion": "^4.1.17",
+    "classnames": "^2.2.6",
+    "feather-icons-react": "^0.4.1"
   },
   "devDependencies": {
+    "@pooltogether/hooks": "^0.0.23",
     "@babel/core": "^7.0.0-beta.40",
     "@babel/preset-env": "^7.0.0-beta.40",
     "@babel/preset-react": "^7.0.0-beta.40",
@@ -50,23 +75,14 @@
     "rollup": "^2.38.0",
     "rollup-plugin-css-porter": "^1.0.2",
     "rollup-plugin-filesize": "^9.1.0",
-    "rollup-plugin-postcss": "^4.0.0"
-  },
-  "dependencies": {
-    "@reach/menu-button": "^0.12.1",
-    "@reach/popover": "^0.12.1",
-    "autoprefixer": "^10.2.3",
-    "classnames": "^2.2.6",
-    "feather-icons-react": "^0.4.1",
+    "rollup-plugin-postcss": "^4.0.0",
+    "postcss": "^8.3.0",
+    "next": "^10.1.1",
     "lodash": "^4.17.20",
-    "postcss": "^8.2.4",
-    "react": "^16.8.0",
-    "react-device-detect": "^1.15.0",
-    "react-dom": "^16.8.0",
-    "react-loader-spinner": "^3.1.14",
-    "react-spinners": "^0.10.4",
-    "rollup-plugin-import-css": "^2.0.1",
-    "tailwindcss": "^2.0.1"
+    "js-cookie": "^2.2.1",
+    "framer-motion": "^4.1.17",
+    "classnames": "^2.2.6",
+    "feather-icons-react": "^0.4.1"
   },
   "lint-staged": {
     "*.{js,json}": [

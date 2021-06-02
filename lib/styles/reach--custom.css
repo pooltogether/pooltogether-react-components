@@ -86,7 +86,7 @@
 
 [data-reach-menu-list],
 [data-reach-menu-items] {
-  @apply py-0 text-xxs xs:text-sm shadow-lg;
+  @apply py-0 text-xxs xs:text-sm rounded-lg shadow-lg;
 }
 
 .theme-dark [data-reach-menu-list],
@@ -95,7 +95,7 @@
 }
 
 [data-reach-menu-item] {
-  @apply px-3 py-2 font-bold text-primary my-0 sm:my-0;
+  @apply px-3 py-2 font-bold text-primary rounded-lg my-0 sm:my-0;
 }
 
 [data-reach-menu-item]:first-child {
@@ -138,7 +138,6 @@
 }
 
 [data-reach-dialog-content] {
-  background: transparent;
   max-width: initial;
   margin: 0;
   padding: 0;

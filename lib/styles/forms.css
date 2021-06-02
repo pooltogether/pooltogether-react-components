@@ -57,18 +57,22 @@ input[type='submit'][disabled] {
 
 .fieldset {
   @apply py-2 mb-0 w-full;
-
-  max-width: 500px;
 }
 
-.fieldset label {
-  @apply text-accent-3 font-bold text-xxxs xs:text-xxs px-4 sm:px-8;
+@screen xs {
+  .fieldset {
+    max-width: 550px;
+  }
 }
 
 @screen sm {
-  .fieldset label {
-    @apply px-6;
+  .fieldset {
+    max-width: 800px;
   }
+}
+
+.fieldset label {
+  @apply text-accent-2 font-bold text-xxxs xs:text-xxs px-4 sm:px-8;
 }
 
 .check {
@@ -78,13 +82,13 @@ input[type='submit'][disabled] {
   stroke-width: 20;
   stroke-dasharray: 400;
   stroke-dashoffset: 400;
-  top: 4px;
-  left: 3px;
+  top: 2px;
+  left: 2px;
   width: 100%;
 }
 
 .check.checked {
-  animation: check 0.1s ease-out forwards;
+  animation: check 0.02s ease-out forwards;
 }
 
 @keyframes check {
@@ -96,9 +100,10 @@ input[type='submit'][disabled] {
   }
 }
 
-.button-scale:hover,
-.button-scale:focus,
-.button-scale:active {
+a.button-scale:hover,
+.button-scale:hover:enabled,
+.button-scale:focus:enabled,
+.button-scale:active:enabled {
   transform: scale(1.02) translateY(-3px);
 }
 
@@ -146,8 +151,4 @@ input[type='number'] {
   .radio-input {
     max-width: 370px;
   }
-}
-
-textarea {
-  @apply tracking-wider;
 }

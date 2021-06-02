@@ -56,8 +56,10 @@ a:hover {
   @apply text-inverse;
 }
 
-.bg-flashy {
-  background: var(--flashyGradient);
+@media screen and (max-width: 380px) {
+  .profile-name {
+    width: 82px;
+  }
 }
 
 .is-etherscan-arrow {
@@ -65,69 +67,6 @@ a:hover {
   position: relative;
   top: -2px;
   width: 1em;
-}
-
-@keyframes gradientBG {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.text-flashy {
-  background: var(--flashyGradient);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline-block;
-
-  background-size: 1000% auto;
-  animation: cycleBackgroundPos 15000ms infinite steps(100);
-}
-
-.border-flashy {
-  --borderFlashyRadius: 8px;
-  --borderFlashyWidth: 6px;
-  position: relative;
-  border-radius: var(--borderFlashyRadius);
-  width: calc(100% - 13px);
-}
-
-@screen sm {
-  .border-flashy {
-    --borderFlashyWidth: 10px;
-    width: calc(100% - 17px);
-  }
-}
-
-.border-flashy:after {
-  content: '';
-  position: absolute;
-  top: calc(-1 * var(--borderFlashyWidth));
-  left: calc(-1 * var(--borderFlashyWidth));
-  height: calc(100% + var(--borderFlashyWidth) * 2);
-  width: calc(100% + var(--borderFlashyWidth) * 2);
-  background: var(--flashyGradient);
-  border-radius: var(--borderFlashyRadius);
-  animation: cycleBackgroundPos 25000ms infinite steps(140);
-  background-size: 300% 300%;
-  z-index: -1;
-}
-
-@keyframes cycleBackgroundPos {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
 }
 
 .nav--account-transactions-button__loader {
@@ -187,10 +126,10 @@ a:hover {
 }
 
 .pool-logo {
-  height: 60px;
+  height: 50px;
   position: relative;
   z-index: 1;
-  width: 35px;
+  width: 29px;
 }
 
 .pool-logo:hover {
@@ -199,8 +138,8 @@ a:hover {
 
 @screen xs {
   .pool-logo {
-    height: 66px;
-    width: 39px;
+    height: 60px;
+    width: 35px;
   }
 }
 
@@ -298,6 +237,86 @@ a:hover {
   }
 }
 
+.pool-row-left-col {
+  max-width: 247px;
+}
+
+@screen xs {
+  .pool-row-left-col {
+    max-width: 80%;
+  }
+}
+
+@screen sm {
+  .pool-row-left-col {
+    max-width: 350px;
+  }
+}
+
+@screen lg {
+  .pool-row-left-col {
+    max-width: 400px;
+  }
+}
+
+.pool-row-left-col--inner {
+  width: 184px;
+}
+
+@screen sm {
+  .pool-row-left-col--inner {
+    width: 230px;
+  }
+}
+
+.pool-row-right-col {
+  max-width: 247px;
+}
+
+@screen xs {
+  .pool-row-right-col {
+    max-width: 80%;
+  }
+}
+
+@screen sm {
+  .pool-row-right-col {
+    max-width: 280px;
+  }
+}
+
+.max-chart-width {
+  max-width: 270px;
+}
+
+@screen xs {
+  .max-chart-width {
+    max-width: 360px;
+  }
+}
+
+@screen sm {
+  .max-chart-width {
+    max-width: 490px;
+  }
+}
+
+@screen lg {
+  .max-chart-width {
+    max-width: 1000px;
+  }
+}
+
+.min-w-chip {
+  min-width: 186px;
+}
+
+@screen xs {
+  .min-w-chip {
+    min-width: 206px;
+  }
+}
+
 .profile-img {
   transform: scale(1);
 }
@@ -347,7 +366,7 @@ a:hover {
   transform: scale(1.02) translateY(-3px);
 }
 
-@media screen and (max-height: 460px) {
+@media screen and (max-height: 500px) {
   #manage-tickets-action-dropdown {
     display: none;
   }
@@ -388,42 +407,34 @@ a:hover {
   }
 }
 
-.purple-pink-gradient {
-  background-image: linear-gradient(40deg, #4c249f 30%, #9c48ba 81%);
-}
-
-.theme-light .purple-pink-gradient {
-  background-image: linear-gradient(40deg, #eee5ff 30%, #ffb9f0 81%);
-}
-
 .pink-purple-gradient {
   background-image: linear-gradient(40deg, #9c48ba 20%, #4c249f 100%);
 }
 
 .theme-light .pink-purple-gradient {
-  background-image: linear-gradient(40deg, #ffb9f0 40%, #eee5ff 110%);
+  background-image: linear-gradient(40deg, #ffb9f0 20%, #eee5ff 100%);
 }
 
-.graph-modal {
+.warning-modal {
   margin-left: 5%;
   margin-right: 5%;
   width: 90%;
 }
 
 @screen xs {
-  .graph-modal {
+  .warning-modal {
     @apply w-2/3 mx-auto;
   }
 }
 
 @screen sm {
-  .graph-modal {
+  .warning-modal {
     @apply w-1/2;
   }
 }
 
 @screen lg {
-  .graph-modal {
+  .warning-modal {
     @apply w-1/3;
   }
 }
@@ -438,27 +449,65 @@ a:hover {
   }
 }
 
-.countdown-wrapper {
-}
-
-@screen xs {
-  .countdown-wrapper {
-  }
-}
-
-@screen sm {
-  .countdown-wrapper {
-  }
-}
-
 @screen lg {
   .countdown-wrapper {
     width: 300px;
   }
 }
 
-.proposal-details h1 {
-  @apply text-accent-3;
+@media screen and (max-width: 1032px) and (min-width: 941px) {
+  .custom-prize-box-padding {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
 
-  font-size: 1.5rem;
+.wizard-fixed-top-banner {
+  width: 90%;
+}
+
+@screen sm {
+  .wizard-fixed-top-banner {
+    width: 872px;
+  }
+}
+
+@screen lg {
+  .wizard-fixed-top-banner {
+    width: 780px;
+  }
+}
+
+.modal-no-header {
+  @apply bg-default h-full;
+}
+
+@screen sm {
+  .modal-no-header {
+    @apply h-auto;
+    background: transparent;
+  }
+}
+
+.modal-no-header--close {
+  height: 20px;
+  width: 20px;
+  position: fixed;
+
+  right: 30px;
+  top: 20px;
+}
+
+@screen sm {
+  .modal-no-header--close {
+    position: absolute;
+    right: 40px;
+    top: -40px;
+  }
+}
+
+@screen lg {
+  .modal-no-header--close {
+    right: 140px;
+  }
 }

@@ -287,3 +287,126 @@
     transform: scale3d(1, 1, 1) translate3d(200%, 0, 0);
   }
 }
+
+.spinningCoin {
+  animation: coinSpin 5s ease-in-out 3s infinite;
+}
+
+@keyframes coinSpin {
+  70% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+.shake {
+  animation: shakeItem 10s ease-in-out 1s infinite;
+}
+
+@keyframes shakeItem {
+  0% {
+    transform: rotate(0deg);
+  }
+  2% {
+    transform: rotate(20deg);
+  }
+  4% {
+    transform: rotate(-20deg);
+  }
+  6% {
+    transform: rotate(20deg);
+  }
+  8% {
+    transform: rotate(-20deg);
+  }
+  10% {
+    transform: rotate(0deg);
+  }
+}
+
+.test {
+  background-size: 150% 150% !important;
+}
+
+.test:hover {
+  animation: cycleBackgroundPos 2500ms infinite;
+}
+
+.bg-flashy {
+  background: var(--flashyGradient);
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.text-flashy {
+  background: var(--flashyGradient);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+
+  background-size: 1000% auto;
+  animation: cycleBackgroundPos 15000ms infinite steps(60);
+}
+
+.border-flashy {
+  --borderFlashyRadius: 5px;
+  --borderFlashyWidth: 6px;
+  position: relative;
+  border-radius: var(--borderFlashyRadius);
+  width: calc(100% - 5px);
+}
+
+@screen sm {
+  .border-flashy {
+    --borderFlashyWidth: 10px;
+    width: calc(100% - 5px);
+  }
+}
+
+.border-flashy:after {
+  content: '';
+  position: absolute;
+  top: calc(-1 * var(--borderFlashyWidth));
+  left: calc(-1 * var(--borderFlashyWidth));
+  height: calc(100% + var(--borderFlashyWidth) * 2);
+  width: calc(100% + var(--borderFlashyWidth) * 2);
+  background: var(--flashyGradient);
+  border-radius: var(--borderFlashyRadius);
+  animation: cycleBackgroundPos 25000ms infinite steps(140);
+  background-size: 300% 300%;
+  z-index: -1;
+}
+
+@keyframes cycleBackgroundPos {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.purple-pink-gradient-animation {
+  @apply bg-body;
+}
+
+.purple-pink-gradient-animation:after {
+  --borderFlashyWidth: 2px !important;
+  animation-duration: 4000ms !important;
+  background-image: linear-gradient(40deg, #4c249f 30%, #9c48ba 81%) !important;
+}
