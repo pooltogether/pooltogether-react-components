@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import classnames from "classnames";
 import FeatherIcon from "feather-icons-react";
 
-export const NotificationBanner = (props) => {
+export const NotificationBannerContainer = (props) => {
   const { canClose } = props;
 
   const [userHasClosedBanner, setUserHasClosedBanner] = useState(false);

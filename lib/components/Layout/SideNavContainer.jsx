@@ -5,7 +5,7 @@ import React from "react";
  * @param {*} props
  * @returns
  */
-export const Nav = (props) => (
+export const SideNavContainer = (props) => (
   <nav className="flex-col items-start hidden sm:block pt-8 sm:pt-0 pl-2 sm:pr-12 lg:pr-16 text-center">
     {props.children}
   </nav>

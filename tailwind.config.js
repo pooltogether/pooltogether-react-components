@@ -2,14 +2,14 @@ const { colors } = require("tailwindcss/defaultTheme");
 
 module.exports = {
   corePlugins: {
-    container: true
+    container: true,
   },
   theme: {
     // this gives us regular (mobile), sm (641px - 1281px) and lg (1281px+)
     screens: {
       xs: "531px",
       sm: "941px",
-      lg: "1481px"
+      lg: "1481px",
     },
     extend: {
       backgroundColor: {
@@ -39,7 +39,7 @@ module.exports = {
         "accent-grey-1": "var(--color-bg-accent-grey-1)",
         "accent-grey-2": "var(--color-bg-accent-grey-2)",
         "purple-1": "var(--color-bg-purple-1)",
-        "purple-2": "var(--color-bg-purple-2)"
+        "purple-2": "var(--color-bg-purple-2)",
       },
       textColor: {
         "accent-1": "var(--color-text-accent-1)",
@@ -66,7 +66,7 @@ module.exports = {
         blue: "var(--color-text-blue)",
         teal: "var(--color-text-teal)",
         "accent-grey-1": "var(--color-text-accent-grey-1)",
-        purple: "var(--color-text-purple)"
+        purple: "var(--color-text-purple)",
       },
       borderColor: {
         "accent-1": "var(--color-border-accent-1)",
@@ -83,16 +83,13 @@ module.exports = {
         "highlight-2": "var(--color-border-highlight-2)",
         red: "var(--color-border-red)",
         "green-1": "var(--color-border-green-1)",
-        "green-2": "var(--color-border-green-2)"
+        "green-2": "var(--color-border-green-2)",
       },
       boxShadow: {
         sm: "0 2px 6px 0 rgba(0, 0, 0, .07), 0 1px 2px -1px rgba(0, 0, 0, .04)",
-        md:
-          "0 3px 8px -1px rgba(0, 0, 0, .1), 0 1px 5px -1px rgba(0, 0, 0, .06)",
-        lg:
-          "0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -2px rgba(0, 0, 0, .05)",
-        xl:
-          "0 10px 25px -1px rgba(0, 0, 0, .1), 0 10px 10px 5px rgba(0, 0, 0, .04)",
+        md: "0 3px 8px -1px rgba(0, 0, 0, .1), 0 1px 5px -1px rgba(0, 0, 0, .06)",
+        lg: "0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -2px rgba(0, 0, 0, .05)",
+        xl: "0 10px 25px -1px rgba(0, 0, 0, .1), 0 10px 10px 5px rgba(0, 0, 0, .04)",
         "2xl": "0 25px 50px -12px rgba(0, 0, 0, .25)",
         "3xl":
           "0 20px 30px -3px rgba(0, 0, 0, .2), 0 15px 15px -3px rgba(0, 0, 0, .1)",
@@ -100,14 +97,14 @@ module.exports = {
           "0 30px 40px -3px rgba(0, 0, 0, .25), 0 20px 20px -3px rgba(0, 0, 0, .15)",
         inner: "inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)",
         "inner-lg": "inset 0 1px 5px 0 rgba(0, 0, 0, 0.2)",
-        green: "0px 0px 10px #35F0D0;"
+        green: "0px 0px 10px #35F0D0;",
       },
       minHeight: {
-        "0": "0",
+        0: "0",
         "1/4": "25%",
         "1/2": "50%",
         "3/4": "75%",
-        full: "100%"
+        full: "100%",
       },
       borderRadius: {
         xl: "0.75rem",
@@ -117,32 +114,32 @@ module.exports = {
         "5xl": "1.75rem",
         "6xl": "2rem",
         "7xl": "2.25rem",
-        "8xl": "2.5rem"
+        "8xl": "2.5rem",
       },
       height: {
-        "28": "7rem",
-        "72": "18rem",
-        "80": "20rem",
-        "96": "24rem",
-        "112": "28rem",
-        "128": "32rem"
+        28: "7rem",
+        72: "18rem",
+        80: "20rem",
+        96: "24rem",
+        112: "28rem",
+        128: "32rem",
       },
       minWidth: {
-        "0": "0",
+        0: "0",
         "1/4": "25%",
         "1/2": "50%",
         "3/4": "75%",
-        full: "100%"
+        full: "100%",
       },
       maxWidth: {
-        "0": "0",
+        0: "0",
         "1/4": "25%",
         "1/2": "50%",
         "3/4": "75%",
-        full: "100%"
+        full: "100%",
       },
       lineHeight: {
-        relaxed: 1.75
+        relaxed: 1.75,
       },
       fontSize: {
         xxxs: "0.5rem",
@@ -156,7 +153,7 @@ module.exports = {
         "8xl": "5rem",
         "9xl": "6rem",
         "10xl": "7rem",
-        "12xl": "8.5rem"
+        "12xl": "8.5rem",
       },
       fontFamily: {
         "sans-regular": [
@@ -169,7 +166,7 @@ module.exports = {
           "Apple Color Emoji",
           "Segoe UI Emoji",
           "Segoe UI Symbol",
-          "Noto Color Emoji"
+          "Noto Color Emoji",
         ],
         number: [
           "DM Mono",
@@ -182,7 +179,7 @@ module.exports = {
           "Apple Color Emoji",
           "Segoe UI Emoji",
           "Segoe UI Symbol",
-          "Noto Color Emoji"
+          "Noto Color Emoji",
         ],
         headline: [
           "omnes-pro",
@@ -194,111 +191,111 @@ module.exports = {
           "Apple Color Emoji",
           "Segoe UI Emoji",
           "Segoe UI Symbol",
-          "Noto Color Emoji"
+          "Noto Color Emoji",
         ],
-        sans: ["Roboto", "Helvetica", "Arial", "sans-serif"]
+        sans: ["Roboto", "Helvetica", "Arial", "sans-serif"],
       },
       opacity: {
-        "0": "0",
-        "10": ".1",
-        "20": ".2",
-        "30": ".3",
-        "40": ".4",
-        "50": ".5",
-        "60": ".6",
-        "70": ".7",
-        "80": ".8",
-        "90": ".9",
-        "100": "1"
+        0: "0",
+        10: ".1",
+        20: ".2",
+        30: ".3",
+        40: ".4",
+        50: ".5",
+        60: ".6",
+        70: ".7",
+        80: ".8",
+        90: ".9",
+        100: "1",
       },
-      fill: theme => ({
+      fill: (theme) => ({
         // 'indigo': theme('colors.indigo.500')
       }),
       colors: {
         cyan: {
-          "200": "#9CF9F3",
-          "400": "#6FE2DA"
+          200: "#9CF9F3",
+          400: "#6FE2DA",
         },
         blue: {
           ...colors.blue,
-          "500": "#50A6FF",
-          "600": "#4096FB",
-          "700": "#2076F4",
-          "800": "#2c529f",
-          "900": "#1c329f",
-          "1000": "#152a7f",
-          "1100": "#072355",
-          "1200": "#030d30"
+          500: "#50A6FF",
+          600: "#4096FB",
+          700: "#2076F4",
+          800: "#2c529f",
+          900: "#1c329f",
+          1000: "#152a7f",
+          1100: "#072355",
+          1200: "#030d30",
         },
         green: {
           ...colors.green,
-          "100": "#80FFF7",
-          "200": "#72FAE3",
-          "300": "#3EF3D4",
-          "400": "#33DEC3",
-          "500": "#24C5A8",
-          "600": "#1cb298",
-          "700": "#18a090"
+          100: "#80FFF7",
+          200: "#72FAE3",
+          300: "#3EF3D4",
+          400: "#33DEC3",
+          500: "#24C5A8",
+          600: "#1cb298",
+          700: "#18a090",
         },
         lightPurple: {
-          "200": "#E5C2FF",
-          "300": "#D6B2FF",
-          "400": "#C2A2F7",
-          "500": "#a472f7",
-          "600": "#9560eb",
-          "700": "#6039BB",
-          "800": "#451ba7",
-          "900": "#3c1a79",
-          "1000": "#2c1259"
+          200: "#E5C2FF",
+          300: "#D6B2FF",
+          400: "#C2A2F7",
+          500: "#a472f7",
+          600: "#9560eb",
+          700: "#6039BB",
+          800: "#451ba7",
+          900: "#3c1a79",
+          1000: "#2c1259",
         },
         purple: {
           ...colors.purple,
-          "800": "#4c249f",
-          "900": "#421C90",
-          "1000": "#2c1259",
-          "1100": "#27094C",
-          "1200": "#210a45",
-          "1300": "#1C073A"
+          800: "#4c249f",
+          900: "#421C90",
+          1000: "#2c1259",
+          1100: "#27094C",
+          1200: "#210a45",
+          1300: "#1C073A",
         },
         lightpink: {
-          "400": "#FDD8F5"
+          400: "#FDD8F5",
         },
         orange: {
           ...colors.orange,
-          "300": "#FFCF1A",
-          "400": "#FFCB32",
-          "500": "#FF9303",
-          "600": "#EF7301",
-          "700": "#DF5301"
+          300: "#FFCF1A",
+          400: "#FFCB32",
+          500: "#FF9303",
+          600: "#EF7301",
+          700: "#DF5301",
         },
         pink: {
           ...colors.pink,
-          "100": "#ff8aff",
-          "200": "#f37af8",
-          "300": "#ec76f5",
-          "400": "#dc6be5",
-          "500": "#E475EB",
-          "600": "#ca5fca",
-          "700": "#bb57bB",
-          "800": "#9f4a9f",
-          "1000": "#7f3a7f",
-          "1100": "#5f325f"
+          100: "#ff8aff",
+          200: "#f37af8",
+          300: "#ec76f5",
+          400: "#dc6be5",
+          500: "#E475EB",
+          600: "#ca5fca",
+          700: "#bb57bB",
+          800: "#9f4a9f",
+          1000: "#7f3a7f",
+          1100: "#5f325f",
         },
         teal: {
           ...colors.teal,
-          "100": "#c1dbef",
-          "200": "#a3cff1",
-          "300": "#75bbf3",
-          "400": "#41a0ed",
-          "500": "#1a7fd1",
-          "600": "#0761ab",
-          "700": "#065698",
-          "800": "#035883",
-          "900": "#032c57",
-          "1000": "#02304b"
-        }
-      }
-    }
+          100: "#c1dbef",
+          200: "#a3cff1",
+          300: "#75bbf3",
+          400: "#41a0ed",
+          500: "#1a7fd1",
+          600: "#0761ab",
+          700: "#065698",
+          800: "#035883",
+          900: "#032c57",
+          1000: "#02304b",
+        },
+      },
+    },
   },
   variants: {
     borderColor: ["hover", "focus", "active", "focus-within"],
@@ -306,7 +303,8 @@ module.exports = {
     backgroundColor: ["responsive", "hover", "focus", "active"],
     borderRadius: ["responsive"],
     opacity: ["hover", "focus", "responsive", "disabled"],
-    boxShadow: ["focus-within"]
+    boxShadow: ["focus-within"],
+    margin: ["responsive", "last", "first"],
   },
-  plugins: []
+  plugins: [],
 };

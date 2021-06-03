@@ -1,21 +1,23 @@
-import babel from "@rollup/plugin-babel";
-import commonjs from "@rollup/plugin-commonjs";
-import filesize from "rollup-plugin-filesize";
-import postcss from "rollup-plugin-postcss";
-import replace from "@rollup/plugin-replace";
-import resolve from "@rollup/plugin-node-resolve";
-import alias from "@rollup/plugin-alias";
-import css from "rollup-plugin-css-porter";
-import json from "@rollup/plugin-json";
+import babel from '@rollup/plugin-babel'
+import commonjs from '@rollup/plugin-commonjs'
+import filesize from 'rollup-plugin-filesize'
+import postcss from 'rollup-plugin-postcss'
+import replace from '@rollup/plugin-replace'
+import resolve from '@rollup/plugin-node-resolve'
+import alias from '@rollup/plugin-alias'
+import css from 'rollup-plugin-css-porter'
+import json from '@rollup/plugin-json'
+import svgr from '@svgr/rollup'
+import url from 'rollup-plugin-url'
 
 export default {
-  input: "lib/index.js",
+  input: 'lib/index.js',
   output: [
     {
-      dir: "dist",
-      format: "cjs",
-      sourcemap: true,
-    },
+      dir: 'dist',
+      format: 'cjs',
+      sourcemap: true
+    }
   ],
   // external: [
   //   "next",
@@ -33,39 +35,39 @@ export default {
   //   "react-tooltip",
   // ],
   external: [
-    "next",
-    "@pooltogether/hooks",
-    "feather-icons-react",
-    "jotai",
-    "lodash",
-    "react",
-    "react-dom",
-    "tailwindcss",
+    'next',
+    '@pooltogether/hooks',
+    'feather-icons-react',
+    'jotai',
+    'lodash',
+    'react',
+    'react-dom',
+    'tailwindcss'
   ],
   plugins: [
     json(),
+    url(),
+    svgr(),
     postcss({
-      extract: true,
+      extract: true
     }),
     babel({
-      babelHelpers: "bundled",
-      exclude: "node_modules/**",
+      babelHelpers: 'bundled',
+      exclude: 'node_modules/**'
     }),
     resolve({
-      extensions: [".js", ".jsx"],
+      extensions: ['.js', '.jsx']
     }),
     commonjs(),
     alias({
-      entries: [{ find: "lib", replacement: "../../lib" }],
+      entries: [{ find: 'lib', replacement: '../../lib' }]
     }),
     replace({
-      exclude: "node_modules/**",
-      "process.env.NODE_ENV": JSON.stringify(
-        process.env.NODE_ENV || "development"
-      ),
-      preventAssignment: true,
+      'exclude': 'node_modules/**',
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+      'preventAssignment': true
     }),
     css({ minified: false }),
-    process.env.NODE_ENV === "production" && filesize(),
-  ],
-};
+    process.env.NODE_ENV === 'production' && filesize()
+  ]
+}
