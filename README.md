@@ -61,22 +61,26 @@ import { ButtonLink } from "@pooltogether/pooltogether-react-components";
 </Link>;
 ```
 
-## Running Locally:
+## Local development
 
-Due to an issue with hooks when using multiple copies of react you will need to link your local library's
-react and react-dom packages to the project's react and react-dom `node_modules` directories.
+TODO: Make this better...
 
-In the project directory:
+In pooltogether-react-components:
+`yarn link`
 
-`cd node_modules/react && yarn link && cd ../react-dom && yarn link && cd ../..`
+In the app you're importing pooltogether-react-components:
+`yarn link-components`
 
-In the library:
+In pooltogether-react-components:
+`yarn link-local`
+`yarn start`
 
-`yarn link react && yarn link react-dom`
+In the app you're importing pooltogether-react-components:
+`yarn dev`
 
-- You can run `yarn link` inside **pooltogether-react-components** and then `yarn link @pooltogether/pooltogether-react-components` inside a project you have created to test the components locally.
+And your app will hot reload when changes are detected in the components folder!
 
-- You can run `yarn start` to start **pooltogether-react-components** in watch mode and it will compile any new components you add.
+## Testing
 
 - `yarn test` will run jest
 
