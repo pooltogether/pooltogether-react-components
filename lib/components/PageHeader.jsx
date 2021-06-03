@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useOnboard } from "@pooltogether/hooks";
 
-import { useTranslation } from "react-i18next";
 import { HeaderLogo } from "lib/components/HeaderLogo";
 // import { NetworkText } from "lib/components/NetworkText";
 // import { NavPoolBalance } from "lib/components/NavPoolBalance";
@@ -15,7 +14,6 @@ import { Settings } from "lib/components/Settings";
  * @returns
  */
 export const Header = () => {
-  const { t } = useTranslation();
   const { address: usersAddress, connectWallet } = useOnboard();
   const [showTransactionsDialog, setShowTransactionsDialog] = useState(false);
 
@@ -62,7 +60,7 @@ export const Header = () => {
           )} */}
         </div>
         <div className="flex flex-row justify-end items-center">
-          <LanguagePicker />
+          {/* <LanguagePicker /> */}
           <Settings />
         </div>
       </div>

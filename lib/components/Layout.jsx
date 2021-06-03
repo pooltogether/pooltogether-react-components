@@ -25,12 +25,14 @@ export const Layout = (props) => {
       banner={<NotificationBannerList>{banners}</NotificationBannerList>}
       // header={<Header />}
       header={null}
-      // content={<Component {...pageProps} />}
-      content={null}
-      sideNavigation={<Nav />}
+      content={Component}
+      // content={null}
+      // sideNavigation={<Nav />}
+      sideNavigation={null}
       // bottomNavigation={<NavMobile />}
       bottomNavigation={null}
-      footer={<Tagline />}
+      // footer={<Tagline />}
+      footer={null}
     />
   );
 };

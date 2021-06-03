@@ -30,7 +30,6 @@ export default {
   //   "tailwindcss",
   //   "react-device-detect",
   //   "react-hotkeys",
-  //   "react-i18next",
   //   "react-tooltip",
   // ],
   external: [
@@ -42,7 +41,6 @@ export default {
     "react",
     "react-dom",
     "tailwindcss",
-    "react-i18next",
   ],
   plugins: [
     json(),

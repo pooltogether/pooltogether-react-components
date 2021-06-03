@@ -8,10 +8,8 @@ import {
   APP_ENVIRONMENT,
   useAppEnv,
 } from "@pooltogether/hooks";
-import { useTranslation } from "react-i18next";
 
 import { CheckboxInputGroup } from "lib/components/CheckboxInputGroup";
-import { ThemeSwitcher } from "lib/components/ThemeSwitcher";
 
 /**
  * TODO: Make settings extendible for all apps
@@ -19,8 +17,6 @@ import { ThemeSwitcher } from "lib/components/ThemeSwitcher";
  * @returns
  */
 export function Settings(props) {
-  const { t } = useTranslation();
-
   const [isOpen, setIsOpen] = useState(false);
 
   const shouldReduceMotion = useReducedMotion();
@@ -125,36 +121,47 @@ export function Settings(props) {
           </span>
         </button>
 
-        <h6 className="text-white mt-4 mb-16 capitalize">{t("settings")}</h6>
+        <h6 className="text-white mt-4 mb-16 capitalize">{props.title}</h6>
 
-        {/* <div className="mt-4">
-          <label className="uppercase text-accent-1 font-bold text-xxs mb-4">
-            {t("theme")}
-          </label>
-          <ThemeSwitcher />
-        </div> */}
-
-        <div className="mt-10">
-          <label className="uppercase text-accent-1 font-bold text-xxs mb-4 mr-2">
-            {t("developmentMode")}
-          </label>
-          <TestnetToggle />
-        </div>
+        {props.children}
       </motion.div>
     </>
   );
 }
 
-const TestnetToggle = () => {
+Settings.defeaultProps = {
+  title: "Settings",
+  children: [TestnetItem],
+};
+
+export const SettingsItem = (props) => (
+  <div className="mt-10">
+    <label className="uppercase text-accent-1 font-bold text-xxs mb-4 mr-2">
+      {props.label}
+    </label>
+    {props.children}
+  </div>
+);
+
+export const TestnetItem = (props) => (
+  <SettingsItem label={props.label}>
+    <TestnetToggle />
+  </SettingsItem>
+);
+
+TestnetItem.defaultProps = {
+  label: "Development mode",
+};
+
+const TestnetToggle = (props) => {
   const { appEnv, setAppEnv } = useAppEnv();
-  const { t } = useTranslation();
 
   return (
     <CheckboxInputGroup
       large
       id="testnets-view-toggle"
       name="testnets-view-toggle"
-      label={t("showTestnets")}
+      label={props.label}
       checked={appEnv === APP_ENVIRONMENT.testnets}
       handleClick={() => {
         if (appEnv === APP_ENVIRONMENT.testnets) {
@@ -165,4 +172,8 @@ const TestnetToggle = () => {
       }}
     />
   );
+};
+
+TestnetToggle.defaultProps = {
+  label: "Use testnets",
 };
