@@ -1,7 +1,7 @@
 import React from 'react'
 import FeatherIcon from 'feather-icons-react'
 
-import { formatEtherscanTxUrl } from 'lib/utils/formatEtherscanTxUrl'
+import { formatEtherscanTxUrl } from '../../utils/formatEtherscanTxUrl'
 
 export const EtherscanTxLink = (props) => {
   const { children, className, hash, chainId } = props

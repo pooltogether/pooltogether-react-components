@@ -5,7 +5,7 @@ import VisuallyHidden from '@reach/visually-hidden'
 import { motion } from 'framer-motion'
 import { useReducedMotion, APP_ENVIRONMENT, useAppEnv } from '@pooltogether/hooks'
 
-import { CheckboxInputGroup } from './../../../CheckboxInputGroup'
+import { CheckboxInputGroup } from '../../Input/CheckboxInputGroup'
 
 /**
  * TODO: Make settings extendible for all apps
@@ -115,49 +115,6 @@ export function SettingsContainer(props) {
   )
 }
 
-export const SettingsItem = (props) => (
-  <div className='mt-10'>
-    <label className='uppercase text-accent-1 font-bold text-xxs mb-4 mr-2'>{props.label}</label>
-    {props.children}
-  </div>
-)
-
-export const TestnetItem = (props) => (
-  <SettingsItem label={props.label}>
-    <TestnetToggle />
-  </SettingsItem>
-)
-
-const TestnetToggle = (props) => {
-  const { appEnv, setAppEnv } = useAppEnv()
-
-  return (
-    <CheckboxInputGroup
-      large
-      id='testnets-view-toggle'
-      name='testnets-view-toggle'
-      label={props.label}
-      checked={appEnv === APP_ENVIRONMENT.testnets}
-      handleClick={() => {
-        if (appEnv === APP_ENVIRONMENT.testnets) {
-          setAppEnv(APP_ENVIRONMENT.mainnets)
-        } else {
-          setAppEnv(APP_ENVIRONMENT.testnets)
-        }
-      }}
-    />
-  )
-}
-
 SettingsContainer.defeaultProps = {
-  title: 'Settings',
-  children: [TestnetItem]
-}
-
-TestnetItem.defaultProps = {
-  label: 'Development mode'
-}
-
-TestnetToggle.defaultProps = {
-  label: 'Use testnets'
+  title: 'Settings'
 }

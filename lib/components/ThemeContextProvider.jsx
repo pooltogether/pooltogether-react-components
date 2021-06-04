@@ -1,80 +1,80 @@
-import React, { useEffect, useState } from "react";
-import Cookies from "js-cookie";
-import { GlobalHotKeys } from "react-hotkeys";
+import React, { useEffect, useState } from 'react'
+import Cookies from 'js-cookie'
+import { GlobalHotKeys } from 'react-hotkeys'
+import { PT_HOOKS_CONSTANTS } from '@pooltogether/hooks'
 
-import { HOTKEYS_KEY_MAP } from "lib/constants";
-import { PT_HOOKS_CONSTANTS } from "@pooltogether/hooks";
+import { HOTKEYS_KEY_MAP } from '../constants'
 
-const { COOKIE_OPTIONS } = PT_HOOKS_CONSTANTS;
-const THEME = "theme";
+const { COOKIE_OPTIONS } = PT_HOOKS_CONSTANTS
+const THEME = 'theme'
 
-export const ThemeContext = React.createContext(null);
+export const ThemeContext = React.createContext(null)
 
 export function ThemeContextProvider(props) {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState('dark')
 
   useEffect(() => {
-    let stored = Cookies.get(THEME);
+    let stored = Cookies.get(THEME)
 
-    const body = document.body;
-    body.classList.add("theme-dark");
+    const body = document.body
+    body.classList.add('theme-dark')
 
-    if (typeof window !== "undefined" && window.matchMedia) {
+    if (typeof window !== 'undefined' && window.matchMedia) {
       const setThemeAutomatically = (newValue) => {
-        if (newValue === "dark") {
-          body.classList.add("theme-dark");
-          body.classList.remove("theme-light");
+        if (newValue === 'dark') {
+          body.classList.add('theme-dark')
+          body.classList.remove('theme-light')
 
-          setTheme("dark");
-        } else if (newValue === "light") {
-          body.classList.add("theme-light");
-          body.classList.remove("theme-dark");
+          setTheme('dark')
+        } else if (newValue === 'light') {
+          body.classList.add('theme-light')
+          body.classList.remove('theme-dark')
 
-          setTheme("light");
+          setTheme('light')
         }
-      };
+      }
 
       // onLoad
-      setThemeAutomatically(stored);
+      setThemeAutomatically(stored)
     }
-  }, []);
+  }, [])
 
   const toggleTheme = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    const body = document.body;
+    const body = document.body
 
-    if (body.classList.contains("theme-dark")) {
-      body.classList.remove("theme-dark");
-      body.classList.add("theme-light");
+    if (body.classList.contains('theme-dark')) {
+      body.classList.remove('theme-dark')
+      body.classList.add('theme-light')
 
-      Cookies.set(THEME, "light", COOKIE_OPTIONS);
+      Cookies.set(THEME, 'light', COOKIE_OPTIONS)
 
-      setTheme("light");
+      setTheme('light')
     } else {
-      body.classList.remove("theme-light");
-      body.classList.add("theme-dark");
+      body.classList.remove('theme-light')
+      body.classList.add('theme-dark')
 
-      Cookies.set(THEME, "dark", COOKIE_OPTIONS);
+      Cookies.set(THEME, 'dark', COOKIE_OPTIONS)
 
-      setTheme("dark");
+      setTheme('dark')
     }
-  };
+  }
 
   const handlers = {
-    TOGGLE_THEME: toggleTheme,
-  };
+    TOGGLE_THEME: toggleTheme
+  }
 
   return (
     <ThemeContext.Provider
       value={{
         theme,
-        toggleTheme,
+        toggleTheme
       }}
     >
       <GlobalHotKeys keyMap={HOTKEYS_KEY_MAP} handlers={handlers} />
 
       {props.children}
     </ThemeContext.Provider>
-  );
+  )
 }

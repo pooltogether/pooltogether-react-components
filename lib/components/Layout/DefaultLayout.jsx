@@ -2,12 +2,11 @@ import React from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useAtom } from 'jotai'
 import { useReducedMotion, useScreenSize, ScreenSize } from '@pooltogether/hooks'
-import { useRouter } from 'next/router'
 
 import { NotificationBannerList, notificationBannerVisibleAtom } from './NotificationBannerList'
 
 export const DefaultLayout = (props) => {
-  const { content, header, sideNav, bottomNav, footer, banner } = props
+  const { content, header, sideNav, bottomNav, footer, banner, router } = props
 
   return (
     <PageGrid
@@ -60,6 +59,7 @@ const PageGrid = ({ banner, header, sideNavigation, bottomNavigation, content, f
 
 /**
  * Simple wrapper for PageGrid with animations on the page content
+ * // TODO: Add back the router funnelling for the key!
  */
 const AnimatedPageGrid = ({
   banner,
@@ -67,12 +67,13 @@ const AnimatedPageGrid = ({
   sideNavigation,
   bottomNavigation,
   content,
-  footer
+  footer,
+  router
 }) => (
   <PageGrid
     banner={banner}
     header={header}
-    content={<AnimateContent>{content}</AnimateContent>}
+    content={<AnimateContent router={router}>{content}</AnimateContent>}
     footer={footer}
     sideNavigation={sideNavigation}
     bottomNavigation={bottomNavigation}
@@ -125,9 +126,7 @@ const Content = ({ children }) => (
  */
 const AnimateContent = (props) => {
   const shouldReduceMotion = useReducedMotion()
-  const router = useRouter()
-
-  console.log('router', router)
+  const { router } = props
 
   return (
     <AnimatePresence exitBeforeEnter>

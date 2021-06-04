@@ -2,8 +2,8 @@ import React from 'react'
 import classnames from 'classnames'
 import FeatherIcon from 'feather-icons-react'
 
-import { Input } from 'lib/components/Input'
-import { DEFAULT_INPUT_GROUP_CLASSES, DEFAULT_INPUT_LABEL_CLASSES } from 'lib/constants'
+import { Input } from '../Input/Input'
+import { DEFAULT_INPUT_GROUP_CLASSES, DEFAULT_INPUT_LABEL_CLASSES } from '../../constants'
 
 export const TextInputGroupType = Object.freeze({
   text: 'text',
@@ -41,11 +41,11 @@ export const TextInputGroup = (props) => {
   textClasses = textClasses
     ? textClasses
     : classnames({
-      'font-bold text-3xl sm:text-5xl': large,
-      'text-xs xs:text-sm sm:text-xl lg:text-2xl': !large,
-      'text-red-500': isError,
-      'text-whitesmoke': disabled
-    })
+        'font-bold text-3xl sm:text-5xl': large,
+        'text-xs xs:text-sm sm:text-xl lg:text-2xl': !large,
+        'text-red-500': isError,
+        'text-whitesmoke': disabled
+      })
 
   roundedClasses = roundedClasses ? roundedClasses : 'rounded-full'
 
@@ -54,38 +54,38 @@ export const TextInputGroup = (props) => {
   borderClasses = borderClasses
     ? borderClasses
     : classnames('border', {
-      'border-red': isError,
-      'border-green-2': isSuccess,
-      'border-transparent': !isError && !isSuccess,
-      'hover:border-accent-3 focus-within:border-accent-3 focus-within:shadow-green': !disabled
-    })
+        'border-red': isError,
+        'border-green-2': isSuccess,
+        'border-transparent': !isError && !isSuccess,
+        'hover:border-accent-3 focus-within:border-accent-3 focus-within:shadow-green': !disabled
+      })
 
   backgroundClasses = backgroundClasses
     ? backgroundClasses
     : classnames(backgroundClasses, {
-      'bg-grey': disabled
-    })
+        'bg-grey': disabled
+      })
 
   labelClassName = labelClassName
     ? labelClassName
     : classnames(DEFAULT_INPUT_LABEL_CLASSES, {
-      'cursor-not-allowed font-whitesmoke': disabled,
-      'text-accent-1': !disabled
-    })
+        'cursor-not-allowed font-whitesmoke': disabled,
+        'text-accent-1': !disabled
+      })
 
   rightLabelClassName = rightLabelClassName
     ? rightLabelClassName
     : classnames(DEFAULT_INPUT_LABEL_CLASSES, 'text-right', {
-      'cursor-not-allowed font-whitesmoke': disabled,
-      'text-accent-1': !disabled
-    })
+        'cursor-not-allowed font-whitesmoke': disabled,
+        'text-accent-1': !disabled
+      })
 
   unitsClassName = unitsClassName
     ? unitsClassName
     : classnames('font-bold text-xs sm:text-sm whitespace-no-wrap', {
-      'cursor-not-allowed font-whitesmoke': disabled,
-      'font-white': !disabled
-    })
+        'cursor-not-allowed font-whitesmoke': disabled,
+        'font-white': !disabled
+      })
 
   containerClassName = classnames(
     DEFAULT_INPUT_GROUP_CLASSES,

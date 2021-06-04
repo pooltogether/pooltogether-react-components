@@ -4,7 +4,7 @@ import { positionMatchWidth } from '@reach/popover'
 import classnames from 'classnames'
 import FeatherIcon from 'feather-icons-react'
 
-import { DEFAULT_INPUT_GROUP_CLASSES, DEFAULT_INPUT_LABEL_CLASSES } from '../constants'
+import { DEFAULT_INPUT_GROUP_CLASSES, DEFAULT_INPUT_LABEL_CLASSES } from '../../constants'
 
 export const DropdownInputGroup = (props) => {
   // Dropdown Logic
