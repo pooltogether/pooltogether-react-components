@@ -3,8 +3,7 @@ import FeatherIcon from 'feather-icons-react'
 import Loader from 'react-loader-spinner'
 
 import { Banner } from 'lib/components/Containers/Banner'
-import { EtherscanTxLink } from 'lib/components/Links/EtherscanTxLink'
-import { shorten } from 'lib/utils/shorten'
+import { BlockExplorerLink } from './Links/BlockExplorerLink'
 
 export const TxStatus = (props) => {
   const { chainId, t, tx, title, subtitle } = props
@@ -103,13 +102,12 @@ export const TxStatus = (props) => {
         {tx.hash && (
           <div className='text-xxs sm:text-sm text-accent-1 opacity-80 mt-2'>
             {transactionHashText}
-            <EtherscanTxLink
+            <BlockExplorerLink
               chainId={chainId}
               hash={tx.hash}
               className='underline text-accent-1 opacity-80'
-            >
-              {shorten(tx.hash)}
-            </EtherscanTxLink>
+              shorten
+            />
           </div>
         )}
 

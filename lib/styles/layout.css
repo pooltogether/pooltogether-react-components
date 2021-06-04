@@ -45,6 +45,16 @@ body {
   }
 }
 
+/* Sizes */
+
+.w-fit-content {
+  width: fit-content;
+}
+
+.h-fit-content {
+  height: fit-content;
+}
+
 /* Page Layout */
 
 .grid-page-wrapper {

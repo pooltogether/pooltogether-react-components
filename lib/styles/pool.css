@@ -62,13 +62,6 @@ a:hover {
   }
 }
 
-.is-etherscan-arrow {
-  height: 1em;
-  position: relative;
-  top: -2px;
-  width: 1em;
-}
-
 .nav--account-transactions-button__loader {
   transform: scale(0.8);
 }

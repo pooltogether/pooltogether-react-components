@@ -28,7 +28,7 @@ export const DefaultLayout = (props) => {
 const PageGrid = ({ banner, header, sideNavigation, bottomNavigation, content, footer }) => {
   const screenSize = useScreenSize()
 
-  if (screenSize <= ScreenSize.sm) {
+  if (screenSize <= ScreenSize.xs) {
     return (
       <div className='grid-page-wrapper'>
         <div className='grid-header-wrapper bg-body z-10'>
