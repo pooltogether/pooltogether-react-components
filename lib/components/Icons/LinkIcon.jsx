@@ -7,8 +7,8 @@ export const LinkIcon = (props) => {
   return (
     <FeatherIcon
       {...remainingProps}
-      icon='external-link'
-      className={classnames('ml-1 my-auto inline-block', className)}
+      icon='arrow-up-right'
+      className={classnames('inline-block', className)}
     />
   )
 }

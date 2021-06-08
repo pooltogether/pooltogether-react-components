@@ -48,12 +48,8 @@ hr {
 }
 
 a {
-  @apply text-highlight-3;
-  transition: all 75ms ease-in-out;
-}
-
-a:hover {
-  @apply text-inverse;
+  text-underline-position: from-font;
+  @apply underline trans hover:opacity-70 cursor-pointer;
 }
 
 @media screen and (max-width: 380px) {

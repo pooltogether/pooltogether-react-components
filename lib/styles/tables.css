@@ -1,8 +1,13 @@
-.table {
-  @apply text-xxxs;
+@screen xs {
+  .th,
+  .td {
+    max-width: none;
+    width: unset;
+  }
+}
 
-  display: inline-block;
-  border-spacing: 0;
+.table {
+  @apply text-xs;
 }
 
 @screen xs {
@@ -21,89 +26,6 @@
   .table {
     @apply text-lg;
   }
-}
-
-.table .tr {
-  display: block !important;
-  width: 100% !important;
-}
-
-.table .tr:last-child .td {
-  border-bottom: 0;
-}
-
-.table .th,
-.table .td {
-  margin: 0;
-  padding: 0.25rem;
-}
-
-.table .th:last-child,
-.table .td:last-child {
-  border-right: 0;
-}
-
-th,
-.th {
-  @apply font-bold text-left;
-}
-
-.th,
-.td {
-  @apply py-1;
-
-  padding-left: 0;
-  padding-right: 0;
-  text-align: left;
-  margin: 0;
-}
-
-@screen xs {
-  .th,
-  .td {
-    @apply px-1;
-    max-width: none;
-  }
-}
-
-@screen xs {
-  .th:first-child {
-    @apply rounded-tl-sm px-2;
-  }
-
-  .th:last-child {
-    @apply rounded-tr-sm px-2;
-  }
-
-  .td:first-child {
-    @apply rounded-tl-sm rounded-bl-sm px-2;
-  }
-
-  .td:last-child {
-    @apply rounded-tr-sm rounded-br-sm px-2;
-  }
-}
-
-@screen sm {
-  .th,
-  .td {
-    @apply px-3;
-  }
-}
-
-.tr {
-  @apply rounded-lg;
-
-  transition: all 100ms ease-in-out;
-}
-
-.tr:hover {
-  @apply bg-default;
-}
-
-.th:last-child,
-.td:last-child {
-  border-right: 0;
 }
 
 /* Player listing */

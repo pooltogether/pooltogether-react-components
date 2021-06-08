@@ -64,7 +64,7 @@ export const BlockExplorerLink = (props) => {
 
 BlockExplorerLink.defaultProps = {
   noIcon: false,
-  iconClassName: 'h-4 w-4'
+  iconClassName: 'h-4 w-4 ml-1 my-auto'
 }
 
 const formatBlockExplorerTxUrl = (tx, networkId) => {

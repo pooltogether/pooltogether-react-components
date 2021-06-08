@@ -23,12 +23,12 @@ export const DefaultLayout = (props) => {
 /**
  * Generic page layout component
  * Small screens displays navigation at the bottom of the page
- * Anything larger than xs has a sidebar
+ * Anything larger than sm has a sidebar
  */
 const PageGrid = ({ banner, header, sideNavigation, bottomNavigation, content, footer }) => {
   const screenSize = useScreenSize()
 
-  if (screenSize <= ScreenSize.xs) {
+  if (screenSize <= ScreenSize.sm) {
     return (
       <div className='grid-page-wrapper'>
         <div className='grid-header-wrapper bg-body z-10'>

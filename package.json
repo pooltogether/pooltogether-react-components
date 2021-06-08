@@ -35,6 +35,7 @@
     "unlink-local": "yarn unlink @pooltogether/hooks && yarn unlink react && yarn unlink react-dom && yarn unlink jotai && yarn unlink framer-motion && yarn unlink eth-revert-reason && yarn unlink lodash && yarn unlink tailwindcss && yarn unlink feather-icons-react && yarn install --force"
   },
   "dependencies": {
+    "3box": "^1.19.1",
     "@reach/dialog": "^0.15.0",
     "@reach/menu-button": "^0.15.1",
     "@reach/popover": "^0.15.0",
@@ -52,7 +53,9 @@
     "react-tooltip": "^4.2.21"
   },
   "peerDependencies": {
-    "@pooltogether/hooks": "^0.0.23",
+    "@pooltogether/evm-chains-extended": "^0.4.3",
+    "@pooltogether/hooks": "^0.0.34",
+    "@pooltogether/utilities": "^0.0.22",
     "feather-icons-react": "^0.4.1",
     "framer-motion": "^4.1.17",
     "jotai": "^0.11.2",
@@ -66,7 +69,7 @@
     "@babel/preset-env": "^7.0.0-beta.40",
     "@babel/preset-react": "^7.0.0-beta.40",
     "@pooltogether/evm-chains-extended": "^0.4.3",
-    "@pooltogether/hooks": "^0.0.33",
+    "@pooltogether/hooks": "^0.0.34",
     "@pooltogether/utilities": "^0.0.22",
     "@rollup/plugin-alias": "^3.1.1",
     "@rollup/plugin-babel": "^5.2.2",
