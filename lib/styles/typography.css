@@ -82,6 +82,11 @@ h6 {
 }
 
 @screen sm {
+  table,
+  a,
+  p {
+    @apply text-sm;
+  }
   h1 {
     @apply text-4xl;
   }
@@ -97,9 +102,17 @@ h6 {
   h5 {
     @apply text-lg;
   }
+  h6 {
+    @apply text-base;
+  }
 }
 
 @screen lg {
+  table,
+  a,
+  p {
+    @apply text-lg;
+  }
   h1 {
     @apply text-5xl;
   }
@@ -117,9 +130,6 @@ h6 {
   }
   h6 {
     @apply text-base;
-  }
-  a {
-    @apply text-lg;
   }
 }
 

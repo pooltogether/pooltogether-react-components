@@ -6,7 +6,7 @@ export const BasicTable = (props) => {
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = tableInstance
 
-  let className = 'table table-fixed w-full text-xxxs xs:text-xxs sm:text-sm align-top'
+  let className = 'table table-fixed w-full align-top'
 
   return (
     <>

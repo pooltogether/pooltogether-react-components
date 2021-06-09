@@ -6,28 +6,6 @@
   }
 }
 
-.table {
-  @apply text-xs;
-}
-
-@screen xs {
-  .table {
-    @apply text-xs;
-  }
-}
-
-@screen sm {
-  .table {
-    @apply text-xs;
-  }
-}
-
-@screen lg {
-  .table {
-    @apply text-lg;
-  }
-}
-
 /* Player listing */
 .td-address {
   width: 40% !important;
