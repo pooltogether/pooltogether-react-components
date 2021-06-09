@@ -5,11 +5,16 @@ import { useReducedMotion, useScreenSize, ScreenSize } from '@pooltogether/hooks
 
 import { NotificationBannerList, notificationBannerVisibleAtom } from './NotificationBannerList'
 
+/**
+ * Default layout includes a page header, side nav for desktop screens and bottom nav for mobile
+ * @param {*} props
+ * @returns
+ */
 export const DefaultLayout = (props) => {
   const { content, header, sideNav, bottomNav, footer, banner, router } = props
 
   return (
-    <PageGrid
+    <DefaultPageGrid
       banner={<NotificationBannerList>{banner}</NotificationBannerList>}
       header={header}
       content={content}
@@ -21,11 +26,31 @@ export const DefaultLayout = (props) => {
 }
 
 /**
+ * Simple layout does not include a sidebar or mobile navigation
+ * Any navigation is expected to be floating or in the header
+ * @param {*} props
+ * @returns
+ */
+export const SimpleLayout = (props) => {
+  const { content, header, footer, banner, router } = props
+
+  return (
+    <SimplePageGrid
+      banner={<NotificationBannerList>{banner}</NotificationBannerList>}
+      header={header}
+      content={content}
+      footer={footer}
+    />
+  )
+}
+//
+
+/**
  * Generic page layout component
  * Small screens displays navigation at the bottom of the page
  * Anything larger than sm has a sidebar
  */
-const PageGrid = ({ banner, header, sideNavigation, bottomNavigation, content, footer }) => {
+const DefaultPageGrid = ({ banner, header, sideNavigation, bottomNavigation, content, footer }) => {
   const screenSize = useScreenSize()
 
   if (screenSize <= ScreenSize.sm) {
@@ -58,6 +83,25 @@ const PageGrid = ({ banner, header, sideNavigation, bottomNavigation, content, f
 }
 
 /**
+ * Generic page layout component
+ * Small screens displays navigation at the bottom of the page
+ * Anything larger than sm has a sidebar
+ */
+const SimplePageGrid = ({ banner, header, content, footer }) => {
+  return (
+    <div className='grid-page-wrapper'>
+      <div className='grid-header-wrapper bg-body z-10'>
+        <div className='grid-banner'>{banner}</div>
+        <div className='grid-header w-full bg-body z-10 mx-auto l-0 r-0'>{header}</div>
+      </div>
+      <ContentWithFooter content={content} footer={footer} />
+    </div>
+  )
+}
+
+//
+
+/**
  * Simple wrapper for PageGrid with animations on the page content
  * // TODO: Add back the router funnelling for the key!
  */
@@ -70,7 +114,7 @@ const AnimatedPageGrid = ({
   footer,
   router
 }) => (
-  <PageGrid
+  <DefaultPageGrid
     banner={banner}
     header={header}
     content={<AnimateContent router={router}>{content}</AnimateContent>}

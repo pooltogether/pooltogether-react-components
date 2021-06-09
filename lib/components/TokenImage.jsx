@@ -8,10 +8,6 @@ export const TokenImage = (props) => {
 
   const { data: tokenImage, isFetched } = useCoingeckoTokenImage(chainId, address)
 
-  useEffect(() => {
-    console.log('TokenImage', tokenImage, isFetched)
-  }, [tokenImage, isFetched])
-
   const imageOverride = TOKEN_IMAGE_OVERRIDES[chainId][address]
 
   if (imageOverride || isFetched) {

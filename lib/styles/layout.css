@@ -58,6 +58,7 @@ body {
 /* Page Layout */
 
 .grid-page-wrapper {
+  @apply text-inverse;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr;

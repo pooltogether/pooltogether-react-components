@@ -6,19 +6,23 @@ export const ExternalLink = (props) => {
   return (
     <a
       className={classnames(props.className, {
-        underline: !props.noUnderline
+        'underline': props.underline,
+        'no-underline': !props.underline
       })}
       rel='noopener noreferrer'
+      target={props.openInNewTab ? '_blank' : undefined}
       href={props.href}
+      title={props.title}
     >
       {props.children}
-      {!props.noIcon && <LinkIcon className={props.iconClassName} />}
+      {!props.openInSameTab && !props.noIcon && <LinkIcon className={props.iconClassName} />}
     </a>
   )
 }
 
 ExternalLink.defaultProps = {
-  noUnderline: false,
+  underline: false,
   noIcon: false,
-  iconClassName: 'w-4 h-4 ml-1'
+  iconClassName: 'w-4 h-4 ml-1',
+  openInSameTab: false
 }

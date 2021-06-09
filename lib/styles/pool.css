@@ -48,8 +48,9 @@ hr {
 }
 
 a {
+  text-decoration: none;
   text-underline-position: from-font;
-  @apply underline trans hover:opacity-70 cursor-pointer;
+  @apply trans hover:opacity-40 cursor-pointer;
 }
 
 @media screen and (max-width: 380px) {

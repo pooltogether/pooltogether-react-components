@@ -5,6 +5,7 @@ import { shorten as shortenHash } from '@pooltogether/utilities'
 
 import { CopyIcon } from '../Icons/CopyIcon'
 import { LinkIcon } from '../Icons/LinkIcon'
+import { ExternalLink } from './ExternalLink'
 
 export const BlockExplorerLink = (props) => {
   const {
@@ -14,6 +15,8 @@ export const BlockExplorerLink = (props) => {
     className,
     shorten,
     noIcon,
+    noText,
+    noUnderline,
     iconClassName,
     copyable,
     chainId
@@ -30,11 +33,11 @@ export const BlockExplorerLink = (props) => {
 
   return (
     <>
-      <a
+      <ExternalLink
+        className={classnames(`inline-flex`, className)}
         href={url}
-        className={`trans hover:text-highlight-1 ${className} inline-flex`}
-        target='_blank'
-        rel='noopener noreferrer'
+        noIcon={noIcon}
+        iconClassName={iconClassName}
         title='View on Block Explorer'
       >
         {children || (
@@ -51,12 +54,11 @@ export const BlockExplorerLink = (props) => {
                 'sm:inline-block': !shorten
               })}
             >
-              {display}
+              {!noText && display}
             </span>
-            {!noIcon && <LinkIcon className={iconClassName} />}
           </div>
         )}
-      </a>
+      </ExternalLink>
       {copyable && <CopyIcon className='ml-2 my-auto' text={display} />}
     </>
   )
@@ -64,6 +66,8 @@ export const BlockExplorerLink = (props) => {
 
 BlockExplorerLink.defaultProps = {
   noIcon: false,
+  noText: false,
+  noUnderline: false,
   iconClassName: 'h-4 w-4 ml-1 my-auto'
 }
 
