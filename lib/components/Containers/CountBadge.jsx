@@ -2,15 +2,16 @@ import React from 'react'
 import classnames from 'classnames'
 
 export function CountBadge(props) {
-  const { backgroundClass, count, sizeClasses, textTopPos, textLeftPos } = props
+  const { title, bgClassName, count, sizeClassName, textTopPos, textLeftPos, className } = props
 
   return (
     <span
-      title='active proposals to vote on'
+      title={title}
       className={classnames(
-        'text-white rounded-full ml-2 flex flex-col items-center justify-center font-bold',
-        sizeClasses,
-        backgroundClass
+        'text-white rounded-full flex flex-col items-center justify-center font-bold',
+        sizeClassName,
+        bgClassName,
+        className
       )}
     >
       <span
@@ -21,4 +22,9 @@ export function CountBadge(props) {
       </span>
     </span>
   )
+}
+
+CountBadge.defaultProps = {
+  bgClassName: 'bg-blue',
+  sizeClassName: 'w-4 h-4 text-xxxs'
 }

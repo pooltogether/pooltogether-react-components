@@ -25,12 +25,12 @@ export const PageTitleAndBreadcrumbs = (props) => {
               {crumb.href && crumb.as ? (
                 <>
                   <Link href={crumb.href} as={crumb.as} shallow>
-                    <a className='border-b border-accent-3'>{crumb.name}</a>
+                    <a className='text-xxxs border-b border-accent-3'>{crumb.name}</a>
                   </Link>
                 </>
               ) : (
                 <>
-                  <span>{crumb.name}</span>
+                  <span className='text-xxxs'>{crumb.name}</span>
                 </>
               )}
               {index + 1 !== breadcrumbs.length && <> &gt; </>}

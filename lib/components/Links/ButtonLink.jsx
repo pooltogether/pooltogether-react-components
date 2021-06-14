@@ -19,10 +19,11 @@ export function getButtonClasses(props) {
     transition,
     className,
     textSize,
-    width,
+    width
   } = props
 
-  let defaultClasses = 'border-2 relative inline-block text-center leading-snug cursor-pointer outline-none focus:outline-none active:outline-none no-underline'
+  let defaultClasses =
+    'border-2 relative inline-block text-center leading-snug cursor-pointer outline-none focus:outline-none active:outline-none no-underline'
   let animClass = noAnim ? '' : 'button-scale'
 
   if (selected) {
@@ -70,7 +71,6 @@ export function getButtonClasses(props) {
   hoverBg = hoverBg ? `hover:bg-${hoverBg}` : defaultHoverBg
   hoverText = hoverText ? `hover:text-${hoverText}` : defaultHoverText
 
-
   return classnames(
     className,
     defaultClasses,
@@ -112,25 +112,17 @@ const getTextSize = (size) => {
 }
 
 export function ButtonLink(props) {
-  let {
-    children,
-    as,
-    href,
-  } = props
+  let { children, as, href, Link } = props
 
   const classes = getButtonClasses(props)
 
-  const linkProps = pick(props, [
-    'target',
-    'rel',
-  ])
+  const linkProps = pick(props, ['target', 'rel'])
 
-  return <a
-    {...linkProps}
-    className={classes}
-    onClick={(e) => e.stopPropagation()}
-  >
-    {children}
-  </a>
-
+  return (
+    <Link {...linkProps} href={href} as={as} scroll={false}>
+      <a {...linkProps} className={classes} onClick={(e) => e.stopPropagation()}>
+        {children}
+      </a>
+    </Link>
+  )
 }

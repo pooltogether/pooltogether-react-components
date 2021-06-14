@@ -4,7 +4,7 @@ import FeatherIcon from 'feather-icons-react'
 import classnames from 'classnames'
 
 export const Tooltip = (props) => {
-  const { children, tip, className, id, effect } = props
+  const { children, tip, className, iconClassName, iconSizeClassName, id, effect } = props
   const ref = useRef(null)
 
   return (
@@ -14,7 +14,9 @@ export const Tooltip = (props) => {
         data-for={`${id}-tooltip`}
         className={classnames('inline cursor-pointer', className)}
       >
-        {children || <FeatherIcon icon='info' className={classnames('w-4 h-4', className)} />}
+        {children || (
+          <FeatherIcon icon='info' className={classnames(iconSizeClassName, iconClassName)} />
+        )}
       </span>
       <ReactTooltip
         clickable
@@ -54,5 +56,6 @@ export const Tooltip = (props) => {
 
 Tooltip.defaultProps = {
   id: 'pt',
-  effect: 'solid'
+  effect: 'solid',
+  iconSizeClassName: 'w-4 h-4'
 }

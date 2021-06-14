@@ -22,7 +22,7 @@ export const PageHeaderContainer = (props) => {
           <HeaderLogo />
         </a>
       </Link>
-      <div className='flex flex-row justify-end'>{props.children}</div>
+      <div className='flex flex-row justify-end my-auto'>{props.children}</div>
     </div>
   )
 }

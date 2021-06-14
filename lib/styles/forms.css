@@ -12,7 +12,6 @@ label {
 }
 
 button {
-  @apply text-highlight-3;
   transition: all 75ms ease-in-out;
 }
 

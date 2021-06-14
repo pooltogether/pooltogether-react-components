@@ -14,7 +14,7 @@ const isValidImage = (image) => {
 }
 
 export function ProfileAvatar(props) {
-  const { xl } = props
+  const { className } = props
 
   const [profile, setProfile] = useState()
 
@@ -42,10 +42,15 @@ export function ProfileAvatar(props) {
       <img
         alt='profile avatar'
         src={`https://ipfs.infura.io/ipfs/${profile.image[0].contentUrl['/']}`}
-        className={classnames('profile-img relative inline-block rounded-full mr-2 w-5 h-5')}
+        className={classnames('profile-img relative inline-block rounded-full w-5 h-5', className)}
       />
     ) : (
-      <div className='profile-img profile-img--jazzicon relative inline-block mr-2'>
+      <div
+        className={classnames(
+          'profile-img profile-img--jazzicon relative inline-flex justify-center flex-col',
+          className
+        )}
+      >
         <Jazzicon diameter={diameter} seed={jsNumberForAddress(usersAddress)} />
       </div>
     )

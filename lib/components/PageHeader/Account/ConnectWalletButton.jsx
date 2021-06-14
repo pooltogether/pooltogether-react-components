@@ -3,10 +3,10 @@ import React from 'react'
 import { Button } from '../../Buttons/Button'
 
 export const ConnectWalletButton = (props) => {
-  const { t } = props
+  const { t, className } = props
   const { connectWallet } = useOnboard()
   return (
-    <Button padding='px-4 sm:px-6 py-1' onClick={() => connectWallet()} textSize='xxxs'>
+    <Button onClick={() => connectWallet()} textSize='xxxs' className={className}>
       {t?.('connectWallet') || 'Connect wallet'}
     </Button>
   )

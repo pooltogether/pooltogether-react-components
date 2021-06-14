@@ -8,7 +8,7 @@ import alias from '@rollup/plugin-alias'
 import css from 'rollup-plugin-css-porter'
 import json from '@rollup/plugin-json'
 import svgr from '@svgr/rollup'
-import url from 'rollup-plugin-url'
+import url from '@rollup/plugin-url'
 
 export default {
   input: 'lib/index.js',
@@ -36,6 +36,8 @@ export default {
   // ],
   external: [
     'next',
+    '@pooltogether/evm-chains-extended',
+    '@pooltogether/utilities',
     '@pooltogether/hooks',
     'feather-icons-react',
     'jotai',

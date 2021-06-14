@@ -48,7 +48,7 @@ export const CheckboxInputGroup = (props) => {
 
       <div className='text-left flex flex-col items-start justify-start leading-snug'>{label}</div>
 
-      {hint && <Tooltip tip={hint} />}
+      {hint && <Tooltip tip={hint} id={id} />}
     </div>
   )
 }

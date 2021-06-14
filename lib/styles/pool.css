@@ -53,12 +53,6 @@ a {
   @apply trans hover:opacity-40 cursor-pointer;
 }
 
-@media screen and (max-width: 380px) {
-  .profile-name {
-    width: 82px;
-  }
-}
-
 .nav--account-transactions-button__loader {
   transform: scale(0.8);
 }

@@ -4,7 +4,7 @@ import FeatherIcon from 'feather-icons-react'
 import { ThemeContext } from '../../ThemeContextProvider'
 import { SettingsItem } from './SettingsItem'
 
-export const ThemeToggle = (props) => (
+export const ThemeSettingsItem = (props) => (
   <SettingsItem label={props.label}>
     <ThemeSwitcher />
   </SettingsItem>
@@ -28,6 +28,6 @@ const ThemeSwitcher = (props) => {
   )
 }
 
-ThemeToggle.defaultProps = {
+ThemeSettingsItem.defaultProps = {
   label: 'Theme'
 }

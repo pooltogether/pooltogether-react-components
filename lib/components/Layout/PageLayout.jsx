@@ -128,7 +128,7 @@ const AnimatedPageGrid = ({
  * Page content with a footer pushed to the bottom of the screen
  */
 const ContentWithFooter = ({ content, footer }) => (
-  <div className='grid-content-with-footer sticky'>
+  <div className='grid-content-with-footer sticky pb-24 sm:pb-0'>
     <Content>{content}</Content>
     <div className='grid-footer'>{footer}</div>
   </div>

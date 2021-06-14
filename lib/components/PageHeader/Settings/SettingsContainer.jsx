@@ -3,9 +3,7 @@ import classnames from 'classnames'
 import FeatherIcon from 'feather-icons-react'
 import VisuallyHidden from '@reach/visually-hidden'
 import { motion } from 'framer-motion'
-import { useReducedMotion, APP_ENVIRONMENT, useAppEnv } from '@pooltogether/hooks'
-
-import { CheckboxInputGroup } from '../../Input/CheckboxInputGroup'
+import { useReducedMotion } from '@pooltogether/hooks'
 
 /**
  * TODO: Make settings extendible for all apps
@@ -13,6 +11,7 @@ import { CheckboxInputGroup } from '../../Input/CheckboxInputGroup'
  * @returns
  */
 export function SettingsContainer(props) {
+  const { className, sizeClassName } = props
   const [isOpen, setIsOpen] = useState(false)
 
   const shouldReduceMotion = useReducedMotion()
@@ -27,7 +26,7 @@ export function SettingsContainer(props) {
     <>
       <button
         onClick={toggleOpen}
-        className={classnames('w-5 h-5 sm:w-6 sm:h-6 ml-2 my-1 hover:text-inverse', {
+        className={classnames('hover:text-inverse', sizeClassName, className, {
           'text-highlight-2': !isOpen,
           'text-highlight-1': isOpen
         })}
@@ -39,13 +38,8 @@ export function SettingsContainer(props) {
         key='settings-overlay'
         onClick={toggleOpen}
         className={classnames('fixed t-0 l-0 r-0 b-0 w-full h-full z-30 bg-overlay bg-blur', {
-          'pointer-events-none': !isOpen,
-          'border-t-4': isOpen
+          'pointer-events-none': !isOpen
         })}
-        style={{
-          borderColor: 'black',
-          top: 104
-        }}
         animate={isOpen ? 'enter' : 'exit'}
         initial='initial'
         transition={{ duration: shouldReduceMotion ? 0 : 0.1 }}
@@ -57,12 +51,11 @@ export function SettingsContainer(props) {
       />
 
       <motion.div
-        className='bg-highlight-3 border-l-4 h-full fixed t-0 b-0 z-40 px-8 pr-16 py-8 shadow-md'
+        className='bg-highlight-3 border-l h-full fixed t-0 b-0 z-40 px-8 pr-16 py-8 shadow-md'
         style={{
           borderColor: 'black',
           height: '100vh',
           right: -30,
-          top: '108px',
           width: '320px'
         }}
         animate={isOpen ? 'enter' : 'exit'}
@@ -95,15 +88,11 @@ export function SettingsContainer(props) {
       >
         <button
           onClick={toggleOpen}
-          className='absolute close-button text-highlight-2 hover:text-green trans outline-none focus:outline-none active:outline-none'
-          style={{
-            right: 50,
-            top: 34
-          }}
+          className='absolute close-button hover:opacity-30 trans outline-none focus:outline-none active:outline-none top-4 right-10'
         >
           <VisuallyHidden>Close</VisuallyHidden>
           <span aria-hidden>
-            <FeatherIcon icon='x-circle' className='w-6 h-6' />
+            <FeatherIcon icon='x' className='w-6 h-6' />
           </span>
         </button>
 
@@ -116,5 +105,7 @@ export function SettingsContainer(props) {
 }
 
 SettingsContainer.defeaultProps = {
-  title: 'Settings'
+  title: 'Settings',
+  sizeClassName: 'w-5 h-5 sm:w-6 sm:h-6',
+  className: ''
 }

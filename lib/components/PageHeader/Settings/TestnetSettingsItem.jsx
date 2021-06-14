@@ -3,7 +3,7 @@ import { APP_ENVIRONMENT, useAppEnv } from '@pooltogether/hooks'
 import { SettingsItem } from './SettingsItem'
 import { CheckboxInputGroup } from '../../Input/CheckboxInputGroup'
 
-export const TestnetToggle = (props) => (
+export const TestnetSettingsItem = (props) => (
   <SettingsItem label={props.label}>
     <Toggle />
   </SettingsItem>
@@ -30,7 +30,7 @@ const Toggle = (props) => {
   )
 }
 
-TestnetToggle.defaultProps = {
+TestnetSettingsItem.defaultProps = {
   label: 'Development mode'
 }
 

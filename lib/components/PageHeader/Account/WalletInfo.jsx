@@ -50,7 +50,7 @@ export function WalletInfo(props) {
                 }}
                 className='inline-block text-xxs bg-body rounded-full border-2 border-accent-4 px-2 trans trans-fastest font-bold'
               >
-                {t?.('changeAccount') || 'Change account'}
+                {t?.('disconnectWallet') || 'Disconnect wallet'}
               </button>
             </div>
           </div>

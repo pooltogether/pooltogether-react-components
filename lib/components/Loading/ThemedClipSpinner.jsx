@@ -1,7 +1,7 @@
 import React from 'react'
 
 export function ThemedClipSpinner(props) {
-  const size = props.size ?? 20
+  const { size, className, style } = props
 
   return (
     <div
@@ -12,4 +12,8 @@ export function ThemedClipSpinner(props) {
       }}
     />
   )
+}
+
+ThemedClipSpinner.defaultProps = {
+  size: '20px'
 }

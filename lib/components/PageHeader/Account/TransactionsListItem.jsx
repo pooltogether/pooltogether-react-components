@@ -46,7 +46,11 @@ export function TransactionsListItem(props) {
             </BlockExplorerLink>
           )}
 
-          {tx.reason && <Tooltip tip={tx.reason}>{errorIcon}</Tooltip>}
+          {tx.reason && (
+            <Tooltip id='tx-error' tip={tx.reason}>
+              {errorIcon}
+            </Tooltip>
+          )}
 
           {tx.error && !tx.reason && (
             <BlockExplorerLink noIcon chainId={tx.ethersTx.chainId} hash={tx.hash}>
