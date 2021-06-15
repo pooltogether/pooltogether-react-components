@@ -42,6 +42,7 @@ export default {
     'lodash',
     'react',
     'react-dom',
+    'react-query',
     'tailwindcss'
   ],
   plugins: [

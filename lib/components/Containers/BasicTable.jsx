@@ -2,7 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 
 export const BasicTable = (props) => {
-  const { nestedTable, tableInstance, rowClassName } = props
+  const { nestedTable, tableInstance, rowClassName, noHeader } = props
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = tableInstance
 
@@ -11,34 +11,36 @@ export const BasicTable = (props) => {
   return (
     <>
       <table {...getTableProps()} className={className}>
-        <thead className='w-full'>
-          {headerGroups.map((headerGroup, index) => {
-            return (
-              <tr
-                key={`header-group-${index}`}
-                {...headerGroup.getHeaderGroupProps()}
-                style={nestedTable ? { background: 'none' } : {}}
-                className='tr flex'
-              >
-                {headerGroup.headers.map((column) => {
-                  return (
-                    <th
-                      key={`column-${column.id}`}
-                      {...column.getHeaderProps([
-                        {
-                          className: `th ${column.className}`,
-                          style: column.style
-                        }
-                      ])}
-                    >
-                      {column.render('Header')}
-                    </th>
-                  )
-                })}
-              </tr>
-            )
-          })}
-        </thead>
+        {!noHeader && (
+          <thead className='w-full'>
+            {headerGroups.map((headerGroup, index) => {
+              return (
+                <tr
+                  key={`header-group-${index}`}
+                  {...headerGroup.getHeaderGroupProps()}
+                  style={nestedTable ? { background: 'none' } : {}}
+                  className='tr'
+                >
+                  {headerGroup.headers.map((column) => {
+                    return (
+                      <th
+                        key={`column-${column.id}`}
+                        {...column.getHeaderProps([
+                          {
+                            className: `th ${column.className}`,
+                            style: column.style
+                          }
+                        ])}
+                      >
+                        {column.render('Header')}
+                      </th>
+                    )
+                  })}
+                </tr>
+              )
+            })}
+          </thead>
+        )}
         <tbody className='w-full' {...getTableBodyProps()}>
           {rows.map((row) => {
             prepareRow(row)
@@ -72,4 +74,9 @@ export const BasicTable = (props) => {
       </table>
     </>
   )
+}
+
+BasicTable.defaultProps = {
+  rowClassName: '',
+  noHeader: false
 }

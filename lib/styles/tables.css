@@ -1,9 +1,5 @@
-@screen xs {
-  .th,
-  .td {
-    max-width: none;
-    width: unset;
-  }
+.th {
+  text-align: left;
 }
 
 /* Player listing */
