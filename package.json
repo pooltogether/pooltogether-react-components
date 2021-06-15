@@ -1,6 +1,6 @@
 {
   "name": "@pooltogether/react-components",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "PoolTogether UI elements in a shared lib",
   "author": "PoolTogether",
   "license": "MIT",
@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "3box": "^1.19.1",
+    "@pooltogether/evm-chains-extended": "^0.4.3",
     "@reach/dialog": "^0.15.0",
     "@reach/menu-button": "^0.15.1",
     "@reach/popover": "^0.15.0",
@@ -51,8 +52,7 @@
     "react-loader-spinner": "^4.0.0",
     "react-spinners": "^0.10.4",
     "react-toastify": "^6.0.8",
-    "react-tooltip": "^4.2.21",
-    "@pooltogether/evm-chains-extended": "^0.4.3"
+    "react-tooltip": "^4.2.21"
   },
   "peerDependencies": {
     "@pooltogether/hooks": "^0.1.4",
