@@ -96,7 +96,7 @@ export function SettingsContainer(props) {
           </span>
         </button>
 
-        <h6 className='text-white mt-4 mb-16 capitalize'>{props.title}</h6>
+        <h6 className='text-white mt-4 mb-10 capitalize'>{props.title}</h6>
 
         {props.children}
       </motion.div>

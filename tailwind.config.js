@@ -40,6 +40,7 @@ module.exports = {
         "accent-grey-2": "var(--color-bg-accent-grey-2)",
         "purple-1": "var(--color-bg-purple-1)",
         "purple-2": "var(--color-bg-purple-2)",
+        'light-purple-10': 'var(--color-bg-light-purple-10)'
       },
       textColor: {
         "accent-1": "var(--color-text-accent-1)",

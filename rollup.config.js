@@ -35,8 +35,6 @@ export default {
   //   "react-tooltip",
   // ],
   external: [
-    'next',
-    '@pooltogether/evm-chains-extended',
     '@pooltogether/utilities',
     '@pooltogether/hooks',
     'feather-icons-react',

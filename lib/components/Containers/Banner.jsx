@@ -1,23 +1,30 @@
 import React from 'react'
 import classnames from 'classnames'
+import RaindbowGradient from '../../assets/Gradients/rainbow-gradient.svg'
 
-export const BannerGradient = {
-  purplePink: 'purple-pink',
-  rainbow: 'rainbow'
+export const BannerTheme = {
+  purplePink: 'purplePink',
+  rainbow: 'rainbow',
+  rainbowBorder: 'rainbowBorder',
+  purplePinkBorder: 'purplePinkBorder'
 }
 
 const BannerUnmemoized = (props) => {
-  const { gradient, className, children, style, paddingClassName } = props
+  const { theme, className, children, style, outerClassName, innerClassName } = props
+  const { defaultBorderRadius, defaultPadding } = props
 
-  const bannerClass = 'rounded-lg'
+  const bannerClasses = {
+    'p-6 sm:p-8': defaultPadding,
+    'rounded-lg': defaultBorderRadius
+  }
 
-  if (gradient === BannerGradient.rainbow) {
+  if (theme === BannerTheme.rainbow) {
     return (
       <div
-        className={classnames(bannerClass, paddingClassName, 'text-purple', className)}
+        className={classnames(bannerClasses, 'text-purple', className)}
         style={{
           ...style,
-          backgroundImage: 'url("/BackgroundGradient.svg")',
+          backgroundImage: RaindbowGradient,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover'
         }}
@@ -25,21 +32,42 @@ const BannerUnmemoized = (props) => {
         {children}
       </div>
     )
+  } else if (theme === BannerTheme.rainbowBorder) {
+    return (
+      <div
+        className={classnames('text-inverse p-1 rounded-lg', outerClassName)}
+        style={{
+          backgroundImage: RaindbowGradient,
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover'
+        }}
+      >
+        <div className={classnames(bannerClasses, 'bg-body', innerClassName)} style={style}>
+          {children}
+        </div>
+      </div>
+    )
+  } else if (theme === BannerTheme.purplePinkBorder) {
+    return (
+      <div className={classnames('text-inverse p-1 rounded-lg pool-gradient-1', outerClassName)}>
+        <div className={classnames(bannerClasses, 'bg-body', innerClassName)} style={style}>
+          {children}
+        </div>
+      </div>
+    )
   }
 
   return (
-    <div
-      className={classnames(bannerClass, paddingClassName, 'pool-gradient-1', className)}
-      style={style}
-    >
+    <div className={classnames(bannerClasses, 'pool-gradient-1', className)} style={style}>
       {children}
     </div>
   )
 }
 
 BannerUnmemoized.defaultProps = {
-  gradient: BannerGradient.purplePink,
-  paddingClassName: 'p-4 xs:py-6 xs:px-8 sm:py-6 sm:px-12'
+  theme: BannerTheme.purplePink,
+  defaultBorderRadius: true,
+  defaultPadding: true
 }
 
 export const Banner = React.memo(BannerUnmemoized)

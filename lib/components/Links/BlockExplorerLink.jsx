@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 import { getChain } from '@pooltogether/evm-chains-extended'
-import { shorten as shortenHash } from '@pooltogether/utilities'
+import { NETWORK, shorten as shortenHash } from '@pooltogether/utilities'
 
 import { CopyIcon } from '../Icons/CopyIcon'
 import { LinkIcon } from '../Icons/LinkIcon'
@@ -73,7 +73,7 @@ BlockExplorerLink.defaultProps = {
 
 const formatBlockExplorerTxUrl = (tx, networkId) => {
   try {
-    const blockExplorerUrl = getChain(networkId).blockExplorerUrls[0]
+    const blockExplorerUrl = getChain(Number(networkId)).blockExplorerUrls[0]
     return `${blockExplorerUrl}/tx/${tx}`
   } catch (e) {
     throw new Error('Chain ID not supported')
@@ -82,7 +82,7 @@ const formatBlockExplorerTxUrl = (tx, networkId) => {
 
 const formatBlockExplorerAddressUrl = (address, networkId) => {
   try {
-    const blockExplorerUrl = getChain(networkId).blockExplorerUrls[0]
+    const blockExplorerUrl = getChain(Number(networkId)).blockExplorerUrls[0]
     return `${blockExplorerUrl}/address/${address}`
   } catch (e) {
     throw new Error('Chain ID not supported')

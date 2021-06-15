@@ -13,37 +13,45 @@ export function DropdownList(props) {
     label,
     textColor,
     values,
-    onValueSet
+    onValueSet,
+    placeholder
   } = props
 
-  const [currentValue, setCurrentValue] = useState(current ? current : '')
-
   const handleChangeValueClick = (newValue) => {
-    if (current !== null) {
-      setCurrentValue(newValue)
-    }
     onValueSet(newValue)
   }
 
   let valuesArray = []
-  if (typeof values === 'object') {
+  if (Array.isArray(values)) {
+    valuesArray = values
+  } else if (typeof values === 'object') {
     valuesArray = Object.keys(values).map((v) => v)
   }
 
-  const menuItems = valuesArray.map((valueItem) => {
-    let value = valueItem
+  const menuItems = valuesArray.map((value) => {
+    const selected = value === current
 
-    const selected = value === currentValue
+    if (value.groupHeader) {
+      return (
+        <div
+          key={`${id}-value-picker-group-header-${value.groupHeader}`}
+          className='opacity-50 text-accent-1 text-xs px-3 sm:px-5 pt-10'
+        >
+          {value.groupHeader}
+        </div>
+      )
+    }
 
     return (
       <MenuItem
-        key={`${id}-value-picker-item-${value}`}
+        key={`${id}-value-picker-item-${JSON.stringify(value)}`}
         onSelect={() => {
           handleChangeValueClick(value)
         }}
         className={classnames({
           selected
         })}
+        disabled={value.disabled}
       >
         {formatValue ? formatValue(value) : value}
       </MenuItem>
@@ -53,6 +61,15 @@ export function DropdownList(props) {
   const inactiveTextColorClasses = `${textColor} hover:${hoverTextColor}`
   const activeTextColorClasses = `${hoverTextColor} hover:${hoverTextColor}`
 
+  let buttonText = ''
+  if (label) {
+    buttonText = label
+  } else if (current) {
+    buttonText = formatValue(current)
+  } else if (placeholder) {
+    buttonText = placeholder
+  }
+
   return (
     <>
       <Menu>
@@ -61,22 +78,22 @@ export function DropdownList(props) {
             <MenuButton
               className={classnames(
                 className,
-                'text-highlight-1 inline-flex items-center justify-center trans font-bold',
+                'inline-flex items-center justify-center trans font-bold',
                 {
                   [inactiveTextColorClasses]: !isExpanded,
                   [activeTextColorClasses]: isExpanded
                 }
               )}
             >
-              {label ? label : currentValue}{' '}
+              {buttonText}
               <FeatherIcon
                 icon={isExpanded ? 'chevron-up' : 'chevron-down'}
-                className='relative w-4 h-4 inline-block ml-1'
+                className='relative w-4 h-4 inline-block ml-2'
                 strokeWidth='0.15rem'
               />
             </MenuButton>
 
-            <MenuList className='slide-down'>{menuItems}</MenuList>
+            <MenuList className='slide-down overflow-y-auto max-h-1/2'>{menuItems}</MenuList>
           </>
         )}
       </Menu>

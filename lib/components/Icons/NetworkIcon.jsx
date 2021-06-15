@@ -30,6 +30,9 @@ NetworkIcon.defaultProps = {
 
 export const NETWORK_MAPPING = Object.freeze({
   [NETWORK.mainnet]: EthLogo,
+  [NETWORK.rinkeby]: EthLogo,
+  [NETWORK.goerli]: EthLogo,
+  [NETWORK.kovan]: EthLogo,
   [NETWORK.bsc]: BscLogo,
   [NETWORK.poa]: PoALogo,
   [NETWORK.xdai]: XDaiLogo,

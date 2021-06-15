@@ -1,4 +1,5 @@
 import React from 'react'
+import classnames from 'classnames'
 
 import { DropdownList } from '../Input/DropdownList'
 
@@ -43,7 +44,7 @@ export function LanguagePickerDropdown(props) {
     }
   }
 
-  const { currentLang, changeLang } = props
+  const { currentLang, changeLang, className } = props
 
   const formatValue = (key) => {
     const lang = langs[key]
@@ -59,7 +60,7 @@ export function LanguagePickerDropdown(props) {
   return (
     <DropdownList
       id='language-picker-dropdown'
-      className='ml-2 xs:ml-4 mr-1 text-xxs sm:text-sm'
+      className={classnames('text-xxs sm:text-sm', className)}
       label={currentLang?.toUpperCase()}
       formatValue={formatValue}
       onValueSet={changeLang}
