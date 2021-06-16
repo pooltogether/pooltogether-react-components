@@ -19,7 +19,8 @@ export function getButtonClasses(props) {
     transition,
     className,
     textSize,
-    width
+    width,
+    disabled
   } = props
 
   let defaultClasses =
@@ -56,6 +57,11 @@ export function getButtonClasses(props) {
     defaultHoverText = 'hover:text-highlight-1'
   }
 
+  let opacity = ''
+  if (disabled) {
+    opacity = 'opacity-40 cursor-not-allowed pointer-events-none'
+  }
+
   bold = isUndefined(bold) ? 'font-bold' : ''
 
   padding = padding ? `${padding}` : defaultPadding
@@ -86,7 +92,8 @@ export function getButtonClasses(props) {
     hoverText,
     textSize,
     transition,
-    width
+    width,
+    opacity
   )
 }
 
