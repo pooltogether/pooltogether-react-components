@@ -302,7 +302,7 @@ module.exports = {
     borderWidth: ['responsive', 'hover'],
     borderColor: ["hover", "focus", "active", "focus-within"],
     textColor: ["responsive", "hover", "focus", "active"],
-    backgroundColor: ["responsive", "hover", "focus", "active"],
+    backgroundColor: ["responsive", "hover", "focus", "active", "disabled"],
     borderRadius: ["responsive"],
     opacity: ["hover", "focus", "responsive", "disabled"],
     boxShadow: ["focus-within"],

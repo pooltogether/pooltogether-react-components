@@ -6,12 +6,13 @@ import { Chip } from 'lib/components/Containers/Chip'
 
 // TODO: split into two components: 'PageTitle' and a separate 'Breadcrumbs'
 export const PageTitleAndBreadcrumbs = (props) => {
-  const { Link, t, breadcrumbs, title, pool, className } = props
+  const { Link, t, breadcrumbs, title, pool, className, sizeClassName } = props
 
   const crumbJsx = (
     <div
       className={classnames(
-        'flex flex-col items-start justify-between w-full leading-none',
+        'flex flex-col items-start justify-between leading-none',
+        sizeClassName,
         className
       )}
     >
@@ -68,4 +69,8 @@ export const PageTitleAndBreadcrumbs = (props) => {
       )}
     </>
   )
+}
+
+PageTitleAndBreadcrumbs.defaultProps = {
+  sizeClassName: 'w-full'
 }

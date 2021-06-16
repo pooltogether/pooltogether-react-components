@@ -50,7 +50,7 @@ hr {
 a {
   text-decoration: none;
   text-underline-position: from-font;
-  @apply trans hover:opacity-40 cursor-pointer;
+  @apply cursor-pointer;
 }
 
 .nav--account-transactions-button__loader {
@@ -338,16 +338,6 @@ a {
   .list-item--icon {
     top: 3px;
   }
-}
-
-.button-partially-disabled {
-  opacity: 0.8;
-  transition: all 75ms ease-in-out;
-}
-
-.button-partially-disabled:hover {
-  opacity: 1;
-  transform: scale(1.02) translateY(-3px);
 }
 
 @media screen and (max-height: 500px) {

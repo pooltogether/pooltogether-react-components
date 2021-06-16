@@ -43,7 +43,8 @@ export default {
     'react',
     'react-dom',
     'react-query',
-    'tailwindcss'
+    'tailwindcss',
+    'eth-revert-reason'
   ],
   plugins: [
     json(),

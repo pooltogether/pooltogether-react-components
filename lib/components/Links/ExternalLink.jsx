@@ -5,7 +5,7 @@ import { LinkIcon } from '../Icons'
 export const ExternalLink = (props) => {
   return (
     <a
-      className={classnames(props.className, {
+      className={classnames('trans', props.className, props.colorClassName, {
         'underline': props.underline,
         'no-underline': !props.underline
       })}
@@ -24,5 +24,6 @@ ExternalLink.defaultProps = {
   underline: false,
   noIcon: false,
   iconClassName: 'w-4 h-4 ml-1',
+  colorClassName: 'text-inverse hover:text-highlight-1',
   openInSameTab: false
 }

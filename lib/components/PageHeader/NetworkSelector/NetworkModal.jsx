@@ -24,45 +24,51 @@ export const NetworkModal = (props) => {
   if (isWalletMetamask) {
     return (
       <Modal isOpen={isOpen} closeModal={closeModal}>
-        <div className='flex flex-col h-full'>
-          <h5 className='text-accent-1'>Choose a Network</h5>
-          <p className='mb-4 text-sm text-accent-1'>
+        <Container>
+          <Header>Choose a Network</Header>
+          <Description>
             Select a supported network to be prompted to switch in your MetaMask wallet.
-          </p>
+          </Description>
           {supportedNetworks.map((chainId) => (
             <NetworkButton t={t} chainId={chainId} />
           ))}
-          <p className='text-xxxs mt-auto'>
-            Currently connected to{' '}
-            <b className={classnames({ 'text-red': !isWalletOnSupportedNetwork })}>
-              {currentNetworkName}
-            </b>
-          </p>
-        </div>
+          <CurrentlyConnectedTo
+            currentNetworkName={currentNetworkName}
+            isWalletOnSupportedNetwork={isWalletOnSupportedNetwork}
+          />
+        </Container>
       </Modal>
     )
   }
 
   return (
     <Modal isOpen={isOpen} closeModal={closeModal}>
-      <div className='flex flex-col h-full'>
-        <h5 className='text-accent-1'>Suported Networks</h5>
-        <p className='mb-4 text-sm text-accent-1'>
-          Please switch to a supported network in your wallet.
-        </p>
+      <Container>
+        <Header>Suported Networks</Header>
+        <Description>Please switch to a supported network in your wallet.</Description>
         {supportedNetworks.map((chainId) => (
           <NetworkItem t={t} chainId={chainId} />
         ))}
-        <p className='text-xxxs mt-auto'>
-          Currently connected to{' '}
-          <b className={classnames({ 'text-red': !isWalletOnSupportedNetwork })}>
-            {currentNetworkName}
-          </b>
-        </p>
-      </div>
+        <CurrentlyConnectedTo
+          currentNetworkName={currentNetworkName}
+          isWalletOnSupportedNetwork={isWalletOnSupportedNetwork}
+        />
+      </Container>
     </Modal>
   )
 }
+
+const Container = (props) => <div className='flex flex-col h-full p-4'>{props.children}</div>
+const Header = (props) => <h5 className='text-accent-1'>{props.children}</h5>
+const Description = (props) => <p className='mb-4 text-sm text-accent-1'>{props.children}</p>
+const CurrentlyConnectedTo = (props) => (
+  <p className='text-xxxs mt-auto'>
+    Currently connected to{' '}
+    <b className={classnames({ 'text-red': !props.isWalletOnSupportedNetwork })}>
+      {props.currentNetworkName}
+    </b>
+  </p>
+)
 
 const NetworkItem = (props) => {
   const { chainId } = props
@@ -105,7 +111,9 @@ const NetworkButton = (props) => {
       <button
         className={classnames('w-full flex justify-center py-2 rounded trans', {
           'pool-gradient-1': isCurrentNetwork,
-          'bg-body border border-body hover:border-accent-3': !isCurrentNetwork
+          'bg-body border border-body hover:border-accent-3': !isCurrentNetwork && !disabled,
+          'bg-body': !isCurrentNetwork && disabled,
+          '': disabled
         })}
         type='button'
         onClick={addNetwork}
@@ -113,15 +121,15 @@ const NetworkButton = (props) => {
       >
         <NetworkIcon chainId={chainId} className='mr-2' />
         <span className='my-auto'>{networkName}</span>
+        {toolTip && (
+          <Tooltip
+            tip={toolTip}
+            id={`${chainId}-network-button`}
+            className='flex'
+            iconClassName='mx-2 my-auto'
+          />
+        )}
       </button>
-      {toolTip && (
-        <Tooltip
-          tip={toolTip}
-          id={`${chainId}-network-button`}
-          className='flex'
-          iconClassName='mx-2 my-auto'
-        />
-      )}
     </div>
   )
 }
