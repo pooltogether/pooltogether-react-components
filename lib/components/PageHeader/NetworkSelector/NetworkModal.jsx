@@ -30,7 +30,7 @@ export const NetworkModal = (props) => {
             Select a supported network to be prompted to switch in your MetaMask wallet.
           </Description>
           {supportedNetworks.map((chainId) => (
-            <NetworkButton t={t} chainId={chainId} />
+            <NetworkButton t={t} key={chainId} chainId={chainId} />
           ))}
           <CurrentlyConnectedTo
             currentNetworkName={currentNetworkName}
@@ -47,7 +47,7 @@ export const NetworkModal = (props) => {
         <Header>Suported Networks</Header>
         <Description>Please switch to a supported network in your wallet.</Description>
         {supportedNetworks.map((chainId) => (
-          <NetworkItem t={t} chainId={chainId} />
+          <NetworkItem t={t} key={chainId} chainId={chainId} />
         ))}
         <CurrentlyConnectedTo
           currentNetworkName={currentNetworkName}
