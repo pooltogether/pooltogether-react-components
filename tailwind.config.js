@@ -21,6 +21,7 @@ module.exports = {
         default: "var(--color-bg-default)",
         darkened: "var(--color-bg-darkened)",
         inverse: "var(--color-bg-inverse)",
+        modal: 'var(--color-bg-modal)',
         overlay: "var(--color-bg-overlay)",
         black: "var(--color-bg-black)",
         "highlight-1": "var(--color-bg-highlight-1)",
