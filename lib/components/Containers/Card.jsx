@@ -1,8 +1,13 @@
 import React from 'react'
 import classnames from 'classnames'
 
+export const CardTheme = Object.freeze({
+  default: 'bg-default',
+  secondary: 'bg-secondary'
+})
+
 export const Card = (props) => {
-  const { children, className, paddingClassName, sizeClassName, backgroundClassName } = props
+  const { children, className, paddingClassName, sizeClassName, backgroundClassName, theme } = props
 
   return (
     <div
@@ -10,7 +15,7 @@ export const Card = (props) => {
         'rounded-xl fadeIn animated',
         sizeClassName,
         paddingClassName,
-        backgroundClassName,
+        backgroundClassName || theme,
         className
       )}
     >
@@ -22,5 +27,5 @@ export const Card = (props) => {
 Card.defaultProps = {
   paddingClassName: 'p-4 xs:py-6 xs:px-8 sm:py-6 sm:px-12',
   sizeClassName: 'w-full',
-  backgroundClassName: 'bg-default'
+  theme: CardTheme.default
 }

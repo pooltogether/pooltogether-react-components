@@ -51,6 +51,10 @@ h6 {
   @apply font-bold mt-0 mb-0;
 }
 
+a {
+  transition: color 0.2s ease-out;
+}
+
 h1 {
   @apply text-2xl;
 }
