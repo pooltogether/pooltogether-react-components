@@ -1,6 +1,6 @@
 {
   "name": "@pooltogether/react-components",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "PoolTogether UI elements in a shared lib",
   "author": "PoolTogether",
   "license": "MIT",
@@ -71,8 +71,8 @@
     "@babel/core": "^7.0.0-beta.40",
     "@babel/preset-env": "^7.0.0-beta.40",
     "@babel/preset-react": "^7.0.0-beta.40",
-    "@pooltogether/hooks": "^0.1.4",
-    "@pooltogether/utilities": "^0.0.22",
+    "@pooltogether/hooks": "^0.1.6",
+    "@pooltogether/utilities": "^0.0.26",
     "@rollup/plugin-alias": "^3.1.1",
     "@rollup/plugin-babel": "^5.2.2",
     "@rollup/plugin-commonjs": "^17.0.0",
