@@ -5,7 +5,7 @@ import { NETWORK, shorten as shortenHash } from '@pooltogether/utilities'
 
 import { CopyIcon } from '../Icons/CopyIcon'
 import { LinkIcon } from '../Icons/LinkIcon'
-import { ExternalLink } from './ExternalLink'
+import { ExternalLink, LinkTheme } from './ExternalLink'
 
 export const BlockExplorerLink = (props) => {
   const {
@@ -16,10 +16,11 @@ export const BlockExplorerLink = (props) => {
     shorten,
     noIcon,
     noText,
-    noUnderline,
+    underline,
     iconClassName,
     copyable,
-    chainId
+    chainId,
+    theme
   } = props
 
   let url
@@ -34,6 +35,8 @@ export const BlockExplorerLink = (props) => {
   return (
     <>
       <ExternalLink
+        underline={underline}
+        theme={theme}
         className={classnames(`inline-flex`, className)}
         href={url}
         noIcon={noIcon}
@@ -68,6 +71,7 @@ BlockExplorerLink.defaultProps = {
   noIcon: false,
   noText: false,
   noUnderline: false,
+  theme: LinkTheme.default,
   iconClassName: 'h-4 w-4 ml-1 my-auto'
 }
 

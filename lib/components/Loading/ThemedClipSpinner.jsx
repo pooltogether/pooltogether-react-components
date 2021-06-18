@@ -1,19 +1,24 @@
 import React from 'react'
+import classnames from 'classnames'
 
 export function ThemedClipSpinner(props) {
-  const { size, className, style } = props
+  const { sizeClassName, size, className } = props
 
   return (
     <div
-      className='lds-dual-ring'
-      style={{
-        width: size,
-        height: size
-      }}
+      className={classnames('lds-dual-ring', className, size ? '' : sizeClassName)}
+      style={
+        size
+          ? {
+              width: size,
+              height: size
+            }
+          : undefined
+      }
     />
   )
 }
 
 ThemedClipSpinner.defaultProps = {
-  size: '20px'
+  sizeClassName: 'w-5 h-5'
 }

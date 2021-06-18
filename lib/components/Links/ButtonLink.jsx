@@ -24,7 +24,7 @@ export function getButtonClasses(props) {
   } = props
 
   let defaultClasses =
-    'border-2 relative inline-block text-center leading-snug cursor-pointer outline-none focus:outline-none active:outline-none no-underline'
+    'border-2 inline-block text-center leading-snug cursor-pointer outline-none focus:outline-none active:outline-none no-underline'
   let animClass = noAnim ? '' : 'button-scale'
 
   if (selected) {

@@ -14,6 +14,7 @@ export const TransactionsModal = (props) => {
       isOpen={isOpen}
       closeModal={closeModal}
       className='h-full sm:h-auto sm:max-w-4xl'
+      label='transactions modal'
       noPad
       noSize
     >

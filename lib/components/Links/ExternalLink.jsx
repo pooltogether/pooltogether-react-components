@@ -35,8 +35,8 @@ export const ExternalLink = (props) => {
 ExternalLink.defaultProps = {
   underline: false,
   noIcon: false,
-  iconClassName: 'w-4 h-4 ml-1 my-auto',
+  iconClassName: 'w-4 h-4 ml-1 mb-1',
   openInSameTab: false,
   theme: LinkTheme.default,
-  displayClassName: 'inline-flex'
+  displayClassName: 'inline-block h-fit-content'
 }

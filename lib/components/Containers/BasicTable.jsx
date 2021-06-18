@@ -2,7 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 
 export const BasicTable = (props) => {
-  const { nestedTable, tableInstance, rowClassName, noHeader } = props
+  const { nestedTable, tableInstance, rowClassName, noHeader, headerClassName } = props
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = tableInstance
 
@@ -12,7 +12,7 @@ export const BasicTable = (props) => {
     <>
       <table {...getTableProps()} className={className}>
         {!noHeader && (
-          <thead className='w-full'>
+          <thead className={classnames('w-full', headerClassName)}>
             {headerGroups.map((headerGroup, index) => {
               return (
                 <tr
@@ -27,7 +27,7 @@ export const BasicTable = (props) => {
                         key={`column-${column.id}`}
                         {...column.getHeaderProps([
                           {
-                            className: `th ${column.className}`,
+                            className: `th ${column.className} ${column.headerClassName}`,
                             style: column.style
                           }
                         ])}

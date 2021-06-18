@@ -37,7 +37,7 @@ export function SettingsContainer(props) {
       <motion.div
         key='settings-overlay'
         onClick={toggleOpen}
-        className={classnames('fixed t-0 l-0 r-0 b-0 w-full h-full z-30 bg-overlay bg-blur', {
+        className={classnames('fixed t-0 l-0 r-0 b-0 w-full h-full z-40 bg-overlay bg-blur', {
           'pointer-events-none': !isOpen
         })}
         animate={isOpen ? 'enter' : 'exit'}

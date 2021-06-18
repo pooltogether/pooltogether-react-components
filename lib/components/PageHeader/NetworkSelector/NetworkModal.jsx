@@ -23,7 +23,7 @@ export const NetworkModal = (props) => {
 
   if (isWalletMetamask) {
     return (
-      <Modal isOpen={isOpen} closeModal={closeModal}>
+      <Modal isOpen={isOpen} closeModal={closeModal} label='network modal'>
         <Container>
           <Header>Choose a Network</Header>
           <Description>
@@ -42,7 +42,7 @@ export const NetworkModal = (props) => {
   }
 
   return (
-    <Modal isOpen={isOpen} closeModal={closeModal}>
+    <Modal isOpen={isOpen} closeModal={closeModal} label='network modal'>
       <Container>
         <Header>Suported Networks</Header>
         <Description>Please switch to a supported network in your wallet.</Description>
