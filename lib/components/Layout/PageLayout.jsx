@@ -14,7 +14,8 @@ export const DefaultLayout = (props) => {
   const { content, header, sideNav, bottomNav, footer, banner, router } = props
 
   return (
-    <DefaultPageGrid
+    <AnimatedPageGrid
+      router={router}
       banner={<NotificationBannerList>{banner}</NotificationBannerList>}
       header={header}
       content={content}

@@ -12,9 +12,18 @@ export const Tooltip = (props) => {
     iconSizeClassName,
     id,
     effect,
-    toolTipClassName
+    toolTipClassName,
+    isEnabled
   } = props
   const ref = useRef(null)
+
+  if (!isEnabled) {
+    return children
+  }
+
+  if (!id) {
+    console.warn('Component requires an id! <Tooltip /> with children: ', children)
+  }
 
   return (
     <>
@@ -67,7 +76,7 @@ export const Tooltip = (props) => {
 }
 
 Tooltip.defaultProps = {
-  id: 'pt',
   effect: 'solid',
-  iconSizeClassName: 'w-4 h-4'
+  iconSizeClassName: 'w-4 h-4',
+  isEnabled: true
 }

@@ -1,8 +1,9 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import { PoolCurrencyIcon } from 'lib/components/PoolCurrencyIcon'
-import { Chip } from 'lib/components/Containers/Chip'
+import { SECONDS_PER_DAY } from '@pooltogether/current-pool-data'
+import { Chip } from './Containers/Chip'
+import { TokenIcon } from './Icons'
 
 // TODO: split into two components: 'PageTitle' and a separate 'Breadcrumbs'
 export const PageTitleAndBreadcrumbs = (props) => {
@@ -46,24 +47,36 @@ export const PageTitleAndBreadcrumbs = (props) => {
     </div>
   )
 
+  const isDaily = pool?.prize?.prizePeriodSeconds == SECONDS_PER_DAY.toString()
+
   return (
     <>
       {pool ? (
-        <>
-          <div className={classnames('flex justify-start items-center', className)}>
-            <PoolCurrencyIcon xl pool={pool} />
+        <div className='flex justify-start items-center'>
+          <TokenIcon
+            sizeClassName='w-12 h-12 sm:w-16 sm:h-16 lg:w-18 lg:h-18'
+            address={pool.tokens.underlyingToken.address}
+            chainId={pool.chainId}
+          />
 
-            <div className='ml-1 sm:ml-6'>{crumbJsx}</div>
+          <div className='ml-1 sm:ml-6'>{crumbJsx}</div>
 
-            {Boolean(t) &&
-              typeof window !== 'undefined' &&
-              window.location.pathname.match('/pools/') && (
-                <div className='ml-4'>
-                  <Chip color='highlight-6' text={t(pool?.frequency?.toLowerCase())} />
-                </div>
-              )}
-          </div>
-        </>
+          {typeof window !== 'undefined' &&
+            window.location.pathname.match('/pools/') &&
+            !pool.contract.isCommunityPool && (
+              <div className='ml-4'>
+                <Chip
+                  bgClasses={isDaily ? 'bg-accent-grey-4' : 'bg-accent-grey-1'}
+                  textClasses={isDaily ? 'text-highlight-6' : 'text-highlight-3'}
+                  text={
+                    isDaily
+                      ? t?.('dailyPrize') || 'Daily Prize'
+                      : t?.('prizeValue') || 'Weekly Prize'
+                  }
+                />
+              </div>
+            )}
+        </div>
       ) : (
         crumbJsx
       )}
@@ -74,3 +87,27 @@ export const PageTitleAndBreadcrumbs = (props) => {
 PageTitleAndBreadcrumbs.defaultProps = {
   sizeClassName: 'w-full'
 }
+
+// return (
+//   <>
+//     {pool ? (
+//       <>
+//         <div className={classnames('flex justify-start items-center', className)}>
+//           <PoolCurrencyIcon xl pool={pool} />
+
+//           <div className='ml-1 sm:ml-6'>{crumbJsx}</div>
+
+//           {Boolean(t) &&
+//             typeof window !== 'undefined' &&
+//             window.location.pathname.match('/pools/') && (
+//               <div className='ml-4'>
+//                 <Chip color='highlight-6' text={t(pool?.frequency?.toLowerCase())} />
+//               </div>
+//             )}
+//         </div>
+//       </>
+//     ) : (
+//       crumbJsx
+//     )}
+//   </>
+// )

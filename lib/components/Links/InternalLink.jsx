@@ -4,7 +4,7 @@ import { LinkTheme } from './ExternalLink'
 
 export const InternalLink = (props) => {
   return (
-    <props.Link href={props.href} as={props.as}>
+    <props.Link href={props.href} as={props.as} shallow={props.shallow}>
       <a
         className={classnames(
           'trans',

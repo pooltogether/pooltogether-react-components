@@ -93,6 +93,4 @@ And your app will hot reload when changes are detected in the components folder!
 # TODO:
 
 - integrate prettier/husky with our default prettier config
-- figure out if Link needs to be dependency injected through props for <PageTitleAndBreadcrumbs /> :(
 - copy unit tests over and get them running in this lib
-- figure out how to integrate <PoolCurrencyIcon />
