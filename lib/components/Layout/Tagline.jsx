@@ -1,7 +1,7 @@
 import React from 'react'
 
 export const Tagline = (props) => (
-  <div className='text-accent-1 text-xxs xs:text-xs sm:text-base text-center my-8 opacity-60'>
+  <div className='text-accent-1 text-xxxs xs:text-xxs sm:text-xs text-center mt-32 mb-8 mx-6 opacity-40'>
     {props.children}
   </div>
 )
