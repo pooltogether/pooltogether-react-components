@@ -5,6 +5,7 @@
 .theme-dark {
   --color-bg-body: #290b5a;
   --color-bg-card: #341762;
+  --color-bg-card-transparent: #34176200;
   --color-bg-card-selected: #43286e;
   --color-bg-card-purple: #4c249f;
   --color-bg-primary: #290b5a;
@@ -105,6 +106,7 @@
 .theme-light {
   --color-bg-body: #f7f7f7;
   --color-bg-card: #fff;
+  --color-bg-card-transparent: #ffffff00;
   --color-bg-card-selected: #fff;
   --color-bg-card-purple: rgba(173, 153, 216, 0.1);
   --color-bg-primary: #fff;
