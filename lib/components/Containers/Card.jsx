@@ -2,8 +2,8 @@ import React from 'react'
 import classnames from 'classnames'
 
 export const CardTheme = Object.freeze({
-  default: 'bg-default',
-  secondary: 'bg-secondary'
+  default: 'bg-card',
+  purple: 'bg-card-purple'
 })
 
 export const Card = (props) => {

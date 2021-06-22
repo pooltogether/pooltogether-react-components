@@ -88,7 +88,7 @@ export function SettingsContainer(props) {
       >
         <button
           onClick={toggleOpen}
-          className='absolute close-button hover:opacity-30 trans outline-none focus:outline-none active:outline-none top-4 right-10'
+          className='absolute close-button hover:opacity-30 trans outline-none focus:outline-none active:outline-none top-4 right-10 text-white'
         >
           <VisuallyHidden>Close</VisuallyHidden>
           <span aria-hidden>

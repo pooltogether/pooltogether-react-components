@@ -110,7 +110,7 @@ const NetworkButton = (props) => {
     <div className='flex mb-4 last:mb-0'>
       <button
         className={classnames('w-full flex justify-center py-2 rounded trans', {
-          'pool-gradient-1': isCurrentNetwork,
+          'pool-gradient-1 text-white hover:text-white': isCurrentNetwork,
           'bg-body border border-body hover:border-accent-3': !isCurrentNetwork && !disabled,
           'bg-body': !isCurrentNetwork && disabled,
           '': disabled

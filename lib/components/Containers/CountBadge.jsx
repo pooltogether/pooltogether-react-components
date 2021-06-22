@@ -17,19 +17,14 @@ export function CountBadge(props) {
     <span
       title={title}
       className={classnames(
-        'trans rounded-full flex flex-col items-center justify-center font-bold',
+        'trans rounded-full flex flex-col items-center justify-center font-bold tracking-tight leading-none',
         sizeClassName,
         bgClassName,
         textClassName,
         className
       )}
     >
-      <span
-        className='relative'
-        style={{ top: textTopPos ? textTopPos : 0, left: textLeftPos ? textLeftPos : 0 }}
-      >
-        {count}
-      </span>
+      <span className='relative'>{count}</span>
     </span>
   )
 }

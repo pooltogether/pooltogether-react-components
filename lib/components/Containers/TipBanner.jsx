@@ -14,7 +14,7 @@ export const TipBanner = (props) => (
   >
     <div className='flex flex-col sm:flex-row justify-between'>
       <div className='flex mb-4 sm:mb-0'>
-        <span className='pool-gradient-1 rounded-full h-fit-content px-4 font-bold mr-4 my-auto'>
+        <span className='pool-gradient-1 rounded-full h-fit-content px-4 font-bold mr-4 my-auto text-white'>
           {props.t?.('tip') || 'Tip'}
         </span>
         <h5>{props.title}</h5>

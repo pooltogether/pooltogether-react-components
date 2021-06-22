@@ -2,6 +2,8 @@ import React from 'react'
 import classnames from 'classnames'
 import FeatherIcon from 'feather-icons-react'
 import Dialog from '@reach/dialog'
+import { motion } from 'framer-motion'
+import { useReducedMotion } from '@pooltogether/hooks'
 
 export const Modal = (props) => {
   const {
@@ -17,9 +19,27 @@ export const Modal = (props) => {
     noRoundCorners
   } = props
 
+  const shouldReduceMotion = useReducedMotion()
+
+  if (!label) {
+    console.warn('Modal required a label! <Modal /> with children:', children)
+  }
+
   return (
     <Dialog aria-label={label} isOpen={isOpen} onDismiss={closeModal}>
-      <div
+      <motion.div
+        id='modal-animation-wrapper'
+        key={label}
+        transition={{ duration: shouldReduceMotion ? 0 : 0.1, ease: 'easeIn' }}
+        initial={{
+          opacity: 0
+        }}
+        exit={{
+          opacity: 0
+        }}
+        animate={{
+          opacity: 1
+        }}
         className={classnames(
           'mx-auto relative',
           {
@@ -34,7 +54,7 @@ export const Modal = (props) => {
       >
         <CloseModalButton closeModal={closeModal} />
         {children}
-      </div>
+      </motion.div>
     </Dialog>
   )
 }
