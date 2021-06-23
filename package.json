@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "3box": "^1.19.1",
-    "@pooltogether/evm-chains-extended": "^0.4.3",
+    "@pooltogether/evm-chains-extended": "^0.4.4",
     "@reach/dialog": "^0.15.0",
     "@reach/menu-button": "^0.15.1",
     "@reach/popover": "^0.15.0",
