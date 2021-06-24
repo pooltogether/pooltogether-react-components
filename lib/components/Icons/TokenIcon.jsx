@@ -37,26 +37,30 @@ TokenIcon.defaultProps = {
 // TODO: Import all images from the builder
 
 // Mainnet
-import BOND from '../../assets/Tokens/0x0391d2021f89dc339f60fff84546ea23e337750f.png'
 import ARTO from '../../assets/Tokens/0x57bc752ec42238bb60a6e65b0de82ef44013225d.png'
 import RAI from '../../assets/Tokens/0x03ab458634910aad20ef5f1c8ee96f1d6ac54919.png'
 import DAI from '../../assets/Tokens/0x6b175474e89094c44da98b954eedeac495271d0f.png'
-import GUSD from '../../assets/Tokens/0x056fd409e1d7a124bd7017459dfea2f387b6d5cd.png'
-import AAVE from '../../assets/Tokens/0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9.png'
+import GUSD from '../../assets/Tokens/0x056fd409e1d7a124bd7017459dfea2f387b6d5cd.svg'
 import INDEX from '../../assets/Tokens/0x0954906da0bf32d5479e25f46056d22f08464cab.png'
 import DGT from '../../assets/Tokens/0x8b9c35c79af5319c70dd9a3e3850f368822ed64e.png'
 import POOL from '../../assets/Tokens/0x0cec1a9154ff802e7934fc916ed7ca50bde6844e.svg'
-import DEFISOCKS from '../../assets/Tokens/0x9d942bd31169ed25a1ca78c776dab92de104e50e.png'
-import BOOKS from '../../assets/Tokens/0x117c2aca45d87958ba054cb85af0fd57be00d624.png'
-import LOTTO from '../../assets/Tokens/0xb0dfd28d3cf7a5897c694904ace292539242f858.png'
 import BADGER from '../../assets/Tokens/0x3472a5a71965499acd81997a54bba8d852c6e53d.png'
 import WETH from '../../assets/Tokens/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.png'
 import BUSD from '../../assets/Tokens/0x4fabb145d64652a948d72533023f6e7a623c7c53.svg'
 import SUSD from '../../assets/Tokens/0x57ab1ec28d129707052df4df418d58a2d46d5f51.png'
+import USDC from '../../assets/Tokens/0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.png'
+import UNI from '../../assets/Tokens/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984.png'
 import DPI from '../../assets/Tokens/0x1494ca1f11d487c2bbe4543e90080aeba4ba3c2b.png'
 import USDT from '../../assets/Tokens/0xc2132d05d31c914a87c6611c10748aeb04b58e8f.png'
 import PCDAI from '../../assets/Tokens/0x0a2e7f69fe9588fa7fba5f5864236883cd4aac6d.png'
 import PCUSDC from '../../assets/Tokens/0x391a437196c81eea7bbbbd5ed4df6b49de4f5c96.png'
+import SUSHI from '../../assets/Tokens/0x6b3595068778dd592e39a122f4f5a5cf09c90fe2.png'
+import COMP from '../../assets/Tokens/0xc00e94cb662c3520282e6f5717214004a7f26888.svg'
+import BOND from '../../assets/Tokens/0x0391d2021f89dc339f60fff84546ea23e337750f.png'
+import AAVE from '../../assets/Tokens/0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9.png'
+import DEFISOCKS from '../../assets/Tokens/0x9d942bd31169ed25a1ca78c776dab92de104e50e.png'
+import BOOKS from '../../assets/Tokens/0x117c2aca45d87958ba054cb85af0fd57be00d624.png'
+import LOTTO from '../../assets/Tokens/0xb0dfd28d3cf7a5897c694904ace292539242f858.png'
 // Polygon
 import WMATIC from '../../assets/Tokens/0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270.png'
 
@@ -65,15 +69,17 @@ import WMATIC from '../../assets/Tokens/0x0d500b1d8e8ef31e21c99d1db9a6444d3adf12
  */
 export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
   [NETWORK.mainnet]: {
-    '0x0391d2021f89dc339f60fff84546ea23e337750f': BOND,
     '0x57bc752ec42238bb60a6e65b0de82ef44013225d': ARTO,
     '0x03ab458634910aad20ef5f1c8ee96f1d6ac54919': RAI,
     '0x6b175474e89094c44da98b954eedeac495271d0f': DAI,
     '0x056fd409e1d7a124bd7017459dfea2f387b6d5cd': GUSD,
-    '0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9': AAVE,
+    '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2': SUSHI,
+    '0xc00e94cb662c3520282e6f5717214004a7f26888': COMP,
     '0x0954906da0bf32d5479e25f46056d22f08464cab': INDEX,
     '0x8b9c35c79af5319c70dd9a3e3850f368822ed64e': DGT,
     '0x0cec1a9154ff802e7934fc916ed7ca50bde6844e': POOL,
+    '0x0391d2021f89dc339f60fff84546ea23e337750f': BOND,
+    '0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9': AAVE,
     '0x9d942bd31169ed25a1ca78c776dab92de104e50e': DEFISOCKS,
     '0x117c2aca45d87958ba054cb85af0fd57be00d624': BOOKS,
     '0xb0dfd28d3cf7a5897c694904ace292539242f858': LOTTO,
@@ -81,6 +87,8 @@ export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
     '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2': WETH,
     '0x4fabb145d64652a948d72533023f6e7a623c7c53': BUSD,
     '0x57ab1ec28d129707052df4df418d58a2d46d5f51': SUSD,
+    '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48': USDC,
+    '0x1f9840a85d5af5bf1d1762f925bdaddc4201f984': UNI,
     '0x1494ca1f11d487c2bbe4543e90080aeba4ba3c2b': DPI,
     '0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0': WMATIC,
     '0xdac17f958d2ee523a2206206994597c13d831ec7': USDT,

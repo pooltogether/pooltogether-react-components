@@ -32,12 +32,12 @@ export const PageTitleAndBreadcrumbs = (props) => {
             {crumb.href && crumb.as ? (
               <>
                 <Link href={crumb.href} as={crumb.as} shallow>
-                  <a className='text-xxxs border-b border-accent-3'>{crumb.name}</a>
+                  <a className='text-xxxxs border-b border-accent-3'>{crumb.name}</a>
                 </Link>
               </>
             ) : (
               <>
-                <span className='text-xxxs'>{crumb.name}</span>
+                <span className='text-xxxxs'>{crumb.name}</span>
               </>
             )}
             {index + 1 !== breadcrumbs.length && <> &gt; </>}
@@ -54,7 +54,7 @@ export const PageTitleAndBreadcrumbs = (props) => {
       {pool ? (
         <div className='flex justify-start items-center'>
           <TokenIcon
-            sizeClassName='w-12 h-12 sm:w-16 sm:h-16 lg:w-18 lg:h-18'
+            sizeClassName='w-12 h-12 sm:w-16 sm:h-16 lg:w-18 lg:h-18 mr-2'
             address={pool.tokens.underlyingToken.address}
             chainId={pool.chainId}
           />
@@ -87,27 +87,3 @@ export const PageTitleAndBreadcrumbs = (props) => {
 PageTitleAndBreadcrumbs.defaultProps = {
   sizeClassName: 'w-full'
 }
-
-// return (
-//   <>
-//     {pool ? (
-//       <>
-//         <div className={classnames('flex justify-start items-center', className)}>
-//           <PoolCurrencyIcon xl pool={pool} />
-
-//           <div className='ml-1 sm:ml-6'>{crumbJsx}</div>
-
-//           {Boolean(t) &&
-//             typeof window !== 'undefined' &&
-//             window.location.pathname.match('/pools/') && (
-//               <div className='ml-4'>
-//                 <Chip color='highlight-6' text={t(pool?.frequency?.toLowerCase())} />
-//               </div>
-//             )}
-//         </div>
-//       </>
-//     ) : (
-//       crumbJsx
-//     )}
-//   </>
-// )

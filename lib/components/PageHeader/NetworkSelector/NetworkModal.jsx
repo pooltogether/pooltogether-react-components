@@ -25,14 +25,16 @@ export const NetworkModal = (props) => {
     return (
       <Modal isOpen={isOpen} closeModal={closeModal} label='network modal'>
         <Container>
-          <Header>Choose a Network</Header>
+          <Header>{t?.('chooseANetwork') || 'Choose a Network'}</Header>
           <Description>
-            Select a supported network to be prompted to switch in your MetaMask wallet.
+            {t?.('selectASupportedNetworkMetamask') ||
+              'Select a supported network to be prompted to switch in your MetaMask wallet.'}
           </Description>
           {supportedNetworks.map((chainId) => (
             <NetworkButton t={t} key={chainId} chainId={chainId} />
           ))}
           <CurrentlyConnectedTo
+            t={t}
             currentNetworkName={currentNetworkName}
             isWalletOnSupportedNetwork={isWalletOnSupportedNetwork}
           />
@@ -44,12 +46,16 @@ export const NetworkModal = (props) => {
   return (
     <Modal isOpen={isOpen} closeModal={closeModal} label='network modal'>
       <Container>
-        <Header>Suported Networks</Header>
-        <Description>Please switch to a supported network in your wallet.</Description>
+        <Header>{t?.('supportedNetworks') || 'Suported Networks'}</Header>
+        <Description>
+          {t?.('pleaseSwitchToASupportedNetwork') ||
+            'Please switch to a supported network in your wallet.'}
+        </Description>
         {supportedNetworks.map((chainId) => (
           <NetworkItem t={t} key={chainId} chainId={chainId} />
         ))}
         <CurrentlyConnectedTo
+          t={t}
           currentNetworkName={currentNetworkName}
           isWalletOnSupportedNetwork={isWalletOnSupportedNetwork}
         />
@@ -63,8 +69,8 @@ const Header = (props) => <h5 className='text-accent-1'>{props.children}</h5>
 const Description = (props) => <p className='mb-4 text-sm text-accent-1'>{props.children}</p>
 const CurrentlyConnectedTo = (props) => (
   <p className='text-xxxs mt-auto'>
-    Currently connected to{' '}
-    <b className={classnames({ 'text-red': !props.isWalletOnSupportedNetwork })}>
+    {props.t?.('currentlyConnectedTo') || 'Currently connected to:'}
+    <b className={classnames({ 'ml-1 text-red': !props.isWalletOnSupportedNetwork })}>
       {props.currentNetworkName}
     </b>
   </p>
@@ -99,11 +105,8 @@ const NetworkButton = (props) => {
   const disabled = ETHEREUM_NETWORKS.includes(chainId)
   let toolTip
   if (disabled) {
-    if (t) {
-      toolTip = t('pool')
-    } else {
-      toolTip = 'You have to manually change to this network inside your wallet'
-    }
+    toolTip =
+      t?.('manuallyChangeNetwork') || 'You have to manually switch to this network with your wallet'
   }
 
   return (
