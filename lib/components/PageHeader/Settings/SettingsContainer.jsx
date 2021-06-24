@@ -31,7 +31,7 @@ export function SettingsContainer(props) {
           'text-highlight-1': isOpen
         })}
       >
-        <FeatherIcon icon='settings' className='w-full h-full' strokeWidth='0.09rem' />
+        <FeatherIcon icon='settings' className='w-6 w-6' strokeWidth='0.09rem' />
       </button>
 
       <motion.div
