@@ -2141,6 +2141,13 @@
   dependencies:
     evm-chains "^0.2.0"
 
+"@pooltogether/evm-chains-extended@^0.4.4":
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/@pooltogether/evm-chains-extended/-/evm-chains-extended-0.4.4.tgz#aa13abf759942135f3691e096fb101467a9ea9e4"
+  integrity sha512-SGweoZ4T7JPZEDyJc6iJMEezv+sx1304QsmAs7z98Uwv0vt5jwrjyVdydiBHMgULq9+qghDWmxkrfR7w32ftaA==
+  dependencies:
+    evm-chains "^0.2.0"
+
 "@pooltogether/hooks@^0.1.6":
   version "0.1.6"
   resolved "https://registry.yarnpkg.com/@pooltogether/hooks/-/hooks-0.1.6.tgz#359997b4de7fd0f3b2b19674fc25e586136537c0"
