@@ -31,8 +31,8 @@
     "format:js": "prettier --write ./*.{js,json} ./**/*.{js,json}",
     "format:reason": "refmt --in-place src/**/*.re",
     "format": "yarn format:js && yarn format:css && yarn format:reason",
-    "link-local": "yarn link @pooltogether/hooks && yarn link @pooltogether/utilities && yarn link react && yarn link react-dom && yarn link react-query && yarn link jotai  && yarn link framer-motion && yarn link eth-revert-reason && yarn link lodash && yarn link tailwindcss && yarn link feather-icons-react",
-    "unlink-local": "yarn unlink @pooltogether/hooks && yarn unlink react && yarn unlink react-dom && yarn unlink react-query && yarn unlink jotai && yarn unlink framer-motion && yarn unlink eth-revert-reason && yarn unlink lodash && yarn unlink tailwindcss && yarn unlink feather-icons-react && yarn unlink @pooltogether/utilities && yarn install --force"
+    "link-local": "yarn link @pooltogether/hooks; yarn link @pooltogether/utilities; yarn link react; yarn link react-dom; yarn link react-query; yarn link jotai ; yarn link framer-motion; yarn link eth-revert-reason; yarn link lodash; yarn link tailwindcss; yarn link feather-icons-react",
+    "unlink-local": "yarn unlink @pooltogether/hooks; yarn unlink react; yarn unlink react-dom; yarn unlink react-query; yarn unlink jotai; yarn unlink framer-motion; yarn unlink eth-revert-reason; yarn unlink lodash; yarn unlink tailwindcss; yarn unlink feather-icons-react; yarn unlink @pooltogether/utilities; yarn install --force"
   },
   "dependencies": {
     "3box": "^1.19.1",
