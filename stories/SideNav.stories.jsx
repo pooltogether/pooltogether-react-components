@@ -16,9 +16,5 @@ export const SideNav = Template.bind({})
 SideNav.args = {
   // primary: true,
   // label: 'SideNavContainer',
-  children: (
-    <>
-      <BasicSideNav />
-    </>
-  )
+  children: <BasicSideNav />
 }

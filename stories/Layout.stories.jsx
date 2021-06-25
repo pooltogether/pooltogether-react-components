@@ -2,10 +2,11 @@ import React from 'react'
 
 import { DefaultLayout } from 'lib/components/Layout/PageLayout'
 
-// import { BottomNav } from 'lib/components/Layout/BottomNav'
-// import { Footer } from 'lib/components/Layout/Footer'
-// import { PageHeader } from 'lib/components/Layout/PageHeader'
-import { BasicSideNav } from 'stories/components/BasicSideNav'
+// import { BottomNav } from 'stories/components/Layout/BottomNav'
+// import { Footer } from 'stories/components/Layout/Footer'
+import { BasicPageHeader } from 'stories/components/Layout/BasicPageHeader'
+import { BasicSideNav } from 'stories/components/Layout/BasicSideNav'
+import { BasicBottomNav } from 'stories/components/Layout/BasicBottomNav'
 
 export default {
   title: 'General/DefaultLayout',
@@ -18,19 +19,17 @@ export default {
 const Template = (args) => <DefaultLayout {...args} />
 
 // banner={null}
-//     header={<PageHeader />}
 //     content={props.children}
-//     sideNav={<SideNav />}
 //     bottomNav={<BottomNav />}
 //     footer={<Footer />}
 
 export const Main = Template.bind({})
 Main.args = {
   banner: null,
-  header: <div>header</div>,
+  header: <BasicPageHeader />,
   content: 'children',
   sideNav: <BasicSideNav />,
-  bottomNav: null,
+  bottomNav: <BasicBottomNav />,
   footer: null,
   // primary: true,
   // label: 'DefaultLayout',

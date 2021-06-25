@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { SideNavContainer } from 'lib/components/Navigation'
 import {
   SideNavLink,
   SidePoolsIcon,

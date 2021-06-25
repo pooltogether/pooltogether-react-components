@@ -12,9 +12,7 @@ export const decorators = [
       className='outline-none focus:outline-none active:outline-none'
     >
       <ThemeContextProvider>
-        <div style={{ padding: '3em' }} className='bg-body'>
-          <Story />
-        </div>
+        <Story />
       </ThemeContextProvider>
     </HotKeys>
   )
