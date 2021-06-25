@@ -1,0 +1,11 @@
+<script>
+  const id = setInterval(cb, 1000)
+
+  function cb() {
+    if (document.body) {
+      document.body.classList.add('bg-body')
+      console.log('added .bg-body to <body> tag');
+      clearInterval(id)
+    }
+  }
+</script>
