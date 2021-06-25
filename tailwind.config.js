@@ -1,10 +1,11 @@
-const pooltogetherTheme = require('./config')
-
-module.exports = pooltogetherTheme({
+module.exports = {
   purge: [],
+  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
   },
-  variants: {},
+  variants: {
+    extend: {},
+  },
   plugins: [],
-})
+}
