@@ -11,27 +11,17 @@ import { BasicBottomNav } from 'stories/components/Layout/BasicBottomNav'
 export default {
   title: 'General/DefaultLayout',
   component: DefaultLayout,
-  argTypes: {
-    backgroundColor: { control: 'color' }
-  }
+  argTypes: {}
 }
 
 const Template = (args) => <DefaultLayout {...args} />
-
-// banner={null}
-//     content={props.children}
-//     bottomNav={<BottomNav />}
-//     footer={<Footer />}
 
 export const Main = Template.bind({})
 Main.args = {
   banner: null,
   header: <BasicPageHeader />,
-  content: 'children',
+  content: <div className='opacity-40'>Page content</div>,
   sideNav: <BasicSideNav />,
   bottomNav: <BasicBottomNav />,
-  footer: null,
-  // primary: true,
-  // label: 'DefaultLayout',
-  children: <></>
+  footer: null
 }

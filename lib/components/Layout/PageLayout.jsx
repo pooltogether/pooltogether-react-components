@@ -145,7 +145,7 @@ const ContentWithSideNavigation = ({ content, footer, sideNavigation }) => {
 
   return (
     <div className='desktop-content-wrapper flex justify-between w-full mx-auto pt-8'>
-      <div className='fixed h-screen' style={{ top }}>
+      <div className='fixed' style={{ top, height: `calc(100% - ${top}px)` }}>
         {sideNavigation}
       </div>
       <div className='push-sidebar-padding flex flex-col flex-1'>

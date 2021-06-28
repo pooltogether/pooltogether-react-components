@@ -18,7 +18,6 @@ export const SideNavLink = (props) => {
     <div>
       <Link href={props.href} as={props.as} shallow>
         <a
-          id='_navPoolsButton'
           className={classnames(navParentClasses, {
             'text-accent-4 hover:text-highlight-2': !isCurrentPage,
             'text-highlight-2 hover:text-highlight-2 bg-accent-grey-1': isCurrentPage

@@ -1,5 +1,5 @@
-<script>
-  const id = setInterval(cb, 1000)
+  <script>
+  setInterval(cb, 10000)
 
   function cb() {
     if (document.body) {
@@ -9,8 +9,6 @@
       document.body.classList.remove('sb-main-padded')
       document.body.classList.remove('sb-show-main')
       console.log('removed .sb-show-main and .sb-main-padded from <body> tag');
-
-      clearInterval(id)
     }
   }
-</script>
+  </script>

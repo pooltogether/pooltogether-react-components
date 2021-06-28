@@ -17,7 +17,6 @@ export const BottomNavLink = (props) => {
   return (
     <Link href={props.href} as={props.as} shallow>
       <a
-        id='_navPoolsButton'
         className={classnames(mobileNavClasses, {
           'text-accent-4 hover:text-highlight-9': !isCurrentPage,
           'text-highlight-9 hover:text-highlight-9': isCurrentPage
