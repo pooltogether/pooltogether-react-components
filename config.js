@@ -237,8 +237,8 @@ const pooltogetherReactTailwindUIConfig = {
           'Segoe UI Symbol',
           'Noto Color Emoji'
         ],
-        mono: [
-          'DM Mono',
+        inter: [
+          'Inter',
           'Courier',
           'Roboto',
           'Helvetica Neue',
