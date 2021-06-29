@@ -9,7 +9,6 @@ import {
 } from 'lib/components/Navigation/BottomNavLink'
 import { BottomNavContainer } from 'lib/components/Navigation/BottomNavContainer'
 import { CountBadge } from 'lib/components/Containers/CountBadge'
-// import { useAllProposalsSorted } from 'lib/hooks/useAllProposalsSorted'
 
 const useRouter = (props) => {
   return { pathname: '/' }
