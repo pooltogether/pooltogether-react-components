@@ -53,7 +53,7 @@ export const ContentWrapper = (props) => (
   <motion.div
     variants={{ collapsed: { scale: 1 }, open: { scale: 1 } }}
     transition={{ duration: 0.8 }}
-    className='content-placeholder'
+    className='accordion-content-placeholder'
   >
     <Content {...props} />
   </motion.div>

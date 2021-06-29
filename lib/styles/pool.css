@@ -570,16 +570,12 @@ a {
   box-shadow: 0 0 0 2px rgba(53, 240, 208, 0.3);
 }
 
-/* // delete me */
-
-.content-placeholder {
+.accordion-content-placeholder {
   transform-origin: top center;
 }
 
 .accordion-header {
   cursor: pointer;
-  /* height: 40px; */
-  /* margin-bottom: 20px; */
 }
 
 .accordion-motion-content {
