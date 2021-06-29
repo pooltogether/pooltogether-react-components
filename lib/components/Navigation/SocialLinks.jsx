@@ -12,7 +12,6 @@ const childClasses =
 
 const SocialsIcon = (props) => {
   return <div className='w-4'></div>
-  // return <FeatherIcon icon='check-circle' className={'w-4 h-4 stroke-current'} />
 }
 
 const socialsLinkData = [
