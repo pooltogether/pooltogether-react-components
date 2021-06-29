@@ -34,7 +34,7 @@ export const SideNavLink = (props) => {
 // Icons
 
 export const SideVoteIcon = () => (
-  <div className='flex items-center justify-center'>
+  <div className='flex items-center justify-center w-5'>
     <svg
       style={{
         left: 2,
@@ -57,7 +57,7 @@ export const SideVoteIcon = () => (
 )
 
 export const SideAccountIcon = () => (
-  <div className='flex items-center justify-center'>
+  <div className='flex items-center justify-center w-5'>
     <svg
       style={{
         top: 1
@@ -75,7 +75,7 @@ export const SideAccountIcon = () => (
 )
 
 export const SideRewardsIcon = () => (
-  <div className='flex items-center justify-center'>
+  <div className='flex items-center justify-center w-5'>
     <svg
       className='stroke-current fill-current mr-auto relative'
       width='22'
@@ -93,7 +93,7 @@ export const SideRewardsIcon = () => (
 )
 
 export const SidePoolsIcon = () => (
-  <div className='flex items-center justify-center'>
+  <div className='flex items-center justify-center w-5'>
     <svg
       style={{
         top: -2

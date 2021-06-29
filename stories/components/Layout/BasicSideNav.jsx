@@ -7,7 +7,11 @@ import {
   SideRewardsIcon,
   SideVoteIcon
 } from 'lib/components/Navigation/SideNavLink'
-import { SocialsLink, SocialsIcon } from 'lib/components/Navigation/SocialsLink'
+import {
+  SocialsLinkChild,
+  SocialsLinkParent,
+  SocialsIcon
+} from 'lib/components/Navigation/SocialsLink'
 import { SideNavContainer } from 'lib/components/Navigation/SideNavContainer'
 
 const useRouter = (props) => {
@@ -63,8 +67,8 @@ export const BasicSideNav = (props) => (
         </SideNavLink>
       </SideNavContainer>
 
-      <SideNavContainer>
-        <SocialsLink
+      <SideNavContainer className='mb-4'>
+        <SocialsLinkChild
           href='/'
           as='/'
           label={'documentation'}
@@ -73,15 +77,18 @@ export const BasicSideNav = (props) => (
           isCurrentPage
         >
           <SocialsIcon />
-        </SocialsLink>
-        <SocialsLink
+        </SocialsLinkChild>
+        <SocialsLinkChild
           href='https://gov.pooltogether.com'
           as='https://gov.pooltogether.com'
           label={'governance'}
           Link={Link}
         >
-          <SideAccountIcon />
-        </SocialsLink>
+          <SocialsIcon />
+        </SocialsLinkChild>
+        <SocialsLinkParent label={'ecosystem'}>
+          <SocialsIcon />
+        </SocialsLinkParent>
       </SideNavContainer>
     </div>
   </>
