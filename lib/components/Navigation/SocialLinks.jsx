@@ -2,7 +2,15 @@ import React, { useState } from 'react'
 import classnames from 'classnames'
 import FeatherIcon from 'feather-icons-react'
 
-import { Accordion } from 'lib/components/Accordion'
+import { Accordion } from '../Accordion'
+
+import DocsIcon from '../../assets/Socials/docs.svg'
+import GovForumIcon from '../../assets/Socials/gov-forum.svg'
+import TreasuryIcon from '../../assets/Socials/treasury.svg'
+
+import MediumLogo from '../../assets/Socials/medium-logo.svg'
+import DiscordLogo from '../../assets/Socials/discord-logo.svg'
+import TwitterLogo from '../../assets/Socials/twitter-logo.svg'
 
 const headerClasses =
   'relative leading-none w-full flex justify-start items-center font-bold text-lg py-2 px-6 trans outline-none focus:outline-none active:outline-none mb-1 ml-3 lg:ml-0 h-10'
@@ -17,38 +25,41 @@ const SocialsIcon = (props) => {
 const socialsLinkData = [
   {
     headerLabel: 'ecosystem',
-    headerIcon: <SocialsIcon />,
     childLinks: [
       {
         href: 'https://docs.pooltogether.com/',
-        label: 'documentation',
-        icon: <SocialsIcon />
+        label: 'Documentation',
+        icon: <img src={DocsIcon} className='w-3 opacity-50' />
       },
       {
         href: 'https://gov.pooltogether.com/',
-        label: 'governance',
-        icon: <SocialsIcon />
+        label: 'Governance forum',
+        icon: <img src={GovForumIcon} className='w-4 opacity-50' />
+      },
+      {
+        href: 'https://info.pooltogether.com/',
+        label: 'Treasury',
+        icon: <img src={TreasuryIcon} className='w-4 opacity-50' />
       }
     ]
   },
   {
     headerLabel: 'socials',
-    headerIcon: <SocialsIcon />,
     childLinks: [
       {
         href: 'https://twitter.com/PoolTogether_',
         label: 'Twitter',
-        icon: <SocialsIcon />
+        icon: <img src={TwitterLogo} className='w-4 opacity-50' />
       },
       {
         href: 'https://discord.gg/hxPhPDW',
         label: 'Discord',
-        icon: <SocialsIcon />
+        icon: <img src={DiscordLogo} className='w-4 opacity-50 hover:opacity-100 trans' />
       },
       {
         href: 'https://medium.com/pooltogether',
         label: 'Medium',
-        icon: <SocialsIcon />
+        icon: <img src={MediumLogo} className='w-4 opacity-50 hover:opacity-100 trans' />
       }
     ]
   }

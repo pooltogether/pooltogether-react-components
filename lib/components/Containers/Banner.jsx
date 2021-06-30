@@ -1,6 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
-import RaindbowGradient from '../../assets/Gradients/rainbow-gradient.svg'
+import RainbowGradient from '../../assets/Gradients/rainbow-gradient.svg'
 
 export const BannerTheme = {
   purplePink: 'purplePink',
@@ -24,7 +24,7 @@ const BannerUnmemoized = (props) => {
         className={classnames(bannerClasses, 'text-purple', className)}
         style={{
           ...style,
-          backgroundImage: RaindbowGradient,
+          backgroundImage: RainbowGradient,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover'
         }}
@@ -37,7 +37,7 @@ const BannerUnmemoized = (props) => {
       <div
         className={classnames('text-inverse p-1 rounded-lg', outerClassName)}
         style={{
-          backgroundImage: RaindbowGradient,
+          backgroundImage: RainbowGradient,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover'
         }}
