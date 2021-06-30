@@ -21,7 +21,7 @@ const Link = (props) => {
 export const BasicSideNav = (props) => (
   <>
     <div className='flex flex-col justify-between h-full'>
-      <SideNavContainer>
+      <SideNavContainer className='top-side-nav'>
         <SideNavLink
           href='/'
           as='/'

@@ -7,7 +7,7 @@ import classnames from 'classnames'
  * @returns
  */
 export const SideNavContainer = (props) => {
-  const { className } = props
+  const { className, style } = props
 
   return (
     <nav
@@ -15,6 +15,7 @@ export const SideNavContainer = (props) => {
         className,
         'flex-col items-start hidden sm:block pt-8 sm:pt-0 pl-2 sm:pr-12 lg:pr-16 text-center'
       )}
+      style={style}
     >
       {props.children}
     </nav>

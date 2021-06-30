@@ -45,6 +45,16 @@ body {
   }
 }
 
+.top-side-nav {
+  max-width: 234px;
+}
+
+@screen lg {
+  .top-side-nav {
+    max-width: 268px;
+  }
+}
+
 /* Sizes */
 
 .w-fit-content {

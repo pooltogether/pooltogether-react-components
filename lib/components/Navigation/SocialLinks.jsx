@@ -12,15 +12,12 @@ import MediumLogo from '../../assets/Socials/medium-logo.svg'
 import DiscordLogo from '../../assets/Socials/discord-logo.svg'
 import TwitterLogo from '../../assets/Socials/twitter-logo.svg'
 
-const headerClasses =
-  'relative leading-none w-full flex justify-start items-center font-bold text-lg py-2 px-6 trans outline-none focus:outline-none active:outline-none mb-1 ml-3 lg:ml-0 h-10'
+const sharedClasses =
+  'relative leading-none w-full flex justify-start items-center text-accent-4 hover:text-highlight-2 py-2 px-6 trans outline-none focus:outline-none active:outline-none mb-1 ml-3 lg:ml-0 h-10'
 
-const childClasses =
-  'relative leading-none w-full flex justify-start items-center text-sm py-2 px-6 trans outline-none focus:outline-none active:outline-none mb-1 ml-3 lg:ml-0 h-10'
+const headerClasses = 'text-lg font-bold'
 
-const SocialsIcon = (props) => {
-  return <div className='w-4'></div>
-}
+const childClasses = 'text-xs'
 
 const socialsLinkData = [
   {
@@ -113,7 +110,7 @@ const SocialLinkHeader = (props) => {
       setExpanded={props.setExpanded}
       content={props.children}
       header={
-        <a className={classnames(headerClasses, 'text-accent-4 hover:text-highlight-2')}>
+        <a className={classnames(sharedClasses, headerClasses)}>
           <FeatherIcon
             icon='chevron-up'
             strokeWidth='0.25rem'
@@ -134,7 +131,7 @@ const SocialLinkChild = (props) => {
       <a
         href={props.href}
         target={props.target}
-        className={classnames(childClasses, 'text-accent-4 hover:text-highlight-2')}
+        className={classnames(sharedClasses, childClasses)}
       >
         {props.children}
         <span className='pl-3 capitalize'>{props.label}</span>
