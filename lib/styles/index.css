@@ -1,21 +1,21 @@
-@import "./utils.css";
-@import "./toast-blur.css";
-@import "./layout.css";
-@import "./loader.css";
-@import "./themes.css";
+@import './utils.css';
+@import './toast-blur.css';
+@import './layout.css';
+@import './loader.css';
+@import './themes.css';
 
-@import "./styles/typography.css";
-@import "./styles/tables.css";
-@import "./styles/pool.css";
-@import "./styles/pool-toast.css";
-@import "./styles/animations.css";
-@import "./styles/transitions.css";
+@import './typography.css';
+@import './tables.css';
+@import './pool.css';
+@import './pool-toast.css';
+@import './animations.css';
+@import './transitions.css';
 
-@import "./styles/interactable-cards.css";
-@import "./styles/forms.css";
-@import "./styles/tabs.css";
-@import "./styles/tickets.css";
+@import './interactable-cards.css';
+@import './forms.css';
+@import './tabs.css';
+@import './tickets.css';
 
-@import "./styles/bnc-onboard--custom.css";
-@import "./styles/reach--custom.css";
-@import "./styles/vx--custom.css";
+@import './bnc-onboard--custom.css';
+@import './reach--custom.css';
+@import './vx--custom.css';

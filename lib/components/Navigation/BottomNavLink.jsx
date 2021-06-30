@@ -17,7 +17,6 @@ export const BottomNavLink = (props) => {
   return (
     <Link href={props.href} as={props.as} shallow>
       <a
-        id='_navPoolsButton'
         className={classnames(mobileNavClasses, {
           'text-accent-4 hover:text-highlight-9': !isCurrentPage,
           'text-highlight-9 hover:text-highlight-9': isCurrentPage
@@ -33,7 +32,7 @@ export const BottomNavLink = (props) => {
 // Icons
 
 export const BottomVoteIcon = () => (
-  <div className='flex items-center justify-center'>
+  <div className='flex items-center justify-center h-6'>
     <svg
       className='fill-current stroke-current'
       width='20'
@@ -48,7 +47,7 @@ export const BottomVoteIcon = () => (
 )
 
 export const BottomAccountIcon = () => (
-  <div className='flex items-center justify-center'>
+  <div className='flex items-center justify-center h-6'>
     <svg
       className='fill-current '
       width='20'
@@ -64,7 +63,7 @@ export const BottomAccountIcon = () => (
 
 export const BottomRewardsIcon = () => (
   <svg
-    className='stroke-current fill-current relative'
+    className='stroke-current fill-current relative h-6'
     width='22'
     height='17'
     viewBox='0 0 22 17'
@@ -79,7 +78,7 @@ export const BottomRewardsIcon = () => (
 )
 
 export const BottomPoolsIcon = () => (
-  <div className='flex items-center justify-center'>
+  <div className='flex items-center justify-center h-6'>
     <svg
       className='fill-current '
       width='24'
