@@ -20,17 +20,15 @@ export const PageTitleAndBreadcrumbs = (props) => {
       <div className='inline-block text-left text-xl sm:text-3xl font-bold text-accent-2 relative'>
         {title}
       </div>
-      <div className='inline-block text-left text-xxxs sm:text-xxs text-caption-2 relative uppercase mt-3 font-normal opacity-80 hover:opacity-100 trans'>
+      <div className='inline-block text-left text-accent-2 font-inter relative uppercase mt-3 font-normal opacity-80 hover:opacity-100 trans'>
         {breadcrumbs?.map((crumb, index) => (
-          <span key={`crumb-${index}`}>
+          <span className='text-xxxs sm:text-xxs' key={`crumb-${index}`}>
             {crumb.href && crumb.as ? (
-              <>
-                <Link href={crumb.href} as={crumb.as} shallow>
-                  <a className='text-xxxs sm:text-xxs border-b border-secondary hover:text-accent-3'>
-                    {crumb.name}
-                  </a>
-                </Link>
-              </>
+              <Link href={crumb.href} as={crumb.as} shallow>
+                <a className='text-xxxs sm:text-xxs border-b border-secondary hover:text-accent-3'>
+                  {crumb.name}
+                </a>
+              </Link>
             ) : (
               crumb.name
             )}
