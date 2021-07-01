@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import classnames from 'classnames'
 import { useCoingeckoTokenImage } from '@pooltogether/hooks'
 import { NETWORK } from '@pooltogether/utilities'

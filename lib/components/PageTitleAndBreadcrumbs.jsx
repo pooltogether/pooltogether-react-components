@@ -7,7 +7,10 @@ import { TokenIcon } from './Icons'
 
 // TODO: split into two components: 'PageTitle' and a separate 'Breadcrumbs'
 export const PageTitleAndBreadcrumbs = (props) => {
-  const { Link, t, breadcrumbs, title, pool, className, sizeClassName } = props
+  const { Link, t, breadcrumbs, title, pool, className, sizeClassName, showPrizeFrequencyChip } =
+    props
+
+  const isDaily = pool?.prize?.prizePeriodSeconds == SECONDS_PER_DAY.toString()
 
   const crumbJsx = (
     <div
@@ -17,8 +20,19 @@ export const PageTitleAndBreadcrumbs = (props) => {
         className
       )}
     >
-      <div className='inline-block text-left text-xl sm:text-3xl font-bold text-accent-2 relative'>
+      <div className='inline-flex items-center text-left text-xl sm:text-3xl font-bold text-accent-2 relative'>
         {title}
+        {showPrizeFrequencyChip && (
+          <div className='ml-4'>
+            <Chip
+              bgClasses={isDaily ? 'bg-accent-grey-4' : 'bg-accent-grey-1'}
+              textClasses={isDaily ? 'text-highlight-6' : 'text-green'}
+              text={
+                isDaily ? t?.('dailyPrize') || 'Daily Prize' : t?.('prizeValue') || 'Weekly Prize'
+              }
+            />
+          </div>
+        )}
       </div>
       <div className='inline-block text-left text-accent-2 font-inter relative uppercase mt-3 font-normal opacity-80 hover:opacity-100 trans'>
         {breadcrumbs?.map((crumb, index) => (
@@ -44,8 +58,6 @@ export const PageTitleAndBreadcrumbs = (props) => {
     </div>
   )
 
-  const isDaily = pool?.prize?.prizePeriodSeconds == SECONDS_PER_DAY.toString()
-
   return (
     <>
       {pool ? (
@@ -57,22 +69,6 @@ export const PageTitleAndBreadcrumbs = (props) => {
           />
 
           <div className='ml-1 sm:ml-6'>{crumbJsx}</div>
-
-          {typeof window !== 'undefined' &&
-            window.location.pathname.match('/pools/') &&
-            !pool.contract.isCommunityPool && (
-              <div className='ml-4'>
-                <Chip
-                  bgClasses={isDaily ? 'bg-accent-grey-4' : 'bg-accent-grey-1'}
-                  textClasses={isDaily ? 'text-highlight-6' : 'text-highlight-3'}
-                  text={
-                    isDaily
-                      ? t?.('dailyPrize') || 'Daily Prize'
-                      : t?.('prizeValue') || 'Weekly Prize'
-                  }
-                />
-              </div>
-            )}
         </div>
       ) : (
         crumbJsx
