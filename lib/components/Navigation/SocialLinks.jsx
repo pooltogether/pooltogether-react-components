@@ -4,6 +4,7 @@ import FeatherIcon from 'feather-icons-react'
 
 import { Accordion } from '../Accordion'
 
+import KnowledgeBaseIcon from '../../assets/Socials/knowledge-base.svg'
 import DocsIcon from '../../assets/Socials/docs.svg'
 import GovForumIcon from '../../assets/Socials/gov-forum.svg'
 import TreasuryIcon from '../../assets/Socials/treasury.svg'
@@ -24,19 +25,24 @@ const socialsLinkData = [
     headerLabel: 'ecosystem',
     childLinks: [
       {
+        href: 'https://www.notion.so/PoolTogether-Knowledge-Base-fa721ccefa3242eaabd125a8415acd27',
+        label: 'Knowledge Base',
+        icon: <img src={KnowledgeBaseIcon} className='w-4 opacity-50 mx-auto' />
+      },
+      {
         href: 'https://docs.pooltogether.com/',
         label: 'Documentation',
-        icon: <img src={DocsIcon} className='w-3 opacity-50' />
+        icon: <img src={DocsIcon} className='w-3 opacity-50 mx-auto' />
       },
       {
         href: 'https://gov.pooltogether.com/',
         label: 'Governance forum',
-        icon: <img src={GovForumIcon} className='w-4 opacity-50' />
+        icon: <img src={GovForumIcon} className='w-4 opacity-50 mx-auto' />
       },
       {
         href: 'https://info.pooltogether.com/',
         label: 'Treasury',
-        icon: <img src={TreasuryIcon} className='w-4 opacity-50' />
+        icon: <img src={TreasuryIcon} className='w-4 opacity-50 mx-auto' />
       }
     ]
   },
@@ -46,17 +52,17 @@ const socialsLinkData = [
       {
         href: 'https://twitter.com/PoolTogether_',
         label: 'Twitter',
-        icon: <img src={TwitterLogo} className='w-4 opacity-50' />
+        icon: <img src={TwitterLogo} className='w-4 opacity-50 mx-auto' />
       },
       {
         href: 'https://discord.gg/hxPhPDW',
         label: 'Discord',
-        icon: <img src={DiscordLogo} className='w-4 opacity-50 hover:opacity-100 trans' />
+        icon: <img src={DiscordLogo} className='w-4 opacity-50 mx-auto hover:opacity-100 trans' />
       },
       {
         href: 'https://medium.com/pooltogether',
         label: 'Medium',
-        icon: <img src={MediumLogo} className='w-4 opacity-50 hover:opacity-100 trans' />
+        icon: <img src={MediumLogo} className='w-4 opacity-50 mx-auto hover:opacity-100 trans' />
       }
     ]
   }
@@ -91,9 +97,8 @@ const SocialLinkSet = (props) => {
         key={`social-link-child-${index}`}
         href={childLink.href}
         label={childLink.label}
-      >
-        {childLink.icon}
-      </SocialLinkChild>
+        icon={childLink.icon}
+      />
     )
   })
 
@@ -133,7 +138,7 @@ const SocialLinkChild = (props) => {
         target={props.target}
         className={classnames(sharedClasses, childClasses)}
       >
-        {props.children}
+        <span className='w-4'>{props.icon}</span>
         <span className='pl-3 capitalize'>{props.label}</span>
       </a>
     </div>
