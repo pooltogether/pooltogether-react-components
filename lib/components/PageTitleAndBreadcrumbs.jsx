@@ -21,7 +21,7 @@ export const PageTitleAndBreadcrumbs = (props) => {
       )}
     >
       <div className='inline-flex items-center text-left text-xl sm:text-3xl font-bold text-accent-2 relative'>
-        {title}{' '}
+        {title}
         {showPrizeFrequencyChip && (
           <div className='ml-4'>
             <Chip
