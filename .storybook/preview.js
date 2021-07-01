@@ -1,9 +1,12 @@
 import { HotKeys } from 'react-hotkeys'
+import { QueryClient, QueryClientProvider } from 'react-query'
 
 import { HOTKEYS_KEY_MAP } from 'lib/constants'
 import { ThemeContextProvider } from 'lib/components/ThemeContextProvider'
 
 import '../stories/assets/globals.css'
+
+const queryClient = new QueryClient()
 
 export const decorators = [
   (Story) => (
@@ -11,9 +14,11 @@ export const decorators = [
       keyMap={HOTKEYS_KEY_MAP}
       className='outline-none focus:outline-none active:outline-none'
     >
-      <ThemeContextProvider>
-        <Story />
-      </ThemeContextProvider>
+      <QueryClientProvider client={queryClient}>
+        <ThemeContextProvider>
+          <Story />
+        </ThemeContextProvider>
+      </QueryClientProvider>
     </HotKeys>
   )
 ]

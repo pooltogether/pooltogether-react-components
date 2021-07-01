@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { MOCK_POOL } from 'lib/constants'
 import { PageTitleAndBreadcrumbs } from 'lib/components/PageTitleAndBreadcrumbs'
 
 const Link = (props) => {
@@ -7,10 +8,12 @@ const Link = (props) => {
 }
 
 export const BasicPageContent = (props) => (
-  <>
+  <div className='flex justify-between items-center sm:w-9/12 lg:w-7/12'>
     <PageTitleAndBreadcrumbs
+      showPrizeFrequencyChip
       Link={Link}
-      title={'Account'}
+      title={'DAI Pool'}
+      pool={MOCK_POOL}
       breadcrumbs={[
         {
           href: '/',
@@ -27,5 +30,5 @@ export const BasicPageContent = (props) => (
         }
       ]}
     />
-  </>
+  </div>
 )

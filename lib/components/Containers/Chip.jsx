@@ -8,10 +8,10 @@ export const Chip = (props) => {
   bgClasses = bgClasses || 'bg-accent-grey-5'
   textClasses = textClasses || 'text-accent-1'
 
-  const sizeClasses = props.size || 'text-xxxxxs xs:text-xxxxs sm:text-xxxxs lg:text-xxxs'
+  const sizeClasses = props.size || 'text-xxxxs xs:text-xxxs sm:text-xxxs lg:text-xxxs'
 
   const classes = classnames(
-    'mb-2 xs:mb-0 inline-block relative inline-block py-2 px-2 rounded-full text-center',
+    'font-inter uppercase font-semibold rounded-full text-center py-2 px-2',
     className,
     textClasses,
     bgClasses,
@@ -19,15 +19,13 @@ export const Chip = (props) => {
   )
 
   return (
-    <>
-      <span
-        className={classes}
-        style={{
-          lineHeight: '0.35rem'
-        }}
-      >
-        {text}
-      </span>
-    </>
+    <div
+      className={classes}
+      style={{
+        lineHeight: '0.35rem'
+      }}
+    >
+      {text}
+    </div>
   )
 }
