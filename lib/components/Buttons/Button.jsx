@@ -16,6 +16,8 @@ export function Button(props) {
     'hoverBg',
     'noAnim',
     'outline',
+    'inverse',
+    'basic',
     'secondary',
     'tertiary',
     'textSize'
