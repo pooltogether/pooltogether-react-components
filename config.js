@@ -205,12 +205,16 @@ const pooltogetherReactTailwindUIConfig = {
         '2xl': '1.875rem',
         '3xl': '2.25rem',
         '4xl': '2.5rem',
-        '5xl': '3rem',
-        '6xl': '3.5rem',
-        '7xl': '4rem',
-        '8xl': '4.5rem',
-        '9xl': '5rem',
-        '10xl': '5.5rem'
+        '5xl': '2.75rem',
+        '6xl': '3rem',
+        '7xl': '3.25rem',
+        '8xl': '3.5rem',
+        '9xl': '3.75rem',
+        '10xl': '4rem',
+        '11xl': '4.25rem',
+        '12xl': '4.5rem',
+        '13xl': '4.75rem',
+        '14xl': '5rem'
       },
       fontFamily: {
         sans: [
