@@ -9,6 +9,7 @@ import css from 'rollup-plugin-css-porter'
 import json from '@rollup/plugin-json'
 import svgr from '@svgr/rollup'
 import url from '@rollup/plugin-url'
+import image from '@rollup/plugin-image'
 
 export default {
   input: 'lib/index.js',
@@ -70,6 +71,7 @@ export default {
       'preventAssignment': true
     }),
     css({ minified: false }),
+    image(),
     process.env.NODE_ENV === 'production' && filesize()
   ]
 }
