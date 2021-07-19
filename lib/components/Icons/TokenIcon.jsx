@@ -61,6 +61,16 @@ import AAVE from '../../assets/Tokens/0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9
 import DEFISOCKS from '../../assets/Tokens/0x9d942bd31169ed25a1ca78c776dab92de104e50e.png'
 import BOOKS from '../../assets/Tokens/0x117c2aca45d87958ba054cb85af0fd57be00d624.png'
 import LOTTO from '../../assets/Tokens/0xb0dfd28d3cf7a5897c694904ace292539242f858.png'
+import PPOOL from '../../lib/assets/Tokens/0x27D22A7648e955E510a40bDb058333E9190d12D4.png'
+import PCcCOMP from '../../lib/assets/Tokens/0x27B85f596feB14e4B5fAA9671720a556a7608C69.png'
+import PcUSDC from '../../lib/assets/Tokens/0xD81b1A8B1AD00Baa2D6609E0BAE28A38713872f7.png'
+import PcUNI from '../../lib/assets/Tokens/0xA92a861FC11b99b24296aF880011B47F9cAFb5ab.png'
+import PcDAI from '../../lib/assets/Tokens/0x334cBb5858417Aee161B53Ee0D5349cCF54514CF.png'
+import PTXSushiTicket from '../../lib/assets/Tokens/0xfdC192C153044dEdB67c5A17B8651951Cf70ee4a.png'
+import PTBadgerTicket from '../../lib/assets/Tokens/0xfa831A04Cb52fc89Dd519D08dC5e94ab2dF52B7E.png'
+import PTUSDTSponsorship from '../../lib/assets/Tokens/0x85e16156eb86a134ac6db5754be6C5E1C7f1Aa59.png'
+import PTUSDTTicket from '../../lib/assets/Tokens/0x9ecB26631098973834925eb453De1908Ea4bdD4e.png'
+
 // Polygon
 import WMATIC from '../../assets/Tokens/0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270.png'
 
@@ -95,7 +105,16 @@ export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
     '0x0a2e7f69fe9588fa7fba5f5864236883cd4aac6d': PCDAI,
     '0x334cbb5858417aee161b53ee0d5349ccf54514cf': PCDAI,
     '0x391a437196c81eea7bbbbd5ed4df6b49de4f5c96': PCUSDC,
-    '0xd81b1a8b1ad00baa2d6609e0bae28a38713872f7': PCUSDC
+    '0xd81b1a8b1ad00baa2d6609e0bae28a38713872f7': PCUSDC,
+    '0x27D22A7648e955E510a40bDb058333E9190d12D4': PPOOL,
+    '0x27B85f596feB14e4B5fAA9671720a556a7608C69': PCcCOMP,
+    '0xD81b1A8B1AD00Baa2D6609E0BAE28A38713872f7': PcUSDC,
+    '0xA92a861FC11b99b24296aF880011B47F9cAFb5ab': PcUNI,
+    '0x334cBb5858417Aee161B53Ee0D5349cCF54514CF': PcDAI,
+    '0xfdC192C153044dEdB67c5A17B8651951Cf70ee4a': PTXSushiTicket,
+    '0xfa831A04Cb52fc89Dd519D08dC5e94ab2dF52B7E': PTBadgerTicket,
+    '0x85e16156eb86a134ac6db5754be6C5E1C7f1Aa59': PTUSDTSponsorship,
+    '0x9ecB26631098973834925eb453De1908Ea4bdD4e': PTUSDTTicket
   },
   [NETWORK.polygon]: {
     '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270': WMATIC,
