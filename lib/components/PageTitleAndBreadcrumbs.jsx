@@ -4,11 +4,21 @@ import classnames from 'classnames'
 import { SECONDS_PER_DAY } from '@pooltogether/current-pool-data'
 import { Chip } from './Containers/Chip'
 import { TokenIcon } from './Icons'
+import { PrizeFrequencyChip } from './PrizeFrequencyChip'
 
 // TODO: split into two components: 'PageTitle' and a separate 'Breadcrumbs'
 export const PageTitleAndBreadcrumbs = (props) => {
-  const { Link, t, breadcrumbs, title, pool, className, sizeClassName, showPrizeFrequencyChip } =
-    props
+  const {
+    Link,
+    t,
+    breadcrumbs,
+    title,
+    pool,
+    className,
+    sizeClassName,
+    description,
+    showPrizeFrequencyChip
+  } = props
 
   const isDaily = pool?.prize?.prizePeriodSeconds == SECONDS_PER_DAY.toString()
 
@@ -23,15 +33,11 @@ export const PageTitleAndBreadcrumbs = (props) => {
       <div className='inline-flex items-center text-left text-xl sm:text-3xl font-bold text-accent-2 relative'>
         {title}
         {showPrizeFrequencyChip && (
-          <div className='ml-4'>
-            <Chip
-              bgClasses={isDaily ? 'bg-accent-grey-4' : 'bg-accent-grey-1'}
-              textClasses={isDaily ? 'text-highlight-6' : 'text-green'}
-              text={
-                isDaily ? t?.('dailyPrize') || 'Daily Prize' : t?.('prizeValue') || 'Weekly Prize'
-              }
-            />
-          </div>
+          <PrizeFrequencyChip
+            prizePeriodSeconds={pool?.prize?.prizePeriodSeconds}
+            t={t}
+            className='ml-4'
+          />
         )}
       </div>
       <div className='inline-block text-left text-accent-2 font-inter relative uppercase mt-3 font-normal opacity-80 hover:opacity-100 trans'>
@@ -55,6 +61,7 @@ export const PageTitleAndBreadcrumbs = (props) => {
           </span>
         ))}
       </div>
+      {description && <p className='text-accent-1 text-sm'>{description}</p>}
     </div>
   )
 

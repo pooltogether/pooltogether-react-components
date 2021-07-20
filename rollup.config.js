@@ -12,6 +12,7 @@ import url from '@rollup/plugin-url'
 
 export default {
   input: 'lib/index.js',
+  preserveSymlinks: true,
   output: [
     {
       dir: 'dist',
