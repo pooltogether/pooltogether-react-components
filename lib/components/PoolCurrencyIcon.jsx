@@ -1,9 +1,10 @@
 import React from 'react'
 // import React, { useContext } from 'react'
 import classnames from 'classnames'
-import PuffLoader from 'react-spinners/PuffLoader'
+// import PuffLoader from 'react-spinners/PuffLoader'
 import { isUndefined } from 'lodash'
 
+import { ThemedClipSpinner } from 'lib/components/Loading/ThemedClipSpinner'
 // import { ThemeContext } from 'lib/components/contextProviders/ThemeContextProvider'
 
 // import DaiSvg from 'assets/images/dai-new-transparent.png'
@@ -67,7 +68,7 @@ export const PoolCurrencyIcon = (props) => {
       {!currencyIcon ? (
         <>
           <div className={`${classes} scale-80 text-center`}>
-            <PuffLoader color='rgba(255,255,255,0.3)' />
+            <ThemedClipSpinner size='16px' />
           </div>
         </>
       ) : (
