@@ -7,10 +7,8 @@ export const TokenIcon = (props) => {
   const { sizeClassName, className, chainId, address, onClick } = props
 
   const { data: tokenImage, isFetched } = useCoingeckoTokenImage(chainId, address)
-  // console.log({ tokenImage })
 
   const imageOverride = TOKEN_IMAGE_OVERRIDES?.[chainId]?.[address.toLowerCase()]
-  // console.log({ imageOverride })
 
   if (imageOverride || isFetched) {
     const src = imageOverride || tokenImage
