@@ -49,7 +49,9 @@ export default {
   ],
   plugins: [
     json(),
-    url(),
+    url({
+      limit: 143360
+    }),
     svgr(),
     postcss({
       extract: true
