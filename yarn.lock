@@ -2395,10 +2395,10 @@
   dependencies:
     evm-chains "^0.2.0"
 
-"@pooltogether/hooks@^0.1.6":
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/@pooltogether/hooks/-/hooks-0.1.7.tgz#c7be7f0f4d50d7e4fbf1da76819cb9ecca3c946d"
-  integrity sha512-3tX2J8VrF8F/vpSsJQMfRBdjeQpE/7E3bcsW9j6KijJPM8wicwzpl6RVBiTLJQfjHE8JBreRKgPQ1+DG3Pb7nw==
+"@pooltogether/hooks@0.1.8":
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/@pooltogether/hooks/-/hooks-0.1.8.tgz#dc167d16040836acf8850c2fd3c1c32f74f39d58"
+  integrity sha512-+JEU91s+xKY67j9AJ4SF/HSLuJdTDR1xElhvqPWJu1yjvv5G+bJV1RjVFj61A73YbyrBare9x0on3DOVZ2/LuA==
   dependencies:
     "@pooltogether/bnc-onboard" "^1.25.0-c"
     "@pooltogether/etherplex" "^1.1.1"
@@ -12607,7 +12607,7 @@ joi-browser@^13.4.0:
   resolved "https://registry.yarnpkg.com/joi-browser/-/joi-browser-13.4.0.tgz#b72ba61b610e3f58e51b563a14e0f5225cfb6896"
   integrity sha512-TfzJd2JaJ/lg/gU+q5j9rLAjnfUNF9DUmXTP9w+GfmG79LjFOXFeM7hIFuXCBcZCivUDFwd9l1btTV9rhHumtQ==
 
-jotai@^0.16.0:
+jotai@^0.16.10:
   version "0.16.11"
   resolved "https://registry.yarnpkg.com/jotai/-/jotai-0.16.11.tgz#efeaf0311513cf41d5c82b7009f8381d518cbc41"
   integrity sha512-EPBeDSBc4FwbFRArRjcI6IsHrVkba771mSOFTN3M4r5rU3ZcZMDFLElZScZVr6w1kgrEXvaMm59VAyEB3QUEbA==
