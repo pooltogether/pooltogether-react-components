@@ -36,7 +36,6 @@ TokenIcon.defaultProps = {
 
 // TODO: Import all images from the builder
 
-// Mainnet
 import ARTO from '../../assets/Tokens/arto.png'
 import RAI from '../../assets/Tokens/rai.png'
 import DAI from '../../assets/Tokens/dai.png'
@@ -68,7 +67,7 @@ import PT_XSUSHI_TICKET from '../../assets/Tokens/pt-xsushi.png'
 import PT_BADGER_TICKET from '../../assets/Tokens/pt-badger.png'
 import PT_DAI_SPONSORSHIP from '../../assets/Tokens/pt-dai-sponsorship.png'
 import PT_USDC_SPONSORSHIP from '../../assets/Tokens/pt-usdc-sponsorship.png'
-// Polygon
+import UNI_V2_LP_POOL from '../../assets/Tokens/uni-v2-lp-pool.png'
 import WMATIC from '../../assets/Tokens/wmatic.png'
 import PT_USDT_TICKET from '../../assets/Tokens/pt-usdt.png'
 import PT_USDT_SPONSORSHIP from '../../assets/Tokens/pt-usdt-sponsorship.png'
