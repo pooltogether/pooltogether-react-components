@@ -99,6 +99,7 @@ export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
     '0x1f9840a85d5af5bf1d1762f925bdaddc4201f984': UNI,
     '0x1494ca1f11d487c2bbe4543e90080aeba4ba3c2b': DPI,
     '0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0': WMATIC,
+    '0xeb8928ee92efb06c44d072a24c2bcb993b61e543': UNI_V2_LP_POOL,
     '0xdac17f958d2ee523a2206206994597c13d831ec7': USDT,
     '0x334cbb5858417aee161b53ee0d5349ccf54514cf': PCDAI,
     '0xd81b1a8b1ad00baa2d6609e0bae28a38713872f7': PCUSDC,
