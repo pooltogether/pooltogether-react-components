@@ -11,7 +11,7 @@ export default {
 const Template = (args) => <TokenIcon {...args} />
 
 export const TestIcon = Template.bind({})
-TextIcon.args = {
+TestIcon.args = {
   address: '0xa92a861fc11b99b24296af880011b47f9cafb5ab',
   chainId: 1
 }

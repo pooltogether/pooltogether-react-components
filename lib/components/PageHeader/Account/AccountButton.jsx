@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import classnames from 'classnames'
 import { useAtom } from 'jotai'
+import { useOnboard, useEnsName, useUsersAddress } from '@pooltogether/hooks'
 
 import { ProfileAvatar } from './ProfileAvatar'
 import { ProfileName } from './ProfileName'
@@ -10,8 +11,13 @@ import { ThemedClipSpinner } from '../../Loading/ThemedClipSpinner'
 export function AccountButton(props) {
   const { openModal, className, t } = props
 
+  const usersAddress = useUsersAddress()
+
   const [transactions] = useAtom(transactionsAtom)
   const pendingTransactionsCount = transactions.filter((t) => !t.completed).length
+
+  const { provider } = useOnboard()
+  const ensName = useEnsName(provider, usersAddress)
 
   return (
     <button
@@ -39,9 +45,9 @@ export function AccountButton(props) {
           </>
         ) : (
           <>
-            <ProfileAvatar className='mr-2' />
+            <ProfileAvatar usersAddress={usersAddress} className='mr-2' />
             <span className='my-auto'>
-              <ProfileName />
+              <ProfileName ensName={ensName} usersAddress={usersAddress} />
             </span>
           </>
         )}
