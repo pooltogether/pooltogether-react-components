@@ -33,7 +33,7 @@ export const DefaultLayout = (props) => {
  * @returns
  */
 export const SimpleLayout = (props) => {
-  const { content, header, footer, banner, router } = props
+  const { content, header, footer, banner } = props
 
   return (
     <SimplePageGrid

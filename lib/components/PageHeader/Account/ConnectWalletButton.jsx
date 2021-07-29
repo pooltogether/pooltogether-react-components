@@ -1,5 +1,6 @@
-import { useOnboard } from '@pooltogether/hooks'
 import React from 'react'
+import { useOnboard } from '@pooltogether/hooks'
+
 import { Button } from '../../Buttons/Button'
 
 export const ConnectWalletButton = (props) => {
