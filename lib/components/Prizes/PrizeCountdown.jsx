@@ -1,16 +1,15 @@
 import React from 'react'
 import classnames from 'classnames'
 import addSeconds from 'date-fns/addSeconds'
-import { useTranslation } from 'react-i18next'
 import { SECONDS_PER_DAY } from '@pooltogether/current-pool-data'
-
-import { subtractDates } from 'lib/utils/subtractDates'
-import { usePrizePeriodTimeLeft } from 'lib/hooks/usePrizePeriodTimeLeft'
+import { subtractDates } from '@pooltogether/utilities'
+import { usePrizePeriodTimeLeft } from '@pooltogether/hooks'
 
 const EIGHT_HOURS_IN_SECONDS = 28800
 
 export const PrizeCountdown = (props) => {
-  const { t } = useTranslation()
+  const { t } = props
+
   const {
     center,
     textAlign,
@@ -21,6 +20,7 @@ export const PrizeCountdown = (props) => {
   } = props
   let flashy = props.flashy === false ? false : true
 
+  console.log(prizePeriodSeconds, prizePeriodStartedAt)
   const { secondsLeft } = usePrizePeriodTimeLeft(prizePeriodSeconds, prizePeriodStartedAt)
 
   const currentDate = new Date(Date.now())
@@ -38,7 +38,7 @@ export const PrizeCountdown = (props) => {
             'text-right': !textAlign
           })}
         >
-          {t('prizeIsBeingAwarded')}
+          {t?.('prizeIsBeingAwarded') || 'Prize is being awarded'}
         </p>
       </>
     )
@@ -107,7 +107,7 @@ export const PrizeCountdown = (props) => {
             <RightSideJsx digit={daysArray.length > 1 ? daysArray[1] : daysArray[0]} />
           </div>
           <div className={unitClasses} style={unitStyles}>
-            {t('countdownDayShort')}
+            {t?.('countdownDayShort') || 'DAY'}
           </div>
         </div>
         <div
@@ -122,7 +122,7 @@ export const PrizeCountdown = (props) => {
             <RightSideJsx digit={hoursArray.length > 1 ? hoursArray[1] : hoursArray[0]} />
           </div>
           <div className={unitClasses} style={unitStyles}>
-            {t('countdownHourShort')}
+            {t?.('countdownHourShort') || 'HR'}
           </div>
         </div>
         <div className={`px-0 sm:px-1 font-bold text-${textColor}`}>:</div>
@@ -138,7 +138,7 @@ export const PrizeCountdown = (props) => {
             <RightSideJsx digit={minutesArray.length > 1 ? minutesArray[1] : minutesArray[0]} />
           </div>
           <div className={unitClasses} style={unitStyles}>
-            {t('countdownMinuteShort')}
+            {t?.('countdownMinuteShort') || 'MIN'}
           </div>
         </div>
         <div className={`px-0 sm:px-1 font-bold text-${textColor}`}>:</div>
@@ -154,7 +154,7 @@ export const PrizeCountdown = (props) => {
             <RightSideJsx digit={secondsArray.length > 1 ? secondsArray[1] : secondsArray[0]} />
           </div>
           <div className={unitClasses} style={unitStyles}>
-            {t('countdownSecondShort')}
+            {t?.('countdownSecondShort') || 'SEC'}
           </div>
         </div>
         {msg}
