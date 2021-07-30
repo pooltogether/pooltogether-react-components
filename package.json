@@ -45,6 +45,7 @@
     "@reach/visually-hidden": "0.15.0",
     "@rollup/plugin-url": "^6.0.0",
     "classnames": "^2.2.6",
+    "date-fns": "^2.23.0",
     "js-cookie": "^2.2.1",
     "react-copy-to-clipboard": "^5.0.3",
     "react-device-detect": "^1.15.0",

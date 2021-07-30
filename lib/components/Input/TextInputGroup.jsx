@@ -2,7 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 import FeatherIcon from 'feather-icons-react'
 
-import { RoundInput } from '../Input/RoundInput'
+import { RoundInput } from './TextInputs'
 import { DEFAULT_INPUT_GROUP_CLASSES, DEFAULT_INPUT_LABEL_CLASSES } from '../../constants'
 
 export const TextInputGroupType = Object.freeze({
