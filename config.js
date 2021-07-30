@@ -101,6 +101,7 @@ const pooltogetherReactTailwindUIConfig = {
         'red': 'var(--color-text-red)',
         'green': 'var(--color-text-green)',
         'orange': 'var(--color-text-orange)',
+        'yellow': 'var(--color-text-yellow)',
         'blue': 'var(--color-text-blue)',
         'teal': 'var(--color-text-teal)',
         'accent-grey-1': 'var(--color-text-accent-grey-1)',

@@ -1,6 +1,6 @@
 {
   "name": "@pooltogether/react-components",
-  "version": "0.1.18",
+  "version": "0.1.19",
   "description": "PoolTogether UI elements in a shared lib",
   "author": "PoolTogether",
   "license": "MIT",
@@ -55,7 +55,7 @@
     "react-tooltip": "^4.2.21"
   },
   "peerDependencies": {
-    "@pooltogether/hooks": "^0.1.7",
+    "@pooltogether/hooks": "0.1.9",
     "@pooltogether/utilities": "^0.0.26",
     "eth-revert-reason": "^1.0.3",
     "feather-icons-react": "^0.4.1",
@@ -70,7 +70,7 @@
     "@babel/core": "^7.0.0-beta.40",
     "@babel/preset-env": "^7.0.0-beta.40",
     "@babel/preset-react": "^7.0.0-beta.40",
-    "@pooltogether/hooks": "0.1.8",
+    "@pooltogether/hooks": "0.1.10",
     "@pooltogether/utilities": "^0.0.26",
     "@rollup/plugin-alias": "^3.1.1",
     "@rollup/plugin-babel": "^5.2.2",

@@ -67,7 +67,16 @@ import { ButtonLink } from "@pooltogether/pooltogether-react-components";
 <ButtonLink Link={Link} href={href} as={as}>View</Button>
 ```
 
-## Local development
+## Local development (yalc)
+
+In `pooltogether-react-components`:
+`yalc publish`
+
+In the app you're importing `pooltogether-react-components`:
+`yalc add @pooltogether/react-components`
+
+
+## Local development (yarn)
 
 TODO: Make this better...
 
