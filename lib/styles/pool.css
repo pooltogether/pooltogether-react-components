@@ -306,17 +306,6 @@ a {
   }
 }
 
-.profile-img {
-  transform: scale(1);
-}
-
-@screen sm {
-  .profile-img {
-    transform: scale(1.1);
-    transform-origin: center;
-  }
-}
-
 .card-icon {
   position: relative;
   height: 10px;

@@ -1,59 +1,64 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import classnames from 'classnames'
-import Jazzicon, { jsNumberForAddress } from 'react-jazzicon'
-import { useUsersAddress } from '@pooltogether/hooks'
+import { renderIcon } from '@download/blockies'
 
-const { getProfile } = require('3box/lib/api')
-
-const isValidImage = (image) => {
-  if (image && image[0] && image[0].contentUrl) {
-    return true
-  }
-
-  return false
-}
+const BLOCKIE_DIAMETER = 24
 
 export function ProfileAvatar(props) {
-  const { className } = props
-
-  const [profile, setProfile] = useState()
-
-  const usersAddress = useUsersAddress()
-
-  const diameter = 16
-
-  useEffect(() => {
-    const get3BoxProfile = async () => {
-      const boxProfile = await getProfile(usersAddress)
-      setProfile(boxProfile)
-    }
-
-    if (usersAddress) {
-      get3BoxProfile()
-    }
-  }, [usersAddress])
+  const { className, usersAddress } = props
 
   if (!usersAddress) {
     return null
   }
 
-  const image =
-    profile && isValidImage(profile.image) ? (
-      <img
-        alt='profile avatar'
-        src={`https://ipfs.infura.io/ipfs/${profile.image[0].contentUrl['/']}`}
-        className={classnames('profile-img relative inline-block rounded-full w-5 h-5', className)}
+  const image = (
+    <div
+      className={classnames(
+        'profile-img my-auto relative inline-flex justify-center flex-col bg-white rounded-full shadow-sm',
+        className
+      )}
+      style={{
+        padding: 1,
+        height: BLOCKIE_DIAMETER,
+        width: BLOCKIE_DIAMETER
+      }}
+    >
+      <BlockieIdenticon
+        address={usersAddress}
+        alt={`Ethereum address: ${usersAddress}`}
+        className='rounded-full shadow-inner'
       />
-    ) : (
-      <div
-        className={classnames(
-          'profile-img profile-img--jazzicon relative inline-flex justify-center flex-col',
-          className
-        )}
-      >
-        <Jazzicon diameter={diameter} seed={jsNumberForAddress(usersAddress)} />
-      </div>
-    )
+    </div>
+  )
 
   return image
+}
+
+const BlockieIdenticon = ({ address, diameter, alt, className }) => {
+  const [dataUrl, setDataUrl] = useState(null)
+  const canvasRef = useRef(null)
+
+  useEffect(() => {
+    const canvas = canvasRef.current
+    renderIcon({ seed: address.toLowerCase() }, canvas)
+    const updatedDataUrl = canvas.toDataURL()
+
+    if (updatedDataUrl !== dataUrl) {
+      setDataUrl(updatedDataUrl)
+    }
+  }, [dataUrl, address])
+
+  return (
+    <>
+      <canvas ref={canvasRef} style={{ display: 'none' }} />
+      <img className={className} src={dataUrl} height={diameter} width={diameter} alt={alt || ''} />
+    </>
+  )
+}
+
+BlockieIdenticon.defaultProps = {
+  address: undefined,
+  diameter: BLOCKIE_DIAMETER,
+  alt: '',
+  className: ''
 }
