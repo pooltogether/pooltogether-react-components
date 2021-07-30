@@ -20,7 +20,6 @@ export const PrizeCountdown = (props) => {
   } = props
   let flashy = props.flashy === false ? false : true
 
-  console.log(prizePeriodSeconds, prizePeriodStartedAt)
   const { secondsLeft } = usePrizePeriodTimeLeft(prizePeriodSeconds, prizePeriodStartedAt)
 
   const currentDate = new Date(Date.now())
@@ -96,7 +95,7 @@ export const PrizeCountdown = (props) => {
         })}
       >
         <div
-          className='flex flex-col sm:mr-2'
+          className='flex flex-col mr-4'
           style={{
             paddingLeft: 2,
             paddingRight: 2

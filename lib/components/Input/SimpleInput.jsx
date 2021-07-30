@@ -3,7 +3,7 @@ import { isBrowser } from 'react-device-detect'
 
 import { DEFAULT_INPUT_CLASSES } from '../../constants'
 
-export function Input(props) {
+export function SimpleInput(props) {
   const { autoFocus, value, ...inputProps } = props
 
   return (
