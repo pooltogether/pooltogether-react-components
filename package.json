@@ -54,6 +54,7 @@
     "react-tooltip": "^4.2.21"
   },
   "peerDependencies": {
+    "@download/blockies": "^1.0.3",
     "@pooltogether/hooks": "^0.1.7",
     "@pooltogether/utilities": "^0.0.26",
     "eth-revert-reason": "^1.0.3",

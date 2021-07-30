@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 import { useAtom } from 'jotai'
-import { useOnboard, useEnsName, useUsersAddress } from '@pooltogether/hooks'
+import { useEnsName, useUsersAddress } from '@pooltogether/hooks'
 
 import { ProfileAvatar } from './ProfileAvatar'
 import { ProfileName } from './ProfileName'
@@ -16,8 +16,7 @@ export function AccountButton(props) {
   const [transactions] = useAtom(transactionsAtom)
   const pendingTransactionsCount = transactions.filter((t) => !t.completed).length
 
-  const { provider } = useOnboard()
-  const ensName = useEnsName(provider, usersAddress)
+  const ensName = useEnsName(usersAddress)
 
   return (
     <button
