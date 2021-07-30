@@ -10,12 +10,17 @@ export function Account(props) {
   const { t, className } = props
 
   const [isOpen, setIsOpen] = useState(false)
-  const { isWalletConnected } = useOnboard()
+  const { isWalletConnected, provider } = useOnboard()
 
   return (
     <>
       {isWalletConnected && (
-        <AccountButton t={t} openModal={() => setIsOpen(true)} className={className} />
+        <AccountButton
+          t={t}
+          openModal={() => setIsOpen(true)}
+          className={className}
+          provider={provider}
+        />
       )}
       {!isWalletConnected && <ConnectWalletButton t={t} className={className} />}
       <TransactionsModal t={t} isOpen={isOpen} closeModal={() => setIsOpen(false)} />

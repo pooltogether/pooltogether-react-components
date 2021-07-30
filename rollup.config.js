@@ -36,16 +36,17 @@ export default {
   //   "react-tooltip",
   // ],
   external: [
+    '@download/blockies',
     '@pooltogether/utilities',
     '@pooltogether/hooks',
+    'eth-revert-reason',
     'feather-icons-react',
     'jotai',
     'lodash',
     'react',
     'react-dom',
     'react-query',
-    'tailwindcss',
-    'eth-revert-reason'
+    'tailwindcss'
   ],
   plugins: [
     json(),
