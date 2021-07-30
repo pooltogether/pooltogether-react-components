@@ -10,7 +10,7 @@ export const TokenIcon = (props) => {
 
   const imageOverride = TOKEN_IMAGE_OVERRIDES?.[chainId]?.[address.toLowerCase()]
 
-  if (imageOverride || isFetched) {
+  if (imageOverride || (isFetched && tokenImage)) {
     const src = imageOverride || tokenImage
 
     return (
@@ -38,6 +38,8 @@ TokenIcon.defaultProps = {
 
 import ARTO from '../../assets/Tokens/arto.png'
 import RAI from '../../assets/Tokens/rai.png'
+import BNB from '../../assets/Tokens/bnb.svg'
+import CAKE from '../../assets/Tokens/cake.svg'
 import DAI from '../../assets/Tokens/dai.png'
 import GUSD from '../../assets/Tokens/gusd.svg'
 import INDEX from '../../assets/Tokens/index.png'
@@ -116,5 +118,10 @@ export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
     '0x85e16156eb86a134ac6db5754be6c5e1c7f1aa59': PT_USDT_SPONSORSHIP,
     '0x9ecb26631098973834925eb453de1908ea4bdd4e': PT_USDT_TICKET,
     '0xc2132d05d31c914a87c6611c10748aeb04b58e8f': USDT
+  },
+  [NETWORK.bsc]: {
+    '0xe9e7cea3dedca5984780bafc599bd69add087d56': BUSD,
+    '0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c': BNB,
+    '0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82': CAKE
   }
 })
