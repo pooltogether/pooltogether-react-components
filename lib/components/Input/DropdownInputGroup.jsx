@@ -60,7 +60,7 @@ export const DropdownInputGroup = (props) => {
 
   textClasses = textClasses
     ? textClasses
-    : classnames('text-xs xs:text-sm sm:text-xl lg:text-2xl trans', {
+    : classnames('text-xs trans', {
         'text-whitesmoke': disabled || !currentValue
       })
 

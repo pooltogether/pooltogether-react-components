@@ -84,7 +84,7 @@ RoundInput.defaultProps = {
   paddingClasses: 'px-8 py-3',
   borderClasses: 'border border-accent-3',
   bgClasses: 'bg-input',
-  textClasses: 'text-xs xs:text-sm sm:text-xl lg:text-2xl',
+  textClasses: 'text-xs',
   roundedClasses: 'rounded-full'
 }
 
@@ -94,16 +94,21 @@ export const TsunamiInput = (props) => {
   const className = collectClassNames(props)
 
   return (
-    <input
-      {...sanitizeProps(props)}
-      autoFocus={autoFocus && isBrowser}
-      ref={register({
-        required,
-        pattern,
-        validate
-      })}
-      className={classnames(className, 'focus:outline-none')}
-    />
+    <div className='relative'>
+      <div className='absolute' style={{ top: 10, bottom: 10, left: 10 }}>
+        PRZUSDC
+      </div>
+      <input
+        {...sanitizeProps(props)}
+        autoFocus={autoFocus && isBrowser}
+        ref={register({
+          required,
+          pattern,
+          validate
+        })}
+        className={classnames(className, 'focus:outline-none')}
+      />
+    </div>
   )
 }
 
@@ -112,6 +117,6 @@ TsunamiInput.defaultProps = {
   paddingClasses: 'px-8 py-3',
   borderClasses: 'border-2 border-accent-3',
   bgClasses: 'bg-transparent',
-  textClasses: 'text-xs xs:text-sm sm:text-xl lg:text-2xl',
+  textClasses: 'text-xs text-right',
   roundedClasses: 'rounded-lg'
 }

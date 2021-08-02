@@ -18,6 +18,7 @@ export const TextInputGroup = (props) => {
     label,
     rightLabel,
     disabled,
+    readOnly,
     // Utilities
     isError,
     isSuccess,
@@ -27,33 +28,33 @@ export const TextInputGroup = (props) => {
   } = props
 
   let {
-    textClasses,
-    roundedClasses,
-    marginClasses,
-    borderClasses,
-    backgroundClasses,
+    containerTextClasses,
+    containerRoundedClasses,
+    containerMarginClasses,
+    containerBorderClasses,
+    containerBgClasses,
+    containerClassName,
     labelClassName,
     rightLabelClassName,
     unitsClassName,
-    containerClassName,
     ...inputProps
   } = classAndInputProps
 
-  textClasses = textClasses
-    ? textClasses
+  containerTextClasses = containerTextClasses
+    ? containerTextClasses
     : classnames({
-        'font-bold text-3xl sm:text-5xl': large,
-        'text-xs xs:text-sm sm:text-xl lg:text-2xl': !large,
+        'font-bold text-3xl': large,
+        'text-xs': !large,
         'text-red-500': isError,
         'text-whitesmoke': disabled
       })
 
-  roundedClasses = roundedClasses ? roundedClasses : 'rounded-full'
+  containerRoundedClasses = containerRoundedClasses ? containerRoundedClasses : 'rounded-full'
 
-  marginClasses = marginClasses ? marginClasses : 'mb-2 lg:mb-2'
+  containerMarginClasses = containerMarginClasses ? containerMarginClasses : 'mb-2 lg:mb-2'
 
-  borderClasses = borderClasses
-    ? borderClasses
+  containerBorderClasses = containerBorderClasses
+    ? containerBorderClasses
     : classnames('border', {
         'border-red': isError,
         'border-green-2': isSuccess,
@@ -61,10 +62,11 @@ export const TextInputGroup = (props) => {
         'hover:border-accent-3 focus-within:border-accent-3 focus-within:shadow-green': !disabled
       })
 
-  backgroundClasses = backgroundClasses
-    ? backgroundClasses
-    : classnames(backgroundClasses, {
-        'bg-grey': disabled
+  containerBgClasses = containerBgClasses
+    ? containerBgClasses
+    : classnames(containerBgClasses, {
+        'bg-grey': disabled,
+        'bg-card': readOnly
       })
 
   labelClassName = labelClassName
@@ -91,10 +93,10 @@ export const TextInputGroup = (props) => {
   containerClassName = classnames(
     DEFAULT_INPUT_GROUP_CLASSES,
     containerClassName,
-    textClasses,
-    roundedClasses,
-    marginClasses,
-    backgroundClasses
+    containerTextClasses,
+    containerRoundedClasses,
+    containerMarginClasses,
+    containerBgClasses
   )
 
   let icon, iconColor
@@ -122,7 +124,7 @@ export const TextInputGroup = (props) => {
         {rightLabel && <span className={rightLabelClassName}>{rightLabel}</span>}
       </div>
       <div className='flex justify-between'>
-        <Input {...inputProps} id={id} disabled={disabled} />
+        <Input {...inputProps} id={id} disabled={disabled} readOnly={readOnly} />
         {(unit || icon) && (
           <div className='pl-1 sm:pl-2'>
             {unit && <span className={unitsClassName}>{unit}</span>}
