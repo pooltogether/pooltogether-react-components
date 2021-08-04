@@ -2,8 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 import FeatherIcon from 'feather-icons-react'
 import CopyToClipboard from 'react-copy-to-clipboard'
-
-import { poolToast } from '../../utils/poolToast'
+import { poolToast } from '@pooltogether/utilities'
 
 export const CopyIcon = (props) => {
   const { t, text, className } = props
