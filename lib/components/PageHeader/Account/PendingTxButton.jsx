@@ -1,7 +1,7 @@
 import React from 'react'
 import { useAtom } from 'jotai'
+import { transactionsAtom } from '@pooltogether/hooks'
 
-import { transactionsAtom } from '../../TransactionStatusChecker'
 import { ThemedClipSpinner } from '../../Loading/ThemedClipSpinner'
 
 export function PendingTxButton(props) {

@@ -1,11 +1,10 @@
 import React from 'react'
 import classnames from 'classnames'
 import { useAtom } from 'jotai'
-import { useEnsName, useUsersAddress } from '@pooltogether/hooks'
+import { transactionsAtom, useEnsName, useUsersAddress } from '@pooltogether/hooks'
 
 import { ProfileAvatar } from './ProfileAvatar'
 import { ProfileName } from './ProfileName'
-import { transactionsAtom } from '../../TransactionStatusChecker'
 import { ThemedClipSpinner } from '../../Loading/ThemedClipSpinner'
 
 export function AccountButton(props) {

@@ -1,10 +1,8 @@
 import React from 'react'
 import { useAtom } from 'jotai'
+import { clearPreviousTransactions, transactionsAtom, useOnboard } from '@pooltogether/hooks'
 
-import { useOnboard } from '@pooltogether/hooks'
 import { TransactionsListItem } from './TransactionsListItem'
-import { transactionsAtom } from '../../TransactionStatusChecker'
-import { clearPreviousTransactions } from '../../TransactionStatusChecker/clearPreviousTransactions'
 
 export function TransactionsList(props) {
   const [transactions, setTransactions] = useAtom(transactionsAtom)
