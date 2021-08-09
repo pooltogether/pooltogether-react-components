@@ -1,6 +1,6 @@
 {
   "name": "@pooltogether/react-components",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "PoolTogether UI elements in a shared lib",
   "author": "PoolTogether",
   "license": "MIT",
@@ -55,8 +55,8 @@
     "react-tooltip": "^4.2.21"
   },
   "peerDependencies": {
+    "@download/blockies": "^1.0.3",
     "@pooltogether/hooks": "0.1.9",
-     "@download/blockies": "^1.0.3",
     "@pooltogether/utilities": "^0.0.26",
     "eth-revert-reason": "^1.0.3",
     "feather-icons-react": "^0.4.1",

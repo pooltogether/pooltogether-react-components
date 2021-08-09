@@ -39,7 +39,7 @@ TokenIcon.defaultProps = {
 import ARTO from '../../assets/Tokens/arto.png'
 import RAI from '../../assets/Tokens/rai.png'
 import BNB from '../../assets/Tokens/bnb.svg'
-import CAKE from '../../assets/Tokens/cake.svg'
+import CAKE from '../../assets/Tokens/cake.png'
 import DAI from '../../assets/Tokens/dai.png'
 import GUSD from '../../assets/Tokens/gusd.svg'
 import INDEX from '../../assets/Tokens/index.png'
