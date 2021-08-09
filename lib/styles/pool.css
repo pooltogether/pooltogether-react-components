@@ -548,15 +548,20 @@ a {
   transition: box-shadow 0.15s;
 }
 
-.new-btn:hover,
-.new-btn:focus {
+.new-btn:not([disabled]):hover,
+.new-btn:not([disabled]):focus {
   @apply text-secondary bg-highlight-4;
 
   box-shadow: 0 0 0 3px rgba(53, 240, 208, 0.5);
 }
 
-.new-btn:active {
+.new-btn:not([disabled]):active {
   box-shadow: 0 0 0 2px rgba(53, 240, 208, 0.3);
+}
+
+.new-btn:disabled {
+  background-color: #2b2d6c;
+  color: #8679b8;
 }
 
 .accordion-content-placeholder {
