@@ -18,7 +18,7 @@ export const TicketRow = (props) => {
       <div className={classnames('rounded-r-lg bg-accent-grey-4 notched-box w-full')}>
         <div className={classnames(`notched-corner notched-top-left`, cornerBgClassName)}></div>
         <div className={classnames(`notched-corner notched-bottom-left`, cornerBgClassName)}></div>
-        <div className='px-4 xs:px-8 sm:px-16 py-3'>{right}</div>
+        <div className='px-4 xs:px-8 py-3'>{right}</div>
       </div>
     </div>
   )
