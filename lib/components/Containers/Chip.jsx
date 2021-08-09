@@ -11,7 +11,7 @@ export const Chip = (props) => {
   const sizeClasses = props.size || 'text-xxxxs xs:text-xxxs sm:text-xxxs lg:text-xxxs'
 
   const classes = classnames(
-    'font-inter uppercase font-semibold rounded-full text-center py-2 px-2',
+    'font-inter font-semibold rounded-full text-center py-2 px-2',
     className,
     textClasses,
     bgClasses,
