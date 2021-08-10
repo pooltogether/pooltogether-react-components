@@ -11,6 +11,7 @@
   --color-bg-primary: #290b5a;
   --color-bg-secondary: #4c249f;
   --color-bg-tertiary: rgba(255, 255, 255, 0.1);
+  --color-bg-new-modal: #4c249f;
   --color-bg-default: #341762;
   --color-bg-darkened: #1a083a;
   --color-bg-input: #1a083a;
@@ -34,6 +35,8 @@
   --color-bg-highlight-7: #c00c99;
   --color-bg-highlight-8: #2a1660;
   --color-bg-highlight-9: #341762;
+  --color-bg-new-btn: #35f0d0;
+  --color-bg-new-btn-hover: #1ef7d6;
   --color-bg-raspberry: #49195c;
   --color-bg-functional-red: rgba(70, 22, 92, 0.75);
   --color-bg-warning-red: #ff6666;
@@ -45,6 +48,7 @@
   --color-bg-teal: #0ea3a4;
   --color-bg-purple: #401c94;
   --color-bg-light-purple-10: rgba(173, 153, 216, 0.1);
+  --color-bg-light-purple-70: rgba(110, 77, 179, 1);
 
   --color-text-accent-1: #cdc5df;
   --color-text-accent-2: #cdc5df;
@@ -112,6 +116,7 @@
   --color-bg-primary: #fff;
   --color-bg-secondary: #35f0d0;
   --color-bg-tertiary: rgba(173, 153, 216, 0.1);
+  --color-bg-new-modal: #4c249f;
   --color-bg-default: #f7f7f7;
   --color-bg-darkened: #e9e9e9;
   --color-bg-input: #fff;
@@ -135,6 +140,8 @@
   --color-bg-highlight-7: #c00c99;
   --color-bg-highlight-8: #f9f9f9;
   --color-bg-highlight-9: #341762;
+  --color-bg-new-btn: #35f0d0;
+  --color-bg-new-btn-hover: #1ef7d6;
   --color-bg-raspberry: #49195c;
   --color-bg-functional-red: rgba(255, 100, 100, 0.15);
   --color-bg-red: #e61b1b;
@@ -145,6 +152,7 @@
   --color-bg-teal: #0ea3a4;
   --color-bg-purple: #4c249f;
   --color-bg-light-purple-10: rgba(173, 153, 216, 0.1);
+  --color-bg-light-purple-70: rgba(110, 77, 179, 1);
 
   --color-text-accent-1: #7665ac;
   --color-text-accent-2: #4c249f;

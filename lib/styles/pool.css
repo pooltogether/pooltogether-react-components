@@ -544,14 +544,14 @@ a {
 }
 
 .new-btn {
-  @apply font-sans bg-highlight-1 text-secondary rounded-sm font-semibold leading-normal;
+  @apply font-sans bg-new-btn text-purple rounded-sm font-semibold leading-normal;
 
   transition: box-shadow 0.15s;
 }
 
 .new-btn:not([disabled]):hover,
 .new-btn:not([disabled]):focus {
-  @apply text-secondary bg-highlight-4;
+  @apply text-purple bg-new-btn-hover;
 
   box-shadow: 0 0 0 3px rgba(53, 240, 208, 0.5);
 }

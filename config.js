@@ -37,6 +37,7 @@ const pooltogetherReactTailwindUIConfig = {
         'primary': 'var(--color-bg-primary)',
         'secondary': 'var(--color-bg-secondary)',
         'tertiary': 'var(--color-bg-tertiary)',
+        'new-modal': 'var(--color-bg-new-modal)',
         'default': 'var(--color-bg-default)',
         'input': 'var(--color-bg-input)',
         'darkened': 'var(--color-bg-darkened)',
@@ -54,6 +55,8 @@ const pooltogetherReactTailwindUIConfig = {
         'highlight-7': 'var(--color-bg-highlight-7)',
         'highlight-8': 'var(--color-bg-highlight-8)',
         'highlight-9': 'var(--color-bg-highlight-9)',
+        'new-btn': 'var(--color-bg-new-btn)',
+        'new-btn-hover': 'var(--color-bg-new-btn-hover)',
         'raspberry': 'var(--color-bg-raspberry)',
         'functional-red': 'var(--color-bg-functional-red)',
         'warning-red': 'var(--color-bg-warning-red)',
@@ -69,8 +72,8 @@ const pooltogetherReactTailwindUIConfig = {
         'accent-grey-4': 'var(--color-bg-accent-grey-4)',
         'accent-grey-5': 'var(--color-bg-accent-grey-5)',
         'purple': 'var(--color-bg-purple)',
-        'light-purple-35': 'var(--color-bg-light-purple-35)',
-        'light-purple-10': 'var(--color-bg-light-purple-10)'
+        'light-purple-10': 'var(--color-bg-light-purple-10)',
+        'light-purple-70': 'var(--color-bg-light-purple-70)'
       },
       textColor: {
         'accent-1': 'var(--color-text-accent-1)',
