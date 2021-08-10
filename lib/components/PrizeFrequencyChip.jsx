@@ -19,7 +19,7 @@ export const PrizeFrequencyChip = (props) => {
   return (
     <Chip
       bgClasses={classnames({
-        'bg-accent-grey-4': isDaily,
+        'bg-accent-grey-2': isDaily,
         'bg-accent-grey-1': isWeekly
       })}
       textClasses={classnames({
