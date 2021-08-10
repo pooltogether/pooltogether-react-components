@@ -4,7 +4,7 @@ import { positionMatchWidth } from '@reach/popover'
 import classnames from 'classnames'
 import FeatherIcon from 'feather-icons-react'
 
-import { DEFAULT_INPUT_GROUP_CLASSES, DEFAULT_INPUT_LABEL_CLASSES } from '../../constants'
+import { DEFAULT_INPUT_GROUP_CLASS_NAME, DEFAULT_INPUT_LABEL_CLASS_NAME } from '../../constants'
 
 export const DropdownInputGroup = (props) => {
   // Dropdown Logic
@@ -46,11 +46,11 @@ export const DropdownInputGroup = (props) => {
   // Styling
 
   let {
-    textClasses,
-    roundedClasses,
-    marginClasses,
-    borderClasses,
-    backgroundClasses,
+    textClassName,
+    roundedClassName,
+    marginClassName,
+    borderClassName,
+    backgroundClassName,
     labelClassName,
     unitsClassName,
     containerClassName,
@@ -58,20 +58,20 @@ export const DropdownInputGroup = (props) => {
     isSuccess
   } = props
 
-  textClasses = textClasses
-    ? textClasses
+  textClassName = textClassName
+    ? textClassName
     : classnames('text-xs trans', {
         'text-whitesmoke': disabled || !currentValue
       })
 
   containerClassName = containerClassName ? containerClassName : 'w-full'
 
-  roundedClasses = roundedClasses ? roundedClasses : 'rounded-full'
+  roundedClassName = roundedClassName ? roundedClassName : 'rounded-full'
 
-  marginClasses = marginClasses ? marginClasses : 'mb-2 lg:mb-2'
+  marginClassName = marginClassName ? marginClassName : 'mb-2 lg:mb-2'
 
-  borderClasses = borderClasses
-    ? borderClasses
+  borderClassName = borderClassName
+    ? borderClassName
     : classnames('border', {
         'border-red': isError,
         'border-green-2': isSuccess,
@@ -79,15 +79,15 @@ export const DropdownInputGroup = (props) => {
         'hover:border-accent-3 focus-within:border-accent-3 focus-within:shadow-green': !disabled
       })
 
-  backgroundClasses = backgroundClasses
-    ? backgroundClasses
-    : classnames(backgroundClasses, {
+  backgroundClassName = backgroundClassName
+    ? backgroundClassName
+    : classnames(backgroundClassName, {
         'bg-grey': disabled
       })
 
   labelClassName = labelClassName
     ? labelClassName
-    : classnames(DEFAULT_INPUT_LABEL_CLASSES, {
+    : classnames(DEFAULT_INPUT_LABEL_CLASS_NAME, {
         'cursor-not-allowed font-whitesmoke': disabled,
         'text-accent-1': !disabled
       })
@@ -100,13 +100,13 @@ export const DropdownInputGroup = (props) => {
       })
 
   const className = classnames(
-    DEFAULT_INPUT_GROUP_CLASSES,
+    DEFAULT_INPUT_GROUP_CLASS_NAME,
     containerClassName,
-    textClasses,
-    roundedClasses,
-    marginClasses,
-    borderClasses,
-    backgroundClasses
+    textClassName,
+    roundedClassName,
+    marginClassName,
+    borderClassName,
+    backgroundClassName
   )
 
   let selectedItem = placeHolder ? placeHolder : null

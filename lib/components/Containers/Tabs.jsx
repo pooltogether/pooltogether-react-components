@@ -15,6 +15,7 @@ export const Tab = (props) => {
     tabDeselectedClassName,
     tabSelectedClassName
   } = props
+
   return (
     <a
       onClick={onClick}
@@ -35,7 +36,10 @@ export const Tab = (props) => {
 
 Tab.defaultProps = {
   className: '',
-  textClassName: 'text-sm xs:text-lg lg:text-xl'
+  textClassName: 'text-sm xs:text-lg lg:text-xl',
+  tabDeselectedClassName:
+    'text-accent-1 hover:text-inverse border-transparent hover:border-highlight-2 hover:bg-card-selected',
+  tabSelectedClassName: 'text-accent-3 border-default bg-card-selected'
 }
 
 export const Content = ({ children, className }) => {

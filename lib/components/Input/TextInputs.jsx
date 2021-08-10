@@ -3,7 +3,7 @@ import classnames from 'classnames'
 import { omit } from 'lodash'
 import { isBrowser } from 'react-device-detect'
 
-import { DEFAULT_INPUT_CLASSES } from '../../constants'
+import { DEFAULT_INPUT_CLASS_NAME } from '../../constants'
 
 const sanitizeProps = (props) => {
   return omit(props, [
@@ -11,13 +11,13 @@ const sanitizeProps = (props) => {
     'label',
     'small',
     'large',
-    'marginClasses',
-    'paddingClasses',
-    'borderClasses',
-    'bgClasses',
+    'marginClassName',
+    'paddingClassName',
+    'borderClassName',
+    'bgClassName',
     'inlineButton',
-    'roundedClasses',
-    'textClasses',
+    'roundedClassName',
+    'textClassName',
     'isError',
     'isLight',
     'register',
@@ -33,13 +33,13 @@ const sanitizeProps = (props) => {
 
 const collectClassNames = (props) => {
   return classnames(
-    DEFAULT_INPUT_CLASSES,
-    props.marginClasses,
-    props.paddingClasses,
-    props.borderClasses,
-    props.bgClasses,
-    props.textClasses,
-    props.roundedClasses,
+    DEFAULT_INPUT_CLASS_NAME,
+    props.marginClassName,
+    props.paddingClassName,
+    props.borderClassName,
+    props.bgClassName,
+    props.textClassName,
+    props.roundedClassName,
     props.className,
     {
       'text-red': props.isError
@@ -55,7 +55,7 @@ export const SimpleInput = (props) => {
       {...inputProps}
       autoFocus={autoFocus && isBrowser}
       value={value}
-      className={DEFAULT_INPUT_CLASSES}
+      className={DEFAULT_INPUT_CLASS_NAME}
     />
   )
 }
@@ -80,15 +80,15 @@ export const RoundInput = (props) => {
 }
 
 RoundInput.defaultProps = {
-  marginClasses: '',
-  paddingClasses: 'px-8 py-3',
-  borderClasses: 'border border-accent-3',
-  bgClasses: 'bg-input',
-  textClasses: 'text-xs',
-  roundedClasses: 'rounded-full'
+  marginClassName: '',
+  paddingClassName: 'px-8 py-3',
+  borderClassName: 'border border-accent-3',
+  bgClassName: 'bg-input',
+  textClassName: 'text-xs',
+  roundedClassName: 'rounded-full'
 }
 
-export const TsunamiInput = (props) => {
+export const RectangularInput = (props) => {
   let { autoFocus, pattern, required, register, validate } = props
 
   const className = collectClassNames(props)
@@ -112,11 +112,11 @@ export const TsunamiInput = (props) => {
   )
 }
 
-TsunamiInput.defaultProps = {
-  marginClasses: '',
-  paddingClasses: 'px-8 py-3',
-  borderClasses: 'border-2 border-accent-3',
-  bgClasses: 'bg-transparent',
-  textClasses: 'text-xs text-right',
-  roundedClasses: 'rounded-lg'
+RectangularInput.defaultProps = {
+  marginClassName: '',
+  paddingClassName: 'px-8 py-3',
+  borderClassName: 'border-2 border-accent-3',
+  bgClassName: 'bg-transparent',
+  textClassName: 'text-xs text-right',
+  roundedClassName: 'rounded-lg'
 }
