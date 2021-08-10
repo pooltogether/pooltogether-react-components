@@ -544,7 +544,7 @@ a {
 }
 
 .new-btn {
-  @apply bg-highlight-1 text-secondary rounded-sm font-semibold leading-normal;
+  @apply font-sans bg-highlight-1 text-secondary rounded-sm font-semibold leading-normal;
 
   transition: box-shadow 0.15s;
 }
