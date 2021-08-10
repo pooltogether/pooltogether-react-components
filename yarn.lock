@@ -1925,15 +1925,17 @@
   dependencies:
     evm-chains "^0.2.0"
 
-"@pooltogether/hooks@0.1.10":
-  version "0.1.10"
-  resolved "https://registry.yarnpkg.com/@pooltogether/hooks/-/hooks-0.1.10.tgz#74c694b4cb97b35b035d2b8d891579e78b3232e9"
-  integrity sha512-kUy151YXNgL6xfcl6SuQJlKBYWZxfofTAHRdfpVjYoa7ltTtKV/c6cDM+j+fRLaRpyIX7MlOYkHr56n5OOQeFw==
+"@pooltogether/hooks@0.1.15":
+  version "0.1.15"
+  resolved "https://registry.yarnpkg.com/@pooltogether/hooks/-/hooks-0.1.15.tgz#3cd7d2ccffa75c33f3a18514ee49bc9e4d05d7f1"
+  integrity sha512-BmiURkrX0NtGN71OmMbQvcPXX0Tr1AvKYMh+1Rr/wLjtMBiSuGLwdi7IbfQ98VRXVk2fSyN2ekGDag+qh18ZCg==
   dependencies:
     "@pooltogether/bnc-onboard" "^1.25.0-c"
     "@pooltogether/etherplex" "^1.1.1"
     "@pooltogether/evm-chains-extended" "^0.4.4"
     "@pooltogether/utilities" "^0.0.26"
+    beautiful-react-hooks "^0.35.0"
+    date-fns "^2.23.0"
     ethers "^5.3.0"
     framer-motion "^4.1.17"
     js-cookie "^2.2.1"
@@ -1942,6 +1944,16 @@
   version "0.0.26"
   resolved "https://registry.yarnpkg.com/@pooltogether/utilities/-/utilities-0.0.26.tgz#f80636e60521421893ca22ffca182119cb7120a4"
   integrity sha512-Fzx77yYGd3EM6/bk46Z81z/b5/GP5SZo7qHBiNB5wDLboWPOS5YHyp3LMNlnLvVWAzpugvHEbYoXQDoFWqjHCg==
+  dependencies:
+    "@pooltogether/current-pool-data" "^3.4.3"
+    ethers "^5.3.0"
+    lodash.clonedeep "^4.5.0"
+    query-string "^7.0.0"
+
+"@pooltogether/utilities@^0.0.34":
+  version "0.0.34"
+  resolved "https://registry.yarnpkg.com/@pooltogether/utilities/-/utilities-0.0.34.tgz#de297bb7a03a5665491ee6870e63181953cf9ff8"
+  integrity sha512-yiTpsRCy4j3wXOAhRoqwMrm8irbRNKfgdSbVbjqI6XmI6VbNq9UNaTVVjOYlYppam3NIT27qZrFajOHRE+lqdQ==
   dependencies:
     "@pooltogether/current-pool-data" "^3.4.3"
     ethers "^5.3.0"
@@ -4867,6 +4879,14 @@ bcrypt-pbkdf@^1.0.0:
   integrity sha1-pDAdOJtqQ/m2f/PKEaP2Y342Dp4=
   dependencies:
     tweetnacl "^0.14.3"
+
+beautiful-react-hooks@^0.35.0:
+  version "0.35.0"
+  resolved "https://registry.yarnpkg.com/beautiful-react-hooks/-/beautiful-react-hooks-0.35.0.tgz#816664f9a9fcf0a944f08bacf897cb1e5e94edbb"
+  integrity sha512-EDjpQWskuK7ob+rfH/Xt6UpFA+vC+ARM1TYAWRgYWcjcaDCGFuc3q5Ko4WJQUcFP2cq9ps3GihUSqN+KfUwQdg==
+  dependencies:
+    lodash.debounce "^4.0.8"
+    lodash.throttle "^4.1.1"
 
 bech32@1.1.4:
   version "1.1.4"
@@ -10262,6 +10282,11 @@ lodash.merge@^4.6.2:
   version "4.6.2"
   resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.2.tgz#558aa53b43b661e1925a0afdfa36a9a1085fe57a"
   integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==
+
+lodash.throttle@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
+  integrity sha1-wj6RtxAkKscMN/HhzaknTMOb8vQ=
 
 lodash.toarray@^4.4.0:
   version "4.4.0"
