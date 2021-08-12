@@ -24,6 +24,7 @@
     "reinstall": "rm -rf ./node_modules && yarn",
     "start": "rollup -c -w",
     "watch": "yarn start",
+    "yalc-watch": "node ./node_modules/yalc-watch/dist/index.js",
     "build": "NODE_ENV=production rollup -c",
     "precommit": "lint-staged",
     "prepublishOnly": "yarn build",
@@ -52,7 +53,8 @@
     "react-hotkeys": "^2.0.0",
     "react-loader-spinner": "^4.0.0",
     "react-toastify": "^6.0.8",
-    "react-tooltip": "^4.2.21"
+    "react-tooltip": "^4.2.21",
+    "yalc-watch": "^0.0.6"
   },
   "peerDependencies": {
     "@download/blockies": "^1.0.3",
@@ -119,5 +121,10 @@
       "refmt --in-place",
       "git add"
     ]
+  },
+  "yalcWatch": {
+    "watchFolder": "dist",
+    "buildWatchCommand": "yarn start",
+    "extensions": "ts,tsx,jsx,js,png,svg,gif,jpeg,css"
   }
 }
