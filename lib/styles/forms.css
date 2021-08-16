@@ -8,7 +8,7 @@ select:-internal-autofill-selected {
 }
 
 label {
-  @apply block cursor-pointer mt-6 mb-1 text-left;
+  @apply block cursor-pointer text-left;
 }
 
 button {

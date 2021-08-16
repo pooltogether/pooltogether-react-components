@@ -9,9 +9,7 @@ import {
 } from '@pooltogether/hooks'
 import { ETHEREUM_NETWORKS, getNetworkNiceNameByChainId } from '@pooltogether/utilities'
 
-import { Tooltip } from '../../Containers'
-import { NetworkIcon } from '../../Icons'
-import { Modal } from '../../Modal'
+import { Tooltip, Modal, NetworkIcon } from '../../..'
 
 export const NetworkModal = (props) => {
   const { t, isOpen, closeModal, supportedNetworks } = props

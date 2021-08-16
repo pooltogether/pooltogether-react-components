@@ -1,6 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
-import { LinkIcon } from '../Icons'
+import { LinkIcon } from '../../'
 
 export const LinkTheme = Object.freeze({
   default: 'text-inverse hover:text-highlight-1',

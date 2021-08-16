@@ -2,9 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 
 import { SECONDS_PER_DAY } from '@pooltogether/current-pool-data'
-import { Chip } from './Containers/Chip'
-import { TokenIcon } from './Icons'
-import { PrizeFrequencyChip } from './PrizeFrequencyChip'
+import { TokenIcon, PrizeFrequencyChip } from '..'
 
 // TODO: split into two components: 'PageTitle' and a separate 'Breadcrumbs'
 export const PageTitleAndBreadcrumbs = (props) => {

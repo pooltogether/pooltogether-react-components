@@ -47,8 +47,8 @@ const checkStoredPending = (transactions, storedPendingTransactions) => {
 
     const completed = currentTxState?.completed
     const sent = currentTxState?.sent
-    const error = currentTxState.error
-    const cancelled = currentTxState.cancelled
+    const error = currentTxState?.error
+    const cancelled = currentTxState?.cancelled
 
     if (!cancelled && !completed && sent) {
       tx?.onSent?.()
