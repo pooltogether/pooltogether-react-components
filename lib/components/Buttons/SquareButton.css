@@ -1,0 +1,80 @@
+.square-btn {
+  @apply transition-all font-sans rounded-sm font-semibold leading-normal;
+}
+
+/* ------- Themes ------- */
+
+/* Teal */
+.square-btn--teal {
+  @apply bg-pt-teal text-purple;
+}
+
+.square-btn--teal:not([disabled]):hover,
+.square-btn--teal:not([disabled]):focus {
+  @apply text-purple bg-pt-teal-bright;
+
+  box-shadow: 0 0 0 3px rgba(53, 240, 208, 0.5);
+}
+
+.square-btn--teal:not([disabled]):active {
+  box-shadow: 0 0 0 2px rgba(53, 240, 208, 0.3);
+}
+
+.square-btn--teal:disabled {
+  background-color: #2b2d6c;
+  color: #8679b8;
+}
+
+/* Purple */
+.square-btn--purple {
+  @apply bg-pt-purple text-white;
+}
+
+.square-btn--purple:not([disabled]):hover,
+.square-btn--purple:not([disabled]):focus {
+  @apply text-white bg-pt-purple-bright;
+  box-shadow: 0 0 0 3px #4c249f7f;
+}
+
+.square-btn--purple:not([disabled]):active {
+  box-shadow: 0 0 0 2px #4c249f4c;
+}
+
+.square-btn--purple:disabled {
+  background-color: #2b2d6c;
+  color: #8679b8;
+}
+
+/* Orange */
+.square-btn--orange {
+  @apply border-2 border-orange text-orange;
+  background-color: transparent;
+}
+
+.square-btn--orange:not([disabled]):hover,
+.square-btn--orange:not([disabled]):focus {
+  @apply text-orange;
+  box-shadow: 0 0 0 3px rgba(211, 120, 2, 0.363);
+}
+
+.square-btn--orange:not([disabled]):active {
+  box-shadow: 0 0 0 2px rgba(211, 120, 2, 0.171);
+}
+
+.square-btn--orange:disabled {
+  opacity: 50%;
+}
+
+/* ------- Sizes ------- */
+
+.square-btn--sm {
+  @apply py-1 px-2 text-xs;
+}
+
+.square-btn--md {
+  @apply py-2 px-3 text-base;
+}
+
+.square-btn--lg {
+  @apply py-2 px-4 text-xl;
+}

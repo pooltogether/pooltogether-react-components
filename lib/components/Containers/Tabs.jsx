@@ -43,12 +43,11 @@ Tab.defaultProps = {
 }
 
 export const Content = ({ children, className }) => {
-  return <div className={classnames(className, 'py-2 flex')}>{children}</div>
+  return <div className={className}>{children}</div>
 }
 
 export const ContentPane = ({ children, className, isSelected, alwaysPresent }) => {
   let hiddenClassName = 'hidden'
-  let visibleClassName = classnames('flex-1', className)
 
   if (alwaysPresent) {
     hiddenClassName = 'pointer-events-none opacity-0 w-0 flex-shrink'
@@ -58,7 +57,7 @@ export const ContentPane = ({ children, className, isSelected, alwaysPresent }) 
     <div
       className={classnames({
         [hiddenClassName]: !isSelected,
-        [visibleClassName]: isSelected
+        [className]: isSelected
       })}
     >
       {children}

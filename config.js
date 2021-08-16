@@ -19,14 +19,28 @@ const pooltogetherReactTailwindUIConfig = {
     },
     colors: {
       // black: colors.black,
-      white: colors.white,
-      cyan: {},
-      blue: {},
-      green: {},
-      purple: {},
-      orange: {},
-      pink: {},
-      teal: {}
+      'white': colors.white,
+      'cyan': {},
+      'blue': {},
+      'green': {},
+      'purple': {},
+      'orange': {},
+      'pink': {},
+      'teal': {},
+      'pt-teal': {
+        lighter: 'var(--color-pt-teal-lighter)',
+        light: 'var(--color-pt-teal-light)',
+        bright: 'var(--color-pt-teal-bright)',
+        DEFAULT: 'var(--color-pt-teal-default)',
+        dark: 'var(--color-pt-teal-dark)'
+      },
+      'pt-purple': {
+        lighter: 'var(--color-pt-purple-lighter)',
+        light: 'var(--color-pt-purple-light)',
+        bright: 'var(--color-pt-purple-bright)',
+        DEFAULT: 'var(--color-pt-purple-default)',
+        dark: 'var(--color-pt-purple-dark)'
+      }
     },
     extend: {
       backgroundColor: {

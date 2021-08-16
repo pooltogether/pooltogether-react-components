@@ -2,7 +2,7 @@ import VisuallyHidden from '@reach/visually-hidden'
 import React from 'react'
 import FeatherIcon from 'feather-icons-react'
 
-import { Modal } from '../../Modal'
+import { Modal } from '../../..'
 import { WalletInfo } from './WalletInfo'
 import { TransactionsList } from './TransactionsList'
 

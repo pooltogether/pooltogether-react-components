@@ -5,13 +5,13 @@ import postcss from 'rollup-plugin-postcss'
 import replace from '@rollup/plugin-replace'
 import resolve from '@rollup/plugin-node-resolve'
 import alias from '@rollup/plugin-alias'
-import css from 'rollup-plugin-css-porter'
 import json from '@rollup/plugin-json'
 import svgr from '@svgr/rollup'
 import url from '@rollup/plugin-url'
+import typescript from '@rollup/plugin-typescript'
 
 export default {
-  input: 'lib/index.js',
+  input: 'lib/index.ts',
   preserveSymlinks: true,
   output: [
     {
@@ -49,31 +49,31 @@ export default {
     'tailwindcss'
   ],
   plugins: [
+    alias({
+      entries: [{ find: 'lib', replacement: '../../lib' }]
+    }),
+    commonjs(),
+    typescript(),
+    postcss({
+      extract: true
+    }),
     json(),
     url({
       limit: 143360
     }),
     svgr(),
-    postcss({
-      extract: true
-    }),
     babel({
       babelHelpers: 'bundled',
       exclude: 'node_modules/**'
     }),
     resolve({
-      extensions: ['.js', '.jsx']
-    }),
-    commonjs(),
-    alias({
-      entries: [{ find: 'lib', replacement: '../../lib' }]
+      extensions: ['.js', '.jsx', '.ts', '.tsx']
     }),
     replace({
       'exclude': 'node_modules/**',
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
       'preventAssignment': true
     }),
-    css({ minified: false }),
     process.env.NODE_ENV === 'production' && filesize()
   ]
 }

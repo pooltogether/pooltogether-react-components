@@ -75,7 +75,7 @@ BlockExplorerLink.defaultProps = {
   iconClassName: 'h-4 w-4 ml-1 my-auto'
 }
 
-const formatBlockExplorerTxUrl = (tx, networkId) => {
+export const formatBlockExplorerTxUrl = (tx, networkId) => {
   try {
     const blockExplorerUrl = getChain(Number(networkId)).blockExplorerUrls[0]
     return `${blockExplorerUrl}/tx/${tx}`
@@ -84,7 +84,7 @@ const formatBlockExplorerTxUrl = (tx, networkId) => {
   }
 }
 
-const formatBlockExplorerAddressUrl = (address, networkId) => {
+export const formatBlockExplorerAddressUrl = (address, networkId) => {
   try {
     const blockExplorerUrl = getChain(Number(networkId)).blockExplorerUrls[0]
     return `${blockExplorerUrl}/address/${address}`
