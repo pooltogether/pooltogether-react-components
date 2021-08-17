@@ -113,6 +113,9 @@ export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
     '0x391a437196c81eea7bbbbd5ed4df6b49de4f5c96': PT_USDC_SPONSORSHIP,
     '0xfdc192c153044dedb67c5a17b8651951cf70ee4a': PT_XSUSHI_TICKET
   },
+  [NETWORK.rinkeby]: {
+    '0x5592ec0cfb4dbc12d3ab100b257153436a1f0fea': DAI
+  },
   [NETWORK.polygon]: {
     '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270': WMATIC,
     '0x85e16156eb86a134ac6db5754be6c5e1c7f1aa59': PT_USDT_SPONSORSHIP,
