@@ -12,16 +12,17 @@
   --color-pt-teal-default: #35f0d0;
   --color-pt-teal-dark: #0ea3a4;
 
-  --color-pt-purple-lighter: #cdc5df;
-  --color-pt-purple-light: #9f82d7;
-  --color-pt-purple-bright: #5227a7;
-  --color-pt-purple-default: #4c249f;
-  --color-pt-purple-dark: #1a083a;
+  --color-pt-purple-100: #cdc5df;
+  --color-pt-purple-200: #9f82d7;
+  --color-pt-purple-600: #5227a7;
+  --color-pt-purple-700: #4c249f;
+  --color-pt-purple-1900: #290b5a;
+  --color-pt-purple-2000: #1a083a;
 
   /* Old format */
   --color-bg-body: #290b5a;
   --color-bg-card: #341762;
-  --color-bg-card-transparent: #34176200;
+  --color-bg-card-transparent: rgba(52, 23, 98, 0);
   --color-bg-card-selected: #43286e;
   --color-bg-card-purple: #4c249f;
   --color-bg-primary: #290b5a;

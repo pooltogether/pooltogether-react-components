@@ -6,13 +6,12 @@
 
 /* Teal */
 .square-btn--teal {
-  @apply bg-pt-teal text-purple;
+  @apply border-2 border-pt-teal-bright bg-pt-teal text-purple;
 }
 
 .square-btn--teal:not([disabled]):hover,
 .square-btn--teal:not([disabled]):focus {
   @apply text-purple bg-pt-teal-bright;
-
   box-shadow: 0 0 0 3px rgba(53, 240, 208, 0.5);
 }
 
