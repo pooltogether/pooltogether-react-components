@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { useAtom } from 'jotai'
 import { transactionsAtom } from '@pooltogether/hooks'
 
+const deepEqual = require('deep-equal')
+
 const debug = require('debug')('pool-app:TxRefetchListener')
 
 export function TxRefetchListener(props) {
@@ -12,12 +14,13 @@ export function TxRefetchListener(props) {
   const pendingTransactions = transactions.filter((t) => !t.completed && !t.cancelled)
 
   useEffect(() => {
-    if (pendingTransactions.length !== storedPendingTransactions.length) {
+    // Only run this if something actually changed:
+    if (!deepEqual(storedPendingTransactions, pendingTransactions)) {
+      console.log('running checks and storing pending txs')
       setStoredPendingTransactions(pendingTransactions)
+      checkStoredPending(transactions, storedPendingTransactions)
     }
-
-    checkStoredPending(transactions, storedPendingTransactions)
-  }, [pendingTransactions])
+  }, [transactions])
 
   return null
 }
