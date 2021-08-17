@@ -16,7 +16,6 @@ export function TxRefetchListener(props) {
   useEffect(() => {
     // Only run this if something actually changed:
     if (!deepEqual(storedPendingTransactions, pendingTransactions)) {
-      console.log('running checks and storing pending txs')
       setStoredPendingTransactions(pendingTransactions)
       checkStoredPending(transactions, storedPendingTransactions)
     }
