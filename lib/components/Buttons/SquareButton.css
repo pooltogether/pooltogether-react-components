@@ -45,6 +45,7 @@
 .square-btn--teal-outline:disabled {
   @apply border-transparent;
   background-color: #2b2d6c;
+  border-color: #2b2d6c;
   color: #8679b8;
 }
 
@@ -66,6 +67,7 @@
 .square-btn--purple:disabled {
   @apply border-transparent;
   background-color: #2b2d6c;
+  border-color: #2b2d6c;
   color: #8679b8;
 }
 
