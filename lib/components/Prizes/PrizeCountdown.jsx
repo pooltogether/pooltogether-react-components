@@ -16,30 +16,34 @@ export const PrizeCountdown = (props) => {
     textSize,
     prizePeriodSeconds,
     prizePeriodStartedAt,
-    isRngRequested
+    isRngRequested,
+    canStartAward,
+    canCompleteAward
   } = props
   let flashy = props.flashy === false ? false : true
 
-  const { secondsLeft } = usePrizePeriodTimeLeft(prizePeriodSeconds, prizePeriodStartedAt)
+  const { days, hours, minutes, seconds, secondsLeft } = usePrizePeriodTimeLeft(
+    prizePeriodSeconds,
+    prizePeriodStartedAt
+  )
 
-  const currentDate = new Date(Date.now())
-  const futureDate = addSeconds(currentDate, secondsLeft)
-  const { days, hours, minutes, seconds } = subtractDates(futureDate, currentDate)
+  if (isRngRequested || canStartAward || canCompleteAward) {
+    let message = t?.('prizeIsBeingAwarded') || 'Prize is being awarded'
 
-  let msg
-  if (isRngRequested) {
+    if (canStartAward) {
+      message = t?.('prizeCanBeAwarded') || 'Prize can be awarded'
+    }
+
     return (
-      <>
-        <p
-          className={classnames(textSize, 'font-bold', {
-            'text-flashy': flashy,
-            'text-xs xs:text-sm sm:text-xl': !textSize,
-            'text-right': !textAlign
-          })}
-        >
-          {t?.('prizeIsBeingAwarded') || 'Prize is being awarded'}
-        </p>
-      </>
+      <p
+        className={classnames(textSize, 'font-bold', {
+          'text-flashy': flashy,
+          'text-xs xs:text-sm sm:text-xl': !textSize,
+          'text-right': !textAlign
+        })}
+      >
+        {message}
+      </p>
     )
   }
 
@@ -156,7 +160,6 @@ export const PrizeCountdown = (props) => {
             {t?.('countdownSecondShort') || 'SEC'}
           </div>
         </div>
-        {msg}
       </div>
     </>
   )
