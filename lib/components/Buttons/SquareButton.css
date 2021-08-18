@@ -1,12 +1,12 @@
 .square-btn {
-  @apply transition-all font-sans rounded-sm font-semibold leading-normal;
+  @apply border-2 transition-all font-sans rounded-sm font-semibold leading-normal;
 }
 
 /* ------- Themes ------- */
 
 /* Teal */
 .square-btn--teal {
-  @apply bg-pt-teal text-purple;
+  @apply border-pt-teal-bright bg-pt-teal text-purple;
 }
 
 .square-btn--teal:not([disabled]):hover,
@@ -27,7 +27,7 @@
 
 /* Purple */
 .square-btn--purple {
-  @apply border-2 border-pt-purple-bright bg-pt-purple text-white;
+  @apply border-pt-purple-bright bg-pt-purple text-white;
 }
 
 .square-btn--purple:not([disabled]):hover,
@@ -47,7 +47,7 @@
 
 /* Orange */
 .square-btn--orange {
-  @apply border-2 border-orange text-orange;
+  @apply border-orange text-orange;
   background-color: transparent;
 }
 
