@@ -22,6 +22,7 @@
 
 .square-btn--teal:disabled {
   background-color: #2b2d6c;
+  border-color: #2b2d6c;
   color: #8679b8;
 }
 
@@ -42,6 +43,7 @@
 
 .square-btn--purple:disabled {
   background-color: #2b2d6c;
+  border-color: #2b2d6c;
   color: #8679b8;
 }
 
