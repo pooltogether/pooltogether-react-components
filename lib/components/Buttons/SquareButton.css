@@ -1,5 +1,5 @@
 .square-btn {
-  @apply border-2 transition-all font-sans rounded-sm font-semibold leading-normal;
+  @apply border-2 transition-all font-sans rounded-lg font-semibold leading-normal;
 }
 
 /* ------- Themes ------- */
@@ -21,6 +21,29 @@
 }
 
 .square-btn--teal:disabled {
+  @apply border-transparent;
+  background-color: #2b2d6c;
+  color: #8679b8;
+}
+
+/* Teal Outline */
+.square-btn--teal-outline {
+  @apply border-pt-teal-bright text-pt-teal-bright;
+  background-color: transparent;
+}
+
+.square-btn--teal-outline:not([disabled]):hover,
+.square-btn--teal-outline:not([disabled]):focus {
+  @apply text-pt-teal-bright;
+  box-shadow: 0 0 0 3px rgba(53, 240, 208, 0.5);
+}
+
+.square-btn--teal:not([disabled]):active {
+  box-shadow: 0 0 0 2px rgba(53, 240, 208, 0.3);
+}
+
+.square-btn--teal-outline:disabled {
+  @apply border-transparent;
   background-color: #2b2d6c;
   color: #8679b8;
 }
@@ -41,19 +64,19 @@
 }
 
 .square-btn--purple:disabled {
+  @apply border-transparent;
   background-color: #2b2d6c;
   color: #8679b8;
 }
 
 /* Orange */
 .square-btn--orange {
-  @apply border-orange text-orange;
-  background-color: transparent;
+  @apply border-orange text-white bg-orange;
 }
 
 .square-btn--orange:not([disabled]):hover,
 .square-btn--orange:not([disabled]):focus {
-  @apply text-orange;
+  @apply text-white;
   box-shadow: 0 0 0 3px rgba(211, 120, 2, 0.363);
 }
 
@@ -62,6 +85,26 @@
 }
 
 .square-btn--orange:disabled {
+  opacity: 50%;
+}
+
+/* Orange Outline */
+.square-btn--orange-outline {
+  @apply border-orange text-orange;
+  background-color: transparent;
+}
+
+.square-btn--orange-outline:not([disabled]):hover,
+.square-btn--orange-outline:not([disabled]):focus {
+  @apply text-orange;
+  box-shadow: 0 0 0 3px rgba(211, 120, 2, 0.363);
+}
+
+.square-btn--orange-outline:not([disabled]):active {
+  box-shadow: 0 0 0 2px rgba(211, 120, 2, 0.171);
+}
+
+.square-btn--orange-outline:disabled {
   opacity: 50%;
 }
 

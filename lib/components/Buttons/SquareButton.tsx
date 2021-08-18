@@ -4,8 +4,11 @@ import './SquareButton.css'
 
 export enum SquareButtonTheme {
   teal = 'teal',
+  tealOutline = 'tealOutline',
   purple = 'purple',
+  purpleOutline = 'purpleOutline',
   orange = 'orange'
+  orangeOutline = 'orangeOutline'
 }
 
 export enum SquareButtonSize {
@@ -50,11 +53,20 @@ const getThemeClassName = (theme: SquareButtonTheme): string => {
     case SquareButtonTheme.teal: {
       return 'square-btn--teal'
     }
+    case SquareButtonTheme.tealOutline: {
+      return 'square-btn--teal-outline'
+    }
     case SquareButtonTheme.purple: {
       return 'square-btn--purple'
     }
+    case SquareButtonTheme.purpleOutline: {
+      return 'square-btn--purple-outline'
+    }
     case SquareButtonTheme.orange: {
       return 'square-btn--orange'
+    }
+    case SquareButtonTheme.orangeOutline: {
+      return 'square-btn--orange-outline'
     }
   }
 }
