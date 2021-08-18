@@ -27,7 +27,7 @@
 
 /* Purple */
 .square-btn--purple {
-  @apply bg-pt-purple text-white;
+  @apply border-2 border-pt-purple-bright bg-pt-purple text-white;
 }
 
 .square-btn--purple:not([disabled]):hover,
