@@ -7,7 +7,7 @@ export enum SquareButtonTheme {
   tealOutline = 'tealOutline',
   purple = 'purple',
   purpleOutline = 'purpleOutline',
-  orange = 'orange'
+  orange = 'orange',
   orangeOutline = 'orangeOutline'
 }
 

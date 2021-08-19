@@ -65,6 +65,7 @@ export * from './components/Navigation/BottomNavLink'
 export * from './components/Navigation/SideNavContainer'
 export * from './components/Navigation/SideNavLink'
 export * from './components/Navigation/SocialLinks'
+export * from './components/Navigation/NavPoolBalance'
 
 // PageHeader
 export * from './components/PageHeader/Settings/index'
