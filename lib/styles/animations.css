@@ -289,7 +289,7 @@
 }
 
 .spinningCoin {
-  animation: coinSpin 5s ease-in-out 3s infinite;
+  animation: coinSpin 4s cubic-bezier(0.88, 0.04, 0.17, 1) 10s infinite;
 }
 
 @keyframes coinSpin {
