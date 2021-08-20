@@ -18,7 +18,7 @@ import {
 
 import { GOVERNANCE_CONTRACT_ADDRESSES } from '../../../lib/constants'
 
-import Squiggle from 'assets/images/squiggle.svg'
+import Squiggle from '../../assets/Misc/squiggle.svg'
 
 const P_POOL_ADDRESS = '0x396b4489da692788e327e2e4b2b0459a5ef26791'
 
