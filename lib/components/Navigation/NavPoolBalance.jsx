@@ -2,14 +2,17 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import classnames from 'classnames'
 import { useTranslation } from 'react-i18next'
-import { numberWithCommas } from '@pooltogether/utilities'
+import { NETWORK, numberWithCommas } from '@pooltogether/utilities'
 import { Modal, PoolIcon, ButtonLink } from '@pooltogether/react-components'
 import {
   useCoingeckoTokenData,
+  useClaimableTokenFromTokenFaucets,
+  useRetroactivePoolClaimData,
   useTotalClaimablePool,
   useGovernanceChainId,
   useUsersAddress,
   usePoolTokenData,
+  useTokenHolder,
   useUserTicketsFormattedByPool
 } from '@pooltogether/hooks'
 
@@ -51,29 +54,62 @@ const PoolBalanceModal = (props) => {
   const { t } = useTranslation()
 
   const { isOpen, closeModal, tokenData } = props
-  const { usersBalance, totalSupply } = tokenData
+  const { usersBalanceBN, usersBalance, totalSupply } = tokenData
 
   const chainId = useGovernanceChainId()
-
   const usersAddress = useUsersAddress()
 
-  const { total: totalClaimablePool } = useTotalClaimablePool(usersAddress)
-
-  const totalClaimablePoolFormatted = numberWithCommas(totalClaimablePool)
-  const balanceFormatted = numberWithCommas(usersBalance)
+  // TOKEN DATA
   const totalSupplyFormatted = numberWithCommas(totalSupply)
 
   const tokenAddress = GOVERNANCE_CONTRACT_ADDRESSES[chainId]?.GovernanceToken
   const { data: tokenInfo } = useCoingeckoTokenData(chainId, tokenAddress)
   const inCirculationFormatted = numberWithCommas(tokenInfo?.market_data?.circulating_supply)
 
+  // USERS DATA
+  const zeroBn = ethers.BigNumber.from(0)
+
+  // Claimable
+  const poolTokenAddress = GOVERNANCE_CONTRACT_ADDRESSES[chainId].GovernanceToken.toLowerCase()
+  const { data: retroPoolClaimData } = useRetroactivePoolClaimData(usersAddress)
+  const { data: claimableFromTokenFaucets } = useClaimableTokenFromTokenFaucets(
+    NETWORK.mainnet,
+    usersAddress
+  )
+  let totalClaimablePool =
+    claimableFromTokenFaucets?.totals?.[poolTokenAddress]?.totalClaimableAmountUnformatted || zeroBn
+  if (retroPoolClaimData?.amount && !retroPoolClaimData.isClaimed) {
+    totalClaimablePool = totalClaimablePool.add(retroPoolClaimData.amount)
+  }
+  const totalClaimablePoolFormatted =
+    numberWithCommas(ethers.utils.formatEther(totalClaimablePool)) || '0.00'
+
+  // POOL Balance
+  const balanceFormatted = usersBalance ? numberWithCommas(usersBalance) : '0.00'
+
+  // pPOOL Balance
   const { data: playerDepositData } = useUserTicketsFormattedByPool(usersAddress)
   const pPoolPlayerDepositData = playerDepositData?.find(
     (depositData) => depositData.poolAddress === P_POOL_ADDRESS
   )
-  const pPoolBalanceFormatted = numberWithCommas(pPoolPlayerDepositData?.total.amount)
+  const pPoolBalance = pPoolPlayerDepositData?.total.amountUnformatted || zeroBn
+  const pPoolBalanceFormatted = numberWithCommas(pPoolBalance)
 
-  const delegatedBalanceFormatted = numberWithCommas(tokenInfo?.market_data?.circulating_supply)
+  // DELEGATED Balance
+  // let blockNumber
+  // if (readProvider?.getBlockNumber) {
+  //   const blockNumber = await readProvider.getBlockNumber()
+  //   const block = await readProvider.getBlock(blockNumber)
+  // }
+  // const blockNumber = getBlockNumber()
+  const blockNumber = 'latest'
+  const { data: tokenHolder } = useTokenHolder(usersAddress, blockNumber)
+  console.log({ tokenHolder })
+
+  const delegatedBalance = tokenHolder?.delegatedVotes || zeroBn
+  const delegatedBalanceFormatted = numberWithCommas(delegatedBalance || zeroBn)
+
+  const totalPool = delegatedBalance.add(pPoolBalance).add(usersBalanceBN).add(totalClaimablePool)
 
   const openClaimRewards = (e) => {
     closeModal()
@@ -90,8 +126,10 @@ const PoolBalanceModal = (props) => {
         <div className='flex mx-auto'>
           <PoolIcon className='shadow-xl w-28 h-28 spinningCoin' />
           <div className='flex flex-col ml-8 justify-center mr-8 leading-none'>
-            <h2>{numberWithCommas(usersBalance)}</h2>
-            <span className='font-bold text-accent-1 mt-1'>{t('total')} POOL</span>
+            <h2>{numberWithCommas(totalPool)}</h2>
+            <span className='font-bold text-accent-1 mt-1 uppercase'>
+              {t('totalPool', 'Total POOL')}
+            </span>
           </div>
         </div>
         <div className='bg-body p-4 rounded-xl mt-8'>
@@ -101,12 +139,12 @@ const PoolBalanceModal = (props) => {
           </div>
 
           <div className='flex justify-between'>
-            <span className='text-accent-1'>{t('delegated')}:</span>
+            <span className='text-accent-1'>{t('delegatedToYou', 'Delegated to you')}:</span>
             <span className='font-bold'>{delegatedBalanceFormatted}</span>
           </div>
 
           <div className='flex justify-between'>
-            <span className='text-accent-1'>{t('pPOOL')}:</span>
+            <span className='text-accent-1'>{t('pPOOL', 'pPOOL balance')}:</span>
             <span className='font-bold'>{pPoolBalanceFormatted}</span>
           </div>
 
@@ -115,7 +153,7 @@ const PoolBalanceModal = (props) => {
             <span className='font-bold'>{totalClaimablePoolFormatted}</span>
           </div>
 
-          <img src={Squiggle} className='mx-auto my-2' />
+          <img src={Squiggle} className='mx-auto mt-4 mb-3' />
 
           <div className='flex justify-between'>
             <span className='text-accent-1'>{t('inCirculation')}:</span>
