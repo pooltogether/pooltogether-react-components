@@ -8,7 +8,6 @@ import {
   useCoingeckoTokenData,
   useClaimableTokenFromTokenFaucets,
   useRetroactivePoolClaimData,
-  useTotalClaimablePool,
   useGovernanceChainId,
   useUsersAddress,
   usePoolTokenData,
@@ -106,7 +105,9 @@ const PoolBalanceModal = (props) => {
   const { data: tokenHolder } = useTokenHolder(usersAddress, blockNumber)
   console.log({ tokenHolder })
 
-  const delegatedBalance = tokenHolder?.delegatedVotes || zeroBn
+  const delegatedBalance = tokenHolder?.delegatedVotes
+    ? ethers.utils.parseEther(tokenHolder?.delegatedVotes)
+    : zeroBn
   const delegatedBalanceFormatted = numberWithCommas(delegatedBalance || zeroBn)
 
   const totalPool = delegatedBalance.add(pPoolBalance).add(usersBalanceBN).add(totalClaimablePool)
