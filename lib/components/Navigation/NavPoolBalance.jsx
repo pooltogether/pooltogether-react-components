@@ -95,15 +95,8 @@ const PoolBalanceModal = (props) => {
   const pPoolBalanceFormatted = numberWithCommas(pPoolBalance)
 
   // DELEGATED Balance
-  // let blockNumber
-  // if (readProvider?.getBlockNumber) {
-  //   const blockNumber = await readProvider.getBlockNumber()
-  //   const block = await readProvider.getBlock(blockNumber)
-  // }
-  // const blockNumber = getBlockNumber()
   const blockNumber = 'latest'
   const { data: tokenHolder } = useTokenHolder(usersAddress, blockNumber)
-  console.log({ tokenHolder })
 
   const delegatedBalance = tokenHolder?.delegatedVotes
     ? ethers.utils.parseEther(tokenHolder?.delegatedVotes)
