@@ -18,7 +18,8 @@ export const PrizeCountdown = (props) => {
     prizePeriodStartedAt,
     isRngRequested,
     canStartAward,
-    canCompleteAward
+    canCompleteAward,
+    className
   } = props
   let flashy = props.flashy === false ? false : true
 
@@ -36,7 +37,7 @@ export const PrizeCountdown = (props) => {
 
     return (
       <p
-        className={classnames(textSize, 'font-bold', {
+        className={classnames(textSize, className, 'font-bold', {
           'text-flashy': flashy,
           'text-xs xs:text-sm sm:text-xl': !textSize,
           'text-right': !textAlign
@@ -93,7 +94,7 @@ export const PrizeCountdown = (props) => {
   return (
     <>
       <div
-        className={classnames(textSize, 'flex text-center', {
+        className={classnames(textSize, className, 'flex text-center', {
           'justify-center': center,
           'text-sm xs:text-xs sm:text-base': !textSize
         })}
