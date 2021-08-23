@@ -27,15 +27,20 @@ export const Tooltip = (props) => {
 
   return (
     <>
-      <span
-        data-tip
-        data-for={`${id}-tooltip`}
-        className={classnames('inline cursor-pointer', className)}
-      >
-        {children || (
-          <FeatherIcon icon='info' className={classnames(iconSizeClassName, iconClassName)} />
-        )}
-      </span>
+      {children ? (
+        React.cloneElement(children, {
+          'className': 'cursor-pointer',
+          'data-tip': true,
+          'data-for': `${id}-tooltip`
+        })
+      ) : (
+        <FeatherIcon
+          icon='info'
+          data-tip
+          data-for={`${id}-tooltip`}
+          className={classnames(iconSizeClassName, iconClassName, className)}
+        />
+      )}
       <ReactTooltip
         clickable
         ref={ref}

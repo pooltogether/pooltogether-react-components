@@ -12,6 +12,7 @@ import TreasuryIcon from '../../assets/Socials/treasury.svg'
 import MediumLogo from '../../assets/Socials/medium-logo.svg'
 import DiscordLogo from '../../assets/Socials/discord-logo.svg'
 import TwitterLogo from '../../assets/Socials/twitter-logo.svg'
+import TelegramLogo from '../../assets/Socials/telegram-logo.svg'
 
 const sharedClasses =
   'relative leading-none w-full flex justify-start items-center text-accent-4 hover:text-highlight-2 py-2 px-6 trans outline-none focus:outline-none active:outline-none mb-1 ml-3 lg:ml-0 h-10'
@@ -53,6 +54,11 @@ const socialsLinkData = [
         href: 'https://twitter.com/PoolTogether_',
         label: 'Twitter',
         icon: <img src={TwitterLogo} className='w-4 opacity-50 mx-auto' />
+      },
+      {
+        href: 'https://t.me/PoolTogetherCommunity',
+        label: 'Telegram',
+        icon: <img src={TelegramLogo} className='w-4 opacity-50 mx-auto hover:opacity-100 trans' />
       },
       {
         href: 'https://discord.gg/hxPhPDW',
