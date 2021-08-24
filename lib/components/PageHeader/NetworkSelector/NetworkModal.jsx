@@ -14,10 +14,12 @@ import { Tooltip, Modal, NetworkIcon } from '../../..'
 export const NetworkModal = (props) => {
   const { t, isOpen, closeModal, supportedNetworks } = props
 
-  const { network: chainId } = useOnboard()
+  const { network: chainId, provider, onboard } = useOnboard()
   const isWalletMetamask = useIsWalletMetamask()
   const currentNetworkName = getNetworkNiceNameByChainId(chainId)
   const isWalletOnSupportedNetwork = useIsWalletOnSupportedNetwork(supportedNetworks)
+
+  console.log(provider)
 
   if (isWalletMetamask) {
     return (
@@ -43,6 +45,33 @@ export const NetworkModal = (props) => {
 
   return (
     <Modal isOpen={isOpen} closeModal={closeModal} label='network modal'>
+      <button
+        onClick={async () => {
+          try {
+            const pgon = 137
+            console.log(provider, {
+              approved: false,
+              chainId: '0x' + pgon.toString(16),
+              accounts: provider?.provider.accounts
+            })
+            await provider?.provider.request({
+              method: 'wc_sessionUpdate',
+              params: [
+                {
+                  approved: true,
+                  chainId: 137,
+                  accounts: provider?.provider.accounts
+                }
+              ]
+            })
+          } catch (e) {
+            // Could not switch networks so proceed as normal through the checks
+            console.log("Can't switch", e)
+          }
+        }}
+      >
+        Try to change
+      </button>
       <Container>
         <Header>{t?.('supportedNetworks') || 'Suported Networks'}</Header>
         <Description>
