@@ -1,7 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import { SECONDS_PER_DAY } from '@pooltogether/current-pool-data'
 import { TokenIcon, PrizeFrequencyChip } from '..'
 
 // TODO: split into two components: 'PageTitle' and a separate 'Breadcrumbs'
@@ -17,8 +16,6 @@ export const PageTitleAndBreadcrumbs = (props) => {
     description,
     showPrizeFrequencyChip
   } = props
-
-  const isDaily = pool?.prize?.prizePeriodSeconds == SECONDS_PER_DAY.toString()
 
   const crumbJsx = (
     <div

@@ -67,7 +67,7 @@ const Header = (props) => <h5 className='text-accent-1'>{props.children}</h5>
 const Description = (props) => <p className='mb-4 text-sm text-accent-1'>{props.children}</p>
 const CurrentlyConnectedTo = (props) => (
   <p className='text-xxxs mt-auto'>
-    {props.t?.('currentlyConnectedTo') || 'Currently connected to:'}
+    {props.t?.('currentlyConnectedTo') || 'Currently connected to:'}{' '}
     <b className={classnames({ 'ml-1 text-red': !props.isWalletOnSupportedNetwork })}>
       {props.currentNetworkName}
     </b>

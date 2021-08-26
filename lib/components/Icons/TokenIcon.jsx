@@ -36,6 +36,8 @@ TokenIcon.defaultProps = {
 
 // TODO: Import all images from the builder
 
+import CUSD from '../../assets/Tokens/cusd.png'
+import CEUR from '../../assets/Tokens/ceur.png'
 import ARTO from '../../assets/Tokens/arto.png'
 import RAI from '../../assets/Tokens/rai.png'
 import BNB from '../../assets/Tokens/bnb.svg'
@@ -126,5 +128,9 @@ export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
     '0xe9e7cea3dedca5984780bafc599bd69add087d56': BUSD,
     '0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c': BNB,
     '0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82': CAKE
+  },
+  [NETWORK.celo]: {
+    '0x765de816845861e75a25fca122bb6898b8b1282a': CUSD,
+    '0xd8763cba276a3738e6de85b4b3bf5fded6d6ca73': CEUR
   }
 })

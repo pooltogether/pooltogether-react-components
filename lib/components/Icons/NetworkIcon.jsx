@@ -9,6 +9,7 @@ import BscLogo from '../../assets/Networks/bsc-icon.png'
 import PoALogo from '../../assets/Networks/poa-icon.png'
 import XDaiLogo from '../../assets/Networks/xdai-icon.png'
 import PolygonLogo from '../../assets/Networks/polygon-icon.png'
+import CeloColoredLogo from '../../assets/Networks/celo-colored.png'
 
 export const NetworkIcon = (props) => {
   const { sizeClassName, className, chainId, onClick } = props
@@ -18,7 +19,7 @@ export const NetworkIcon = (props) => {
   return (
     <img
       src={src}
-      className={classnames('inline-block', className, sizeClassName)}
+      className={classnames('rounded-full inline-block', className, sizeClassName)}
       onClick={onClick}
     />
   )
@@ -36,5 +37,6 @@ export const NETWORK_MAPPING = Object.freeze({
   [NETWORK.bsc]: BscLogo,
   [NETWORK.poa]: PoALogo,
   [NETWORK.xdai]: XDaiLogo,
-  [NETWORK.polygon]: PolygonLogo
+  [NETWORK.polygon]: PolygonLogo,
+  [NETWORK.celo]: CeloColoredLogo
 })
