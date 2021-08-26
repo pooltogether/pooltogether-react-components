@@ -18,6 +18,7 @@ export const TokenIcon = (props) => {
         src={src}
         className={classnames('inline-block rounded-full', className, sizeClassName)}
         onClick={onClick}
+        alt={`token icon`}
       />
     )
   }
@@ -36,6 +37,7 @@ TokenIcon.defaultProps = {
 
 // TODO: Import all images from the builder
 
+import CELO from '../../assets/Tokens/celo-orange.png'
 import CUSD from '../../assets/Tokens/cusd.png'
 import CEUR from '../../assets/Tokens/ceur.png'
 import ARTO from '../../assets/Tokens/arto.png'
@@ -131,6 +133,7 @@ export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
   },
   [NETWORK.celo]: {
     '0x765de816845861e75a25fca122bb6898b8b1282a': CUSD,
-    '0xd8763cba276a3738e6de85b4b3bf5fded6d6ca73': CEUR
+    '0xd8763cba276a3738e6de85b4b3bf5fded6d6ca73': CEUR,
+    '0x471ece3750da237f93b8e339c536989b8978a438': CELO
   }
 })
