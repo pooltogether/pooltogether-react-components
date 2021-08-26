@@ -7,9 +7,9 @@ import {
   useIsWalletOnNetwork,
   useIsWalletOnSupportedNetwork
 } from '@pooltogether/hooks'
-import { ETHEREUM_NETWORKS, getNetworkNiceNameByChainId } from '@pooltogether/utilities'
+import { getNetworkNiceNameByChainId } from '@pooltogether/utilities'
 
-import { Tooltip, Modal, NetworkIcon } from '../../..'
+import { Modal, NetworkIcon } from '../../..'
 
 export const NetworkModal = (props) => {
   const { t, isOpen, closeModal, supportedNetworks } = props
@@ -94,42 +94,24 @@ const NetworkItem = (props) => {
 }
 
 const NetworkButton = (props) => {
-  const { chainId, t } = props
+  const { chainId } = props
 
   const isCurrentNetwork = useIsWalletOnNetwork(chainId)
   const networkName = getNetworkNiceNameByChainId(chainId)
   const addNetwork = useAddNetworkToMetamask(chainId)
-
-  const disabled = ETHEREUM_NETWORKS.includes(chainId)
-  let toolTip
-  if (disabled) {
-    toolTip =
-      t?.('manuallyChangeNetwork') || 'You have to manually switch to this network with your wallet'
-  }
 
   return (
     <div className='flex mb-4 last:mb-0'>
       <button
         className={classnames('w-full flex justify-center py-2 rounded trans', {
           'pool-gradient-1 text-white hover:text-white': isCurrentNetwork,
-          'bg-body border border-body hover:border-accent-3': !isCurrentNetwork && !disabled,
-          'bg-body': !isCurrentNetwork && disabled,
-          '': disabled
+          'bg-body border border-body hover:border-accent-3': !isCurrentNetwork
         })}
         type='button'
         onClick={addNetwork}
-        disabled={disabled}
       >
         <NetworkIcon chainId={chainId} className='mr-2' />
         <span className='my-auto'>{networkName}</span>
-        {toolTip && (
-          <Tooltip
-            tip={toolTip}
-            id={`${chainId}-network-button`}
-            className='flex'
-            iconClassName='mx-2 my-auto'
-          />
-        )}
       </button>
     </div>
   )
