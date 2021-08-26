@@ -1,10 +1,9 @@
 import React from 'react'
 import classnames from 'classnames'
 import { getChain } from '@pooltogether/evm-chains-extended'
-import { NETWORK, shorten as shortenHash } from '@pooltogether/utilities'
+import { shorten as shortenHash } from '@pooltogether/utilities'
 
 import { CopyIcon } from '../Icons/CopyIcon'
-import { LinkIcon } from '../Icons/LinkIcon'
 import { ExternalLink, LinkTheme } from './ExternalLink'
 
 export const BlockExplorerLink = (props) => {
