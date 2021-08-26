@@ -580,3 +580,12 @@ a {
 .accordion-motion-content {
   overflow: hidden;
 }
+
+.filters-width-hover .filter-icons {
+  transition: all 0.3s ease-in-out;
+  width: 64px;
+}
+
+.filters-width-hover:hover .filter-icons {
+  width: 128px;
+}
