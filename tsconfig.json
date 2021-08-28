@@ -6,9 +6,9 @@
     "strict": false,
     "esModuleInterop": true,
     "outDir": "dist",
-    "resolveJsonModule": true,
     "inlineSourceMap": true,
     "skipLibCheck": true,
-    "declaration": true
+    "declaration": true,
+    "moduleResolution": "Node"
   }
 }

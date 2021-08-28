@@ -18,7 +18,7 @@ const pooltogetherReactTailwindUIConfig = {
       lg: '1481px'
     },
     colors: {
-      // black: colors.black,
+      'actually-black': colors.black,
       'white': colors.white,
       'cyan': {},
       'blue': {},
