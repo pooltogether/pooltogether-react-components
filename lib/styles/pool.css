@@ -583,7 +583,7 @@ a {
 
 .filters-width-hover .filter-icons {
   transition: all 0.3s ease-in-out;
-  width: 64px;
+  width: 85px;
 }
 
 .filters-width-hover:hover .filter-icons {
