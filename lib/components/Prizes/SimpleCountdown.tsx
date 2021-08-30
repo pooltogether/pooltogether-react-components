@@ -14,6 +14,8 @@ export const SimpleCountDown = (props: SimpleCountDownProps) => {
   const minutesString = getTimeString(t, 'minute', minutes)
   const secondsString = getTimeString(t, 'second', seconds)
 
+  console.log(initialSecondsLeft, days, hours, minutes, seconds)
+
   if (days > 0) {
     if (hours > 0) {
       return <>{`${dayString} ${hoursString}`}</>
