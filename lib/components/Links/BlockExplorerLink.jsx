@@ -31,6 +31,25 @@ export const BlockExplorerLink = (props) => {
 
   const display = txHash || address
 
+  const defaultText = (
+    <div className='flex'>
+      <span
+        className={classnames('inline-block', {
+          'sm:hidden': !shorten
+        })}
+      >
+        {shortenHash(display)}
+      </span>
+      <span
+        className={classnames('hidden', {
+          'sm:inline-block': !shorten
+        })}
+      >
+        {!noText && display}
+      </span>
+    </div>
+  )
+
   return (
     <>
       <ExternalLink
@@ -42,24 +61,7 @@ export const BlockExplorerLink = (props) => {
         iconClassName={iconClassName}
         title='View on Block Explorer'
       >
-        {children || (
-          <div className='flex'>
-            <span
-              className={classnames('inline-block', {
-                'sm:hidden': !shorten
-              })}
-            >
-              {shortenHash(display)}
-            </span>
-            <span
-              className={classnames('hidden', {
-                'sm:inline-block': !shorten
-              })}
-            >
-              {!noText && display}
-            </span>
-          </div>
-        )}
+        {!noText && (children || defaultText)}
       </ExternalLink>
       {copyable && <CopyIcon className='ml-2 my-auto' text={display} />}
     </>
