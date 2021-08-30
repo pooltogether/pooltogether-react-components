@@ -77,6 +77,8 @@ import UNI_V2_LP_POOL from '../../assets/Tokens/uni-v2-lp-pool.png'
 import WMATIC from '../../assets/Tokens/wmatic.png'
 import PT_USDT_TICKET from '../../assets/Tokens/pt-usdt.png'
 import PT_USDT_SPONSORSHIP from '../../assets/Tokens/pt-usdt-sponsorship.png'
+import PT_CELO_USD_TICKET from '../../assets/Tokens/pt-celo-usd-ticket.png'
+import PT_CELO_EUR_TICKET from '../../assets/Tokens/pt-celo-eur-ticket.png'
 
 /**
  * Sometimes the CoinGecko images aren't the prettiest
@@ -134,6 +136,8 @@ export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
   [NETWORK.celo]: {
     '0x765de816845861e75a25fca122bb6898b8b1282a': CUSD,
     '0xd8763cba276a3738e6de85b4b3bf5fded6d6ca73': CEUR,
-    '0x471ece3750da237f93b8e339c536989b8978a438': CELO
+    '0x471ece3750da237f93b8e339c536989b8978a438': CELO,
+    '0xddbdbe029f9800f7c49764f15a1a1e55755648e4': PT_CELO_EUR_TICKET,
+    '0xa45ba19df569d536251ce65dd3120bf7873e14ec': PT_CELO_USD_TICKET
   }
 })
