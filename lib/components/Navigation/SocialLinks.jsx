@@ -56,7 +56,7 @@ const socialsLinkData = [
         icon: <img src={TwitterLogo} className='w-4 opacity-50 mx-auto' />
       },
       {
-        href: 'https://t.me/PoolTogetherCommunity',
+        href: 'https://t.me/PoolTogetherTelegram',
         label: 'Telegram',
         icon: <img src={TelegramLogo} className='w-4 opacity-50 mx-auto hover:opacity-100 trans' />
       },
