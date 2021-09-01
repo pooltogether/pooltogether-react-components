@@ -297,6 +297,7 @@ const pooltogetherReactTailwindUIConfig = {
     textColor: ['hover', 'focus', 'active'],
     backgroundColor: ['hover', 'focus', 'active', 'responsive'],
     borderRadius: ['responsive'],
+    borderWidth: ['hover'],
     opacity: ['hover', 'focus']
   },
   plugins: [],
