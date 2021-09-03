@@ -8,7 +8,10 @@ export const TokenIcon = (props) => {
 
   const { data: tokenImage, isFetched } = useCoingeckoTokenImage(chainId, address)
 
-  const imageOverride = TOKEN_IMAGE_OVERRIDES?.[chainId]?.[address.toLowerCase()]
+  const imageOverride = getParameterCaseInsensitive(
+    TOKEN_IMAGE_OVERRIDES?.[chainId],
+    address.toLowerCase()
+  )
 
   if (imageOverride || (isFetched && tokenImage)) {
     const src = imageOverride || tokenImage
@@ -126,7 +129,9 @@ export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
     '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270': WMATIC,
     '0x85e16156eb86a134ac6db5754be6c5e1c7f1aa59': PT_USDT_SPONSORSHIP,
     '0x9ecb26631098973834925eb453de1908ea4bdd4e': PT_USDT_TICKET,
-    '0xc2132d05d31c914a87c6611c10748aeb04b58e8f': USDT
+    '0xc2132d05d31c914a87c6611c10748aeb04b58e8f': USDT,
+    '0x25788a1a171ec66da6502f9975a15b609ff54cf6': POOL,
+    '0x19c0e557ee5a9b456f613ba3d025a4dc45b52c35': PT_USDC_SPONSORSHIP
   },
   [NETWORK.bsc]: {
     '0xe9e7cea3dedca5984780bafc599bd69add087d56': BUSD,
@@ -141,3 +146,14 @@ export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
     '0xa45ba19df569d536251ce65dd3120bf7873e14ec': PT_CELO_USD_TICKET
   }
 })
+
+/**
+ * @param {Object} object
+ * @param {string} key
+ * @return {any} value
+ *
+ * Allows you to not worry about putting keys in the TOKEN_IMAGE_OVERRIDES object checksummed or lowercase
+ */
+function getParameterCaseInsensitive(object, key) {
+  return object?.[Object.keys(object).find((k) => k.toLowerCase() === key.toLowerCase())]
+}
