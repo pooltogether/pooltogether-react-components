@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import classnames from 'classnames'
 import FeatherIcon from 'feather-icons-react'
 import Dialog from '@reach/dialog'

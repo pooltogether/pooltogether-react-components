@@ -17,7 +17,7 @@ export enum SquareButtonSize {
   lg = 'lg'
 }
 
-interface SquareButtonProps
+export interface SquareButtonProps
   extends React.DetailedHTMLProps<
     React.ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement

@@ -38,5 +38,6 @@ export const NETWORK_MAPPING = Object.freeze({
   [NETWORK.poa]: PoALogo,
   [NETWORK.xdai]: XDaiLogo,
   [NETWORK.polygon]: PolygonLogo,
+  [NETWORK.mumbai]: PolygonLogo,
   [NETWORK.celo]: CeloColoredLogo
 })

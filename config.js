@@ -292,8 +292,9 @@ const pooltogetherReactTailwindUIConfig = {
     }
   },
   variants: {
-    margin: ['responsive', 'last'],
-    borderColor: ['hover', 'focus', 'active'],
+    margin: ['responsive', 'last', 'first'],
+    padding: ['last'],
+    borderColor: ['hover', 'focus', 'active', 'last'],
     textColor: ['hover', 'focus', 'active'],
     backgroundColor: ['hover', 'focus', 'active', 'responsive'],
     borderRadius: ['responsive'],
