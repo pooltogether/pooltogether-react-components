@@ -26,7 +26,7 @@ export { CountBadge } from './components/Containers/CountBadge'
 export { Tabs, Tab, Content, ContentPane } from './components/Containers/Tabs'
 export { TicketRow } from './components/Containers/TicketRow'
 export { TipBanner } from './components/Containers/TipBanner'
-export { Tooltip } from './components/Containers/Tooltip'
+export * from './components/Containers/Tooltip'
 
 // Icons
 export { CopyIcon } from './components/Icons/CopyIcon'

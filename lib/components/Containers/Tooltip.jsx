@@ -3,6 +3,15 @@ import ReactTooltip from 'react-tooltip'
 import FeatherIcon from 'feather-icons-react'
 import classnames from 'classnames'
 
+export const overrideToolTipPosition = ({ left, top }, currentEvent, currentTarget, node) => {
+  const d = document.documentElement
+  left = Math.min(d.clientWidth - node.clientWidth, left)
+  top = Math.min(d.clientHeight - node.clientHeight, top)
+  left = Math.max(0, left)
+  top = Math.max(0, top)
+  return { top, left }
+}
+
 export const Tooltip = (props) => {
   const {
     children,
@@ -48,14 +57,7 @@ export const Tooltip = (props) => {
           'p-1 xs:p-2 max-w-3/4 sm:max-w-sm text-center leading-relaxed font-normal',
           toolTipClassName
         )}
-        overridePosition={({ left, top }, currentEvent, currentTarget, node) => {
-          const d = document.documentElement
-          left = Math.min(d.clientWidth - node.clientWidth, left)
-          top = Math.min(d.clientHeight - node.clientHeight, top)
-          left = Math.max(0, left)
-          top = Math.max(0, top)
-          return { top, left }
-        }}
+        overridePosition={overrideToolTipPosition}
       >
         <>
           <button
