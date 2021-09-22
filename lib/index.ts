@@ -10,7 +10,8 @@
 export {
   SquareButtonTheme,
   SquareButtonSize,
-  SquareButton
+  SquareButton,
+  SquareLink
 } from './components/Buttons/SquareButton'
 export { Button } from './components/Buttons/Button'
 

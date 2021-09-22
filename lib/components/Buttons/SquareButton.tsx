@@ -47,6 +47,36 @@ SquareButton.defaultProps = {
   size: SquareButtonSize.md
 }
 
+interface SquareLinkProps
+  extends React.DetailedHTMLProps<
+    React.AnchorHTMLAttributes<HTMLAnchorElement>,
+    HTMLAnchorElement
+  > {
+  theme?: SquareButtonTheme
+  size?: SquareButtonSize
+}
+
+export const SquareLink: React.FC<SquareLinkProps> = (props) => {
+  const { theme, size, className, ...buttonProps } = props
+
+  return (
+    <a
+      className={classNames(
+        'square-btn',
+        getThemeClassName(theme),
+        getSizeClassName(size),
+        className
+      )}
+      {...buttonProps}
+    />
+  )
+}
+
+SquareLink.defaultProps = {
+  theme: SquareButtonTheme.teal,
+  size: SquareButtonSize.md
+}
+
 const getThemeClassName = (theme: SquareButtonTheme): string => {
   switch (theme) {
     default:
