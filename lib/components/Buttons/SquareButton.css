@@ -110,6 +110,31 @@
   opacity: 50%;
 }
 
+/* Black */
+.square-btn--black {
+  @apply text-white;
+  background-color: rgb(23, 2, 33);
+  border-color: rgba(23, 2, 33, 0.7);
+}
+
+.square-btn--black:not([disabled]):hover,
+.square-btn--black:not([disabled]):focus {
+  @apply text-white;
+
+  background-color: rgb(23, 2, 33);
+  box-shadow: 0 0 0 3px rgba(23, 2, 33, 0.2);
+}
+
+.square-btn--black:not([disabled]):active {
+  box-shadow: 0 0 0 2px rgba(23, 2, 33, 0.1);
+}
+
+.square-btn--black:disabled {
+  @apply border-transparent;
+  background-color: #1e012f;
+  color: #7a6d82;
+}
+
 /* ------- Sizes ------- */
 
 .square-btn--sm {

@@ -1,5 +1,7 @@
-import classNames from 'classnames'
 import React from 'react'
+import FeatherIcon from 'feather-icons-react'
+import classnames from 'classnames'
+
 import './SquareButton.css'
 
 export enum SquareButtonTheme {
@@ -8,7 +10,9 @@ export enum SquareButtonTheme {
   purple = 'purple',
   purpleOutline = 'purpleOutline',
   orange = 'orange',
-  orangeOutline = 'orangeOutline'
+  orangeOutline = 'orangeOutline',
+  black = 'black',
+  blackOutline = 'blackOutline'
 }
 
 export enum SquareButtonSize {
@@ -24,6 +28,7 @@ interface SquareButtonProps
   > {
   theme?: SquareButtonTheme
   size?: SquareButtonSize
+  chevron?: boolean
 }
 
 export const SquareButton: React.FC<SquareButtonProps> = (props) => {
@@ -31,7 +36,7 @@ export const SquareButton: React.FC<SquareButtonProps> = (props) => {
 
   return (
     <button
-      className={classNames(
+      className={classnames(
         'square-btn',
         getThemeClassName(theme),
         getSizeClassName(size),
@@ -54,27 +59,51 @@ interface SquareLinkProps
   > {
   theme?: SquareButtonTheme
   size?: SquareButtonSize
+  chevron?: boolean
 }
 
 export const SquareLink: React.FC<SquareLinkProps> = (props) => {
-  const { theme, size, className, ...buttonProps } = props
+  const { chevron, theme, size, className, ...buttonProps } = props
 
   return (
     <a
-      className={classNames(
+      className={classnames(
         'square-btn',
         getThemeClassName(theme),
         getSizeClassName(size),
         className
       )}
       {...buttonProps}
-    />
+    >
+      {props.children}{' '}
+      {chevron && (
+        <FeatherIcon
+          icon={'chevron-right'}
+          className={classnames('inline-block -mt-1', getChevronClassName(size))}
+        />
+      )}
+    </a>
   )
 }
 
 SquareLink.defaultProps = {
   theme: SquareButtonTheme.teal,
   size: SquareButtonSize.md
+}
+
+const getChevronClassName = (size: SquareButtonSize): string => {
+  switch (size) {
+    default:
+    case SquareButtonSize.sm: {
+      return 'w-5 h-5'
+    }
+    case SquareButtonSize.md: {
+      return 'w-6 h-6'
+    }
+    case SquareButtonSize.lg: {
+      return 'w-8 h-8'
+    }
+  }
 }
 
 const getThemeClassName = (theme: SquareButtonTheme): string => {
@@ -97,6 +126,12 @@ const getThemeClassName = (theme: SquareButtonTheme): string => {
     }
     case SquareButtonTheme.orangeOutline: {
       return 'square-btn--orange-outline'
+    }
+    case SquareButtonTheme.black: {
+      return 'square-btn--black'
+    }
+    case SquareButtonTheme.blackOutline: {
+      return 'square-btn--black-outline'
     }
   }
 }
