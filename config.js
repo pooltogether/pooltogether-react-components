@@ -261,7 +261,6 @@ const pooltogetherReactTailwindUIConfig = {
         ],
         inter: [
           'Inter',
-          'Courier',
           'Roboto',
           'Helvetica Neue',
           'Arial',
