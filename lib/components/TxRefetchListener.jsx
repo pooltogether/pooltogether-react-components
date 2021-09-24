@@ -29,14 +29,14 @@ const runRefetch = (tx) => {
   // so simply query a few times for the updated data
 
   if (tx?.refetch) {
-    tx.refetch()
+    tx.refetch(tx)
     setTimeout(() => {
-      tx.refetch()
+      tx.refetch(tx)
       debug('refetch!')
     }, 2000)
 
     setTimeout(() => {
-      tx.refetch()
+      tx.refetch(tx)
       debug('refetch!')
     }, 8000)
   }
@@ -53,14 +53,14 @@ const checkStoredPending = (transactions, storedPendingTransactions) => {
     const cancelled = currentTxState?.cancelled
 
     if (!cancelled && !completed && sent) {
-      tx?.onSent?.()
+      tx?.onSent?.(tx)
     } else if (completed && !error && !cancelled) {
-      tx?.onSuccess?.()
+      tx?.onSuccess?.(tx)
       runRefetch(tx)
     } else if (currentTxState && completed && error && !cancelled) {
-      tx?.onError?.()
+      tx?.onError?.(tx)
     } else if (currentTxState?.cancelled) {
-      tx?.onCancelled?.()
+      tx?.onCancelled?.(tx)
     }
   })
 }
