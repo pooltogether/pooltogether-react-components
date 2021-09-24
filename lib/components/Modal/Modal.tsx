@@ -8,8 +8,8 @@ import { useReducedMotion } from '@pooltogether/hooks'
 export interface ModalProps {
   isOpen: boolean
   closeModal: () => void
-  children: React.ReactNode
   label: string
+  children?: React.ReactNode
   className?: string
   noPad?: boolean
   noSize?: boolean

@@ -11,7 +11,8 @@ export {
   SquareButtonTheme,
   SquareButtonSize,
   SquareButton,
-  SquareLink
+  SquareLink,
+  SquareButtonProps
 } from './components/Buttons/SquareButton'
 export { Button } from './components/Buttons/Button'
 
@@ -26,7 +27,7 @@ export { CountBadge } from './components/Containers/CountBadge'
 export { Tabs, Tab, Content, ContentPane } from './components/Containers/Tabs'
 export { TicketRow } from './components/Containers/TicketRow'
 export { TipBanner } from './components/Containers/TipBanner'
-export * from './components/Containers/Tooltip'
+export { overrideToolTipPosition, Tooltip } from './components/Containers/Tooltip'
 
 // Icons
 export { CopyIcon } from './components/Icons/CopyIcon'
