@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import Cookies from 'js-cookie'
 import { GlobalHotKeys } from 'react-hotkeys'
-import { PT_HOOKS_CONSTANTS } from '@pooltogether/hooks'
+import { useCookieOptions } from '@pooltogether/hooks'
 
 import { HOTKEYS_KEY_MAP } from '../constants'
 
-const { COOKIE_OPTIONS } = PT_HOOKS_CONSTANTS
 const THEME = 'theme'
 
 export const ThemeContext = React.createContext(null)
 
-export function ThemeContextProvider(props) {
+export function ThemeContextProvider (props) {
   const [theme, setTheme] = useState('dark')
+  const cookieOptions = useCookieOptions()
 
   useEffect(() => {
     let stored = Cookies.get(THEME)
@@ -48,14 +48,14 @@ export function ThemeContextProvider(props) {
       body.classList.remove('theme-dark')
       body.classList.add('theme-light')
 
-      Cookies.set(THEME, 'light', COOKIE_OPTIONS)
+      Cookies.set(THEME, 'light', cookieOptions)
 
       setTheme('light')
     } else {
       body.classList.remove('theme-light')
       body.classList.add('theme-dark')
 
-      Cookies.set(THEME, 'dark', COOKIE_OPTIONS)
+      Cookies.set(THEME, 'dark', cookieOptions)
 
       setTheme('dark')
     }

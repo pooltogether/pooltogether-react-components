@@ -1,7 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
 import {
-  useOnboard,
   useIsWalletMetamask,
   useAddNetworkToMetamask,
   useIsWalletOnNetwork,
@@ -12,9 +11,8 @@ import { getNetworkNiceNameByChainId } from '@pooltogether/utilities'
 import { Modal, NetworkIcon } from '../../..'
 
 export const NetworkModal = (props) => {
-  const { t, isOpen, closeModal, supportedNetworks } = props
+  const { t, isOpen, closeModal, supportedNetworks, chainId } = props
 
-  const { network: chainId } = useOnboard()
   const isWalletMetamask = useIsWalletMetamask()
   const currentNetworkName = getNetworkNiceNameByChainId(chainId)
   const isWalletOnSupportedNetwork = useIsWalletOnSupportedNetwork(supportedNetworks)

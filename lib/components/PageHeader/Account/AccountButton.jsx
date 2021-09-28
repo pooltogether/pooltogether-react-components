@@ -1,16 +1,14 @@
 import React from 'react'
 import classnames from 'classnames'
 import { useAtom } from 'jotai'
-import { transactionsAtom, useEnsName, useUsersAddress } from '@pooltogether/hooks'
+import { transactionsAtom, useEnsName } from '@pooltogether/hooks'
 
 import { ProfileAvatar } from './ProfileAvatar'
 import { ProfileName } from './ProfileName'
 import { ThemedClipSpinner } from '../../Loading/ThemedClipSpinner'
 
-export function AccountButton(props) {
-  const { openModal, className, t } = props
-
-  const usersAddress = useUsersAddress()
+export function AccountButton (props) {
+  const { openModal, className, t, usersAddress } = props
 
   const [transactions] = useAtom(transactionsAtom)
   const pendingTransactionsCount = transactions.filter((t) => !t.completed).length

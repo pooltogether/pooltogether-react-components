@@ -1,13 +1,11 @@
-import VisuallyHidden from '@reach/visually-hidden'
 import React from 'react'
-import FeatherIcon from 'feather-icons-react'
 
 import { Modal } from '../../..'
 import { WalletInfo } from './WalletInfo'
 import { TransactionsList } from './TransactionsList'
 
 export const TransactionsModal = (props) => {
-  const { isOpen, closeModal, t } = props
+  const { t, disconnectWallet, walletName, chainId, usersAddress, isOpen, closeModal } = props
 
   return (
     <Modal
@@ -19,10 +17,21 @@ export const TransactionsModal = (props) => {
       noSize
     >
       <div className='p-8'>
-        <WalletInfo closeModal={closeModal} />
+        <WalletInfo
+          usersAddress={usersAddress}
+          chainId={chainId}
+          disconnectWallet={disconnectWallet}
+          walletName={walletName}
+          closeModal={closeModal}
+        />
       </div>
       <div className='p-8 bg-primary rounded-none sm:rounded-b-xl'>
-        <TransactionsList closeTransactions={closeModal} t={t} />
+        <TransactionsList
+          t={t}
+          closeTransactions={closeModal}
+          chainId={chainId}
+          usersAddress={usersAddress}
+        />
       </div>
     </Modal>
   )

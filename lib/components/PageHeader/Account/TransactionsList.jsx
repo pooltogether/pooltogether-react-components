@@ -1,16 +1,13 @@
 import React from 'react'
 import { useAtom } from 'jotai'
-import { clearPreviousTransactions, transactionsAtom, useOnboard } from '@pooltogether/hooks'
+import { clearPreviousTransactions, transactionsAtom } from '@pooltogether/hooks'
 
 import { TransactionsListItem } from './TransactionsListItem'
 
-export function TransactionsList(props) {
+export function TransactionsList (props) {
+  const { t, usersAddress, chainId } = props
+
   const [transactions, setTransactions] = useAtom(transactionsAtom)
-
-  const { t } = props
-
-  const { address: usersAddress } = useOnboard()
-  const { network: chainId } = useOnboard()
 
   const notCancelledTransactions = transactions.filter((t) => !t.cancelled).reverse()
   const pendingTransactionsCount = transactions.filter((t) => !t.completed && !t.cancelled).length
@@ -35,12 +32,10 @@ export function TransactionsList(props) {
           <div>
             {t?.('recentTransactions') || 'Recent transactions'}
             {pendingTransactionsCount > 0 && (
-              <>
-                <span className='text-accent-1 text-xxxs uppercase opacity-50'>
-                  {t?.('pendingTransactionsCount', { count: pendingTransactionsCount }) ||
-                    `${pendingTransactionsCount} pending`}
-                </span>
-              </>
+              <span className='text-accent-1 text-xxxs uppercase opacity-50 ml-2'>
+                {t?.('pendingTransactionsCount', { count: pendingTransactionsCount }) ||
+                  `${pendingTransactionsCount} pending`}
+              </span>
             )}
           </div>
 
@@ -62,7 +57,6 @@ export function TransactionsList(props) {
           <>
             <div className='text-default-soft uppercase text-xs'>
               {t?.('currentlyNoActiveTransactions') || 'No active transactions'}
-              {/* CURRENTLY NO ACTIVE TRANSACTIONS */}
             </div>
           </>
         ) : (

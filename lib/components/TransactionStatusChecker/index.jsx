@@ -1,11 +1,10 @@
 import { useEffect } from 'react'
 import { useAtom } from 'jotai'
-import { useOnboard, readTransactions, transactionsAtom } from '@pooltogether/hooks'
+import { readTransactions, transactionsAtom } from '@pooltogether/hooks'
 
-export function TransactionStatusChecker(props) {
-  const { transactionsKey } = props
+export function TransactionStatusChecker (props) {
+  const { transactionsKey, network: chainId, address: usersAddress, provider } = props
   const [transactions, setTransactions] = useAtom(transactionsAtom)
-  const { network: chainId, address: usersAddress, provider } = useOnboard()
 
   useEffect(() => {
     if (chainId && usersAddress && provider) {

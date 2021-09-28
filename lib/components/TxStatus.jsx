@@ -104,7 +104,7 @@ export const TxStatus = (props) => {
             {transactionHashText}
             <BlockExplorerLink
               chainId={chainId}
-              hash={tx.hash}
+              txHash={tx.hash}
               className='underline text-accent-1 opacity-80'
               shorten
             />

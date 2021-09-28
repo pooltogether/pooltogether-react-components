@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { useOnboard } from '@pooltogether/hooks'
+import React from 'react'
 
 import { HeaderLogo } from './HeaderLogo'
 // import { NetworkText } from "lib/components/NetworkText";

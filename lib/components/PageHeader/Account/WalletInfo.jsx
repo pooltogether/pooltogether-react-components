@@ -1,16 +1,12 @@
 import React from 'react'
 
-import { useOnboard } from '@pooltogether/hooks'
 import { getNetworkNameAliasByChainId } from '@pooltogether/utilities'
 import { BlockExplorerLink } from '../../Links/BlockExplorerLink'
 
-export function WalletInfo(props) {
-  const { t } = props
+export function WalletInfo (props) {
+  const { t, usersAddress, chainId, disconnectWallet, walletName } = props
   const { closeModal } = props
 
-  const { address: usersAddress, network: chainId, disconnectWallet, walletName } = useOnboard()
-
-  let content = null
   let networkName = null
 
   if (chainId) {

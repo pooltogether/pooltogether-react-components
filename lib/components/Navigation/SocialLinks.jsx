@@ -23,31 +23,37 @@ const childClasses = 'text-xs'
 
 const socialsLinkData = [
   {
+    langKey: 'ecosystem',
     headerLabel: 'ecosystem',
     childLinks: [
       {
         href: 'https://www.notion.so/PoolTogether-Knowledge-Base-fa721ccefa3242eaabd125a8415acd27',
+        langKey: 'knowledgeBase',
         label: 'Knowledge Base',
         icon: <img src={KnowledgeBaseIcon} className='w-4 opacity-50 mx-auto' />
       },
       {
         href: 'https://docs.pooltogether.com/',
+        langKey: 'documentation',
         label: 'Documentation',
         icon: <img src={DocsIcon} className='w-3 opacity-50 mx-auto' />
       },
       {
         href: 'https://gov.pooltogether.com/',
+        langKey: 'governanceForum',
         label: 'Governance forum',
         icon: <img src={GovForumIcon} className='w-4 opacity-50 mx-auto' />
       },
       {
         href: 'https://info.pooltogether.com/',
+        langKey: 'treasury',
         label: 'Treasury',
         icon: <img src={TreasuryIcon} className='w-4 opacity-50 mx-auto' />
       }
     ]
   },
   {
+    langKey: 'socials',
     headerLabel: 'socials',
     childLinks: [
       {
@@ -75,6 +81,12 @@ const socialsLinkData = [
 ]
 
 export const SocialLinks = (props) => {
+  const { t } = props
+
+  if (!t) {
+    console.error('<SocialLinks /> requires the prop t (i18n trans method)')
+  }
+
   const [expanded, setExpanded] = useState()
 
   return (
@@ -82,6 +94,7 @@ export const SocialLinks = (props) => {
       {socialsLinkData.map((linkData, index) => {
         return (
           <SocialLinkSet
+            t={t}
             key={`social-link-set-${index}`}
             index={index}
             linkData={linkData}
@@ -98,20 +111,15 @@ const SocialLinkSet = (props) => {
   const { linkData } = props
 
   const content = linkData.childLinks.map((childLink, index) => {
-    return (
-      <SocialLinkChild
-        key={`social-link-child-${index}`}
-        href={childLink.href}
-        label={childLink.label}
-        icon={childLink.icon}
-      />
-    )
+    return <SocialLinkChild {...props} key={`social-link-child-${index}`} childLink={childLink} />
   })
 
   return <SocialLinkHeader {...props}>{content}</SocialLinkHeader>
 }
 
 const SocialLinkHeader = (props) => {
+  const { t } = props
+
   return (
     <Accordion
       openUpwards
@@ -129,7 +137,9 @@ const SocialLinkHeader = (props) => {
               'rotate-180': props.expanded === props.index
             })}
           />
-          <span className='pl-3 capitalize'>{props.linkData.headerLabel}</span>
+          <span className='pl-3 capitalize'>
+            {t(props.linkData.langKey, props.linkData.headerLabel)}
+          </span>
         </a>
       }
     />
@@ -137,15 +147,14 @@ const SocialLinkHeader = (props) => {
 }
 
 const SocialLinkChild = (props) => {
+  const { t, childLink } = props
+  const { langKey, label, icon, href, target } = childLink
+
   return (
     <div>
-      <a
-        href={props.href}
-        target={props.target}
-        className={classnames(sharedClasses, childClasses)}
-      >
-        <span className='w-4'>{props.icon}</span>
-        <span className='pl-3 capitalize'>{props.label}</span>
+      <a href={href} target={target} className={classnames(sharedClasses, childClasses)}>
+        <span className='w-4'>{icon}</span>
+        <span className='pl-3 capitalize'>{langKey ? t(langKey, label) : label}</span>
       </a>
     </div>
   )

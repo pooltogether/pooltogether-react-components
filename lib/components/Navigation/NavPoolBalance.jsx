@@ -9,7 +9,6 @@ import {
   useClaimableTokenFromTokenFaucets,
   useRetroactivePoolClaimData,
   useGovernanceChainId,
-  useUsersAddress,
   usePoolTokenData,
   useTokenHolder,
   useUserTicketsFormattedByPool
@@ -22,7 +21,7 @@ import Squiggle from '../../assets/Misc/squiggle.svg'
 const P_POOL_ADDRESS = '0x396b4489da692788e327e2e4b2b0459a5ef26791'
 
 export const NavPoolBalance = (props) => {
-  const { className } = props
+  const { className, usersAddress } = props
   const [isOpen, setIsOpen] = useState(false)
   const openModal = () => setIsOpen(true)
   const closeModal = () => setIsOpen(false)
@@ -44,7 +43,12 @@ export const NavPoolBalance = (props) => {
       >
         POOL
       </div>
-      <PoolBalanceModal isOpen={isOpen} closeModal={closeModal} tokenData={tokenData} />
+      <PoolBalanceModal
+        isOpen={isOpen}
+        closeModal={closeModal}
+        tokenData={tokenData}
+        usersAddress={usersAddress}
+      />
     </>
   )
 }
@@ -52,11 +56,10 @@ export const NavPoolBalance = (props) => {
 const PoolBalanceModal = (props) => {
   const { t } = useTranslation()
 
-  const { isOpen, closeModal, tokenData } = props
+  const { isOpen, closeModal, tokenData, usersAddress } = props
   const { usersBalanceBN, usersBalance, totalSupply } = tokenData
 
   const chainId = useGovernanceChainId()
-  const usersAddress = useUsersAddress()
 
   // TOKEN DATA
   const totalSupplyFormatted = numberWithCommas(totalSupply)
@@ -103,7 +106,10 @@ const PoolBalanceModal = (props) => {
     : zeroBn
   const delegatedBalanceFormatted = numberWithCommas(delegatedBalance || zeroBn)
 
-  const totalPool = delegatedBalance.add(pPoolBalance).add(usersBalanceBN).add(totalClaimablePool)
+  const totalPool = delegatedBalance
+    .add(pPoolBalance)
+    .add(usersBalanceBN)
+    .add(totalClaimablePool)
 
   const openClaimRewards = (e) => {
     closeModal()
