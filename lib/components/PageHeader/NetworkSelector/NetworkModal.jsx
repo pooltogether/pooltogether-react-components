@@ -11,11 +11,11 @@ import { getNetworkNiceNameByChainId } from '@pooltogether/utilities'
 import { Modal, NetworkIcon } from '../../..'
 
 export const NetworkModal = (props) => {
-  const { t, isOpen, closeModal, supportedNetworks, chainId } = props
+  const { t, isOpen, closeModal, supportedNetworks, chainId, wallet } = props
 
-  const isWalletMetamask = useIsWalletMetamask()
+  const isWalletMetamask = useIsWalletMetamask(wallet)
   const currentNetworkName = getNetworkNiceNameByChainId(chainId)
-  const isWalletOnSupportedNetwork = useIsWalletOnSupportedNetwork(supportedNetworks)
+  const isWalletOnSupportedNetwork = useIsWalletOnSupportedNetwork(chainId, supportedNetworks)
 
   if (isWalletMetamask) {
     return (
