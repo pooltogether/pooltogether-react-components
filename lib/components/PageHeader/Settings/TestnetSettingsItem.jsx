@@ -3,11 +3,15 @@ import { APP_ENVIRONMENT, useAppEnv } from '@pooltogether/hooks'
 import { SettingsItem } from './SettingsItem'
 import { CheckboxInputGroup } from '../../Input/CheckboxInputGroup'
 
-export const TestnetSettingsItem = (props) => (
-  <SettingsItem label={props.label}>
-    <Toggle />
-  </SettingsItem>
-)
+export const TestnetSettingsItem = (props) => {
+  const { t } = props
+
+  return (
+    <SettingsItem label={t('developmentMode', 'Development mode')}>
+      <Toggle label={t('useTestnets', 'Use testnets')} />
+    </SettingsItem>
+  )
+}
 
 const Toggle = (props) => {
   const { appEnv, setAppEnv } = useAppEnv()
@@ -28,12 +32,4 @@ const Toggle = (props) => {
       }}
     />
   )
-}
-
-TestnetSettingsItem.defaultProps = {
-  label: 'Development mode'
-}
-
-Toggle.defaultProps = {
-  label: 'Use testnets'
 }

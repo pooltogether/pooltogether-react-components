@@ -10,8 +10,8 @@ import { useReducedMotion } from '@pooltogether/hooks'
  * @param {*} props
  * @returns
  */
-export function SettingsContainer(props) {
-  const { className, sizeClassName } = props
+export function SettingsContainer (props) {
+  const { t, className, sizeClassName } = props
   const [isOpen, setIsOpen] = useState(false)
 
   const shouldReduceMotion = useReducedMotion()
@@ -96,7 +96,7 @@ export function SettingsContainer(props) {
           </span>
         </button>
 
-        <h6 className='text-white mt-4 mb-10 capitalize'>{props.title}</h6>
+        <h6 className='text-white mt-4 mb-10 capitalize'>{t('settings', 'Settings')}</h6>
 
         {props.children}
       </motion.div>
@@ -104,8 +104,7 @@ export function SettingsContainer(props) {
   )
 }
 
-SettingsContainer.defeaultProps = {
-  title: 'Settings',
+SettingsContainer.defaultProps = {
   sizeClassName: 'w-5 h-5 sm:w-6 sm:h-6',
   className: ''
 }
