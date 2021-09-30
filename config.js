@@ -181,12 +181,13 @@ const pooltogetherReactTailwindUIConfig = {
         '8xl': '2.5rem'
       },
       height: {
-        28: '7rem',
-        72: '18rem',
-        80: '20rem',
-        96: '24rem',
-        112: '28rem',
-        128: '32rem'
+        '28': '7rem',
+        '72': '18rem',
+        '80': '20rem',
+        '96': '24rem',
+        '112': '28rem',
+        '128': '32rem',
+        '75vh': '75vh'
       },
       minWidth: {
         '0': '0',
@@ -291,8 +292,9 @@ const pooltogetherReactTailwindUIConfig = {
     }
   },
   variants: {
-    margin: ['responsive', 'last'],
-    borderColor: ['hover', 'focus', 'active'],
+    margin: ['responsive', 'last', 'first'],
+    padding: ['responsive', 'last'],
+    borderColor: ['hover', 'focus', 'active', 'last'],
     textColor: ['hover', 'focus', 'active'],
     backgroundColor: ['hover', 'focus', 'active', 'responsive'],
     borderRadius: ['responsive'],

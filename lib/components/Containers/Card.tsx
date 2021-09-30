@@ -6,7 +6,15 @@ export const CardTheme = Object.freeze({
   purple: 'bg-card-purple'
 })
 
-export const Card = (props) => {
+export interface CardProps
+  extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  theme: string
+  backgroundClassName?: string
+  sizeClassName: string
+  paddingClassName: string
+}
+
+export const Card = (props: CardProps) => {
   const { children, className, paddingClassName, sizeClassName, backgroundClassName, theme } = props
 
   return (

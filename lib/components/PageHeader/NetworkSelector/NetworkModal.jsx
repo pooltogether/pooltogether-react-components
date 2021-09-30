@@ -27,7 +27,7 @@ export const NetworkModal = (props) => {
               'Select a supported network to be prompted to switch in your MetaMask wallet.'}
           </Description>
           {supportedNetworks.map((chainId) => (
-            <NetworkButton t={t} key={chainId} chainId={chainId} />
+            <NetworkButton t={t} key={chainId} chainId={chainId} closeModal={closeModal} />
           ))}
           <CurrentlyConnectedTo
             t={t}
@@ -92,11 +92,11 @@ const NetworkItem = (props) => {
 }
 
 const NetworkButton = (props) => {
-  const { chainId } = props
+  const { chainId, closeModal } = props
 
   const isCurrentNetwork = useIsWalletOnNetwork(chainId)
   const networkName = getNetworkNiceNameByChainId(chainId)
-  const addNetwork = useAddNetworkToMetamask(chainId)
+  const addNetwork = useAddNetworkToMetamask(chainId, { onSuccess: closeModal })
 
   return (
     <div className='flex mb-4 last:mb-0'>

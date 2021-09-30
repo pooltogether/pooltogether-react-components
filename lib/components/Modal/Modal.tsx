@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import classnames from 'classnames'
 import FeatherIcon from 'feather-icons-react'
 import Dialog from '@reach/dialog'
@@ -8,8 +8,8 @@ import { useReducedMotion } from '@pooltogether/hooks'
 export interface ModalProps {
   isOpen: boolean
   closeModal: () => void
-  children: React.ReactNode
   label: string
+  children?: React.ReactNode
   className?: string
   noPad?: boolean
   noSize?: boolean

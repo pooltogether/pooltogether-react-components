@@ -1,6 +1,5 @@
 import React from 'react'
 import classnames from 'classnames'
-import RainbowGradient from '../../assets/Gradients/rainbow-gradient.svg'
 
 export const BannerTheme = {
   purplePink: 'purplePink',
@@ -9,7 +8,18 @@ export const BannerTheme = {
   purplePinkBorder: 'purplePinkBorder'
 }
 
-const BannerUnmemoized = (props) => {
+interface BannerProps {
+  theme?: string
+  defaultBorderRadius: string
+  defaultPadding: string
+  className?: string
+  outerClassName?: string
+  innerClassName?: string
+  children: React.ReactNode
+  style?: React.CSSProperties
+}
+
+export const Banner = (props: BannerProps) => {
   const { theme, className, children, style, outerClassName, innerClassName } = props
   const { defaultBorderRadius, defaultPadding } = props
 
@@ -21,27 +31,15 @@ const BannerUnmemoized = (props) => {
   if (theme === BannerTheme.rainbow) {
     return (
       <div
-        className={classnames(bannerClasses, 'text-purple', className)}
-        style={{
-          ...style,
-          backgroundImage: RainbowGradient,
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'cover'
-        }}
+        className={classnames(bannerClasses, 'pool-gradient-3 text-purple', className)}
+        style={style}
       >
         {children}
       </div>
     )
   } else if (theme === BannerTheme.rainbowBorder) {
     return (
-      <div
-        className={classnames('text-inverse p-1 rounded-lg', outerClassName)}
-        style={{
-          backgroundImage: RainbowGradient,
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'cover'
-        }}
-      >
+      <div className={classnames('text-inverse p-1 rounded-lg pool-gradient-3', outerClassName)}>
         <div className={classnames(bannerClasses, 'bg-body', innerClassName)} style={style}>
           {children}
         </div>
@@ -64,10 +62,8 @@ const BannerUnmemoized = (props) => {
   )
 }
 
-BannerUnmemoized.defaultProps = {
+Banner.defaultProps = {
   theme: BannerTheme.purplePink,
   defaultBorderRadius: true,
   defaultPadding: true
 }
-
-export const Banner = React.memo(BannerUnmemoized)
