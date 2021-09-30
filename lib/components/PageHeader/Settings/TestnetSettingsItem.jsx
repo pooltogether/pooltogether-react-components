@@ -1,5 +1,5 @@
 import React from 'react'
-import { APP_ENVIRONMENT, useAppEnv } from '@pooltogether/hooks'
+import { useIsTestnets } from '@pooltogether/hooks'
 import { SettingsItem } from './SettingsItem'
 import { CheckboxInputGroup } from '../../Input/CheckboxInputGroup'
 
@@ -14,7 +14,7 @@ export const TestnetSettingsItem = (props) => {
 }
 
 const Toggle = (props) => {
-  const { appEnv, setAppEnv } = useAppEnv()
+  const { isTestnets, enableTestnets, disableTestnets } = useIsTestnets()
 
   return (
     <CheckboxInputGroup
@@ -22,12 +22,12 @@ const Toggle = (props) => {
       id='testnets-view-toggle'
       name='testnets-view-toggle'
       label={props.label}
-      checked={appEnv === APP_ENVIRONMENT.testnets}
+      checked={isTestnets}
       handleClick={() => {
-        if (appEnv === APP_ENVIRONMENT.testnets) {
-          setAppEnv(APP_ENVIRONMENT.mainnets)
+        if (isTestnets) {
+          disableTestnets()
         } else {
-          setAppEnv(APP_ENVIRONMENT.testnets)
+          enableTestnets()
         }
       }}
     />
