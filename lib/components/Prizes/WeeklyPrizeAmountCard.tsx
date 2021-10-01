@@ -1,6 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
-import { usePooltogetherTotalPrizes } from '@pooltogether/hooks'
+import { usePooltogetherTotalPrizesV3 } from '@pooltogether/hooks'
 import { numberWithCommas } from '@pooltogether/utilities'
 
 import { ThemedClipSpinner } from '../Loading/ThemedClipSpinner'
@@ -8,7 +8,9 @@ import { ThemedClipSpinner } from '../Loading/ThemedClipSpinner'
 const AWARD_DAY = 'Friday'
 
 export const WeeklyPrizeAmountCard = (props) => {
-  const { t, sm } = props
+  const { t, sm, prizePretty } = props
+
+  const amount = prizePretty ? formatNumbers(prizePretty) : weeklyPrizeAmountV3()
 
   return (
     <div
@@ -24,7 +26,7 @@ export const WeeklyPrizeAmountCard = (props) => {
       <div className='lightning-bolts' />
 
       <div className=''>
-        <h1 className='text-4xl xs:text-6xl -mt-6 sm:-mt-0 font-semibold'>{weeklyPrizeAmount()}</h1>
+        <h1 className='text-4xl xs:text-6xl -mt-6 sm:-mt-0 font-semibold'>{amount}</h1>
         <div className='uppercase font-semibold text-default text-xxs xs:text-lg -mt-2'>
           {t?.('inWeeklyPrizes', 'In weekly prizes') || 'In weekly prizes'}
         </div>
@@ -38,26 +40,23 @@ export const WeeklyPrizeAmountCard = (props) => {
   )
 }
 
-export const weeklyPrizeAmount = () => {
-  const totalPrizes = usePooltogetherTotalPrizes()
-  console.log({ totalPrizes })
-
-  const formatNumbers = (num) => {
-    if (num > 1000000) {
-      return `$${numberWithCommas(num / 1000000, { precision: 2 })} ${'million'}`
-    } else if (num > 10000) {
-      return `$${numberWithCommas(num, { precision: 0 })}`
-    } else {
-      return `$${numberWithCommas(num, { precision: 2 })}`
-    }
+const formatNumbers = (num) => {
+  if (num > 1000000) {
+    return `$${numberWithCommas(num / 1000000, { precision: 2 })} ${'million'}`
+  } else if (num > 10000) {
+    return `$${numberWithCommas(num, { precision: 0 })}`
+  } else {
+    return `$${numberWithCommas(num, { precision: 0 })}`
   }
+}
+
+export const weeklyPrizeAmountV3 = () => {
+  const totalPrizes = usePooltogetherTotalPrizesV3()
 
   // Check if data has loaded
   if (totalPrizes === null) {
     return <ThemedClipSpinner />
   }
 
-  const totalPrizeFormatted = formatNumbers(totalPrizes)
-
-  return totalPrizeFormatted
+  return formatNumbers(totalPrizes)
 }
