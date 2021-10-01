@@ -71,6 +71,28 @@
   color: #8679b8;
 }
 
+/* Purple Outline */
+.square-btn--purple-outline {
+  color: #6c2efc;
+  background-color: transparent;
+  border-color: #4e16d1;
+}
+
+.square-btn--purple-outline:not([disabled]):hover,
+.square-btn--purple-outline:not([disabled]):focus {
+  @apply text-purple;
+  box-shadow: 0 0 0 3px rgba(60, 20, 184, 0.363);
+  color: #8b5ef5;
+}
+
+.square-btn--purple-outline:not([disabled]):active {
+  box-shadow: 0 0 0 2px rgba(60, 20, 184, 0.171);
+}
+
+.square-btn--purple-outline:disabled {
+  opacity: 50%;
+}
+
 /* Orange */
 .square-btn--orange {
   @apply border-orange text-white bg-orange;

@@ -245,7 +245,7 @@
   --color-border-transparent: rgba(0, 0, 0, 0);
 }
 
-.purple-radial-gradient {
+.theme-dark .purple-radial-gradient {
   background: radial-gradient(rgba(76, 36, 159, 0.7) 0, rgba(76, 36, 159, 0) 70%);
 }
 
