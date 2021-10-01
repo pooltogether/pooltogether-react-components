@@ -589,3 +589,53 @@ a {
 .filters-width-hover:hover .filter-icons {
   width: 128px;
 }
+
+.bg-prize-amount {
+  background-image: url('/bg-prize-amount@2x.png');
+  background-size: contain;
+  background-position: top center;
+  background-repeat: no-repeat;
+
+  /* 16:9 */
+  /* padding-bottom: 56.25%; */
+  /* height: 0; */
+
+  /* padding-bottom: 45%; */
+  /* height: 200px; */
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+@screen xs {
+  .bg-prize-amount {
+    height: 260px;
+  }
+}
+@screen sm {
+  .bg-prize-amount {
+    height: 250px;
+  }
+}
+@screen lg {
+  .bg-prize-amount {
+    height: 290px;
+  }
+}
+
+.lightning-bolts {
+  background-image: url('/lightning-bolts@2x.png');
+  /* background-size: contain;
+  background-position: top center;
+  background-repeat: no-repeat; */
+
+  left: 0;
+  top: 0;
+
+  height: 142px;
+  overflow: hidden;
+  position: absolute;
+  margin-left: -10%;
+
+  width: 120%;
+}
