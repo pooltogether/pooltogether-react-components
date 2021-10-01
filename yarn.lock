@@ -1404,10 +1404,10 @@
   dependencies:
     evm-chains "^0.2.0"
 
-"@pooltogether/hooks@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@pooltogether/hooks/-/hooks-1.0.2.tgz#fc436788441ab982b3af9ee3881c574fce975f51"
-  integrity sha512-fd2i8s+8k46GHMMt2xdoqhhQd7O/iLtxPq6Nf1XuMfsUwURTaRr1uoL3MZQd71f52vldZji7jE0e3K+o1+PGyg==
+"@pooltogether/hooks@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@pooltogether/hooks/-/hooks-1.1.2.tgz#8e28c0fa9160e9dd88512098cee4b336039317cd"
+  integrity sha512-P5gVoTWwvl/qoZhEyDvZHi8M5cbriYnlxC4eV2Cn4jvvWhHHUFe0gKKVFUosx5ADjVlH1oDZ9oomCNvKqcvHFQ==
 
 "@pooltogether/utilities@^0.0.43":
   version "0.0.43"

@@ -623,19 +623,41 @@ a {
   }
 }
 
+.bg-prize-amount--small {
+  background-image: url('/bg-prize-amount--small@2x.png');
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+@screen xs {
+  .bg-prize-amount--small {
+    height: 192px;
+  }
+}
+
 .lightning-bolts {
   background-image: url('/lightning-bolts@2x.png');
-  /* background-size: contain;
+  background-size: contain;
   background-position: top center;
-  background-repeat: no-repeat; */
-
+  background-repeat: no-repeat;
+  pointer-events: none;
   left: 0;
-  top: 0;
-
-  height: 142px;
+  top: 21px;
+  height: 100px;
   overflow: hidden;
   position: absolute;
-  margin-left: -10%;
+  margin-left: 0;
+  width: 100%;
+}
 
-  width: 120%;
+@screen sm {
+  .bg-prize-amount--small {
+    top: 21px;
+    margin-left: -63px;
+    width: 707px;
+  }
 }

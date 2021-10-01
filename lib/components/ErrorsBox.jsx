@@ -1,17 +1,10 @@
 import React from 'react'
+import { isEmpty } from 'lodash'
 
-export function ErrorsBox(props) {
+export function ErrorsBox (props) {
   const { errors } = props
 
-  if (!errors)
-    return (
-      <div
-        className='mb-2'
-        style={{
-          minHeight: 24
-        }}
-      />
-    )
+  if (isEmpty(errors)) return null
 
   const errorMessages = Object.values(errors).map((error) => error.message)
 
