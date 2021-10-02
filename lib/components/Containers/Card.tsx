@@ -20,7 +20,7 @@ export const Card = (props: CardProps) => {
   return (
     <div
       className={classnames(
-        'rounded-xl fadeIn animated',
+        'rounded-xl',
         sizeClassName,
         paddingClassName,
         backgroundClassName || theme,
