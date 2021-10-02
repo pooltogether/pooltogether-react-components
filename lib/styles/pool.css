@@ -650,7 +650,7 @@ a {
   height: 100px;
   overflow: hidden;
   position: absolute;
-  margin-left: 0;
+  margin-left: -7px;
   width: 100%;
 }
 

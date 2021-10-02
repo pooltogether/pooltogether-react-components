@@ -4,7 +4,7 @@ import { shorten } from '@pooltogether/utilities'
 export function ProfileName (props) {
   const { className, ensName, usersAddress } = props
 
-  const name = ensName?.length > 0 ? ensName : shorten(usersAddress)
+  const name = ensName?.length > 0 ? ensName : shorten({ hash: usersAddress, short: true })
 
   return <div className={className}>{name}</div>
 }

@@ -1404,15 +1404,15 @@
   dependencies:
     evm-chains "^0.2.0"
 
-"@pooltogether/hooks@^1.1.2":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@pooltogether/hooks/-/hooks-1.1.2.tgz#8e28c0fa9160e9dd88512098cee4b336039317cd"
-  integrity sha512-P5gVoTWwvl/qoZhEyDvZHi8M5cbriYnlxC4eV2Cn4jvvWhHHUFe0gKKVFUosx5ADjVlH1oDZ9oomCNvKqcvHFQ==
+"@pooltogether/hooks@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@pooltogether/hooks/-/hooks-1.1.4.tgz#c73f159cdf2c4a39cdd571b9881a53a20b71b340"
+  integrity sha512-g5m2zAqMkPgFnkLylFXkArLt2VDSollsAqoZRPRvcQsduugebOLK6BwOpUKXFe50XewDhYmI0NcSs2b/z82+5w==
 
-"@pooltogether/utilities@^0.0.43":
-  version "0.0.43"
-  resolved "https://registry.yarnpkg.com/@pooltogether/utilities/-/utilities-0.0.43.tgz#ce4eb0533e9f9b6acb63300c9f75c0a10c606dcb"
-  integrity sha512-aYJGisnlTG6hsEU6aF0CW7ZxHcHdvn1EEGlyy4plNE0vtZ/m8z49Z21x3g6KEk9hZ+qI5/r8JlnJGCMAo6IlVQ==
+"@pooltogether/utilities@^0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@pooltogether/utilities/-/utilities-0.1.5.tgz#762209e46fe718baaa7f047c2dcb26187d286532"
+  integrity sha512-hxjvceBDYK0WwWYpVaRDFES17JdmgNRwZSmVEt7FFU0mI98mbxEImJk+ehRaIudm6DQfbGXWKz4RP0L8Fyf2jw==
 
 "@popperjs/core@^2.5.4", "@popperjs/core@^2.6.0":
   version "2.9.3"

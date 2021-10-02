@@ -15,7 +15,7 @@ export const WeeklyPrizeAmountCard = (props) => {
   return (
     <div
       className={classnames(
-        'relative overflow-visible flex flex-col justify-between text-center pt-4 xs:pb-8 mb-4',
+        'relative overflow-visible flex flex-col justify-between text-center py-8 xs:pt-4 mb-4',
         {
           'bg-prize-amount--small': sm,
           'bg-prize-amount': !sm
@@ -26,7 +26,7 @@ export const WeeklyPrizeAmountCard = (props) => {
       <div className='lightning-bolts' />
 
       <div className=''>
-        <h1 className='text-4xl xs:text-6xl -mt-6 sm:-mt-0 font-semibold'>{amount}</h1>
+        <h1 className='text-4xl xs:text-6xl -mt-6 xs:-mt-0 font-semibold'>{amount}</h1>
         <div className='uppercase font-semibold text-default text-xxs xs:text-lg -mt-2'>
           {t?.('inWeeklyPrizes', 'In weekly prizes') || 'In weekly prizes'}
         </div>

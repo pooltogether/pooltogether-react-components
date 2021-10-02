@@ -19,35 +19,32 @@ export function AccountButton (props) {
     <button
       onClick={openModal}
       className={classnames(
-        'text-highlight-2 font-bold hover:text-inverse text-xs trans trans-fastest tracking-wider outline-none focus:outline-none active:outline-none z-20 h-8',
+        'transition text-highlight-2 bg-default rounded-full px-2 xs:px-4 hover:bg-pt-purple-bright hover:text-inverse',
+        'trans trans-fastest text-xs font-bold tracking-wider outline-none focus:outline-none active:outline-none',
+        'flex justify-center trans trans-fastest z-20 h-8',
+
         className
       )}
+      style={{ minWidth: '134px' }}
     >
-      <div
-        className={classnames(
-          'flex justify-center bg-default hover:bg-body rounded-full border border-highlight-2 px-2 xs:px-4 trans trans-fastest z-20 h-8'
-        )}
-        style={{ minWidth: '134px' }}
-      >
-        {pendingTransactionsCount ? (
-          <>
-            <div className='inline-flex flex-col justify-center mr-2 my-auto'>
-              <ThemedClipSpinner size='16px' />
-            </div>
-            <span className='my-auto'>
-              {t?.('pendingTransactionsCount', { count: pendingTransactionsCount }) ||
-                `${pendingTransactionsCount} pending`}
-            </span>
-          </>
-        ) : (
-          <>
-            <ProfileAvatar usersAddress={usersAddress} className='mr-2' />
-            <span className='my-auto'>
-              <ProfileName ensName={ensName} usersAddress={usersAddress} />
-            </span>
-          </>
-        )}
-      </div>
+      {pendingTransactionsCount ? (
+        <>
+          <div className='inline-flex flex-col justify-center mr-2 my-auto'>
+            <ThemedClipSpinner size='16px' />
+          </div>
+          <span className='my-auto'>
+            {t?.('pendingTransactionsCount', { count: pendingTransactionsCount }) ||
+              `${pendingTransactionsCount} pending`}
+          </span>
+        </>
+      ) : (
+        <>
+          <ProfileAvatar usersAddress={usersAddress} className='mr-2' />
+          <span className='my-auto'>
+            <ProfileName ensName={ensName} usersAddress={usersAddress} />
+          </span>
+        </>
+      )}
     </button>
   )
 }
