@@ -2,9 +2,9 @@ import React, { useEffect, useRef, useState } from 'react'
 import classnames from 'classnames'
 import { renderIcon } from '@download/blockies'
 
-const BLOCKIE_DIAMETER = 24
+const BLOCKIE_DIAMETER = 22
 
-export function ProfileAvatar(props) {
+export function ProfileAvatar (props) {
   const { className, usersAddress } = props
 
   if (!usersAddress) {
@@ -14,7 +14,7 @@ export function ProfileAvatar(props) {
   const image = (
     <div
       className={classnames(
-        'profile-img my-auto relative inline-flex justify-center flex-col bg-white rounded-full shadow-sm',
+        'profile-img my-auto relative inline-flex justify-center flex-col rounded-full shadow-sm',
         className
       )}
       style={{
@@ -26,7 +26,7 @@ export function ProfileAvatar(props) {
       <BlockieIdenticon
         address={usersAddress}
         alt={`Ethereum address: ${usersAddress}`}
-        className='rounded-full shadow-inner'
+        className='rounded-full'
       />
     </div>
   )
