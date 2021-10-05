@@ -75,7 +75,7 @@
 .square-btn--purple-outline {
   color: #8b5ef5;
   background-color: transparent;
-  border-color: #4e16d1;
+  border-color: #3c029a;
 }
 
 .square-btn--purple-outline:not([disabled]):hover,
