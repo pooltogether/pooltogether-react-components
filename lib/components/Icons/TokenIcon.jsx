@@ -82,6 +82,7 @@ import PT_USDT_TICKET from '../../assets/Tokens/pt-usdt.png'
 import PT_USDT_SPONSORSHIP from '../../assets/Tokens/pt-usdt-sponsorship.png'
 import PT_CELO_USD_TICKET from '../../assets/Tokens/pt-celo-usd-ticket.png'
 import PT_CELO_EUR_TICKET from '../../assets/Tokens/pt-celo-eur-ticket.png'
+import SOHM from '../../assets/Tokens/sohm.png'
 
 /**
  * Sometimes the CoinGecko images aren't the prettiest
@@ -120,7 +121,8 @@ export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
     '0xfa831a04cb52fc89dd519d08dc5e94ab2df52b7e': PT_BADGER_TICKET,
     '0x0a2e7f69fe9588fa7fba5f5864236883cd4aac6d': PT_DAI_SPONSORSHIP,
     '0x391a437196c81eea7bbbbd5ed4df6b49de4f5c96': PT_USDC_SPONSORSHIP,
-    '0xfdc192c153044dedb67c5a17b8651951cf70ee4a': PT_XSUSHI_TICKET
+    '0xfdc192c153044dedb67c5a17b8651951cf70ee4a': PT_XSUSHI_TICKET,
+    '0x04f2694c8fcee23e8fd0dfea1d4f5bb8c352111f': SOHM
   },
   [NETWORK.rinkeby]: {
     '0x5592ec0cfb4dbc12d3ab100b257153436a1f0fea': DAI
@@ -154,6 +156,6 @@ export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
  *
  * Allows you to not worry about putting keys in the TOKEN_IMAGE_OVERRIDES object checksummed or lowercase
  */
-function getParameterCaseInsensitive(object, key) {
+function getParameterCaseInsensitive (object, key) {
   return object?.[Object.keys(object).find((k) => k.toLowerCase() === key.toLowerCase())]
 }
