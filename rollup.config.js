@@ -20,21 +20,6 @@ export default {
       sourcemap: true
     }
   ],
-  // external: [
-  //   "next",
-  //   "@pooltogether/hooks",
-  //   "autoprefixer",
-  //   "classnames",
-  //   "feather-icons-react",
-  //   "lodash",
-  //   "postcss",
-  //   "react",
-  //   "react-dom",
-  //   "tailwindcss",
-  //   "react-device-detect",
-  //   "react-hotkeys",
-  //   "react-tooltip",
-  // ],
   external: [
     '@download/blockies',
     '@pooltogether/utilities',

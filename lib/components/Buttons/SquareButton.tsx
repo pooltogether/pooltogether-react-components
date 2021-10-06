@@ -52,37 +52,44 @@ SquareButton.defaultProps = {
   size: SquareButtonSize.md
 }
 
+interface LinkProps {
+  href: string
+}
+
 interface SquareLinkProps
   extends React.DetailedHTMLProps<
     React.AnchorHTMLAttributes<HTMLAnchorElement>,
     HTMLAnchorElement
   > {
+  href: string
+  Link: React.FC<LinkProps>
   theme?: SquareButtonTheme
   size?: SquareButtonSize
   chevron?: boolean
 }
 
 export const SquareLink: React.FC<SquareLinkProps> = (props) => {
-  const { chevron, theme, size, className, ...buttonProps } = props
+  const { chevron, theme, href, size, className, Link, ...linkProps } = props
 
   return (
-    <a
-      className={classnames(
-        'square-btn',
-        getThemeClassName(theme),
-        getSizeClassName(size),
-        className
-      )}
-      {...buttonProps}
-    >
-      {props.children}{' '}
-      {chevron && (
-        <FeatherIcon
-          icon={'chevron-right'}
-          className={classnames('inline-block -mt-1', getChevronClassName(size))}
-        />
-      )}
-    </a>
+    <Link href={href} {...linkProps}>
+      <a
+        className={classnames(
+          'square-btn',
+          getThemeClassName(theme),
+          getSizeClassName(size),
+          className
+        )}
+      >
+        {props.children}{' '}
+        {chevron && (
+          <FeatherIcon
+            icon={'chevron-right'}
+            className={classnames('inline-block -mt-1', getChevronClassName(size))}
+          />
+        )}
+      </a>
+    </Link>
   )
 }
 
