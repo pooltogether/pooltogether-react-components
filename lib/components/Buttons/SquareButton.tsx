@@ -52,17 +52,13 @@ SquareButton.defaultProps = {
   size: SquareButtonSize.md
 }
 
-interface LinkProps {
-  href: string
-}
-
 interface SquareLinkProps
   extends React.DetailedHTMLProps<
     React.AnchorHTMLAttributes<HTMLAnchorElement>,
     HTMLAnchorElement
   > {
   href: string
-  Link: React.FC<LinkProps>
+  Link: any
   theme?: SquareButtonTheme
   size?: SquareButtonSize
   chevron?: boolean

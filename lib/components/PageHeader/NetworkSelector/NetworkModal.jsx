@@ -11,7 +11,7 @@ import { getNetworkNiceNameByChainId } from '@pooltogether/utilities'
 import { Modal, NetworkIcon } from '../../..'
 
 export const NetworkModal = (props) => {
-  const { t, isOpen, closeModal, supportedNetworks, chainId, wallet } = props
+  const { t, isOpen, closeModal, supportedNetworks, chainId, wallet, network } = props
 
   const isWalletMetamask = useIsWalletMetamask(wallet)
   const currentNetworkName = getNetworkNiceNameByChainId(chainId)
@@ -27,7 +27,13 @@ export const NetworkModal = (props) => {
               'Select a supported network to be prompted to switch in your MetaMask wallet.'}
           </Description>
           {supportedNetworks.map((chainId) => (
-            <NetworkButton t={t} key={chainId} chainId={chainId} closeModal={closeModal} />
+            <NetworkButton
+              network={network}
+              t={t}
+              key={chainId}
+              chainId={chainId}
+              closeModal={closeModal}
+            />
           ))}
           <CurrentlyConnectedTo
             t={t}
@@ -48,7 +54,7 @@ export const NetworkModal = (props) => {
             'Please switch to a supported network in your wallet.'}
         </Description>
         {supportedNetworks.map((chainId) => (
-          <NetworkItem t={t} key={chainId} chainId={chainId} />
+          <NetworkItem network={network} t={t} key={chainId} chainId={chainId} />
         ))}
         <CurrentlyConnectedTo
           t={t}
@@ -61,7 +67,9 @@ export const NetworkModal = (props) => {
 }
 
 const Container = (props) => <div className='flex flex-col h-full p-4'>{props.children}</div>
-const Header = (props) => <h5 className='text-accent-1'>{props.children}</h5>
+const Header = (props) => (
+  <h5 className='font-semibold uppercase text-inverse mb-2'>{props.children}</h5>
+)
 const Description = (props) => <p className='mb-4 text-sm text-accent-1'>{props.children}</p>
 const CurrentlyConnectedTo = (props) => (
   <p className='text-xxxs mt-auto'>
@@ -73,9 +81,9 @@ const CurrentlyConnectedTo = (props) => (
 )
 
 const NetworkItem = (props) => {
-  const { chainId } = props
+  const { network, chainId } = props
 
-  const isCurrentNetwork = useIsWalletOnNetwork(chainId)
+  const isCurrentNetwork = useIsWalletOnNetwork(network, chainId)
   const networkName = getNetworkNiceNameByChainId(chainId)
 
   return (
@@ -85,31 +93,31 @@ const NetworkItem = (props) => {
         'bg-body': !isCurrentNetwork
       })}
     >
-      <NetworkIcon chainId={chainId} className='my-auto mr-2' />
-      <span className='my-auto'>{networkName}</span>
+      <NetworkIcon chainId={chainId} className='mr-2' />
+      <span>{networkName}</span>
     </div>
   )
 }
 
 const NetworkButton = (props) => {
-  const { chainId, closeModal } = props
+  const { network, chainId, closeModal } = props
 
-  const isCurrentNetwork = useIsWalletOnNetwork(chainId)
+  const isCurrentNetwork = useIsWalletOnNetwork(network, chainId)
   const networkName = getNetworkNiceNameByChainId(chainId)
   const addNetwork = useAddNetworkToMetamask(chainId, { onSuccess: closeModal })
 
   return (
     <div className='flex mb-4 last:mb-0'>
       <button
-        className={classnames('w-full flex justify-center py-2 rounded trans', {
-          'pool-gradient-1 text-white hover:text-white': isCurrentNetwork,
-          'bg-body border border-body hover:border-accent-3': !isCurrentNetwork
+        className={classnames('w-full flex items-center justify-center py-2 rounded trans', {
+          'pool-gradient-1 hover:text-white': isCurrentNetwork,
+          'bg-body border border-body hover:bg-pt-purple-bright hover:border-accent-3': !isCurrentNetwork
         })}
         type='button'
         onClick={addNetwork}
       >
         <NetworkIcon chainId={chainId} className='mr-2' />
-        <span className='my-auto'>{networkName}</span>
+        <span>{networkName}</span>
       </button>
     </div>
   )

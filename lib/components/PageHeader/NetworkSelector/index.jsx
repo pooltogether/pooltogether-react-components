@@ -4,7 +4,7 @@ import { NetworkModal } from './NetworkModal'
 import { NetworkTrigger } from './NetworkTrigger'
 
 export const NetworkSelector = (props) => {
-  const { t, chainId, supportedNetworks, className, isWalletConnected, wallet } = props
+  const { t, chainId, supportedNetworks, className, isWalletConnected, wallet, network } = props
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -19,6 +19,7 @@ export const NetworkSelector = (props) => {
       )}
       <NetworkModal
         t={t}
+        network={network}
         wallet={wallet}
         chainId={chainId}
         isOpen={isOpen}

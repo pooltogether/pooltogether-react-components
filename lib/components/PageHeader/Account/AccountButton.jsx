@@ -19,13 +19,12 @@ export function AccountButton (props) {
     <button
       onClick={openModal}
       className={classnames(
-        'transition text-highlight-2 bg-default rounded-full px-2 xs:px-4 hover:bg-pt-purple-bright hover:text-inverse',
-        'trans trans-fastest text-xs font-bold tracking-wider outline-none focus:outline-none active:outline-none',
-        'flex justify-center trans trans-fastest z-20 h-8',
+        'transition text-highlight-2 px-2 xs:px-4 hover:text-inverse',
+        'text-xs font-bold tracking-wider outline-none focus:outline-none active:outline-none',
+        'flex justify-center z-20 h-8',
 
         className
       )}
-      style={{ minWidth: '134px' }}
     >
       {pendingTransactionsCount ? (
         <>

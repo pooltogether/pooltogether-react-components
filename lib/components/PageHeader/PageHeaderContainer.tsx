@@ -32,7 +32,7 @@ export const PageHeaderContainer = (props: PageHeaderContainerProps) => {
           <HeaderLogo />
         </a>
       </Link>
-      <div className='flex flex-row justify-end my-auto'>{props.children}</div>
+      <div className='flex flex-row justify-end items-center'>{props.children}</div>
     </div>
   )
 }

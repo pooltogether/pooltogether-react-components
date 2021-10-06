@@ -59,7 +59,7 @@ export const Modal = (props: ModalProps) => {
             'p-4': !noPad,
             'bg-card': !noBgColor,
             'text-inverse': !noTextColor,
-            'h-full sm:h-auto sm:max-w-sm': !noSize,
+            'h-full sm:h-auto sm:max-w-md': !noSize,
             'rounded-none sm:rounded-xl ': !noRoundCorners
           },
           className
