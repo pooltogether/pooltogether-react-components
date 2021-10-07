@@ -1,5 +1,6 @@
 import classNames from 'classnames'
 import React from 'react'
+import { isEmpty } from 'lodash'
 
 interface ErrorsBoxProps {
   errors: {
@@ -20,15 +21,12 @@ interface ErrorsBoxProps {
 export function ErrorsBox(props: ErrorsBoxProps) {
   const { errors, className, colorClassName, fontClassName } = props
 
-  const errorMessages = errors ? Object.values(errors).map((error) => error.message) : []
+  if (isEmpty(errors)) return null
+
+  const errorMessages = Object.values(errors).map((error) => error.message)
 
   return (
-    <div
-      className={classNames(className, fontClassName, colorClassName)}
-      style={{
-        minHeight: 24
-      }}
-    >
+    <div className={classNames(className, fontClassName, colorClassName)}>
       {errorMessages.map((errorMsg) => errorMsg)}
     </div>
   )

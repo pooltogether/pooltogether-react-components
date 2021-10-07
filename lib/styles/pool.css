@@ -625,12 +625,6 @@ a {
   width: 100%;
 }
 
-@screen xs {
-  .bg-prize-amount--small {
-    height: 192px;
-  }
-}
-
 .lightning-bolts {
   background-image: url('/lightning-bolts@2x.png');
   background-size: contain;
@@ -638,19 +632,19 @@ a {
   background-repeat: no-repeat;
   pointer-events: none;
   left: 0;
-  top: 21px;
+  top: 20px;
   height: 100px;
   overflow: hidden;
   position: absolute;
-  margin-left: -7px;
+
+  margin-left: -1%;
   width: 100%;
 }
 
 @screen sm {
-  .bg-prize-amount--small {
-    top: 21px;
-    margin-left: -63px;
-    width: 707px;
+  .lightning-bolts {
+    margin-left: -12%;
+    width: 120%;
   }
 }
 
@@ -667,10 +661,4 @@ a {
   border-radius: 10px;
   border: 4px solid transparent;
   width: 100%;
-}
-
-@screen sm {
-  .border-gradient {
-    width: 36rem;
-  }
 }

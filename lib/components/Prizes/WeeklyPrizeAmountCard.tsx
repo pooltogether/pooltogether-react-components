@@ -14,21 +14,18 @@ export const WeeklyPrizeAmountCard = (props) => {
 
   return (
     <div
-      className={classnames(
-        'relative overflow-visible flex flex-col justify-between text-center mb-1 xs:mb-12',
-        {
-          'bg-prize-amount--small': sm,
-          'bg-prize-amount': !sm
-        }
-      )}
+      className={classnames('relative overflow-visible flex flex-col justify-between text-center', {
+        'bg-prize-amount--small': sm,
+        'bg-prize-amount': !sm
+      })}
     >
       <div className='lightning-bolts' />
-      <div className='border-gradient mx-auto py-2 xs:py-8'>
-        <div className='w-2/3 xs:w-1/2 mx-auto'>
+      <div className='border-gradient mx-auto py-4 xs:py-8'>
+        <div className='w-2/3 xs:w-1/2 mx-auto leading-none'>
           <h1 className='text-4xl xs:text-10xl xs:-mt-0 font-semibold'>
             {isFetched ? amount : '--'}
           </h1>
-          <div className='uppercase font-semibold text-default text-xxs xs:text-lg -mt-2'>
+          <div className='uppercase font-semibold text-default text-xxs xs:text-lg mt-2'>
             {t?.('inWeeklyPrizes', 'In weekly prizes') || 'In weekly prizes'}
           </div>
         </div>
