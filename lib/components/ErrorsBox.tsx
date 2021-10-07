@@ -2,7 +2,11 @@ import classNames from 'classnames'
 import React from 'react'
 
 interface ErrorsBoxProps {
-  errors: Error[]
+  errors: {
+    [x: string]: {
+      message: string
+    }
+  }
   className?: string
   colorClassName: string
   fontClassName: string
