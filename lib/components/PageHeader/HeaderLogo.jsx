@@ -16,7 +16,7 @@ export const HeaderLogo = (props) => {
     return (
       <img
         src={theme === 'dark' ? MobileLogoDark : MobileLogo}
-        style={{ height: '50px', width: '29px' }}
+        style={{ height: '36px', width: '21px' }}
       />
     )
   }
