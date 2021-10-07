@@ -591,17 +591,10 @@ a {
 }
 
 .bg-prize-amount {
-  background-image: url('/bg-prize-amount@2x.png');
   background-size: contain;
   background-position: top center;
   background-repeat: no-repeat;
 
-  /* 16:9 */
-  /* padding-bottom: 56.25%; */
-  /* height: 0; */
-
-  /* padding-bottom: 45%; */
-  /* height: 200px; */
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -624,7 +617,6 @@ a {
 }
 
 .bg-prize-amount--small {
-  background-image: url('/bg-prize-amount--small@2x.png');
   background-size: contain;
   background-position: center center;
   background-repeat: no-repeat;
@@ -659,5 +651,26 @@ a {
     top: 21px;
     margin-left: -63px;
     width: 707px;
+  }
+}
+
+.border-gradient {
+  background: url('/bg-prize-amount--small@2x.png') padding-box,
+    linear-gradient(
+        130deg,
+        rgb(76, 36, 159) 0%,
+        rgb(23, 225, 253) 50%,
+        rgb(255, 119, 225) 70%,
+        rgb(245 221 12) 90%
+      )
+      border-box;
+  border-radius: 10px;
+  border: 4px solid transparent;
+  width: 100%;
+}
+
+@screen sm {
+  .border-gradient {
+    width: 36rem;
   }
 }

@@ -8,33 +8,35 @@ import { ThemedClipSpinner } from '../Loading/ThemedClipSpinner'
 const AWARD_DAY = 'Friday'
 
 export const WeeklyPrizeAmountCard = (props) => {
-  const { t, sm, prizePretty } = props
+  const { t, sm, prizePretty, isFetched } = props
 
   const amount = prizePretty ? formatNumbers(prizePretty) : weeklyPrizeAmountV3()
 
   return (
     <div
       className={classnames(
-        'relative overflow-visible flex flex-col justify-between text-center py-8 xs:pt-4 mb-4',
+        'relative overflow-visible flex flex-col justify-between text-center mb-1 xs:mb-12',
         {
           'bg-prize-amount--small': sm,
           'bg-prize-amount': !sm
         }
       )}
-      style={{ minHeight: 127 }}
     >
       <div className='lightning-bolts' />
-
-      <div className=''>
-        <h1 className='text-4xl xs:text-6xl -mt-6 xs:-mt-0 font-semibold'>{amount}</h1>
-        <div className='uppercase font-semibold text-default text-xxs xs:text-lg -mt-2'>
-          {t?.('inWeeklyPrizes', 'In weekly prizes') || 'In weekly prizes'}
+      <div className='border-gradient mx-auto py-2 xs:py-8'>
+        <div className='w-2/3 xs:w-1/2 mx-auto'>
+          <h1 className='text-4xl xs:text-10xl xs:-mt-0 font-semibold'>
+            {isFetched ? amount : '--'}
+          </h1>
+          <div className='uppercase font-semibold text-default text-xxs xs:text-lg -mt-2'>
+            {t?.('inWeeklyPrizes', 'In weekly prizes') || 'In weekly prizes'}
+          </div>
         </div>
-      </div>
-      <div className='uppercase font-semibold text-green text-xxs xs:text-lg w-2/3 xs:w-1/2 mx-auto'>
-        {t?.('awardedEveryXDay', {
-          day: AWARD_DAY
-        }) || `Awarded every ${AWARD_DAY}!`}
+        <div className='uppercase font-semibold text-green text-xxs xs:text-lg w-2/3 xs:w-1/2 mx-auto'>
+          {t?.('awardedEveryXDay', {
+            day: AWARD_DAY
+          }) || `Awarded every ${AWARD_DAY}!`}
+        </div>
       </div>
     </div>
   )
