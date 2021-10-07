@@ -59,17 +59,20 @@ interface SquareLinkProps
   > {
   href: string
   Link: any
+  target?: string
   theme?: SquareButtonTheme
   size?: SquareButtonSize
   chevron?: boolean
 }
 
 export const SquareLink: React.FC<SquareLinkProps> = (props) => {
-  const { chevron, theme, href, size, className, Link, ...linkProps } = props
+  const { chevron, theme, href, size, className, Link, target, ...linkProps } = props
 
   return (
-    <Link href={href} {...linkProps}>
+    <Link href={href}>
       <a
+        {...linkProps}
+        target={target}
         className={classnames(
           'square-btn',
           getThemeClassName(theme),
