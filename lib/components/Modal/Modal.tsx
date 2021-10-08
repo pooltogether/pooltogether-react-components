@@ -11,6 +11,7 @@ export interface ModalProps {
   label: string
   children?: React.ReactNode
   className?: string
+  style?: object
   noPad?: boolean
   noSize?: boolean
   noBgColor?: boolean
@@ -25,6 +26,7 @@ export const Modal = (props: ModalProps) => {
     children,
     label,
     className,
+    style,
     noPad,
     noSize,
     noBgColor,
@@ -64,6 +66,7 @@ export const Modal = (props: ModalProps) => {
           },
           className
         )}
+        style={style}
       >
         <CloseModalButton closeModal={closeModal} />
         {children}
