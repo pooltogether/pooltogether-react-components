@@ -81,7 +81,7 @@ const CloseModalButton = (props) => {
   const { closeModal } = props
   return (
     <button
-      className='my-auto ml-auto close-button trans text-inverse opacity-50 hover:opacity-100 absolute right-7 top-6'
+      className='my-auto ml-auto close-button trans text-white opacity-50 hover:opacity-100 absolute right-7 top-6'
       onClick={closeModal}
     >
       <FeatherIcon icon='x' className='w-6 h-6' />

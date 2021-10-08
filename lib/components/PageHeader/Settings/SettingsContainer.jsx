@@ -88,15 +88,20 @@ export function SettingsContainer (props) {
       >
         <button
           onClick={toggleOpen}
-          className='absolute close-button hover:opacity-30 trans outline-none focus:outline-none active:outline-none top-4 right-10 text-white'
+          className={classnames(
+            'absolute close-button hover:opacity-70 trans text-white hover:text-white',
+            'outline-none focus:outline-none active:outline-none top-6 right-12'
+          )}
         >
           <VisuallyHidden>Close</VisuallyHidden>
           <span aria-hidden>
-            <FeatherIcon icon='x' className='w-6 h-6' />
+            <FeatherIcon icon='x' className='w-6 h-6 stroke-current' />
           </span>
         </button>
 
-        <h6 className='text-white mt-4 mb-10 capitalize'>{t('settings', 'Settings')}</h6>
+        <h6 className='text-white mt-4 mb-10 uppercase font-semibold'>
+          {t('settings', 'Settings')}
+        </h6>
 
         {props.children}
       </motion.div>

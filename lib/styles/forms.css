@@ -15,7 +15,7 @@ button {
   transition: all 75ms ease-in-out;
 }
 
-button:hover {
+.dark-theme button:hover {
   @apply text-inverse;
 }
 

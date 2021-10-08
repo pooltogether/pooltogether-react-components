@@ -22,14 +22,14 @@ export const WeeklyPrizeAmountCard = (props) => {
       <div className='lightning-bolts' />
       <div className='border-gradient mx-auto py-4 xs:py-8'>
         <div className='w-2/3 xs:w-1/2 mx-auto leading-none'>
-          <h1 className='text-4xl xs:text-10xl xs:-mt-0 font-semibold'>
+          <h1 className='text-4xl xs:text-10xl xs:-mt-0 font-semibold text-white'>
             {isFetched ? amount : '--'}
           </h1>
-          <div className='uppercase font-semibold text-default text-xxs xs:text-lg mt-2'>
+          <div className='uppercase font-semibold text-default-soft text-xxs xs:text-lg mt-2'>
             {t?.('inWeeklyPrizes', 'In weekly prizes') || 'In weekly prizes'}
           </div>
         </div>
-        <div className='uppercase font-semibold text-green text-xxs xs:text-lg w-2/3 xs:w-1/2 mx-auto'>
+        <div className='uppercase font-semibold text-highlight-6 text-xxs xs:text-lg w-2/3 xs:w-1/2 mx-auto'>
           {t?.('awardedEveryXDay', {
             day: AWARD_DAY
           }) || `Awarded every ${AWARD_DAY}!`}

@@ -109,10 +109,13 @@ const NetworkButton = (props) => {
   return (
     <div className='flex mb-4 last:mb-0'>
       <button
-        className={classnames('w-full flex items-center justify-center py-2 rounded trans', {
-          'pool-gradient-1 hover:text-white': isCurrentNetwork,
-          'bg-body border border-body hover:bg-pt-purple-bright hover:border-accent-3': !isCurrentNetwork
-        })}
+        className={classnames(
+          'w-full flex items-center justify-center py-2 rounded transition hover:text-white',
+          {
+            'pool-gradient-1 text-white': isCurrentNetwork,
+            'bg-body border border-body hover:bg-pt-purple-bright hover:border-accent-3': !isCurrentNetwork
+          }
+        )}
         type='button'
         onClick={addNetwork}
       >
