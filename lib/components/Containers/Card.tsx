@@ -9,13 +9,22 @@ export const CardTheme = Object.freeze({
 export interface CardProps
   extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   theme: string
+  style?: object
   backgroundClassName?: string
   sizeClassName: string
   paddingClassName: string
 }
 
 export const Card = (props: CardProps) => {
-  const { children, className, paddingClassName, sizeClassName, backgroundClassName, theme } = props
+  const {
+    children,
+    className,
+    paddingClassName,
+    sizeClassName,
+    backgroundClassName,
+    theme,
+    style
+  } = props
 
   return (
     <div
@@ -26,6 +35,7 @@ export const Card = (props: CardProps) => {
         backgroundClassName || theme,
         className
       )}
+      style={style}
     >
       {children}
     </div>
