@@ -12,7 +12,8 @@ export enum SquareButtonTheme {
   orange = 'orange',
   orangeOutline = 'orangeOutline',
   black = 'black',
-  blackOutline = 'blackOutline'
+  blackOutline = 'blackOutline',
+  rainbow = 'rainbow'
 }
 
 export enum SquareButtonSize {
@@ -138,6 +139,9 @@ const getThemeClassName = (theme: SquareButtonTheme): string => {
     }
     case SquareButtonTheme.blackOutline: {
       return 'square-btn--black-outline'
+    }
+    case SquareButtonTheme.rainbow: {
+      return 'square-btn--rainbow'
     }
   }
 }
