@@ -249,6 +249,10 @@
   background: radial-gradient(rgba(76, 36, 159, 0.7) 0, rgba(76, 36, 159, 0) 70%);
 }
 
+.theme-light .purple-radial-gradient {
+  background: radial-gradient(rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 0) 70%);
+}
+
 .theme-dark .pool-logo:after {
   background-image: url('/pooltogether-white-mark.svg');
 }
