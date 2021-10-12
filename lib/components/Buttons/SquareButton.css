@@ -57,7 +57,7 @@
 .square-btn--purple:not([disabled]):hover,
 .square-btn--purple:not([disabled]):focus {
   @apply text-white bg-pt-purple-bright;
-  box-shadow: 0 0 0 3px #4c249f7f;
+  box-shadow: 0 0 0 3px rgba(112, 13, 242, 0.25);
 }
 
 .square-btn--purple:not([disabled]):active {
@@ -81,8 +81,8 @@
 .square-btn--purple-outline:not([disabled]):hover,
 .square-btn--purple-outline:not([disabled]):focus {
   @apply text-purple;
-  box-shadow: 0 0 0 3px rgba(60, 20, 184, 0.363);
-  color: #8b5ef5;
+  box-shadow: 0 0 0 3px rgba(104, 9, 209, 0.563);
+  color: #baa2f2;
 }
 
 .square-btn--purple-outline:not([disabled]):active {
