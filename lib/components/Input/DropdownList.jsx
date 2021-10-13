@@ -3,7 +3,7 @@ import classnames from 'classnames'
 import FeatherIcon from 'feather-icons-react'
 import { Menu, MenuList, MenuButton, MenuItem } from '@reach/menu-button'
 
-export function DropdownList(props) {
+export function DropdownList (props) {
   const {
     id,
     className,
@@ -93,7 +93,9 @@ export function DropdownList(props) {
               />
             </MenuButton>
 
-            <MenuList className='slide-down overflow-y-auto max-h-1/2'>{menuItems}</MenuList>
+            <MenuList className={`${id} slide-down overflow-y-auto max-h-1/2`}>
+              {menuItems}
+            </MenuList>
           </>
         )}
       </Menu>

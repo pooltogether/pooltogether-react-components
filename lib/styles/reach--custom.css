@@ -61,7 +61,6 @@
 
 /* MENUS / DROPDOWNS */
 [data-reach-popover] {
-  margin-top: 10px;
   min-width: 200px;
   z-index: 5001;
 }

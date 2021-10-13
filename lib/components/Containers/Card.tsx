@@ -10,6 +10,7 @@ export interface CardProps
   extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   theme: string
   style?: object
+  roundedClassName?: string
   backgroundClassName?: string
   sizeClassName: string
   paddingClassName: string
@@ -19,6 +20,7 @@ export const Card = (props: CardProps) => {
   const {
     children,
     className,
+    roundedClassName,
     paddingClassName,
     sizeClassName,
     backgroundClassName,
@@ -29,7 +31,7 @@ export const Card = (props: CardProps) => {
   return (
     <div
       className={classnames(
-        'rounded-xl',
+        roundedClassName || 'rounded-xl',
         sizeClassName,
         paddingClassName,
         backgroundClassName || theme,

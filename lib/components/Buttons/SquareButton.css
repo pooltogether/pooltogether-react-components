@@ -169,11 +169,13 @@
     rgb(254, 220, 111) 120%
   );
   background-size: 400% 400%;
-
   border: none;
-  /* border-color: rgba(255, 255, 255, 0.2); */
-
   z-index: 1;
+}
+
+.square-btn--md.square-btn--rainbow {
+  padding-bottom: 0.625rem;
+  padding-top: 0.625rem;
 }
 
 .gradient-background-anim {
