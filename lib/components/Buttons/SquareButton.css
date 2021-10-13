@@ -22,8 +22,8 @@
 
 .square-btn--teal:disabled {
   @apply border-transparent;
-  background-color: #2b2d6c;
-  color: #8679b8;
+  background-color: #270255;
+  color: #573095;
 }
 
 /* Teal Outline */
