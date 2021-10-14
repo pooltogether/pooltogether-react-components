@@ -296,7 +296,7 @@ const pooltogetherReactTailwindUIConfig = {
     margin: ['responsive', 'last', 'first'],
     padding: ['responsive', 'last'],
     borderColor: ['hover', 'focus', 'active', 'last'],
-    textColor: ['hover', 'focus', 'active'],
+    textColor: ['hover', 'focus', 'active', 'responsive'],
     backgroundColor: ['hover', 'focus', 'active', 'responsive'],
     borderRadius: ['responsive'],
     borderWidth: ['hover'],
@@ -305,10 +305,18 @@ const pooltogetherReactTailwindUIConfig = {
   plugins: [],
   purge: false
   // purge: [
-  //   './components/**/*.jsx',
-  //   './components/**/*.js',
-  //   './pages/**/*.jsx',
-  //   './pages/**/*.js'
+  //   './lib/components/**/*.jsx',
+  //   './lib/components/**/*.js',
+  //   './lib/pages/**/*.jsx',
+  //   './lib/pages/**/*.js'
+  //   './lib/views/**/*.jsx',
+  //   './lib/views/**/*.js'
+  //   './lib/components/**/*.tsx',
+  //   './lib/components/**/*.ts',
+  //   './lib/pages/**/*.tsx',
+  //   './lib/pages/**/*.ts'
+  //   './lib/views/**/*.tsx',
+  //   './lib/views/**/*.ts'
   // ],
 }
 
