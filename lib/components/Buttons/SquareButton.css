@@ -232,6 +232,7 @@
   @apply border-transparent;
   background-color: #1e012f;
   color: #000;
+  opacity: 0.5;
 }
 
 /* ------- Sizes ------- */
