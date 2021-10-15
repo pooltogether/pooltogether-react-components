@@ -83,6 +83,7 @@ import PT_USDT_SPONSORSHIP from '../../assets/Tokens/pt-usdt-sponsorship.png'
 import PT_CELO_USD_TICKET from '../../assets/Tokens/pt-celo-usd-ticket.png'
 import PT_CELO_EUR_TICKET from '../../assets/Tokens/pt-celo-eur-ticket.png'
 import SOHM from '../../assets/Tokens/sohm.png'
+import PTaUSDC from '../../assets/Tokens/ptausdc.png'
 
 /**
  * Sometimes the CoinGecko images aren't the prettiest
@@ -122,7 +123,8 @@ export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
     '0x0a2e7f69fe9588fa7fba5f5864236883cd4aac6d': PT_DAI_SPONSORSHIP,
     '0x391a437196c81eea7bbbbd5ed4df6b49de4f5c96': PT_USDC_SPONSORSHIP,
     '0xfdc192c153044dedb67c5a17b8651951cf70ee4a': PT_XSUSHI_TICKET,
-    '0x04f2694c8fcee23e8fd0dfea1d4f5bb8c352111f': SOHM
+    '0x04f2694c8fcee23e8fd0dfea1d4f5bb8c352111f': SOHM,
+    '0xdd4d117723c257cee402285d3acf218e9a8236e1': PTaUSDC
   },
   [NETWORK.rinkeby]: {
     '0x5592ec0cfb4dbc12d3ab100b257153436a1f0fea': DAI
@@ -133,7 +135,8 @@ export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
     '0x9ecb26631098973834925eb453de1908ea4bdd4e': PT_USDT_TICKET,
     '0xc2132d05d31c914a87c6611c10748aeb04b58e8f': USDT,
     '0x25788a1a171ec66da6502f9975a15b609ff54cf6': POOL,
-    '0x19c0e557ee5a9b456f613ba3d025a4dc45b52c35': PT_USDC_SPONSORSHIP
+    '0x19c0e557ee5a9b456f613ba3d025a4dc45b52c35': PT_USDC_SPONSORSHIP,
+    '0x6a304dfdb9f808741244b6bfee65ca7b3b3a6076': PTaUSDC
   },
   [NETWORK.bsc]: {
     '0xe9e7cea3dedca5984780bafc599bd69add087d56': BUSD,
