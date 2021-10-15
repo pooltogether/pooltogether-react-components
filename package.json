@@ -1,25 +1,16 @@
 {
   "name": "@pooltogether/react-components",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "PoolTogether UI elements in a shared lib",
   "author": "PoolTogether",
   "license": "MIT",
   "main": "dist/index.js",
-  "files": [
-    "dist",
-    "config.js",
-    "README.md"
-  ],
+  "files": ["dist", "config.js", "README.md"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pooltogether/pooltogether-react-components.git"
   },
-  "keywords": [
-    "react",
-    "library",
-    "components",
-    "tailwindcss"
-  ],
+  "keywords": ["react", "library", "components", "tailwindcss"],
   "scripts": {
     "reinstall": "rm -rf ./node_modules && yarn",
     "start": "node ./node_modules/yalc-watch/dist/index.js",
@@ -113,18 +104,9 @@
     "typescript": "^4.3.5"
   },
   "lint-staged": {
-    "*.{js,json}": [
-      "prettier --write",
-      "git add"
-    ],
-    "*.css": [
-      "prettier --write",
-      "git add"
-    ],
-    "src/**/*.re": [
-      "refmt --in-place",
-      "git add"
-    ]
+    "*.{js,json}": ["prettier --write", "git add"],
+    "*.css": ["prettier --write", "git add"],
+    "src/**/*.re": ["refmt --in-place", "git add"]
   },
   "yalcWatch": {
     "watchFolder": "dist",

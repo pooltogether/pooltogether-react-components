@@ -194,6 +194,7 @@
   background: linear-gradient(85deg, #f37055 -30%, #ef4e7b, #f947d2, #0dacf5, #f947d2, #fedc6f);
   z-index: -1;
   animation: animatedgradient 3s ease alternate infinite;
+  animation-timing-function: steps(30);
   background-size: 300% 300%;
 }
 
