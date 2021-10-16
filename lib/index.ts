@@ -7,6 +7,7 @@
 // ------- Component Groups -------
 
 // Buttons
+export { AddTokenToMetamaskButton } from './components/Buttons/AddTokenToMetamaskButton'
 export {
   SquareButtonTheme,
   SquareButtonSize,
