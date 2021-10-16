@@ -1,5 +1,4 @@
 import React from 'react'
-import classnames from 'classnames'
 import { getNetworkNiceNameByChainId } from '@pooltogether/utilities'
 import { Token } from '@pooltogether/hooks'
 
@@ -23,12 +22,12 @@ export interface IAddTokenToMetamaskButtonProps {
 // needs to handle which network the user is on
 
 export function AddTokenToMetamaskButton(props) {
-  const { children, t, chainId, isWalletOnProperNetwork, isMetaMask, token } = props
+  const { children, className, t, chainId, isWalletOnProperNetwork, token } = props
 
   const currentNetworkName = getNetworkNiceNameByChainId(chainId)
 
-  if (!isMetaMask || !token) {
-    return children
+  if (!token) {
+    return null
   }
 
   const handleAddTokenToMetaMask = async (e) => {
@@ -54,17 +53,15 @@ export function AddTokenToMetamaskButton(props) {
   }
 
   return (
-    <button
-      onClick={handleAddTokenToMetaMask}
-      className={classnames(
-        props.className,
-        `trans hover:opacity-70 inline-flex cursor-pointer items-center`
-      )}
-    >
+    <button onClick={handleAddTokenToMetaMask} className={className}>
       {children ||
         t('addTicketTokenToMetamask', {
           token: token.symbol
         })}
     </button>
   )
+}
+
+AddTokenToMetamaskButton.defaultProps = {
+  className: `trans hover:opacity-90 cursor-pointer inline-flex items-center`
 }

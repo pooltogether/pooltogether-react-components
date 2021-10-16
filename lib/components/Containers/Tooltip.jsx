@@ -20,6 +20,7 @@ export const Tooltip = (props) => {
     iconClassName,
     iconSizeClassName,
     id,
+    place,
     effect,
     toolTipClassName,
     isEnabled
@@ -50,7 +51,7 @@ export const Tooltip = (props) => {
         ref={ref}
         backgroundColor='#111'
         id={`${id}-tooltip`}
-        place='top'
+        place={place}
         effect={effect}
         data-multiline
         className={classnames(
@@ -80,5 +81,6 @@ export const Tooltip = (props) => {
 Tooltip.defaultProps = {
   effect: 'solid',
   iconSizeClassName: 'w-4 h-4',
-  isEnabled: true
+  isEnabled: true,
+  place: 'top'
 }
