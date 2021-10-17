@@ -28,7 +28,7 @@ export const PageHeaderContainer = (props: PageHeaderContainerProps) => {
       )}
     >
       <Link as={as} href={href}>
-        <a>
+        <a className='min-w-max'>
           <HeaderLogo />
         </a>
       </Link>
