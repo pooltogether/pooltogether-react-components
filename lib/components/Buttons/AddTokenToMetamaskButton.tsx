@@ -3,7 +3,7 @@ import { getNetworkNiceNameByChainId } from '@pooltogether/utilities'
 import { Token } from '@pooltogether/hooks'
 
 import { poolToast } from '../../services/poolToast'
-import { addTokenToMetaMask } from './addTokenToMetaMask'
+import { addTokenToMetaMask } from '../../services/addTokenToMetaMask'
 
 const TOKEN_IMG_URL = {
   PTaUSDC: 'https://app.pooltogether.com/ptausdc@2x.png'

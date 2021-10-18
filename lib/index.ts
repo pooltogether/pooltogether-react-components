@@ -8,6 +8,7 @@
 
 // Buttons
 export { AddTokenToMetamaskButton } from './components/Buttons/AddTokenToMetamaskButton'
+
 export {
   SquareButtonTheme,
   SquareButtonSize,
@@ -128,6 +129,9 @@ export { TxStatus } from './components/TxStatus'
 export { ToastContainer } from 'react-toastify'
 export { poolToast } from './services/poolToast'
 import 'react-toastify/dist/ReactToastify.css'
+
+// MetaMask Functionality
+export { addTokenToMetaMask } from './services/addTokenToMetaMask'
 
 // Styles
 import './styles/utils.css'
