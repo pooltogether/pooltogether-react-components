@@ -29,8 +29,8 @@ export const PageTitleAndBreadcrumbs = (props) => {
         {title}
         {showPrizeFrequencyChip && (
           <PrizeFrequencyChip
-            prizePeriodSeconds={pool?.prize?.prizePeriodSeconds}
             t={t}
+            prizePeriodSeconds={pool?.prize?.prizePeriodSeconds}
             className='ml-4'
           />
         )}
