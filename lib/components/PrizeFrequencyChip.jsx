@@ -8,7 +8,6 @@ const SECONDS_PER_WEEK = 604800
 
 export const PrizeFrequencyChip = (props) => {
   const { prizePeriodSeconds, t, className } = props
-
   const isDaily = prizePeriodSeconds.toNumber() === SECONDS_PER_DAY
   const isWeekly = prizePeriodSeconds.toNumber() === SECONDS_PER_WEEK
 
