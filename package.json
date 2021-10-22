@@ -1,6 +1,6 @@
 {
   "name": "@pooltogether/react-components",
-  "version": "1.2.9",
+  "version": "1.2.10",
   "description": "PoolTogether UI elements in a shared lib",
   "author": "PoolTogether",
   "license": "MIT",
