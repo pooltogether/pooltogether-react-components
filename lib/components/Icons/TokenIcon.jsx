@@ -84,6 +84,7 @@ import PT_CELO_USD_TICKET from '../../assets/Tokens/pt-celo-usd-ticket.png'
 import PT_CELO_EUR_TICKET from '../../assets/Tokens/pt-celo-eur-ticket.png'
 import SOHM from '../../assets/Tokens/sohm.png'
 import PTaUSDC from '../../assets/Tokens/ptausdc.png'
+import TCAP from '../../assets/Tokens/tcap.png'
 
 /**
  * Sometimes the CoinGecko images aren't the prettiest
@@ -124,7 +125,8 @@ export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
     '0x391a437196c81eea7bbbbd5ed4df6b49de4f5c96': PT_USDC_SPONSORSHIP,
     '0xfdc192c153044dedb67c5a17b8651951cf70ee4a': PT_XSUSHI_TICKET,
     '0x04f2694c8fcee23e8fd0dfea1d4f5bb8c352111f': SOHM,
-    '0xdd4d117723c257cee402285d3acf218e9a8236e1': PTaUSDC
+    '0xdd4d117723c257cee402285d3acf218e9a8236e1': PTaUSDC,
+    '0x16c52ceece2ed57dad87319d91b5e3637d50afa4': TCAP
   },
   [NETWORK.rinkeby]: {
     '0x5592ec0cfb4dbc12d3ab100b257153436a1f0fea': DAI
