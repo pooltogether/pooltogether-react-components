@@ -58,8 +58,12 @@ const TimeUnit = (props: {
   return (
     <div className={classNames(className, 'flex flex-col space-y-1')}>
       <div className='flex space-x-px'>
-        {amounts.map((amount) => (
-          <TimeDigit amount={amount} className={classNames({ [textClassName]: !hideColors })} />
+        {amounts.map((amount, index) => (
+          <TimeDigit
+            key={`${unit}-${index}`}
+            amount={amount}
+            className={classNames({ [textClassName]: !hideColors })}
+          />
         ))}
       </div>
       <span className='uppercase opacity-60 text-inverse text-xxxs text-center'>{unit}</span>

@@ -67,7 +67,7 @@ const socialsLinkData = [
         icon: <img src={TelegramLogo} className='w-4 opacity-50 mx-auto hover:opacity-100 trans' />
       },
       {
-        href: 'https://discord.gg/hxPhPDW',
+        href: 'https://pooltogether.com/discord/',
         label: 'Discord',
         icon: <img src={DiscordLogo} className='w-4 opacity-50 mx-auto hover:opacity-100 trans' />
       },
