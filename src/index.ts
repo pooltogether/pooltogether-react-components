@@ -129,7 +129,6 @@ export { TxStatus } from './components/TxStatus'
 // Toasts 🍞
 export { ToastContainer } from 'react-toastify'
 export { poolToast } from './services/poolToast'
-import 'react-toastify/dist/ReactToastify.css'
 
 // MetaMask Functionality
 export { addTokenToMetamask } from './services/addTokenToMetamask'
