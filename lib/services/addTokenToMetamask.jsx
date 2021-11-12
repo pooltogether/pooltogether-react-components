@@ -10,6 +10,10 @@ export const addTokenToMetaMask = async (
   try {
     symbol = symbol.replace('-', '').substr(0, 5)
 
+    if (typeof window === 'undefined') return null
+
+    const ethereum = window?.ethereum
+
     return await ethereum.request({
       method: 'wallet_watchAsset',
       params: {
