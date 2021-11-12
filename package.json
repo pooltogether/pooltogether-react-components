@@ -38,6 +38,8 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@babel/plugin-syntax-class-properties": "^7.12.13",
+    "@babel/plugin-transform-runtime": "^7.16.0",
     "@download/blockies": "^1.0.3",
     "@pooltogether/evm-chains-extended": "^0.5.3",
     "@reach/dialog": "^0.15.0",
@@ -75,7 +77,7 @@
     "@babel/preset-env": "^7.0.0-beta.40",
     "@babel/preset-react": "^7.0.0-beta.40",
     "@pooltogether/hooks": "^1.1.4",
-    "@pooltogether/utilities": "^0.1.5",
+    "@pooltogether/utilities": "^0.2.1",
     "@rollup/plugin-alias": "^3.1.1",
     "@rollup/plugin-babel": "^5.2.2",
     "@rollup/plugin-commonjs": "^17.0.0",
