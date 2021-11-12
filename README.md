@@ -5,23 +5,23 @@ React UI components using **tailwindcss**
 ## Components:
 
 Component Groups
-- [Buttons](https://github.com/pooltogether/pooltogether-react-components/tree/main/lib/components/Buttons)
-- [Containers](https://github.com/pooltogether/pooltogether-react-components/tree/main/lib/components/Containers)
-- [Icons](https://github.com/pooltogether/pooltogether-react-components/tree/main/lib/components/Icons)
-- [Input](https://github.com/pooltogether/pooltogether-react-components/tree/main/lib/components/Input)
-- [Layout](https://github.com/pooltogether/pooltogether-react-components/tree/main/lib/components/Layout)
-- [Links](https://github.com/pooltogether/pooltogether-react-components/tree/main/lib/components/Links)
-- [Loading](https://github.com/pooltogether/pooltogether-react-components/tree/main/lib/components/Loading)
-- [Modal](https://github.com/pooltogether/pooltogether-react-components/tree/main/lib/components/Modal)
-- [Navigation](https://github.com/pooltogether/pooltogether-react-components/tree/main/lib/components/Navigation)
-- [PageHeader](https://github.com/pooltogether/pooltogether-react-components/tree/main/lib/components/PageHeader)
+- [Buttons](https://github.com/pooltogether/pooltogether-react-components/tree/main/src/components/Buttons)
+- [Containers](https://github.com/pooltogether/pooltogether-react-components/tree/main/src/components/Containers)
+- [Icons](https://github.com/pooltogether/pooltogether-react-components/tree/main/src/components/Icons)
+- [Input](https://github.com/pooltogether/pooltogether-react-components/tree/main/src/components/Input)
+- [Layout](https://github.com/pooltogether/pooltogether-react-components/tree/main/src/components/Layout)
+- [Links](https://github.com/pooltogether/pooltogether-react-components/tree/main/src/components/Links)
+- [Loading](https://github.com/pooltogether/pooltogether-react-components/tree/main/src/components/Loading)
+- [Modal](https://github.com/pooltogether/pooltogether-react-components/tree/main/src/components/Modal)
+- [Navigation](https://github.com/pooltogether/pooltogether-react-components/tree/main/src/components/Navigation)
+- [PageHeader](https://github.com/pooltogether/pooltogether-react-components/tree/main/src/components/PageHeader)
 
 Top level components
-- [TransactionStatusChecker](https://github.com/pooltogether/pooltogether-react-components/tree/main/lib/components/TransactionStatusChecker)
-- [PageTitleAndBreadcrumbs](https://github.com/pooltogether/pooltogether-react-components/tree/main/lib/components/PageTitleAndBreadcrumbs.jsx)
-- [PoolCurrencyIcon](https://github.com/pooltogether/pooltogether-react-components/tree/main/lib/components/PoolCurrencyIcon.jsx)
-- [ThemeContextProvider](https://github.com/pooltogether/pooltogether-react-components/tree/main/lib/components/ThemeContextProvider.jsx)
-- [TxStatus](https://github.com/pooltogether/pooltogether-react-components/tree/main/lib/components/TxStatus.jsx)
+- [TransactionStatusChecker](https://github.com/pooltogether/pooltogether-react-components/tree/main/src/components/TransactionStatusChecker)
+- [PageTitleAndBreadcrumbs](https://github.com/pooltogether/pooltogether-react-components/tree/main/src/components/PageTitleAndBreadcrumbs.jsx)
+- [PoolCurrencyIcon](https://github.com/pooltogether/pooltogether-react-components/tree/main/src/components/PoolCurrencyIcon.jsx)
+- [ThemeContextProvider](https://github.com/pooltogether/pooltogether-react-components/tree/main/src/components/ThemeContextProvider.jsx)
+- [TxStatus](https://github.com/pooltogether/pooltogether-react-components/tree/main/src/components/TxStatus.jsx)
 
 
 ## Installation:

@@ -305,18 +305,18 @@ const pooltogetherReactTailwindUIConfig = {
   plugins: [],
   purge: false
   // purge: [
-  //   './lib/components/**/*.jsx',
-  //   './lib/components/**/*.js',
-  //   './lib/pages/**/*.jsx',
-  //   './lib/pages/**/*.js'
-  //   './lib/views/**/*.jsx',
-  //   './lib/views/**/*.js'
-  //   './lib/components/**/*.tsx',
-  //   './lib/components/**/*.ts',
-  //   './lib/pages/**/*.tsx',
-  //   './lib/pages/**/*.ts'
-  //   './lib/views/**/*.tsx',
-  //   './lib/views/**/*.ts'
+  //   './src/components/**/*.jsx',
+  //   './src/components/**/*.js',
+  //   './src/pages/**/*.jsx',
+  //   './src/pages/**/*.js'
+  //   './src/views/**/*.jsx',
+  //   './src/views/**/*.js'
+  //   './src/components/**/*.tsx',
+  //   './src/components/**/*.ts',
+  //   './src/pages/**/*.tsx',
+  //   './src/pages/**/*.ts'
+  //   './src/views/**/*.tsx',
+  //   './src/views/**/*.ts'
   // ],
 }
 
