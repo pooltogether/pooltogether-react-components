@@ -7,11 +7,19 @@ import { HOTKEYS_KEY_MAP } from '../constants'
 
 const THEME = 'theme'
 
-export const ThemeContext = React.createContext(null)
+export const ThemeContext = React.createContext<{
+  theme: string
+  toggleTheme: () => void
+}>({
+  theme: Cookies.get(THEME) || 'dark',
+  toggleTheme: () => {}
+})
 
-export function ThemeContextProvider (props) {
+export function ThemeContextProvider(props) {
   const [theme, setTheme] = useState('dark')
   const cookieOptions = useCookieOptions()
+
+  console.log('Theme context', { theme })
 
   useEffect(() => {
     let stored = Cookies.get(THEME)
@@ -39,9 +47,7 @@ export function ThemeContextProvider (props) {
     }
   }, [])
 
-  const toggleTheme = (e) => {
-    e.preventDefault()
-
+  const toggleTheme = () => {
     const body = document.body
 
     if (body.classList.contains('theme-dark')) {

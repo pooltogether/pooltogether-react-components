@@ -61,26 +61,7 @@
 
 /* MENUS / DROPDOWNS */
 [data-reach-popover] {
-  min-width: 200px;
   z-index: 5001;
-}
-
-@screen xs {
-  [data-reach-popover] {
-    min-width: 300px;
-  }
-}
-
-@screen sm {
-  [data-reach-popover] {
-    min-width: 500px;
-  }
-}
-
-@screen lg {
-  [data-reach-popover] {
-    min-width: 500px;
-  }
 }
 
 [data-reach-menu-list],

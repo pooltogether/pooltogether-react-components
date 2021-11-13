@@ -2,8 +2,7 @@ import React, { useContext } from 'react'
 import ContentLoader from 'react-content-loader'
 import { isMobile } from 'react-device-detect'
 
-import { UI_LOADER_ANIM_DEFAULTS } from 'src/constants'
-import { ThemeContext } from 'src/components/contextProviders/ThemeContextProvider'
+import { ThemeContext } from '../ThemeContextProvider'
 
 export const PrizeShowUILoader = (props) => {
   if (typeof window === 'undefined') {
@@ -17,12 +16,7 @@ export const PrizeShowUILoader = (props) => {
 
   if (isMobile) {
     return (
-      <ContentLoader
-        {...UI_LOADER_ANIM_DEFAULTS}
-        viewBox='0 0 600 1200'
-        backgroundColor={bgColor}
-        foregroundColor={foreColor}
-      >
+      <ContentLoader viewBox='0 0 600 1200' backgroundColor={bgColor} foregroundColor={foreColor}>
         <rect x='0' y='0' rx='5' ry='5' width='600' height='110' />{' '}
         <rect x='0' y='130' rx='5' ry='5' width='600' height='140' />
         <rect x='0' y='290' rx='5' ry='5' width='600' height='710' />
@@ -32,12 +26,7 @@ export const PrizeShowUILoader = (props) => {
 
   return (
     <>
-      <ContentLoader
-        {...UI_LOADER_ANIM_DEFAULTS}
-        viewBox='0 0 600 600'
-        backgroundColor={bgColor}
-        foregroundColor={foreColor}
-      >
+      <ContentLoader viewBox='0 0 600 600' backgroundColor={bgColor} foregroundColor={foreColor}>
         <rect x='0' y='0' rx='5' ry='5' width='300' height='50' />{' '}
         <rect x='0' y='58' rx='5' ry='5' width='600' height='60' />
         <rect x='0' y='125' rx='5' ry='5' width='600' height='470' />

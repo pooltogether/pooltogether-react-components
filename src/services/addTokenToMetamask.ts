@@ -14,8 +14,6 @@ export const addTokenToMetamask = async (
     // @ts-ignore
     const ethereum = window?.ethereum
 
-    console.log('test')
-
     return await ethereum.request({
       method: 'wallet_watchAsset',
       params: {

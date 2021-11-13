@@ -6,7 +6,7 @@
 
 /* Teal */
 .square-btn--teal {
-  @apply border-pt-teal-bright bg-pt-teal text-purple;
+  @apply border-pt-teal-bright bg-pt-teal-DEFAULT text-purple;
 }
 
 .square-btn--teal:not([disabled]):hover,
@@ -51,7 +51,7 @@
 
 /* Purple */
 .square-btn--purple {
-  @apply border-pt-purple-bright bg-pt-purple text-white;
+  @apply border-pt-purple-bright bg-pt-purple-DEFAULT text-white;
 }
 
 .square-btn--purple:not([disabled]):hover,

@@ -134,6 +134,8 @@ export { poolToast } from './services/poolToast'
 export { addTokenToMetamask } from './services/addTokenToMetamask'
 
 // Styles
+import './styles/tailwind.css'
+
 import './styles/utils.css'
 import './styles/toast-blur.css'
 import './styles/layout.css'
@@ -155,3 +157,5 @@ import './styles/tickets.css'
 import './styles/bnc-onboard--custom.css'
 import './styles/reach--custom.css'
 import './styles/vx--custom.css'
+
+import './styles/SquareButton.css'

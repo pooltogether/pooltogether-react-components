@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import ContentLoader from 'react-content-loader'
 
-import { ThemeContext } from 'src/components/contextProviders/ThemeContextProvider'
+import { ThemeContext } from '../ThemeContextProvider'
 
 export const TableRowUILoader = (props) => {
   if (typeof window === 'undefined') {

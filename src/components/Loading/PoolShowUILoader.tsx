@@ -2,8 +2,7 @@ import React, { useContext } from 'react'
 import ContentLoader from 'react-content-loader'
 import { isMobile } from 'react-device-detect'
 
-import { UI_LOADER_ANIM_DEFAULTS } from 'src/constants'
-import { ThemeContext } from 'src/components/contextProviders/ThemeContextProvider'
+import { ThemeContext } from '../ThemeContextProvider'
 
 export const PoolShowUILoader = (props) => {
   if (typeof window === 'undefined') {
@@ -17,12 +16,7 @@ export const PoolShowUILoader = (props) => {
 
   if (isMobile) {
     return (
-      <ContentLoader
-        {...UI_LOADER_ANIM_DEFAULTS}
-        viewBox='0 0 600 1200'
-        backgroundColor={bgColor}
-        foregroundColor={foreColor}
-      >
+      <ContentLoader viewBox='0 0 600 1200' backgroundColor={bgColor} foregroundColor={foreColor}>
         <rect x='0' y='0' rx='5' ry='5' width='350' height='100' />{' '}
         <rect x='0' y='120' rx='5' ry='5' width='600' height='90' />{' '}
         <rect x='0' y='230' rx='5' ry='5' width='600' height='500' />
@@ -33,12 +27,7 @@ export const PoolShowUILoader = (props) => {
 
   return (
     <>
-      <ContentLoader
-        {...UI_LOADER_ANIM_DEFAULTS}
-        viewBox='0 0 600 600'
-        backgroundColor={bgColor}
-        foregroundColor={foreColor}
-      >
+      <ContentLoader viewBox='0 0 600 600' backgroundColor={bgColor} foregroundColor={foreColor}>
         <rect x='0' y='0' rx='5' ry='5' width='200' height='50' />{' '}
         <rect x='440' y='0' rx='5' ry='5' width='160' height='50' />
         <rect x='0' y='60' rx='5' ry='5' width='600' height='110' />
