@@ -11,9 +11,9 @@ module.exports = {
         plugins: [
           require('postcss-import'),
           require('tailwindcss'),
-          require('postcss-nesting'),
-          require('autoprefixer'),
-          require('cssnano')
+          // require('postcss-nesting'),
+          require('autoprefixer')
+          // require('cssnano')
         ],
         inject: true,
         // only write out CSS for the first bundle (avoids pointless extra files):

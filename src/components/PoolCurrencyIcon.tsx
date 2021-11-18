@@ -1,6 +1,5 @@
 import React from 'react'
 import classnames from 'classnames'
-import isUndefined from 'lodash/isUndefined'
 
 import { ThemedClipSpinner } from './Loading/ThemedClipSpinner'
 
@@ -12,7 +11,7 @@ export const PoolCurrencyIcon = (props) => {
   let currencyIcon
 
   let sizeClasses = 'w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10'
-  if (isUndefined(noMediaQueries)) {
+  if (noMediaQueries === undefined) {
     if (xs) {
       sizeClasses = 'w-3 h-3 sm:w-5 sm:h-5 lg:w-6 lg:h-6'
     } else if (sm) {

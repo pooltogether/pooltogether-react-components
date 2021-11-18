@@ -1,34 +1,35 @@
 import React from 'react'
 import classnames from 'classnames'
-import omit from 'lodash/omit'
 import { isBrowser } from 'react-device-detect'
 
 import { DEFAULT_INPUT_CLASS_NAME } from '../../constants'
 
 const sanitizeProps = (props) => {
-  return omit(props, [
-    'alignLeft',
-    'label',
-    'small',
-    'large',
-    'marginClassName',
-    'paddingClassName',
-    'borderClassName',
-    'bgClassName',
-    'inlineButton',
-    'roundedClassName',
-    'textClassName',
-    'isError',
-    'isLight',
-    'register',
-    'required', // required is consumed by the register func but we don't want it on the <input />
-    'pattern',
-    'validate',
-    'unsignedNumber',
-    'unsignedWholeNumber',
-    'rightLabel',
-    'bottomRightLabel'
-  ])
+  const {
+    alignLeft,
+    label,
+    small,
+    large,
+    marginClassName,
+    paddingClassName,
+    borderClassName,
+    bgClassName,
+    inlineButton,
+    roundedClassName,
+    textClassName,
+    isError,
+    isLight,
+    register,
+    required,
+    pattern,
+    validate,
+    unsignedNumber,
+    unsignedWholeNumber,
+    rightLabel,
+    bottomRightLabel,
+    ...sanitizedProps
+  } = props
+  return sanitizedProps
 }
 
 const collectClassNames = (props) => {

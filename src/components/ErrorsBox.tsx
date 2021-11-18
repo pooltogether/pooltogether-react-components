@@ -1,6 +1,5 @@
 import classNames from 'classnames'
 import React from 'react'
-import isEmpty from 'lodash/isEmpty'
 
 interface ErrorsBoxProps {
   errors: {
@@ -21,9 +20,8 @@ interface ErrorsBoxProps {
 export function ErrorsBox(props: ErrorsBoxProps) {
   const { errors, className, colorClassName, fontClassName } = props
 
-  if (isEmpty(errors)) return null
-
-  const errorMessages = Object.values(errors).map((error) => error.message)
+  const errorMessages = errors ? Object.values(errors).map((error) => error.message) : []
+  if (errorMessages.length === 0) return null
 
   return (
     <div className={classNames(className, fontClassName, colorClassName)}>
