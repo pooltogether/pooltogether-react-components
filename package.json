@@ -53,7 +53,7 @@
   ],
   "peerDependencies": {
     "@pooltogether/current-pool-data": "^3.7.2",
-    "@pooltogether/hooks": "^1.0.2",
+    "@pooltogether/hooks": "^1.2.0",
     "@pooltogether/utilities": "^0.0.43",
     "eth-revert-reason": "^1.0.3",
     "ethers": "^5.5.1",
@@ -67,7 +67,7 @@
   },
   "devDependencies": {
     "@pooltogether/current-pool-data": "^3.7.2",
-    "@pooltogether/hooks": "^1.0.2",
+    "@pooltogether/hooks": "^1.2.0",
     "@pooltogether/utilities": "^0.0.43",
     "@rollup/plugin-url": "^6.1.0",
     "@size-limit/preset-small-lib": "^6.0.4",

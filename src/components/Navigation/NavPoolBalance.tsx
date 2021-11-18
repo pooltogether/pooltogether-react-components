@@ -22,7 +22,7 @@ import { ButtonLink } from '../Links/ButtonLink'
 const P_POOL_ADDRESS = '0x396b4489da692788e327e2e4b2b0459a5ef26791'
 
 export const NavPoolBalance = (props) => {
-  const { className, usersAddress, t, Link } = props
+  const { className, usersAddress, t } = props
   const [isOpen, setIsOpen] = useState(false)
   const openModal = () => setIsOpen(true)
   const closeModal = () => setIsOpen(false)
@@ -46,7 +46,6 @@ export const NavPoolBalance = (props) => {
       </div>
       <PoolBalanceModal
         t={t}
-        Link={Link}
         isOpen={isOpen}
         closeModal={closeModal}
         tokenData={tokenData}
@@ -57,7 +56,7 @@ export const NavPoolBalance = (props) => {
 }
 
 const PoolBalanceModal = (props) => {
-  const { t, Link } = props
+  const { t } = props
 
   const { isOpen, closeModal, tokenData, usersAddress } = props
   const { usersBalanceBN, usersBalance, totalSupply } = tokenData
@@ -114,10 +113,6 @@ const PoolBalanceModal = (props) => {
     .add(usersBalanceBN)
     .add(totalClaimablePool)
 
-  const openClaimRewards = () => {
-    closeModal()
-  }
-
   return (
     <Modal
       label='POOL Token Details Modal'
@@ -170,20 +165,15 @@ const PoolBalanceModal = (props) => {
         </div>
 
         <ButtonLink
-          Link={Link}
           textSize='xxxs'
-          onClick={openClaimRewards}
           href='https://app.pooltogether.com/account#governance-claims'
-          as='https://app.pooltogether.com/account#governance-claims'
           width='w-full'
           className='mt-4'
         >
           {t('claimPool')}
         </ButtonLink>
         <ButtonLink
-          Link={Link}
           textSize='xxxs'
-          as='https://sybil.org/#/delegates/pool'
           href='https://sybil.org/#/delegates/pool'
           width='w-full'
           className='mt-4'

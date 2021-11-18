@@ -1512,10 +1512,10 @@
   dependencies:
     evm-chains "^0.2.0"
 
-"@pooltogether/hooks@^1.0.2":
-  version "1.1.12"
-  resolved "https://registry.yarnpkg.com/@pooltogether/hooks/-/hooks-1.1.12.tgz#3e384c3a5bdf2aecbf92e490a16d233a667d2eeb"
-  integrity sha512-2A2gbYBpXwtiTq/ljmCbSwuW4pNetPgnsI2RFYA48G0UjTbkLpzwd97wtG8R1rVU5cw2Mviidl55cGm6+0Qtxw==
+"@pooltogether/hooks@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@pooltogether/hooks/-/hooks-1.2.0.tgz#43c35ec48aeb13203a33509032d04ccab7b7eba0"
+  integrity sha512-ei8W9INLu63LcQa+Bwite8K3a5pQgfpjBq3MFobbfF6rF3v+zweo4pyG5dLqWG5OLwf7WQjbNggzuIrL0+uS3g==
 
 "@pooltogether/utilities@^0.0.43":
   version "0.0.43"

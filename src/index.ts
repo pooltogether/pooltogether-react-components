@@ -56,7 +56,7 @@ export {
 export { Tagline } from './components/Layout/Tagline'
 
 // Links
-export { ButtonLink, getButtonClasses } from './components/Links/ButtonLink'
+export { ButtonLink } from './components/Links/ButtonLink'
 export {
   BlockExplorerLink,
   formatBlockExplorerTxUrl,
@@ -122,7 +122,7 @@ export { ErrorsBox } from './components/ErrorsBox'
 export { PageTitleAndBreadcrumbs } from './components/PageTitleAndBreadcrumbs'
 export { PoolCurrencyIcon } from './components/PoolCurrencyIcon'
 export { PrizeFrequencyChip } from './components/PrizeFrequencyChip'
-export { ThemeContext, ThemeContextProvider } from './components/ThemeContextProvider'
+export { ThemeContext, ThemeContextProvider, ColorTheme } from './components/ThemeContextProvider'
 export { TxRefetchListener } from './components/TxRefetchListener'
 export { TxStatus } from './components/TxStatus'
 
@@ -132,6 +132,9 @@ export { poolToast } from './services/poolToast'
 
 // MetaMask Functionality
 export { addTokenToMetamask } from './services/addTokenToMetamask'
+
+// Utils
+export { getLegacyButtonClassNames } from './utils/getLegacyButtonClassNames'
 
 // Styles
 import './styles/tailwind.css'

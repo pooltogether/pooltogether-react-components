@@ -1,27 +1,26 @@
 import React from 'react'
-import omit from 'lodash/omit'
+import {
+  getLegacyButtonClassNames,
+  LegacyButtonClassNameProps
+} from '../../utils/getLegacyButtonClassNames'
 
-import { getButtonClasses } from '../Links/ButtonLink'
+interface ButtonProps extends LegacyButtonClassNameProps {
+  children: React.ReactNode
+  onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void
+  type?: 'button' | 'submit' | 'reset'
+}
 
-export function Button(props) {
-  const classes = getButtonClasses(props)
+export function Button(props: ButtonProps) {
+  const classes = getLegacyButtonClassNames(props)
+  const { type, onClick, disabled, children } = props
 
-  let newProps = omit(props, [
-    'border',
-    'bold',
-    'text',
-    'bg',
-    'hoverBorder',
-    'hoverText',
-    'hoverBg',
-    'noAnim',
-    'outline',
-    'inverse',
-    'basic',
-    'secondary',
-    'tertiary',
-    'textSize'
-  ])
-
-  return <button {...newProps} className={classes} />
+  return (
+    <button
+      children={children}
+      type={type}
+      onClick={onClick}
+      disabled={disabled}
+      className={classes}
+    />
+  )
 }

@@ -64,7 +64,10 @@ import React from "react";
 import Link from "next/link";
 import { ButtonLink } from "@pooltogether/pooltogether-react-components";
 
-<ButtonLink Link={Link} href={href} as={as}>View</Button>
+// External links
+<ButtonLink href={href}>View</ButtonLink>
+// Internal links
+<Link as={'/home'} href={'/home'}><ButtonLink>Home</ButtonLink></Link>
 ```
 
 ## Local development (yalc)

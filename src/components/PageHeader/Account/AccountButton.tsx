@@ -7,7 +7,7 @@ import { ProfileAvatar } from './ProfileAvatar'
 import { ProfileName } from './ProfileName'
 import { ThemedClipSpinner } from '../../Loading/ThemedClipSpinner'
 
-export function AccountButton (props) {
+export function AccountButton(props) {
   const { openModal, className, t, usersAddress } = props
 
   const [transactions] = useAtom(transactionsAtom)
@@ -22,7 +22,6 @@ export function AccountButton (props) {
         'transition text-highlight-2 px-2 xs:px-4 hover:text-inverse',
         'text-xs font-bold tracking-wider outline-none focus:outline-none active:outline-none',
         'flex justify-center z-20 h-8',
-
         className
       )}
     >

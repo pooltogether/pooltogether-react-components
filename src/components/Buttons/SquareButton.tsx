@@ -56,8 +56,7 @@ interface SquareLinkProps
     React.AnchorHTMLAttributes<HTMLAnchorElement>,
     HTMLAnchorElement
   > {
-  href: string
-  Link: any
+  href?: string
   target?: string
   theme?: SquareButtonTheme
   size?: SquareButtonSize
@@ -65,29 +64,27 @@ interface SquareLinkProps
 }
 
 export const SquareLink: React.FC<SquareLinkProps> = (props) => {
-  const { chevron, theme, href, size, className, Link, target, ...linkProps } = props
+  const { chevron, theme, href, size, className, target, ...linkProps } = props
 
   return (
-    <Link href={href}>
-      <a
-        {...linkProps}
-        target={target}
-        className={classnames(
-          'square-btn',
-          getThemeClassName(theme),
-          getSizeClassName(size),
-          className
-        )}
-      >
-        {props.children}{' '}
-        {chevron && (
-          <FeatherIcon
-            icon={'chevron-right'}
-            className={classnames('inline-block -mt-1', getChevronClassName(size))}
-          />
-        )}
-      </a>
-    </Link>
+    <a
+      {...linkProps}
+      target={target}
+      className={classnames(
+        'square-btn',
+        getThemeClassName(theme),
+        getSizeClassName(size),
+        className
+      )}
+    >
+      {props.children}{' '}
+      {chevron && (
+        <FeatherIcon
+          icon={'chevron-right'}
+          className={classnames('inline-block -mt-1', getChevronClassName(size))}
+        />
+      )}
+    </a>
   )
 }
 

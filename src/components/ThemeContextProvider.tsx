@@ -7,19 +7,22 @@ import { HOTKEYS_KEY_MAP } from '../constants'
 
 const THEME = 'theme'
 
+export enum ColorTheme {
+  light = 'light',
+  dark = 'dark'
+}
+
 export const ThemeContext = React.createContext<{
-  theme: string
+  theme: ColorTheme
   toggleTheme: () => void
 }>({
-  theme: Cookies.get(THEME) || 'dark',
+  theme: Cookies.get(THEME) || ColorTheme.dark,
   toggleTheme: () => {}
 })
 
 export function ThemeContextProvider(props) {
-  const [theme, setTheme] = useState('dark')
+  const [theme, setTheme] = useState(ColorTheme.dark)
   const cookieOptions = useCookieOptions()
-
-  console.log('Theme context', { theme })
 
   useEffect(() => {
     let stored = Cookies.get(THEME)
@@ -29,16 +32,16 @@ export function ThemeContextProvider(props) {
 
     if (typeof window !== 'undefined' && window.matchMedia) {
       const setThemeAutomatically = (newValue) => {
-        if (newValue === 'dark') {
+        if (newValue === ColorTheme.dark) {
           body.classList.add('theme-dark')
           body.classList.remove('theme-light')
 
-          setTheme('dark')
-        } else if (newValue === 'light') {
+          setTheme(ColorTheme.dark)
+        } else if (newValue === ColorTheme.light) {
           body.classList.add('theme-light')
           body.classList.remove('theme-dark')
 
-          setTheme('light')
+          setTheme(ColorTheme.light)
         }
       }
 
@@ -54,16 +57,16 @@ export function ThemeContextProvider(props) {
       body.classList.remove('theme-dark')
       body.classList.add('theme-light')
 
-      Cookies.set(THEME, 'light', cookieOptions)
+      Cookies.set(THEME, ColorTheme.light, cookieOptions)
 
-      setTheme('light')
+      setTheme(ColorTheme.light)
     } else {
       body.classList.remove('theme-light')
       body.classList.add('theme-dark')
 
-      Cookies.set(THEME, 'dark', cookieOptions)
+      Cookies.set(THEME, ColorTheme.dark, cookieOptions)
 
-      setTheme('dark')
+      setTheme(ColorTheme.dark)
     }
   }
 
