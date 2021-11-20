@@ -45,6 +45,7 @@ export { DropdownList } from './components/Input/DropdownList'
 export { InputLabel } from './components/Input/InputLabel'
 export { TextInputGroup } from './components/Input/TextInputGroup'
 export { SimpleInput, RoundInput, RectangularInput } from './components/Input/TextInputs'
+export { Switch } from './components/Input/Switch'
 
 // Layout
 export { DefaultLayout, SimpleLayout } from './components/Layout/PageLayout'
