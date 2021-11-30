@@ -1,3 +1,5 @@
+import { NETWORK } from '@pooltogether/utilities'
+
 export const networkTextColorClassname = (chainId) => {
   if (chainId === 1) {
     return 'blue'
@@ -15,12 +17,14 @@ export const networkTextColorClassname = (chainId) => {
     return 'default-soft'
   } else if (chainId === 1234) {
     return 'teal'
+  } else if (chainId === NETWORK.avalanche || chainId === NETWORK.fuji) {
+    return 'red'
   } else if (chainId === 42220) {
     return 'green'
   } else if (chainId === 80001) {
     return 'teal'
   } else {
-    return 'darkened'
+    return 'inverse'
   }
 }
 
@@ -44,6 +48,6 @@ export const networkBgColorClassname = (chainId) => {
   } else if (chainId === 80001) {
     return 'teal'
   } else {
-    return 'black'
+    return 'darkened'
   }
 }

@@ -3,6 +3,7 @@ import classnames from 'classnames'
 import { NETWORK } from '@pooltogether/utilities'
 
 // Networks
+import Avalanche from '../../assets/Networks/avax-icon.png'
 import DefaultNetworkLogo from '../../assets/Networks/network-icon.png'
 import EthLogo from '../../assets/Networks/ethereum-icon.png'
 import BscLogo from '../../assets/Networks/bsc-icon.png'
@@ -39,5 +40,7 @@ export const NETWORK_MAPPING = Object.freeze({
   [NETWORK.xdai]: XDaiLogo,
   [NETWORK.polygon]: PolygonLogo,
   [NETWORK.mumbai]: PolygonLogo,
-  [NETWORK.celo]: CeloColoredLogo
+  [NETWORK.celo]: CeloColoredLogo,
+  [NETWORK.avalanche]: Avalanche,
+  [NETWORK.fuji]: Avalanche
 })
