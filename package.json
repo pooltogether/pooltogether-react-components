@@ -1,6 +1,6 @@
 {
   "name": "@pooltogether/react-components",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "PoolTogether UI elements in a shared lib",
   "author": "PoolTogether",
   "license": "MIT",
@@ -53,9 +53,9 @@
   ],
   "peerDependencies": {
     "@pooltogether/current-pool-data": "^3.7.2",
+    "@pooltogether/evm-chains-extended": "^0.6.4-beta.1",
     "@pooltogether/hooks": "^1.4.2",
     "@pooltogether/utilities": "^0.3.4",
-    "@pooltogether/evm-chains-extended": "^0.6.4-beta.1",
     "eth-revert-reason": "^1.0.3",
     "ethers": "^5.4.6",
     "feather-icons-react": "^0.4.1",
@@ -68,9 +68,9 @@
   },
   "devDependencies": {
     "@pooltogether/current-pool-data": "^3.7.2",
+    "@pooltogether/evm-chains-extended": "^0.6.4-beta.1",
     "@pooltogether/hooks": "^1.4.2",
     "@pooltogether/utilities": "^0.3.4",
-    "@pooltogether/evm-chains-extended": "^0.6.4-beta.1",
     "@rollup/plugin-url": "^6.1.0",
     "@size-limit/preset-small-lib": "^6.0.4",
     "@types/react": "^17.0.34",
