@@ -1,8 +1,8 @@
 import React from 'react'
 import { LoadingLogo } from './LoadingLogo'
 
-export const LoadingScreen = (props) => {
-  const { isInitialized } = props
+export const LoadingScreen = (props: { isInitialized: boolean; children: React.ReactNode }) => {
+  const { isInitialized, children } = props
 
   if (!isInitialized) {
     return (
@@ -12,5 +12,5 @@ export const LoadingScreen = (props) => {
     )
   }
 
-  return props.children
+  return children
 }

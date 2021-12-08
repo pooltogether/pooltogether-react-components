@@ -5,7 +5,7 @@ import { useCookieOptions } from '@pooltogether/hooks'
 
 import { HOTKEYS_KEY_MAP } from '../constants'
 
-const THEME = 'theme'
+const THEME_KEY = 'theme'
 
 export enum ColorTheme {
   light = 'light',
@@ -16,7 +16,7 @@ export const ThemeContext = React.createContext<{
   theme: ColorTheme
   toggleTheme: () => void
 }>({
-  theme: Cookies.get(THEME) || ColorTheme.dark,
+  theme: Cookies.get(THEME_KEY) || ColorTheme.dark,
   toggleTheme: () => {}
 })
 
@@ -25,21 +25,21 @@ export function ThemeContextProvider(props) {
   const cookieOptions = useCookieOptions()
 
   useEffect(() => {
-    let stored = Cookies.get(THEME)
+    let stored = Cookies.get(THEME_KEY)
 
-    const body = document.body
-    body.classList.add('theme-dark')
+    const documentElement = document.documentElement
+    documentElement.classList.add(ColorTheme.dark)
 
     if (typeof window !== 'undefined' && window.matchMedia) {
       const setThemeAutomatically = (newValue) => {
         if (newValue === ColorTheme.dark) {
-          body.classList.add('theme-dark')
-          body.classList.remove('theme-light')
+          documentElement.classList.add(ColorTheme.dark)
+          documentElement.classList.remove(ColorTheme.light)
 
           setTheme(ColorTheme.dark)
         } else if (newValue === ColorTheme.light) {
-          body.classList.add('theme-light')
-          body.classList.remove('theme-dark')
+          documentElement.classList.add(ColorTheme.light)
+          documentElement.classList.remove(ColorTheme.dark)
 
           setTheme(ColorTheme.light)
         }
@@ -51,20 +51,20 @@ export function ThemeContextProvider(props) {
   }, [])
 
   const toggleTheme = () => {
-    const body = document.body
+    const documentElement = document.documentElement
 
-    if (body.classList.contains('theme-dark')) {
-      body.classList.remove('theme-dark')
-      body.classList.add('theme-light')
+    if (documentElement.classList.contains(ColorTheme.dark)) {
+      documentElement.classList.remove(ColorTheme.dark)
+      documentElement.classList.add(ColorTheme.light)
 
-      Cookies.set(THEME, ColorTheme.light, cookieOptions)
+      Cookies.set(THEME_KEY, ColorTheme.light, cookieOptions)
 
       setTheme(ColorTheme.light)
     } else {
-      body.classList.remove('theme-light')
-      body.classList.add('theme-dark')
+      documentElement.classList.remove(ColorTheme.light)
+      documentElement.classList.add(ColorTheme.dark)
 
-      Cookies.set(THEME, ColorTheme.dark, cookieOptions)
+      Cookies.set(THEME_KEY, ColorTheme.dark, cookieOptions)
 
       setTheme(ColorTheme.dark)
     }

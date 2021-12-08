@@ -12,6 +12,7 @@ interface PageHeaderContainerProps extends LinkProps {
   Link: React.FC<LinkProps>
   className?: string
   children: React.ReactNode
+  style?: React.CSSProperties
 }
 
 /**
@@ -19,20 +20,21 @@ interface PageHeaderContainerProps extends LinkProps {
  * @returns
  */
 export const PageHeaderContainer = (props: PageHeaderContainerProps) => {
-  const { className, Link, as, href } = props
+  const { className, Link, as, href, style } = props
   return (
     <div
       className={classNames(
         'flex justify-between items-center mx-auto max-w-screen-lg px-4 sm:px-8 py-4 sm:pb-6 sm:pt-5',
         className
       )}
+      style={style}
     >
       <Link as={as} href={href}>
         <a className='min-w-max'>
           <HeaderLogo />
         </a>
       </Link>
-      <div className='flex flex-row justify-end items-center'>{props.children}</div>
+      {props.children}
     </div>
   )
 }

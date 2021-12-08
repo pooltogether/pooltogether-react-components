@@ -1,9 +1,3 @@
-// TODO:
-// Loader
-// Panel
-// Table
-// Tabs
-
 // ------- Component Groups -------
 
 // Buttons
@@ -109,10 +103,9 @@ export { PageHeaderContainer } from './components/PageHeader/PageHeaderContainer
 export { Account } from './components/PageHeader/Account/index'
 
 // Prizes
-export { WeeklyPrizeAmountCard } from './components/Prizes/WeeklyPrizeAmountCard'
 export { PrizeCountdown } from './components/Prizes/PrizeCountdown'
 export { SimpleCountDown } from './components/Prizes/SimpleCountdown'
-export { Time } from './components/Prizes/Time'
+export { Time, TimeProps } from './components/Prizes/Time'
 
 // TransactionStatusChecker
 export { TransactionStatusChecker } from './components/TransactionStatusChecker'

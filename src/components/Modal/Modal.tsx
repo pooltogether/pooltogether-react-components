@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import classnames from 'classnames'
 import FeatherIcon from 'feather-icons-react'
 import Dialog from '@reach/dialog'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useReducedMotion } from '@pooltogether/hooks'
 
 export interface ModalProps {
@@ -42,6 +42,14 @@ export const Modal = (props: ModalProps) => {
     style
   } = props
 
+  const [isDialogOpen, setIsDialogOpen] = useState(isOpen)
+
+  useEffect(() => {
+    if (isOpen) {
+      setIsDialogOpen(true)
+    }
+  }, [isOpen])
+
   const shouldReduceMotion = useReducedMotion()
 
   if (!label) {
@@ -49,38 +57,45 @@ export const Modal = (props: ModalProps) => {
   }
 
   return (
-    <Dialog aria-label={label} isOpen={isOpen} onDismiss={closeModal}>
-      <motion.div
-        id='modal-animation-wrapper'
-        key={label}
-        transition={{ duration: shouldReduceMotion ? 0 : 0.1, ease: 'easeIn' }}
-        initial={{
-          opacity: 0
-        }}
-        exit={{
-          opacity: 0
-        }}
-        animate={{
-          opacity: 1
-        }}
-        className={classnames(
-          'mx-auto relative',
-          widthClassName,
-          heightClassName,
-          maxWidthClassName,
-          maxHeightClassName,
-          paddingClassName,
-          bgClassName,
-          roundedClassName,
-          shadowClassName,
-          overflowClassName,
-          className
+    <Dialog aria-label={label} isOpen={isDialogOpen} onDismiss={closeModal}>
+      <AnimatePresence onExitComplete={() => setIsDialogOpen(false)}>
+        {isOpen && (
+          <motion.div
+            id='modal-animation-wrapper'
+            key={label}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.1, ease: 'linear' }}
+            initial={{
+              opacity: 0,
+              translateY: 20
+            }}
+            exit={{
+              opacity: 0,
+              translateY: 20
+            }}
+            animate={{
+              opacity: 1,
+              translateY: 0
+            }}
+            className={classnames(
+              'mx-auto relative',
+              widthClassName,
+              heightClassName,
+              maxWidthClassName,
+              maxHeightClassName,
+              paddingClassName,
+              bgClassName,
+              roundedClassName,
+              shadowClassName,
+              overflowClassName,
+              className
+            )}
+            style={style}
+          >
+            <CloseModalButton closeModal={closeModal} />
+            {children}
+          </motion.div>
         )}
-        style={style}
-      >
-        <CloseModalButton closeModal={closeModal} />
-        {children}
-      </motion.div>
+      </AnimatePresence>
     </Dialog>
   )
 }

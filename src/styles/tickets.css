@@ -11,20 +11,20 @@
   }
 }
 
-.theme-dark .ticket {
+.dark .ticket {
   background-image: url('/ticket-bg--dark-sm.svg');
 }
 
-.theme-light .ticket {
+.light .ticket {
   background-image: url('/ticket-bg--light-sm.svg');
 }
 
 @screen xs {
-  .theme-dark .ticket {
+  .dark .ticket {
     background-image: url('/ticket-bg--dark.svg');
   }
 
-  .theme-light .ticket {
+  .light .ticket {
     background-image: url('/ticket-bg--light.svg');
   }
 }

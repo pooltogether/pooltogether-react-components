@@ -48,7 +48,7 @@ hr {
   width: 90%;
 }
 
-.theme-light hr {
+.light hr {
   border-color: var(--color-bg-accent-grey-3);
 }
 
@@ -376,11 +376,11 @@ a {
 }
 
 .pink-purple-gradient {
-  background-image: linear-gradient(40deg, #9c48ba 20%, #4c249f 100%);
+  background-image: linear-gradient(92deg, #9c48ba 5%, #4c249f 95%);
 }
 
-.theme-light .pink-purple-gradient {
-  background-image: linear-gradient(40deg, #ffb9f0 20%, #eee5ff 100%);
+.light .pink-purple-gradient {
+  background-image: linear-gradient(92deg, #ffb9f0 5%, #eee5ff 95%);
 }
 
 .border-uniswap-gradient {

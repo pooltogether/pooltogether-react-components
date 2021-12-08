@@ -2,7 +2,7 @@ const { colors } = require('tailwindcss/defaultTheme')
 const deepMerge = require('deepmerge')
 
 const pooltogetherReactTailwindUIConfig = {
-  experimental: 'all',
+  darkMode: 'class',
   corePlugins: {
     container: true
   },
@@ -20,6 +20,7 @@ const pooltogetherReactTailwindUIConfig = {
     colors: {
       'actually-black': colors.black,
       'white': colors.white,
+      'transparent': colors.transparent,
       'cyan': {},
       'blue': {},
       'green': {},
@@ -28,26 +29,33 @@ const pooltogetherReactTailwindUIConfig = {
       'pink': {},
       'teal': {},
       'pt-teal': {
-        lighter: 'var(--color-pt-teal-lighter)',
-        light: 'var(--color-pt-teal-light)',
-        bright: 'var(--color-pt-teal-bright)',
-        DEFAULT: 'var(--color-pt-teal-default)',
-        dark: 'var(--color-pt-teal-dark)'
+        lighter: '#adfff3',
+        light: '#70fde6',
+        bright: '#1ef7d6',
+        DEFAULT: '#35f0d0',
+        dark: '#0ea3a4'
       },
       'pt-purple': {
-        lighter: 'var(--color-pt-purple-lighter)',
-        light: 'var(--color-pt-purple-light)',
-        bright: 'var(--color-pt-purple-bright)',
-        DEFAULT: 'var(--color-pt-purple-default)',
-        dark: 'var(--color-pt-purple-dark)'
+        lighter: '#cdc5df',
+        light: '#9f82d7',
+        bright: '#5227a7',
+        DEFAULT: '#4c249f',
+        dark: '#341762',
+        darker: '#2d0b5a',
+        darkest: '#1a083a'
       }
     },
     extend: {
+      backgroundImage: {
+        'pt-gradient':
+          'linear-gradient( 77.6deg, var(--color-pt-gradient-cyan) 0%, var(--color-pt-gradient-magenta) 48.47%, var(--color-pt-gradient-yellow) 88.67%)'
+      },
       backgroundColor: {
         'body': 'var(--color-bg-body)',
         'card': 'var(--color-bg-card)',
         'card-selected': 'var(--color-bg-card-selected)',
         'card-purple': 'var(--color-bg-card-purple)',
+        'almost-transparent': 'var(--color-almost-transparent)',
         'primary': 'var(--color-bg-primary)',
         'secondary': 'var(--color-bg-secondary)',
         'tertiary': 'var(--color-bg-tertiary)',
@@ -87,17 +95,23 @@ const pooltogetherReactTailwindUIConfig = {
         'accent-grey-5': 'var(--color-bg-accent-grey-5)',
         'purple': 'var(--color-bg-purple)',
         'light-purple-10': 'var(--color-bg-light-purple-10)',
-        'light-purple-70': 'var(--color-bg-light-purple-70)'
+        'light-purple-70': 'var(--color-bg-light-purple-70)',
+        'gradient-purple': 'var(--color-pt-gradient-purple)',
+        'gradient-cyan': 'var(--color-pt-gradient-cyan)',
+        'gradient-magenta': 'var(--color-pt-gradient-magenta)',
+        'gradient-yellow': 'var(--color-pt-gradient-yellow)'
       },
       textColor: {
         'accent-1': 'var(--color-text-accent-1)',
         'accent-2': 'var(--color-text-accent-2)',
         'accent-3': 'var(--color-text-accent-3)',
         'accent-4': 'var(--color-text-accent-4)',
+        'almost-transparent': 'var(--color-almost-transparent)',
         'black': 'var(--color-text-black)',
         'primary': 'var(--color-text-primary)',
         'primary-soft': 'var(--color-text-primary-soft)',
         'secondary': 'var(--color-text-secondary)',
+        'tertiary': 'var(--color-text-tertiary)',
         'default': 'var(--color-text-default)',
         'darkened': 'var(--color-text-darkened)',
         'default-soft': 'var(--color-text-default-soft)',
@@ -122,7 +136,11 @@ const pooltogetherReactTailwindUIConfig = {
         'blue': 'var(--color-text-blue)',
         'teal': 'var(--color-text-teal)',
         'accent-grey-1': 'var(--color-text-accent-grey-1)',
-        'purple': 'var(--color-text-purple)'
+        'purple': 'var(--color-text-purple)',
+        'gradient-purple': 'var(--color-pt-gradient-purple)',
+        'gradient-cyan': 'var(--color-pt-gradient-cyan)',
+        'gradient-magenta': 'var(--color-pt-gradient-magenta)',
+        'gradient-yellow': 'var(--color-pt-gradient-yellow)'
       },
       borderColor: {
         'body': 'var(--color-border-body)',
@@ -293,14 +311,17 @@ const pooltogetherReactTailwindUIConfig = {
     }
   },
   variants: {
-    margin: ['responsive', 'last', 'first'],
-    padding: ['responsive', 'last'],
-    borderColor: ['hover', 'focus', 'active', 'last'],
-    textColor: ['hover', 'focus', 'active', 'responsive'],
-    backgroundColor: ['hover', 'focus', 'active', 'responsive'],
-    borderRadius: ['responsive'],
-    borderWidth: ['hover'],
-    opacity: ['hover', 'focus']
+    extend: {
+      backgroundImage: ['focus-within'],
+      margin: ['responsive', 'last', 'first'],
+      padding: ['responsive', 'last'],
+      borderColor: ['hover', 'focus', 'active', 'last', 'focus-within'],
+      textColor: ['hover', 'focus', 'active', 'responsive'],
+      backgroundColor: ['hover', 'focus', 'active', 'responsive', 'focus-within'],
+      borderRadius: ['responsive'],
+      borderWidth: ['hover'],
+      opacity: ['hover', 'focus']
+    }
   },
   plugins: [],
   purge: false

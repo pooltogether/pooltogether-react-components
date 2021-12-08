@@ -246,3 +246,7 @@ h6 {
 .text-caption-2 a {
   @apply text-accent-2;
 }
+
+.text-pt-gradient {
+  @apply bg-clip-text text-transparent bg-pt-gradient;
+}

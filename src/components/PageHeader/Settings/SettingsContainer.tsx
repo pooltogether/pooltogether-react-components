@@ -10,8 +10,14 @@ import { useReducedMotion } from '@pooltogether/hooks'
  * @param {*} props
  * @returns
  */
-export function SettingsContainer (props) {
-  const { t, className, sizeClassName } = props
+export function SettingsContainer(props: {
+  t?: (key: string, text?: string) => string
+  className?: string
+  sizeClassName?: string
+  icon?: string
+  children?: React.ReactNode
+}) {
+  const { t, className, sizeClassName, icon } = props
   const [isOpen, setIsOpen] = useState(false)
 
   const shouldReduceMotion = useReducedMotion()
@@ -31,7 +37,7 @@ export function SettingsContainer (props) {
           'text-highlight-1': isOpen
         })}
       >
-        <FeatherIcon icon='settings' className='w-6 w-6' strokeWidth='0.09rem' />
+        <FeatherIcon icon={icon} className='w-6 h-6' strokeWidth='0.09rem' />
       </button>
 
       <motion.div
@@ -111,5 +117,6 @@ export function SettingsContainer (props) {
 
 SettingsContainer.defaultProps = {
   sizeClassName: 'w-5 h-5 sm:w-6 sm:h-6',
-  className: ''
+  className: '',
+  icon: 'settings'
 }

@@ -14,26 +14,26 @@
   border: 0.1rem dashed transparent;
 }
 
-.theme-dark .interactable-card:hover,
-.theme-dark .interactable-card:focus,
-.theme-dark .interactable-card:active,
-.theme-dark .interactable-card.selected,
-.theme-light .interactable-card:hover,
-.theme-light .interactable-card:focus,
-.theme-light .interactable-card:active,
-.theme-light .interactable-card.selected {
+.dark .interactable-card:hover,
+.dark .interactable-card:focus,
+.dark .interactable-card:active,
+.dark .interactable-card.selected,
+.light .interactable-card:hover,
+.light .interactable-card:focus,
+.light .interactable-card:active,
+.light .interactable-card.selected {
   /* border: 0.1rem dashed var(--color-border-highlight-1); */
 }
 
-.theme-light .interactable-card {
+.light .interactable-card {
   border: 0.1rem solid var(--color-border-accent-1);
 }
 
-.theme-light .non-interactable-card {
+.light .non-interactable-card {
   box-shadow: none;
   border: 0.1rem solid var(--color-border-accent-1);
 }
 
-.theme-dark .non-interactable-card {
+.dark .non-interactable-card {
   @apply shadow-md;
 }
