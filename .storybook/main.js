@@ -14,7 +14,7 @@ module.exports = {
       }
     }
   ],
-
+  staticDirs: ['../public'],
   framework: '@storybook/react',
   webpackFinal: async (config) => {
     config.resolve.alias['src'] = path.resolve(__dirname, '../src')
