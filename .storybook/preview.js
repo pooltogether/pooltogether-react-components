@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import { HOTKEYS_KEY_MAP } from 'src/constants'
 import { ThemeContextProvider } from 'src/components/ThemeContextProvider'
 
-import '../stories/assets/globals.css'
+import '../public/globals.css'
 
 const queryClient = new QueryClient()
 
