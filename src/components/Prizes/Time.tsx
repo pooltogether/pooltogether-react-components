@@ -12,6 +12,8 @@ export interface TimeProps {
   getTimeColorClassName?: (seconds: number) => string
   backgroundColorClassName?: string
   unitsColorClassName?: string
+  timeClassName?: string
+  unitsClassName?: string
   noColors?: boolean
   hideDays?: boolean
   hideHours?: boolean
@@ -30,6 +32,8 @@ export const Time = (props: TimeProps) => {
     hideMinutes,
     hideSeconds,
     backgroundColorClassName,
+    timeClassName,
+    unitsClassName,
     unitsColorClassName
   } = props
   const { days, hours, minutes, seconds: secs } = useMemo(() => getTimeBreakdown(seconds), [
@@ -38,7 +42,7 @@ export const Time = (props: TimeProps) => {
   const textClassName = noColors ? undefined : getTimeColorClassName(seconds)
 
   return (
-    <div className={classNames(className, 'flex text-sm xs:text-xs sm:text-base')}>
+    <div className={classNames(className, 'flex')}>
       {!hideDays && (
         <TimeUnit
           unit='day'
@@ -46,6 +50,8 @@ export const Time = (props: TimeProps) => {
           textClassName={textClassName}
           className='mr-2'
           backgroundColorClassName={backgroundColorClassName}
+          timeClassName={timeClassName}
+          unitsClassName={unitsClassName}
           unitsColorClassName={unitsColorClassName}
         />
       )}
@@ -55,6 +61,8 @@ export const Time = (props: TimeProps) => {
           amount={hours}
           textClassName={textClassName}
           backgroundColorClassName={backgroundColorClassName}
+          timeClassName={timeClassName}
+          unitsClassName={unitsClassName}
           unitsColorClassName={unitsColorClassName}
         />
       )}
@@ -65,6 +73,8 @@ export const Time = (props: TimeProps) => {
           amount={minutes}
           textClassName={textClassName}
           backgroundColorClassName={backgroundColorClassName}
+          timeClassName={timeClassName}
+          unitsClassName={unitsClassName}
           unitsColorClassName={unitsColorClassName}
         />
       )}
@@ -75,6 +85,8 @@ export const Time = (props: TimeProps) => {
           amount={secs}
           textClassName={textClassName}
           backgroundColorClassName={backgroundColorClassName}
+          timeClassName={timeClassName}
+          unitsClassName={unitsClassName}
           unitsColorClassName={unitsColorClassName}
         />
       )}
@@ -92,6 +104,8 @@ const getTimeColorClassName = (seconds: number) => {
 
 Time.defaultProps = {
   hideColors: false,
+  timeClassName: 'text-sm xs:text-xs sm:text-base',
+  unitsClassName: 'text-xxxs',
   getTimeColorClassName
 }
 
@@ -106,6 +120,8 @@ const TimeUnit = (props: {
   exactDigits?: boolean
   textClassName?: string
   backgroundColorClassName?: string
+  timeClassName?: string
+  unitsClassName?: string
   unitsColorClassName?: string
 }) => {
   const {
@@ -115,6 +131,8 @@ const TimeUnit = (props: {
     textClassName,
     className,
     backgroundColorClassName,
+    timeClassName,
+    unitsClassName,
     unitsColorClassName
   } = props
 
@@ -131,12 +149,16 @@ const TimeUnit = (props: {
             backgroundColorClassName={backgroundColorClassName}
             key={`${unit}-${index}`}
             amount={amount}
-            className={classNames(textClassName)}
+            className={classNames(textClassName, timeClassName)}
           />
         ))}
       </div>
       <span
-        className={classNames('uppercase text-xxxs text-center font-bold', unitsColorClassName)}
+        className={classNames(
+          'uppercase text-center font-bold',
+          unitsColorClassName,
+          unitsClassName
+        )}
       >
         {unit}
       </span>
@@ -147,7 +169,8 @@ const TimeUnit = (props: {
 TimeUnit.defaultProps = {
   exactDigits: false,
   backgroundColorClassName: 'bg-tertiary',
-  unitsColorClassName: 'text-tertiary'
+  unitsColorClassName: 'text-tertiary',
+  unitsClassName: 'text-xxxs'
 }
 
 const TimeDigit = (props: {

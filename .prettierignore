@@ -8,9 +8,7 @@ package.json
 _redirects
 .babelrc
 post-export.js
-postcss.config.js
 PT-Ref-Pool-UI.code-workspace
-tailwind.config.js
 
 *.md
 

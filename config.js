@@ -36,7 +36,8 @@ const pooltogetherReactTailwindUIConfig = {
         dark: '#0ea3a4'
       },
       'pt-purple': {
-        lighter: '#cdc5df',
+        lightest: '#f2edfe',
+        lighter: '#dacdf7',
         light: '#9f82d7',
         bright: '#5227a7',
         DEFAULT: '#4c249f',
