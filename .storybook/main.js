@@ -20,20 +20,6 @@ module.exports = {
     config.resolve.alias['src'] = path.resolve(__dirname, '../src')
     config.resolve.alias['stories'] = path.resolve(__dirname, '../stories')
 
-    // config.module.rules.push({
-    //   test: /\.css$/,
-    //   use: [
-    //     {
-    //       loader: 'postcss-loader',
-    //       options: {
-    //         ident: 'postcss',
-    //         plugins: [require('tailwindcss'), require('autoprefixer')]
-    //       }
-    //     }
-    //   ],
-    //   include: path.resolve(__dirname, '../')
-    // })
-
     config.module.rules.push({
       test: /\.js$/,
       use: {
