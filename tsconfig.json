@@ -3,7 +3,6 @@
   "include": ["src", "types"],
   "compilerOptions": {
     "baseUrl": "./",
-    "target": "esnext",
     "module": "esnext",
     "lib": ["dom", "esnext"],
     "importHelpers": true,
