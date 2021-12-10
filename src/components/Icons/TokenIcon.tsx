@@ -3,7 +3,15 @@ import classnames from 'classnames'
 import { useCoingeckoTokenImage } from '@pooltogether/hooks'
 import { NETWORK } from '@pooltogether/utilities'
 
-export const TokenIcon = (props) => {
+interface TokenIconProps {
+  sizeClassName?: string
+  className?: string
+  chainId: number
+  address: string
+  onClick?: React.MouseEventHandler<HTMLImageElement>
+}
+
+export const TokenIcon = (props: TokenIconProps) => {
   const { sizeClassName, className, chainId, address, onClick } = props
 
   const { data: tokenImage, isFetched } = useCoingeckoTokenImage(chainId, address)

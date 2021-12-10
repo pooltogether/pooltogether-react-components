@@ -4,7 +4,7 @@
   --color-pt-gradient-purple: #4c249f;
   --color-pt-gradient-cyan: #17e1fd;
   --color-pt-gradient-magenta: #ff77e1;
-  --color-pt-gradient-yellow: #fff177;
+  --color-pt-gradient-yellow: #ffed47;
 }
 
 .dark {
@@ -134,7 +134,7 @@
   --color-bg-card-purple: rgba(173, 153, 216, 0.1);
   --color-bg-primary: #fff;
   --color-bg-secondary: #35f0d0;
-  --color-bg-tertiary: #cdc5df;
+  --color-bg-tertiary: #f2edfe;
   --color-bg-new-modal: #fff;
   --color-bg-default: #f7f7f7;
   --color-bg-darkened: #e9e9e9;
