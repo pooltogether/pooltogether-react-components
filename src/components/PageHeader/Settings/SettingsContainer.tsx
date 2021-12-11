@@ -41,7 +41,7 @@ export function SettingsContainer(props: {
       <button
         onClick={toggleOpen}
         className={classnames(
-          'toggle-settings-button hover:text-inverse',
+          'toggle-settings-button hover:text-inverse trans',
           sizeClassName,
           className,
           {

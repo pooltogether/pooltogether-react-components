@@ -23,15 +23,20 @@ const LanguagePicker = () => {
   )
 }
 
-const Template = (args) => {
+const Template = (args) => <TemplateWrapper />
+
+// Use wrapper so we don't break rule of hooks with `useTranslation()`
+const TemplateWrapper = (args) => {
   const { t } = useTranslation()
 
   return (
-    <SettingsContainer t={t} className='ml-1 my-auto' title='Settings' sizeClassName='w-6 h-6'>
-      <LanguagePicker />
-      <ThemeSettingsItem t={t} />
-      <TestnetSettingsItem t={t} />
-    </SettingsContainer>
+    <>
+      <SettingsContainer t={t} className='ml-1 my-auto' title='Settings' sizeClassName='w-6 h-6'>
+        <LanguagePicker />
+        <ThemeSettingsItem t={t} />
+        <TestnetSettingsItem t={t} />
+      </SettingsContainer>
+    </>
   )
 }
 

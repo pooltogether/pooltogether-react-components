@@ -1,13 +1,21 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { HotKeys } from 'react-hotkeys'
 import { QueryClient, QueryClientProvider } from 'react-query'
 
 import { HOTKEYS_KEY_MAP } from 'src/constants'
 import { ThemeContextProvider } from 'src/components/ThemeContextProvider'
 
+import '../stories/i18n'
 import '../public/globals.css'
 
 const queryClient = new QueryClient()
+
+// loading component for suspence fallback
+const Loader = () => (
+  <div className='App'>
+    <div>loading...</div>
+  </div>
+)
 
 export const decorators = [
   (Story) => (
@@ -17,7 +25,9 @@ export const decorators = [
     >
       <QueryClientProvider client={queryClient}>
         <ThemeContextProvider>
-          <Story />
+          <Suspense fallback={<Loader />}>
+            <Story />
+          </Suspense>
         </ThemeContextProvider>
       </QueryClientProvider>
     </HotKeys>
