@@ -10,7 +10,6 @@ import { BasicSideNav } from 'stories/components/Layout/BasicSideNav'
 import { BasicBottomNav } from 'stories/components/Layout/BasicBottomNav'
 
 export default {
-  title: 'General/DefaultLayout',
   component: DefaultLayout,
   argTypes: {}
 }

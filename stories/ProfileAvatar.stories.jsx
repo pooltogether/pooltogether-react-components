@@ -3,7 +3,6 @@ import React from 'react'
 import { ProfileAvatar } from 'src/components/PageHeader/Account/ProfileAvatar'
 
 export default {
-  title: 'PageHeader/ProfileAvatar',
   component: ProfileAvatar,
   argTypes: {}
 }

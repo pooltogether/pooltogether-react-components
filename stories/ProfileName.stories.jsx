@@ -3,7 +3,6 @@ import React from 'react'
 import { ProfileName } from 'src/components/PageHeader/Account/ProfileName'
 
 export default {
-  title: 'PageHeader/ProfileName',
   component: ProfileName,
   argTypes: {}
 }

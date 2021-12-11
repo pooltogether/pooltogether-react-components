@@ -3,7 +3,6 @@ import React from 'react'
 import { TokenIcon } from 'src/components/Icons/TokenIcon'
 
 export default {
-  title: 'General/TokenIcon',
   component: TokenIcon,
   argTypes: {}
 }
