@@ -23,11 +23,6 @@ const LanguagePicker = () => {
   )
 }
 
-export default {
-  component: SettingsContainer,
-  argTypes: {}
-}
-
 const Template = (args) => {
   const { t } = useTranslation()
 
@@ -40,9 +35,12 @@ const Template = (args) => {
   )
 }
 
+export default {
+  component: SettingsContainer,
+  argTypes: {}
+}
+
 export const PrimarySettingsContainer = Template.bind({})
 PrimarySettingsContainer.args = {
-  children: '',
-  usersAddress: '0x5E6CC2397EcB33e6041C15360E17c777555A5E63',
-  className: 'text-inverse'
+  children: ''
 }

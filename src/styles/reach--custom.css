@@ -61,7 +61,7 @@
 
 /* MENUS / DROPDOWNS */
 [data-reach-popover] {
-  z-index: 5001;
+  z-index: 50001;
 }
 
 [data-reach-menu-list],
@@ -75,7 +75,7 @@
 }
 
 [data-reach-menu-item] {
-  @apply px-3 py-2 font-bold text-primary rounded-lg my-0 sm:my-0;
+  @apply px-3 py-2 font-bold text-primary cursor-pointer my-0 sm:my-0;
 }
 
 [data-reach-menu-item]:first-child {
