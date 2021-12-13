@@ -66,12 +66,7 @@
 
 [data-reach-menu-list],
 [data-reach-menu-items] {
-  @apply py-0 text-xxs xs:text-sm rounded-lg shadow-lg;
-}
-
-.dark [data-reach-menu-list],
-.dark [data-reach-menu-items] {
-  @apply bg-card;
+  @apply bg-card py-0 text-xxs xs:text-sm rounded-lg shadow-lg;
 }
 
 [data-reach-menu-item] {

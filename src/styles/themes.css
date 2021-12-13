@@ -321,15 +321,11 @@ input:-webkit-autofill:active {
 }
 
 .theme-toggler {
-  @apply bg-white;
+  @apply bg-darkened;
   border-radius: 100px;
   position: relative;
   cursor: pointer;
   width: 74px;
-}
-
-.dark .theme-toggler {
-  @apply bg-darkened;
 }
 
 @screen sm {

@@ -59,8 +59,9 @@ export function SettingsContainer(props: {
         label='settings modal'
         paddingClassName='p-4 py-8 sm:p-12 sm:py-8'
         maxWidthClassName='max-w-4xl'
+        className='text-inverse'
       >
-        <h6 className='text-white mb-10 uppercase font-semibold'>{t('settings', 'Settings')}</h6>
+        <h6 className='mb-10 uppercase font-semibold'>{t('settings', 'Settings')}</h6>
 
         {props.children}
       </Modal>

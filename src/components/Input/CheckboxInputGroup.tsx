@@ -17,8 +17,8 @@ export const CheckboxInputGroup = (props) => {
   return (
     <div
       className={classnames(defaultClasses, textClasses, marginClasses, roundedClasses, {
-        'text-white inner-lg': checked,
-        'text-white': !checked
+        'text-inverse inner-lg': checked,
+        'text-inverse': !checked
       })}
       onClick={handleClick}
     >
@@ -29,13 +29,13 @@ export const CheckboxInputGroup = (props) => {
       >
         <div
           className={classnames('flex items-center rounded-sm w-4 h-4 border-2 trans', {
-            'text-white border-white hover:border-white': checked,
-            'text-darkened border-white hover:border-green': !checked
+            'text-inverse border-inverse hover:border-green': checked,
+            'text-darkened border-inverse hover:border-green': !checked
           })}
         >
           <svg
             className={classnames('relative check', {
-              checked: checked
+              checked
             })}
             width='135'
             height='110'
