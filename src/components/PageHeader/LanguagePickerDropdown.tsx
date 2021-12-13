@@ -51,7 +51,7 @@ export function LanguagePickerDropdown(props) {
 
     return (
       <>
-        {key.toUpperCase()} - <span className='capitalize'>{lang.nativeName.split(',')[0]}</span> (
+        {key} - <span className='capitalize'>{lang.nativeName.split(',')[0]}</span> (
         {lang.name.split(';')[0]})
       </>
     )
@@ -61,7 +61,7 @@ export function LanguagePickerDropdown(props) {
     <DropdownList
       id='language-picker-dropdown'
       className={classnames('text-xxs sm:text-sm', className)}
-      label={currentLang?.toUpperCase()}
+      label={currentLang}
       formatValue={formatValue}
       onValueSet={changeLang}
       current={currentLang}

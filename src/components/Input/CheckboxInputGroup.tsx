@@ -20,7 +20,6 @@ export const CheckboxInputGroup = (props) => {
         'text-inverse inner-lg': checked,
         'text-inverse': !checked
       })}
-      onClick={handleClick}
     >
       <div
         id={id}
@@ -46,7 +45,12 @@ export const CheckboxInputGroup = (props) => {
         </div>
       </div>
 
-      <div className='text-left flex flex-col items-start justify-start leading-snug'>{label}</div>
+      <div
+        onClick={handleClick}
+        className='text-left flex flex-col items-start justify-start leading-snug'
+      >
+        {label}
+      </div>
 
       {hint && <Tooltip tip={hint} id={id} />}
     </div>
