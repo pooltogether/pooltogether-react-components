@@ -29,6 +29,8 @@ const Toggle = (props) => {
         } else {
           enableTestnets()
         }
+        // after updating the cookie reload the page or else the app crashes
+        window.location.reload()
       }}
     />
   )
