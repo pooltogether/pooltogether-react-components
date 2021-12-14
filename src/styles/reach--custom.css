@@ -61,21 +61,16 @@
 
 /* MENUS / DROPDOWNS */
 [data-reach-popover] {
-  z-index: 5001;
+  z-index: 50001;
 }
 
 [data-reach-menu-list],
 [data-reach-menu-items] {
-  @apply py-0 text-xxs xs:text-sm rounded-lg shadow-lg;
-}
-
-.dark [data-reach-menu-list],
-.dark [data-reach-menu-items] {
-  @apply bg-card;
+  @apply bg-card py-0 text-xxs xs:text-sm rounded-lg shadow-lg;
 }
 
 [data-reach-menu-item] {
-  @apply px-3 py-2 font-bold text-primary rounded-lg my-0 sm:my-0;
+  @apply px-3 py-2 font-bold text-primary cursor-pointer my-0 sm:my-0;
 }
 
 [data-reach-menu-item]:first-child {

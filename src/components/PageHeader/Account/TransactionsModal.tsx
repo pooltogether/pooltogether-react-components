@@ -12,7 +12,6 @@ export const TransactionsModal = (props) => {
       isOpen={isOpen}
       closeModal={closeModal}
       label='transactions modal'
-      paddingClassName='p-0'
       maxWidthClassName='max-w-4xl'
     >
       <div className='p-8'>

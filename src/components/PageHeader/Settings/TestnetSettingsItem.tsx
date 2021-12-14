@@ -23,6 +23,7 @@ const Toggle = (props) => {
       name='testnets-view-toggle'
       label={props.label}
       checked={isTestnets}
+      marginClasses='mt-0 mb-0 sm:mb-0'
       handleClick={() => {
         if (isTestnets) {
           disableTestnets()

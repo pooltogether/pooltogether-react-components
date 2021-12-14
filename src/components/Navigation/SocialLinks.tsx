@@ -4,6 +4,8 @@ import FeatherIcon from 'feather-icons-react'
 
 import { Accordion } from '../Accordion'
 
+import { BottomVoteIcon } from '../../components/Navigation/BottomNavLink'
+
 import KnowledgeBaseIcon from '../../assets/Socials/knowledge-base.svg'
 import DocsIcon from '../../assets/Socials/docs.svg'
 import GovForumIcon from '../../assets/Socials/gov-forum.svg'
@@ -15,11 +17,11 @@ import TwitterLogo from '../../assets/Socials/twitter-logo.svg'
 import TelegramLogo from '../../assets/Socials/telegram-logo.svg'
 
 const sharedClasses =
-  'relative leading-none w-full flex justify-start items-center text-accent-4 hover:text-highlight-2 py-2 px-6 trans outline-none focus:outline-none active:outline-none mb-1 ml-3 lg:ml-0 h-10'
+  'relative leading-none w-full flex justify-start items-center py-2 px-0 mb-1 ml-0 trans outline-none focus:outline-none active:outline-none h-10'
 
-const headerClasses = 'text-lg font-bold'
+const headerClasses = 'text-inverse text-lg font-bold'
 
-const childClasses = 'text-xs'
+const childClasses = 'text-xs text-accent-4 hover:text-highlight-2'
 
 const socialsLinkData = [
   {
@@ -27,28 +29,38 @@ const socialsLinkData = [
     headerLabel: 'ecosystem',
     childLinks: [
       {
+        href: 'https://vote.pooltogether.com',
+        langKey: 'vote',
+        label: 'Vote',
+        icon: (
+          <div className='opacity-60 pt-1'>
+            <BottomVoteIcon />
+          </div>
+        )
+      },
+      {
         href: 'https://www.notion.so/PoolTogether-Knowledge-Base-fa721ccefa3242eaabd125a8415acd27',
         langKey: 'knowledgeBase',
         label: 'Knowledge Base',
-        icon: <img src={KnowledgeBaseIcon} className='w-4 opacity-50 mx-auto' />
+        icon: <img src={KnowledgeBaseIcon} className='w-4 opacity-70 mx-auto' />
       },
       {
         href: 'https://docs.pooltogether.com/',
         langKey: 'documentation',
         label: 'Documentation',
-        icon: <img src={DocsIcon} className='w-3 opacity-50 mx-auto' />
+        icon: <img src={DocsIcon} className='w-3 opacity-70 mx-auto' />
       },
       {
         href: 'https://gov.pooltogether.com/',
         langKey: 'governanceForum',
         label: 'Governance forum',
-        icon: <img src={GovForumIcon} className='w-4 opacity-50 mx-auto' />
+        icon: <img src={GovForumIcon} className='w-4 opacity-70 mx-auto' />
       },
       {
         href: 'https://info.pooltogether.com/',
         langKey: 'treasury',
         label: 'Treasury',
-        icon: <img src={TreasuryIcon} className='w-4 opacity-50 mx-auto' />
+        icon: <img src={TreasuryIcon} className='w-4 opacity-70 mx-auto' />
       }
     ]
   },
@@ -59,22 +71,22 @@ const socialsLinkData = [
       {
         href: 'https://twitter.com/PoolTogether_',
         label: 'Twitter',
-        icon: <img src={TwitterLogo} className='w-4 opacity-50 mx-auto' />
+        icon: <img src={TwitterLogo} className='w-4 opacity-70 mx-auto' />
       },
       {
         href: 'https://t.me/PoolTogetherTelegram',
         label: 'Telegram',
-        icon: <img src={TelegramLogo} className='w-4 opacity-50 mx-auto hover:opacity-100 trans' />
+        icon: <img src={TelegramLogo} className='w-4 opacity-70 mx-auto hover:opacity-100 trans' />
       },
       {
         href: 'https://pooltogether.com/discord/',
         label: 'Discord',
-        icon: <img src={DiscordLogo} className='w-4 opacity-50 mx-auto hover:opacity-100 trans' />
+        icon: <img src={DiscordLogo} className='w-4 opacity-70 mx-auto hover:opacity-100 trans' />
       },
       {
         href: 'https://medium.com/pooltogether',
         label: 'Medium',
-        icon: <img src={MediumLogo} className='w-4 opacity-50 mx-auto hover:opacity-100 trans' />
+        icon: <img src={MediumLogo} className='w-4 opacity-70 mx-auto hover:opacity-100 trans' />
       }
     ]
   }

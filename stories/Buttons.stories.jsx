@@ -3,7 +3,6 @@ import React from 'react'
 import { Button } from 'src/components/Buttons/Button'
 
 export default {
-  title: 'General/Button',
   component: Button,
   argTypes: {}
 }

@@ -1,9 +1,22 @@
 import React, { useState } from 'react'
 import classnames from 'classnames'
-import FeatherIcon from 'feather-icons-react'
-import VisuallyHidden from '@reach/visually-hidden'
-import { motion } from 'framer-motion'
-import { useReducedMotion } from '@pooltogether/hooks'
+import { Modal } from '../../Modal/Modal'
+
+export function SettingsIcon(props) {
+  return (
+    <svg
+      {...props}
+      width='100%'
+      height='100%'
+      viewBox='0 0 19 12'
+      fill='none'
+      xmlns='http://www.w3.org/2000/svg'
+      className='stroke-current'
+    >
+      <path strokeWidth={2} strokeLinecap='round' d='M1 1h13M1 7h17M1 13h11' />
+    </svg>
+  )
+}
 
 /**
  * TODO: Make settings extendible for all apps
@@ -14,17 +27,12 @@ export function SettingsContainer(props: {
   t?: (key: string, text?: string) => string
   className?: string
   sizeClassName?: string
-  icon?: string
   children?: React.ReactNode
 }) {
-  const { t, className, sizeClassName, icon } = props
+  const { t, className, sizeClassName } = props
   const [isOpen, setIsOpen] = useState(false)
 
-  const shouldReduceMotion = useReducedMotion()
-
-  const toggleOpen = (e) => {
-    e.preventDefault()
-
+  const toggleOpen = () => {
     setIsOpen(!isOpen)
   }
 
@@ -32,91 +40,36 @@ export function SettingsContainer(props: {
     <>
       <button
         onClick={toggleOpen}
-        className={classnames('hover:text-inverse', sizeClassName, className, {
-          'text-highlight-2': !isOpen,
-          'text-highlight-1': isOpen
-        })}
+        className={classnames(
+          'toggle-settings-button hover:text-inverse trans',
+          sizeClassName,
+          className,
+          {
+            'text-highlight-2': !isOpen,
+            'text-highlight-1': isOpen
+          }
+        )}
       >
-        <FeatherIcon icon={icon} className='w-6 h-6' strokeWidth='0.09rem' />
+        <SettingsIcon />
       </button>
 
-      <motion.div
-        key='settings-overlay'
-        onClick={toggleOpen}
-        className={classnames('fixed t-0 l-0 r-0 b-0 w-full h-full z-40 bg-overlay bg-blur', {
-          'pointer-events-none': !isOpen
-        })}
-        animate={isOpen ? 'enter' : 'exit'}
-        initial='initial'
-        transition={{ duration: shouldReduceMotion ? 0 : 0.1 }}
-        variants={{
-          exit: { opacity: 0 },
-          enter: { opacity: 1 },
-          initial: { opacity: 0 }
-        }}
-      />
-
-      <motion.div
-        className='bg-highlight-3 border-l h-full fixed t-0 b-0 z-40 px-8 pr-16 py-8 shadow-md'
-        style={{
-          borderColor: 'black',
-          height: '100vh',
-          right: -30,
-          width: '320px'
-        }}
-        animate={isOpen ? 'enter' : 'exit'}
-        initial='initial'
-        variants={{
-          exit: {
-            x: '320px',
-            opacity: 0,
-            transition: {
-              duration: shouldReduceMotion ? 0 : 0.2,
-              staggerChildren: shouldReduceMotion ? 0 : 0.1
-            }
-          },
-          enter: {
-            x: 0,
-            opacity: 1,
-            transition: {
-              duration: shouldReduceMotion ? 0 : 0.1,
-              staggerChildren: shouldReduceMotion ? 0 : 0.1
-            }
-          },
-          initial: {
-            x: 0,
-            opacity: 0,
-            transition: {
-              duration: shouldReduceMotion ? 0 : 0.1
-            }
-          }
-        }}
+      <Modal
+        isOpen={isOpen}
+        closeModal={() => toggleOpen()}
+        label='settings modal'
+        paddingClassName='px-4 py-6 sm:px-6 sm:py-6'
+        maxWidthClassName='max-w-4xl'
+        className='text-inverse'
       >
-        <button
-          onClick={toggleOpen}
-          className={classnames(
-            'absolute close-button hover:opacity-70 trans text-white hover:text-white',
-            'outline-none focus:outline-none active:outline-none top-6 right-12'
-          )}
-        >
-          <VisuallyHidden>Close</VisuallyHidden>
-          <span aria-hidden>
-            <FeatherIcon icon='x' className='w-6 h-6 stroke-current' />
-          </span>
-        </button>
-
-        <h6 className='text-white mt-4 mb-10 uppercase font-semibold'>
-          {t('settings', 'Settings')}
-        </h6>
+        <h6 className='text-lg mb-2 font-semibold'>{t('settings', 'Settings')}</h6>
 
         {props.children}
-      </motion.div>
+      </Modal>
     </>
   )
 }
 
 SettingsContainer.defaultProps = {
-  sizeClassName: 'w-5 h-5 sm:w-6 sm:h-6',
-  className: '',
-  icon: 'settings'
+  sizeClassName: 'w-6 h-6',
+  className: ''
 }
