@@ -37,7 +37,7 @@ const TemplateWrapper = (args) => {
         title='Settings'
         sizeClassName='w-6 h-6 overflow-hidden'
       >
-        <div className='flex flex-col justify-between h-full sm:h-auto'>
+        <div className='flex flex-col justify-between h-full sm:h-auto pb-8 sm:pb-0'>
           <div>
             <LanguagePicker />
             <ThemeSettingsItem t={t} />
