@@ -3,7 +3,7 @@ import classnames from 'classnames'
 import { Tooltip } from '../../Containers/Tooltip'
 
 export const SettingsItem = (props) => (
-  <div className='pt-4'>
+  <div className='pt-4 sm:pt-2 sm:max-w-1/2'>
     <div className='flex items-center justify-between px-2'>
       <div>
         <span className='flex text-accent-1 font-bold text-xxs'>
@@ -15,6 +15,6 @@ export const SettingsItem = (props) => (
       <div>{props.children}</div>
     </div>
 
-    <div className='pb-4 border-b border-purple opacity-10'></div>
+    <div className='pb-4 sm:pb-2 border-b border-purple opacity-10'></div>
   </div>
 )

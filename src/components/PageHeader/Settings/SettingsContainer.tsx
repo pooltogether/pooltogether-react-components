@@ -61,7 +61,7 @@ export function SettingsContainer(props: {
         maxWidthClassName='max-w-4xl'
         className='text-inverse'
       >
-        <h6 className='text-lg mb-10 font-semibold'>{t('settings', 'Settings')}</h6>
+        <h6 className='text-lg mb-2 font-semibold'>{t('settings', 'Settings')}</h6>
 
         {props.children}
       </Modal>

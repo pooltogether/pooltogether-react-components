@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { SocialLinks } from 'src/components/Navigation/SocialLinks'
 import { SettingsContainer } from 'src/components/PageHeader/Settings/SettingsContainer'
 import { SettingsItem } from 'src/components/PageHeader/Settings/SettingsItem'
 import { ThemeSettingsItem } from 'src/components/PageHeader/Settings/ThemeSettingsItem'
@@ -30,10 +31,22 @@ const TemplateWrapper = (args) => {
 
   return (
     <>
-      <SettingsContainer t={t} className='ml-1 my-auto' title='Settings' sizeClassName='w-6 h-6'>
-        <LanguagePicker />
-        <ThemeSettingsItem t={t} />
-        <TestnetSettingsItem t={t} />
+      <SettingsContainer
+        t={t}
+        className='ml-1 my-auto'
+        title='Settings'
+        sizeClassName='w-6 h-6 overflow-hidden'
+      >
+        <div className='flex flex-col justify-between h-full sm:h-auto'>
+          <div>
+            <LanguagePicker />
+            <ThemeSettingsItem t={t} />
+            <TestnetSettingsItem t={t} />
+          </div>
+          <div className='sm:pt-24'>
+            <SocialLinks t={t} />
+          </div>
+        </div>
       </SettingsContainer>
     </>
   )

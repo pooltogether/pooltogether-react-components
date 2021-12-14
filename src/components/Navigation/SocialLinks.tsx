@@ -4,6 +4,9 @@ import FeatherIcon from 'feather-icons-react'
 
 import { Accordion } from '../Accordion'
 
+import { BottomVoteIcon } from 'src/components/Navigation/BottomNavLink'
+import { SideVoteIcon } from 'src/components/Navigation/SideNavLink'
+
 import KnowledgeBaseIcon from '../../assets/Socials/knowledge-base.svg'
 import DocsIcon from '../../assets/Socials/docs.svg'
 import GovForumIcon from '../../assets/Socials/gov-forum.svg'
@@ -15,17 +18,27 @@ import TwitterLogo from '../../assets/Socials/twitter-logo.svg'
 import TelegramLogo from '../../assets/Socials/telegram-logo.svg'
 
 const sharedClasses =
-  'relative leading-none w-full flex justify-start items-center text-accent-4 hover:text-highlight-2 py-2 px-6 trans outline-none focus:outline-none active:outline-none mb-1 ml-3 lg:ml-0 h-10'
+  'relative leading-none w-full flex justify-start items-center py-2 px-0 mb-1 ml-0 trans outline-none focus:outline-none active:outline-none h-10'
 
-const headerClasses = 'text-lg font-bold'
+const headerClasses = 'text-inverse text-lg font-bold'
 
-const childClasses = 'text-xs'
+const childClasses = 'text-xs text-accent-4 hover:text-highlight-2'
 
 const socialsLinkData = [
   {
     langKey: 'ecosystem',
     headerLabel: 'ecosystem',
     childLinks: [
+      {
+        href: 'https://vote.pooltogether.com',
+        langKey: 'vote',
+        label: 'Vote',
+        icon: (
+          <div className='opacity-80 pt-1'>
+            <BottomVoteIcon />
+          </div>
+        )
+      },
       {
         href: 'https://www.notion.so/PoolTogether-Knowledge-Base-fa721ccefa3242eaabd125a8415acd27',
         langKey: 'knowledgeBase',
