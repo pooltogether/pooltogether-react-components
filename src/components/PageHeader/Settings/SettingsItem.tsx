@@ -1,5 +1,4 @@
 import React from 'react'
-import classnames from 'classnames'
 import { Tooltip } from '../../Containers/Tooltip'
 
 export const SettingsItem = (props) => (

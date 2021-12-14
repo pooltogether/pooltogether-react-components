@@ -4,8 +4,7 @@ import FeatherIcon from 'feather-icons-react'
 
 import { Accordion } from '../Accordion'
 
-import { BottomVoteIcon } from 'src/components/Navigation/BottomNavLink'
-import { SideVoteIcon } from 'src/components/Navigation/SideNavLink'
+import { BottomVoteIcon } from '../../components/Navigation/BottomNavLink'
 
 import KnowledgeBaseIcon from '../../assets/Socials/knowledge-base.svg'
 import DocsIcon from '../../assets/Socials/docs.svg'
