@@ -33,7 +33,7 @@ const socialsLinkData = [
         langKey: 'vote',
         label: 'Vote',
         icon: (
-          <div className='opacity-80 pt-1'>
+          <div className='opacity-60 pt-1'>
             <BottomVoteIcon />
           </div>
         )
@@ -42,25 +42,25 @@ const socialsLinkData = [
         href: 'https://www.notion.so/PoolTogether-Knowledge-Base-fa721ccefa3242eaabd125a8415acd27',
         langKey: 'knowledgeBase',
         label: 'Knowledge Base',
-        icon: <img src={KnowledgeBaseIcon} className='w-4 opacity-50 mx-auto' />
+        icon: <img src={KnowledgeBaseIcon} className='w-4 opacity-70 mx-auto' />
       },
       {
         href: 'https://docs.pooltogether.com/',
         langKey: 'documentation',
         label: 'Documentation',
-        icon: <img src={DocsIcon} className='w-3 opacity-50 mx-auto' />
+        icon: <img src={DocsIcon} className='w-3 opacity-70 mx-auto' />
       },
       {
         href: 'https://gov.pooltogether.com/',
         langKey: 'governanceForum',
         label: 'Governance forum',
-        icon: <img src={GovForumIcon} className='w-4 opacity-50 mx-auto' />
+        icon: <img src={GovForumIcon} className='w-4 opacity-70 mx-auto' />
       },
       {
         href: 'https://info.pooltogether.com/',
         langKey: 'treasury',
         label: 'Treasury',
-        icon: <img src={TreasuryIcon} className='w-4 opacity-50 mx-auto' />
+        icon: <img src={TreasuryIcon} className='w-4 opacity-70 mx-auto' />
       }
     ]
   },
@@ -71,22 +71,22 @@ const socialsLinkData = [
       {
         href: 'https://twitter.com/PoolTogether_',
         label: 'Twitter',
-        icon: <img src={TwitterLogo} className='w-4 opacity-50 mx-auto' />
+        icon: <img src={TwitterLogo} className='w-4 opacity-70 mx-auto' />
       },
       {
         href: 'https://t.me/PoolTogetherTelegram',
         label: 'Telegram',
-        icon: <img src={TelegramLogo} className='w-4 opacity-50 mx-auto hover:opacity-100 trans' />
+        icon: <img src={TelegramLogo} className='w-4 opacity-70 mx-auto hover:opacity-100 trans' />
       },
       {
         href: 'https://pooltogether.com/discord/',
         label: 'Discord',
-        icon: <img src={DiscordLogo} className='w-4 opacity-50 mx-auto hover:opacity-100 trans' />
+        icon: <img src={DiscordLogo} className='w-4 opacity-70 mx-auto hover:opacity-100 trans' />
       },
       {
         href: 'https://medium.com/pooltogether',
         label: 'Medium',
-        icon: <img src={MediumLogo} className='w-4 opacity-50 mx-auto hover:opacity-100 trans' />
+        icon: <img src={MediumLogo} className='w-4 opacity-70 mx-auto hover:opacity-100 trans' />
       }
     ]
   }

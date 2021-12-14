@@ -60,7 +60,7 @@ export function LanguagePickerDropdown(props) {
   return (
     <DropdownList
       id='language-picker-dropdown'
-      className={classnames('text-xxs sm:text-sm', className)}
+      className={classnames('text-sm sm:text-sm', className)}
       label={currentLang}
       formatValue={formatValue}
       onValueSet={changeLang}

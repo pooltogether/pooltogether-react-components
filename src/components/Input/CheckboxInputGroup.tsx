@@ -12,7 +12,7 @@ export const CheckboxInputGroup = (props) => {
     'font-bold flex justify-start items-start xs:items-center trans trans-faster cursor-pointer font-bold outline-none focus:outline-none hover:outline-none active:outline-none leading-none px-0 py-1'
   const roundedClasses = 'rounded-sm'
   marginClasses = marginClasses ?? 'mt-1 mb-1 sm:mb-3 lg:mb-4'
-  const textClasses = 'text-xxs'
+  const textClasses = 'text-xs'
 
   return (
     <div
