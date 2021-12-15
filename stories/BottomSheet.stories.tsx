@@ -52,6 +52,23 @@ const BalanceBottomSheetTemplateWrapper = (args) => {
     setSheetOpen(true)
   }
 
+  const ticket = {
+    hasBalance: true,
+    amount: 1234.12412,
+    address: '0x04f2694c8fcee23e8fd0dfea1d4f5bb8c352111f',
+    symbol: 'sOHM'
+  }
+  const token = {
+    hasBalance: true,
+    amount: 54.5454,
+    address: '0xdd4d117723c257cee402285d3acf218e9a8236e1',
+    symbol: 'PTaUSDC'
+  }
+  const balances = { ticket, token }
+  const prizePool = {
+    chainId: 1
+  }
+
   return (
     <>
       <SquareButton onClick={openSheet}>Open sheet</SquareButton>
@@ -60,6 +77,8 @@ const BalanceBottomSheetTemplateWrapper = (args) => {
         onDismiss={onDismiss}
         setView={setView}
         selectedView={selectedView}
+        balances={balances}
+        prizePool={prizePool}
         label={`Deposit Balance Bottom sheet for user + prize pool`}
         className='space-y-4'
       />
