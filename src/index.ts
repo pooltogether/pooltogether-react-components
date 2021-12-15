@@ -68,6 +68,8 @@ export { LoadingDots } from './components/Loading/LoadingDots'
 
 // Modal
 export { Modal, ModalTitle, ModalProps } from './components/Modal/Modal'
+export { ModalNetworkGate } from './components/Modal/ModalNetworkGate'
+export { ModalTransactionSubmitted } from './components/Modal/ModalTransactionSubmitted'
 
 // Navigation
 export { BottomNavContainer } from './components/Navigation/BottomNavContainer'
@@ -114,6 +116,7 @@ export { TransactionStatusChecker } from './components/TransactionStatusChecker'
 export { Accordion, ContentWrapper } from './components/Accordion'
 export { CountUp } from './components/CountUp'
 export { ErrorsBox } from './components/ErrorsBox'
+export { LinkToContractItem } from './components/LinkToContractItem'
 export { PageTitleAndBreadcrumbs } from './components/PageTitleAndBreadcrumbs'
 export { PoolCurrencyIcon } from './components/PoolCurrencyIcon'
 export { PrizeFrequencyChip } from './components/PrizeFrequencyChip'

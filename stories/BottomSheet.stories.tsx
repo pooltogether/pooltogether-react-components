@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import { ethers, BigNumber } from 'ethers'
+import { numberWithCommas } from '@pooltogether/utilities'
+import { formatUnits } from '@ethersproject/units'
 
 import { SquareButton } from '../src/components/Buttons/SquareButton'
 import { BottomSheet } from '../src/components/BottomSheets/BottomSheet'
@@ -52,20 +55,35 @@ const BalanceBottomSheetTemplateWrapper = (args) => {
     setSheetOpen(true)
   }
 
+  const prettyNumber = (amount: BigNumber, decimals: string): string =>
+    numberWithCommas(amount, { decimals }) as string
+
+  const ticketBalance = ethers.BigNumber.from('1234120000')
+  const ticketDecimals = '6'
   const ticket = {
     hasBalance: true,
-    amount: 1234.12412,
     address: '0x04f2694c8fcee23e8fd0dfea1d4f5bb8c352111f',
-    symbol: 'sOHM'
+    symbol: 'sOHM',
+    amount: formatUnits(ticketBalance, ticketDecimals),
+    amountUnformatted: ticketBalance,
+    amountPretty: prettyNumber(ticketBalance, ticketDecimals)
   }
+
+  const tokenBalance = ethers.BigNumber.from('8728360000')
+  const tokenDecimals = '6'
   const token = {
     hasBalance: true,
-    amount: 54.5454,
     address: '0xdd4d117723c257cee402285d3acf218e9a8236e1',
-    symbol: 'PTaUSDC'
+    symbol: 'PTaUSDC',
+    amount: formatUnits(tokenBalance, tokenDecimals),
+    amountUnformatted: tokenBalance,
+    amountPretty: prettyNumber(tokenBalance, tokenDecimals)
   }
+
   const balances = { ticket, token }
+
   const prizePool = {
+    address: '0xdd4d117723c257cee402285d3acf218e9a8236e1',
     chainId: 1
   }
 
