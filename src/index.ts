@@ -67,7 +67,7 @@ export { ThemedClipSpinner } from './components/Loading/ThemedClipSpinner'
 export { LoadingDots } from './components/Loading/LoadingDots'
 
 // Modal
-export { Modal, ModalProps } from './components/Modal/Modal'
+export { Modal, ModalTitle, ModalProps } from './components/Modal/Modal'
 
 // Navigation
 export { BottomNavContainer } from './components/Navigation/BottomNavContainer'
@@ -112,6 +112,7 @@ export { TransactionStatusChecker } from './components/TransactionStatusChecker'
 
 // Components
 export { Accordion, ContentWrapper } from './components/Accordion'
+export { CountUp } from './components/CountUp'
 export { ErrorsBox } from './components/ErrorsBox'
 export { PageTitleAndBreadcrumbs } from './components/PageTitleAndBreadcrumbs'
 export { PoolCurrencyIcon } from './components/PoolCurrencyIcon'

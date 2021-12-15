@@ -4,6 +4,7 @@ import FeatherIcon from 'feather-icons-react'
 import Dialog from '@reach/dialog'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useReducedMotion } from '@pooltogether/hooks'
+import { NetworkIcon } from '../Icons/NetworkIcon'
 
 export interface ModalProps {
   isOpen: boolean
@@ -123,5 +124,26 @@ const CloseModalButton = (props) => {
     >
       <FeatherIcon icon='x' className='w-6 h-6' />
     </button>
+  )
+}
+
+interface ModalTitleProps {
+  className?: string
+  icon?: any
+  title: string
+  chainId: number
+}
+
+export const ModalTitle = (props: ModalTitleProps) => {
+  const { className, title, chainId, icon } = props
+  return (
+    <div className={classnames('flex flex-col mx-auto', className)}>
+      {chainId ? (
+        <NetworkIcon chainId={chainId} className='mx-auto mb-2' sizeClassName='w-8 h-8' />
+      ) : (
+        icon
+      )}
+      <div className='mx-auto text-2xl font-bold text-inverse'>{title}</div>
+    </div>
   )
 }
