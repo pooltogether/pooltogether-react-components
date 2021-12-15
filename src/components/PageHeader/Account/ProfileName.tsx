@@ -1,12 +1,12 @@
 import React from 'react'
 import { shorten } from '@pooltogether/utilities'
+import { useEnsName } from '@pooltogether/hooks'
 
-export function ProfileName (props) {
-  const { className, ensName, usersAddress } = props
-
-  const name = ensName?.length > 0 ? ensName : shorten({ hash: usersAddress, short: true })
-
-  return <div className={className}>{name}</div>
+export function ProfileName(props) {
+  const { usersAddress } = props
+  const { data: ensName } = useEnsName(usersAddress)
+  const name = ensName || shorten({ hash: usersAddress, short: true })
+  return <>{name}</>
 }
 
 ProfileName.defaultProps = {
