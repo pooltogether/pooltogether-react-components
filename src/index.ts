@@ -146,6 +146,8 @@ import './styles/pool-toast.css'
 import './styles/animations.css'
 import './styles/transitions.css'
 
+import './styles/bottomSheet.css'
+
 import './styles/interactable-cards.css'
 import './styles/forms.css'
 import './styles/tabs.css'
