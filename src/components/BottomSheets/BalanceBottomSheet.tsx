@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import classnames from 'classnames'
 import FeatherIcon from 'feather-icons-react'
+import { useForm } from 'react-hook-form'
+import { ethers, Overrides } from 'ethers'
 import { TokenWithBalance } from '@pooltogether/hooks'
 import { useTranslation } from 'react-i18next'
 import { useIsWalletMetamask, useIsWalletOnNetwork } from '@pooltogether/hooks'
@@ -20,20 +22,19 @@ import { ModalTransactionSubmitted } from '../Modal/ModalTransactionSubmitted'
 import { TokenIcon } from 'src/components/Icons/TokenIcon'
 import { CountUp } from 'src/components/CountUp'
 import { addTokenToMetamask } from 'src/services/addTokenToMetamask'
-import { poolToast } from '../../services/poolToast'
+import { poolToast } from 'src/services/poolToast'
+import { useSendTransactionWrapper } from 'src/services/useSendTransactionWrapper'
 import { BottomSheet } from './BottomSheet'
 
 import { Amount, Transaction } from '@pooltogether/hooks'
-import { Overrides } from 'ethers'
-import { useForm } from 'react-hook-form'
 
 // import { useIsWalletOnNetwork } from 'lib/hooks/useIsWalletOnNetwork'
+// import { useSendTransaction } from 'lib/hooks/useSendTransaction'
 
-import { useSendTransaction } from 'lib/hooks/useSendTransaction'
-import { useSelectedChainIdUser } from 'lib/hooks/Tsunami/User/useSelectedChainIdUser'
-import { useUsersAddress } from 'lib/hooks/useUsersAddress'
-import { useUsersPrizePoolBalances } from 'lib/hooks/Tsunami/PrizePool/useUsersPrizePoolBalances'
-import { WithdrawStepContent } from './WithdrawStepContent'
+// import { useSelectedChainIdUser } from 'lib/hooks/Tsunami/User/useSelectedChainIdUser'
+// import { useUsersAddress } from 'lib/hooks/useUsersAddress'
+// import { useUsersPrizePoolBalances } from 'lib/hooks/Tsunami/PrizePool/useUsersPrizePoolBalances'
+// import { WithdrawStepContent } from './WithdrawStepContent'
 
 export enum DefaultBalanceSheetViews {
   'main',
@@ -241,28 +242,53 @@ export enum WithdrawalSteps {
 }
 
 interface WithdrawViewProps extends ViewProps {
+  provider: ethers.providers.Web3Provider
+  chainId: number
+  usersAddress: string
+  wallet: object
   withdrawTx: Transaction
+  isUsersBalancesFetched: boolean
   setWithdrawTxId: (txId: number) => void
+  refetchUsersBalances: () => void
   onDismiss: () => void
+  user?: object
 }
 
 const WithdrawView = (props: WithdrawViewProps) => {
-  const { prizePool, balances, setView, withdrawTx, setWithdrawTxId, onDismiss } = props
+  const {
+    prizePool,
+    balances,
+    setView,
+    withdrawTx,
+    setWithdrawTxId,
+    onDismiss,
+    wallet,
+    provider,
+    chainId,
+    user,
+    usersAddress,
+    isUsersBalancesFetched,
+    refetchUsersBalances
+  } = props
   const { t } = useTranslation()
   const { token } = balances
 
-  const usersAddress = useUsersAddress()
+  // const usersAddress = useUsersAddress()
   const [amountToWithdraw, setAmountToWithdraw] = useState<Amount>()
   const [currentStep, setCurrentStep] = useState<WithdrawalSteps>(WithdrawalSteps.input)
-  const { isFetched: isUsersBalancesFetched, refetch: refetchUsersBalances } =
-    useUsersPrizePoolBalances(usersAddress, prizePool)
-  const user = useSelectedChainIdUser()
-  const sendTx = useSendTransaction()
-  const isWalletOnProperNetwork = useIsWalletOnNetwork(prizePool.chainId)
+  // const { isFetched: isUsersBalancesFetched, refetch: refetchUsersBalances } =
+  //   useUsersPrizePoolBalances(usersAddress, prizePool)
+  // const user = useSelectedChainIdUser()
+  const sendTx = useSendTransactionWrapper({ usersAddress, provider, chainId })
+  const isWalletOnProperNetwork = useIsWalletOnNetwork(wallet, prizePool.chainId)
   const form = useForm({
     mode: 'onChange',
     reValidateMode: 'onChange'
   })
+
+  const withdrawMethod = () => {
+    alert('implement me!')
+  }
 
   const sendWithdrawTx = async (e) => {
     e.preventDefault()
@@ -273,7 +299,8 @@ const WithdrawView = (props: WithdrawViewProps) => {
     const txId = await sendTx({
       name: `${t('withdraw')} ${amountToWithdraw?.amountPretty} ${tokenSymbol}`,
       method: 'withdrawInstantlyFrom',
-      callTransaction: () => user.withdraw(amountToWithdraw?.amountUnformatted, overrides),
+      // callTransaction: () =>
+      //   user.withdraw(amountToWithdraw?.amountUnformatted, overrides)
       callbacks: {
         onSent: () => setCurrentStep(WithdrawalSteps.viewTxReceipt),
         refetch: () => {
@@ -288,7 +315,7 @@ const WithdrawView = (props: WithdrawViewProps) => {
     return (
       <>
         <ModalTitle chainId={prizePool.chainId} title={t('wrongNetwork', 'Wrong network')} />
-        <ModalNetworkGate chainId={prizePool.chainId} className='mt-8' />
+        <ModalNetworkGate wallet={wallet} chainId={prizePool.chainId} className='mt-8' />
         <BackButton onClick={() => setView(DefaultBalanceSheetViews.main)} />
       </>
     )
@@ -320,7 +347,7 @@ const WithdrawView = (props: WithdrawViewProps) => {
         title={t('withdrawTicker', { ticker: token.symbol })}
       />
       <BackButton onClick={() => setView(DefaultBalanceSheetViews.main)} />
-      <WithdrawStepContent
+      {/* <WithdrawStepContent
         form={form}
         currentStep={currentStep}
         setCurrentStep={setCurrentStep}
@@ -334,7 +361,7 @@ const WithdrawView = (props: WithdrawViewProps) => {
         withdrawTx={withdrawTx}
         setWithdrawTxId={setWithdrawTxId}
         sendWithdrawTx={sendWithdrawTx}
-      />
+      /> */}
     </>
   )
 }
