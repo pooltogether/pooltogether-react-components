@@ -2,7 +2,7 @@ import React, { Suspense } from 'react'
 import { HotKeys } from 'react-hotkeys'
 import { QueryClient, QueryClientProvider } from 'react-query'
 
-import { HOTKEYS_KEY_MAP } from 'src/constants'
+import { HOTKEYS_KEY_MAP } from '../src/constants'
 import { ThemeContextProvider } from 'src/components/ThemeContextProvider'
 
 import 'react-spring-bottom-sheet/dist/style.css'

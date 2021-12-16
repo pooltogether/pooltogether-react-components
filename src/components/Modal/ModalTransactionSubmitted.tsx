@@ -2,14 +2,14 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import classNames from 'classnames'
 import { Transaction } from '@pooltogether/hooks'
-import { formatBlockExplorerTxUrl } from 'src/components/Links/BlockExplorerLink'
+import { formatBlockExplorerTxUrl } from '../Links/BlockExplorerLink'
 
 import {
   SquareButton,
   SquareButtonTheme,
   SquareButtonSize,
   SquareLink
-} from 'src/components/Buttons/SquareButton'
+} from '../Buttons/SquareButton'
 
 interface ModalTransactionSubmittedProps {
   className?: string

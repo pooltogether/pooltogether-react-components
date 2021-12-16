@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { ethers, BigNumber } from 'ethers'
 import { numberWithCommas } from '@pooltogether/utilities'
 import { formatUnits } from '@ethersproject/units'
+import { useTransaction } from '@pooltogether/hooks'
 
 import { SquareButton } from '../src/components/Buttons/SquareButton'
 import { BottomSheet } from '../src/components/BottomSheets/BottomSheet'
@@ -87,16 +88,33 @@ const BalanceBottomSheetTemplateWrapper = (args) => {
     chainId: 1
   }
 
+  const network = {
+    chainId: 1
+  }
+
+  const wallet = {
+    chainId: 1
+  }
+
+  const [withdrawTxId, setWithdrawTxId] = useState(0)
+  const withdrawTx = useTransaction(withdrawTxId)
+
+  const withdrawView = <div>App specific view here</div>
+
   return (
     <>
       <SquareButton onClick={openSheet}>Open sheet</SquareButton>
       <BalanceBottomSheet
-        open={sheetOpen}
-        onDismiss={onDismiss}
         setView={setView}
         selectedView={selectedView}
+        withdrawView={withdrawView}
+        withdrawTx={withdrawTx}
+        open={sheetOpen}
+        onDismiss={onDismiss}
         balances={balances}
         prizePool={prizePool}
+        network={network}
+        wallet={wallet}
         label={`Deposit Balance Bottom sheet for user + prize pool`}
         className='space-y-4'
       />

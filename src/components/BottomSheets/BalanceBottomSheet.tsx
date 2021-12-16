@@ -1,40 +1,25 @@
-import React, { useState } from 'react'
+import React from 'react'
 import classnames from 'classnames'
 import FeatherIcon from 'feather-icons-react'
-import { useForm } from 'react-hook-form'
-import { ethers, Overrides } from 'ethers'
-import { TokenWithBalance } from '@pooltogether/hooks'
+import { Transaction, TokenWithBalances } from '@pooltogether/hooks'
 import { useTranslation } from 'react-i18next'
 import { useIsWalletMetamask, useIsWalletOnNetwork } from '@pooltogether/hooks'
 import {
   getMaxPrecision,
   getNetworkNiceNameByChainId,
-  numberWithCommas,
-  NETWORK
+  numberWithCommas
 } from '@pooltogether/utilities'
 
-import { TOKEN_IMG_URL } from 'src/constants'
-import { SquareButton, SquareButtonTheme } from 'src/components/Buttons/SquareButton'
-import { LinkToContractItem } from 'src/components/LinkToContractItem'
-import { ModalTitle } from 'src/components/Modal/Modal'
-import { ModalNetworkGate } from '../Modal/ModalNetworkGate'
-import { ModalTransactionSubmitted } from '../Modal/ModalTransactionSubmitted'
-import { TokenIcon } from 'src/components/Icons/TokenIcon'
-import { CountUp } from 'src/components/CountUp'
-import { addTokenToMetamask } from 'src/services/addTokenToMetamask'
-import { poolToast } from 'src/services/poolToast'
-import { useSendTransactionWrapper } from 'src/services/useSendTransactionWrapper'
+import { TOKEN_IMG_URL } from '../../constants'
+import { SquareButton, SquareButtonTheme } from '../Buttons/SquareButton'
+import { BlockExplorerLink } from '../Links/BlockExplorerLink'
+import { LinkToContractItem } from '../LinkToContractItem'
+import { ModalTitle } from '../Modal/Modal'
+import { TokenIcon } from '../Icons/TokenIcon'
+import { CountUp } from '../CountUp'
+import { addTokenToMetamask } from '../../services/addTokenToMetamask'
+import { poolToast } from '../../services/poolToast'
 import { BottomSheet } from './BottomSheet'
-
-import { Amount, Transaction } from '@pooltogether/hooks'
-
-// import { useIsWalletOnNetwork } from 'lib/hooks/useIsWalletOnNetwork'
-// import { useSendTransaction } from 'lib/hooks/useSendTransaction'
-
-// import { useSelectedChainIdUser } from 'lib/hooks/Tsunami/User/useSelectedChainIdUser'
-// import { useUsersAddress } from 'lib/hooks/useUsersAddress'
-// import { useUsersPrizePoolBalances } from 'lib/hooks/Tsunami/PrizePool/useUsersPrizePoolBalances'
-// import { WithdrawStepContent } from './WithdrawStepContent'
 
 export enum DefaultBalanceSheetViews {
   'main',
@@ -50,6 +35,8 @@ export interface BalanceBottomSheetPrizePool {
 export interface BalanceBottomSheetProps {
   setView: Function
   selectedView: DefaultBalanceSheetViews
+  withdrawView: React.ReactNode // // <WithdrawView setWithdrawTxId={setWithdrawTxId} withdrawTx={withdrawTx} setView={setView} />:
+  withdrawTx?: Transaction
   open: any
   onDismiss: any
   balances: UsersPrizePoolBalances
@@ -61,9 +48,6 @@ export interface BalanceBottomSheetProps {
 }
 
 export const BalanceBottomSheet = (props: BalanceBottomSheetProps) => {
-  // const { children } = props
-  // const { t } = useTranslation()
-
   return (
     <BottomSheet {...props} className={classnames(props.className, 'text-inverse dark:text-white')}>
       {getView(props)}
@@ -89,7 +73,7 @@ export const BackButton = (props: { onClick: () => void }) => {
 }
 
 const MainView = (props) => {
-  const { prizePool, setView, balances } = props
+  const { prizePool, setView, balances, withdrawTx } = props
   const { ticket } = balances
   const { chainId } = prizePool
 
@@ -115,7 +99,7 @@ const MainView = (props) => {
         </span>
       </div>
 
-      {/* <WithdrawReceipt withdrawTx={withdrawTx} /> */}
+      {withdrawTx && <WithdrawReceipt withdrawTx={withdrawTx} />}
 
       <div className='flex flex-col space-y-4'>
         <SquareButton
@@ -144,8 +128,8 @@ const MainView = (props) => {
 }
 
 export interface UsersPrizePoolBalances {
-  ticket: TokenWithBalance
-  token: TokenWithBalance
+  ticket: TokenWithBalances
+  token: TokenWithBalances
 }
 
 interface MoreInfoViewProps {
@@ -233,139 +217,6 @@ const MoreInfoView = (props: MoreInfoViewProps) => {
   )
 }
 
-// const WITHDRAW_QUANTITY_KEY = 'withdrawal-quantity'
-
-export enum WithdrawalSteps {
-  input,
-  review,
-  viewTxReceipt
-}
-
-interface WithdrawViewProps extends ViewProps {
-  provider: ethers.providers.Web3Provider
-  chainId: number
-  usersAddress: string
-  wallet: object
-  withdrawTx: Transaction
-  isUsersBalancesFetched: boolean
-  setWithdrawTxId: (txId: number) => void
-  refetchUsersBalances: () => void
-  onDismiss: () => void
-  user?: object
-}
-
-const WithdrawView = (props: WithdrawViewProps) => {
-  const {
-    prizePool,
-    balances,
-    setView,
-    withdrawTx,
-    setWithdrawTxId,
-    onDismiss,
-    wallet,
-    provider,
-    chainId,
-    user,
-    usersAddress,
-    isUsersBalancesFetched,
-    refetchUsersBalances
-  } = props
-  const { t } = useTranslation()
-  const { token } = balances
-
-  // const usersAddress = useUsersAddress()
-  const [amountToWithdraw, setAmountToWithdraw] = useState<Amount>()
-  const [currentStep, setCurrentStep] = useState<WithdrawalSteps>(WithdrawalSteps.input)
-  // const { isFetched: isUsersBalancesFetched, refetch: refetchUsersBalances } =
-  //   useUsersPrizePoolBalances(usersAddress, prizePool)
-  // const user = useSelectedChainIdUser()
-  const sendTx = useSendTransactionWrapper({ usersAddress, provider, chainId })
-  const isWalletOnProperNetwork = useIsWalletOnNetwork(wallet, prizePool.chainId)
-  const form = useForm({
-    mode: 'onChange',
-    reValidateMode: 'onChange'
-  })
-
-  const withdrawMethod = () => {
-    alert('implement me!')
-  }
-
-  const sendWithdrawTx = async (e) => {
-    e.preventDefault()
-
-    const tokenSymbol = token.symbol
-    const overrides: Overrides = { gasLimit: 750000 }
-
-    const txId = await sendTx({
-      name: `${t('withdraw')} ${amountToWithdraw?.amountPretty} ${tokenSymbol}`,
-      method: 'withdrawInstantlyFrom',
-      // callTransaction: () =>
-      //   user.withdraw(amountToWithdraw?.amountUnformatted, overrides)
-      callbacks: {
-        onSent: () => setCurrentStep(WithdrawalSteps.viewTxReceipt),
-        refetch: () => {
-          refetchUsersBalances()
-        }
-      }
-    })
-    setWithdrawTxId(txId)
-  }
-
-  if (!isWalletOnProperNetwork) {
-    return (
-      <>
-        <ModalTitle chainId={prizePool.chainId} title={t('wrongNetwork', 'Wrong network')} />
-        <ModalNetworkGate wallet={wallet} chainId={prizePool.chainId} className='mt-8' />
-        <BackButton onClick={() => setView(DefaultBalanceSheetViews.main)} />
-      </>
-    )
-  }
-
-  if (currentStep === WithdrawalSteps.viewTxReceipt) {
-    return (
-      <>
-        <ModalTitle
-          chainId={prizePool.chainId}
-          title={t('withdrawalSubmitted', 'Withdrawal submitted')}
-        />
-        <ModalTransactionSubmitted
-          className='mt-8'
-          chainId={prizePool.chainId}
-          tx={withdrawTx}
-          closeModal={onDismiss}
-          hideCloseButton
-        />
-        <BackButton onClick={() => setView(DefaultBalanceSheetViews.main)} />
-      </>
-    )
-  }
-
-  return (
-    <>
-      <ModalTitle
-        chainId={prizePool.chainId}
-        title={t('withdrawTicker', { ticker: token.symbol })}
-      />
-      <BackButton onClick={() => setView(DefaultBalanceSheetViews.main)} />
-      {/* <WithdrawStepContent
-        form={form}
-        currentStep={currentStep}
-        setCurrentStep={setCurrentStep}
-        user={user}
-        prizePool={prizePool}
-        usersBalances={balances}
-        isUsersBalancesFetched={isUsersBalancesFetched}
-        refetchUsersBalances={refetchUsersBalances}
-        amountToWithdraw={amountToWithdraw}
-        setAmountToWithdraw={setAmountToWithdraw}
-        withdrawTx={withdrawTx}
-        setWithdrawTxId={setWithdrawTxId}
-        sendWithdrawTx={sendWithdrawTx}
-      /> */}
-    </>
-  )
-}
-
 const BalanceBottomSheetTitle = ({ t, chainId }) => (
   <ModalTitle
     chainId={chainId}
@@ -374,7 +225,7 @@ const BalanceBottomSheetTitle = ({ t, chainId }) => (
 )
 
 const getView = (props) => {
-  const { selectedView, setView } = props
+  const { selectedView, setView, withdrawView } = props
   switch (selectedView) {
     case DefaultBalanceSheetViews.main:
       return <MainView {...props} setView={setView} />
@@ -382,10 +233,7 @@ const getView = (props) => {
     case DefaultBalanceSheetViews.more:
       return <MoreInfoView {...props} setView={setView} />
     case DefaultBalanceSheetViews.withdraw:
-      return (
-        <WithdrawView {...props} setView={setView} />
-        // <WithdrawView setWithdrawTxId={setWithdrawTxId} withdrawTx={withdrawTx} setView={setView} />
-      )
+      return withdrawView /* {...props} setView={setView} />*/
   }
 }
 
@@ -393,4 +241,18 @@ export interface ViewProps {
   balances: UsersPrizePoolBalances
   prizePool: BalanceBottomSheetPrizePool
   setView: (view: DefaultBalanceSheetViews) => void
+}
+
+const WithdrawReceipt = (props: { withdrawTx: Transaction }) => {
+  const { withdrawTx } = props
+  const { t } = useTranslation()
+
+  if (!withdrawTx) return null
+
+  return (
+    <div className='bg-white bg-opacity-20 dark:bg-actually-black dark:bg-opacity-10 rounded-xl w-full py-6 flex justify-between'>
+      <span className='font-bold'>{t('withdrawTx', 'Withdraw transaction')}</span>
+      <BlockExplorerLink chainId={withdrawTx.chainId} txHash={withdrawTx.hash} />
+    </div>
+  )
 }
