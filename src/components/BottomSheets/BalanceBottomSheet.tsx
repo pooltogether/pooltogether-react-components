@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 import FeatherIcon from 'feather-icons-react'
-import { Transaction, TokenWithBalances } from '@pooltogether/hooks'
+import { Transaction, TokenWithBalance } from '@pooltogether/hooks'
 import { useTranslation } from 'react-i18next'
 import { useIsWalletMetamask, useIsWalletOnNetwork } from '@pooltogether/hooks'
 import {
@@ -11,6 +11,7 @@ import {
 } from '@pooltogether/utilities'
 
 import { TOKEN_IMG_URL } from '../../constants'
+import { BottomSheet } from './BottomSheet'
 import { SquareButton, SquareButtonTheme } from '../Buttons/SquareButton'
 import { BlockExplorerLink } from '../Links/BlockExplorerLink'
 import { LinkToContractItem } from '../LinkToContractItem'
@@ -19,7 +20,6 @@ import { TokenIcon } from '../Icons/TokenIcon'
 import { CountUp } from '../CountUp'
 import { addTokenToMetamask } from '../../services/addTokenToMetamask'
 import { poolToast } from '../../services/poolToast'
-import { BottomSheet } from './BottomSheet'
 
 export enum DefaultBalanceSheetViews {
   'main',
@@ -128,8 +128,8 @@ const MainView = (props) => {
 }
 
 export interface UsersPrizePoolBalances {
-  ticket: TokenWithBalances
-  token: TokenWithBalances
+  ticket: TokenWithBalance
+  token: TokenWithBalance
 }
 
 interface MoreInfoViewProps {
