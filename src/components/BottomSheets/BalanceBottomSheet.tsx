@@ -58,6 +58,7 @@ export interface BalanceBottomSheetProps {
   prizePool: BalanceBottomSheetPrizePool
   network: object
   wallet: object
+  t: Function
   label?: string
   className?: string
 }
@@ -88,11 +89,9 @@ export const BackButton = (props: { onClick: () => void }) => {
 }
 
 const MainView = (props) => {
-  const { prizePool, buttons, balances, withdrawTx } = props
+  const { t, prizePool, buttons, balances, withdrawTx } = props
   const { ticket } = balances
   const { chainId } = prizePool
-
-  const { t } = useTranslation()
 
   return (
     <>
@@ -127,6 +126,7 @@ export interface UsersPrizePoolBalances {
 }
 
 interface MoreInfoViewProps {
+  t: Function
   prizePool: BalanceBottomSheetPrizePool
   balances: UsersPrizePoolBalances
   setView: Function
@@ -135,8 +135,7 @@ interface MoreInfoViewProps {
 }
 
 const MoreInfoView = (props: MoreInfoViewProps) => {
-  const { prizePool, balances, setView, network, wallet } = props
-  const { t } = useTranslation()
+  const { t, prizePool, balances, setView, network, wallet } = props
   const { ticket, token } = balances
 
   const isMetaMask = useIsWalletMetamask(wallet)

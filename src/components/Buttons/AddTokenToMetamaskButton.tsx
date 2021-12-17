@@ -8,7 +8,7 @@ import { addTokenToMetamask } from '../../services/addTokenToMetamask'
 import { TOKEN_IMG_URL } from '../../constants'
 
 export interface IAddTokenToMetamaskButtonProps {
-  t: object
+  t: Function
   isMetaMask: boolean
   isWalletOnProperNetwork: boolean
   chainId: number
