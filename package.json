@@ -46,8 +46,8 @@
   "peerDependencies": {
     "@pooltogether/current-pool-data": "^3.7.2",
     "@pooltogether/evm-chains-extended": "^0.6.4-beta.1",
-    "@pooltogether/hooks": "^1.4.2",
-    "@pooltogether/utilities": "^0.3.4",
+    "@pooltogether/hooks": "^1.4.6",
+    "@pooltogether/utilities": "^0.3.6",
     "eth-revert-reason": "^1.0.3",
     "ethers": "^5.4.6",
     "feather-icons-react": "^0.4.1",
