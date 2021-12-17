@@ -130,6 +130,7 @@ const BalanceBottomSheetTemplateWrapper = (args) => {
     <>
       <SquareButton onClick={openSheet}>Open sheet</SquareButton>
       <BalanceBottomSheet
+        t={t}
         buttons={buttons}
         setView={setView}
         selectedView={selectedView}
