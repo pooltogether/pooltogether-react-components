@@ -20,11 +20,19 @@ import { TokenIcon } from '../Icons/TokenIcon'
 import { CountUp } from '../CountUp'
 import { addTokenToMetamask } from '../../services/addTokenToMetamask'
 import { poolToast } from '../../services/poolToast'
+// import { DepositAmountInput } from './Input/DepositAmountInput'
 
 export enum DefaultBalanceSheetViews {
   'main',
+  'deposit',
   'withdraw',
   'more'
+}
+
+export enum BalanceBottomSheetButtonTheme {
+  'primary',
+  'secondary',
+  'tertiary'
 }
 
 export interface BalanceBottomSheetPrizePool {
@@ -36,6 +44,7 @@ export interface BalanceBottomSheetProps {
   setView: Function
   selectedView: DefaultBalanceSheetViews
   withdrawView: React.ReactNode // // <WithdrawView setWithdrawTxId={setWithdrawTxId} withdrawTx={withdrawTx} setView={setView} />:
+  buttons: Array<object>
   withdrawTx?: Transaction
   open: any
   onDismiss: any
@@ -73,7 +82,8 @@ export const BackButton = (props: { onClick: () => void }) => {
 }
 
 const MainView = (props) => {
-  const { prizePool, setView, balances, withdrawTx } = props
+  const { prizePool, buttons, balances, withdrawTx } = props
+  // const { prizePool, buttons, setView, balances, withdrawTx } = props
   const { ticket } = balances
   const { chainId } = prizePool
 
@@ -102,7 +112,7 @@ const MainView = (props) => {
       {withdrawTx && <WithdrawReceipt withdrawTx={withdrawTx} />}
 
       <div className='flex flex-col space-y-4'>
-        <SquareButton
+        {/* <SquareButton
           onClick={() => {
             alert('push to deposit page')
           }}
@@ -121,8 +131,22 @@ const MainView = (props) => {
           className='font-bold text-accent-3 dark:text-white'
         >
           {t('moreInfo')}
-        </button>
+        </button> */}
+
+        {buildButtons(buttons)}
       </div>
+    </>
+  )
+}
+
+const DepositView = (props) => {
+  const { setView, prizePool } = props
+  const { t } = useTranslation()
+
+  return (
+    <>
+      <BalanceBottomSheetTitle t={t} chainId={prizePool.chainId} />
+      <BackButton onClick={() => setView(DefaultBalanceSheetViews.main)} />
     </>
   )
 }
@@ -230,10 +254,12 @@ const getView = (props) => {
     case DefaultBalanceSheetViews.main:
       return <MainView {...props} setView={setView} />
     // return <MainView withdrawTx={withdrawTx} setView={setView} />
-    case DefaultBalanceSheetViews.more:
-      return <MoreInfoView {...props} setView={setView} />
+    case DefaultBalanceSheetViews.deposit:
+      return <DepositView {...props} setView={setView} />
     case DefaultBalanceSheetViews.withdraw:
       return withdrawView /* {...props} setView={setView} />*/
+    case DefaultBalanceSheetViews.more:
+      return <MoreInfoView {...props} setView={setView} />
   }
 }
 
@@ -255,4 +281,34 @@ const WithdrawReceipt = (props: { withdrawTx: Transaction }) => {
       <BlockExplorerLink chainId={withdrawTx.chainId} txHash={withdrawTx.hash} />
     </div>
   )
+}
+
+const buildButtons = (buttons) => {
+  return buttons.map((button) => {
+    if (button.theme === BalanceBottomSheetButtonTheme.tertiary) {
+      return (
+        <button
+          key={`balance-bottom-sheet-button-${button.label.replace(' ', '')}`}
+          disabled={button.disabled}
+          onClick={button.onClick}
+        >
+          {button.label}
+        </button>
+      )
+    } else {
+      return (
+        <SquareButton
+          onClick={button.onClick}
+          disabled={button.disabled}
+          theme={
+            button.theme === BalanceBottomSheetButtonTheme.primary
+              ? SquareButtonTheme.teal
+              : SquareButtonTheme.tealOutline
+          }
+        >
+          {button.label}
+        </SquareButton>
+      )
+    }
+  })
 }

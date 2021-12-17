@@ -116,8 +116,9 @@ export { TransactionStatusChecker } from './components/TransactionStatusChecker'
 export { Accordion, ContentWrapper } from './components/Accordion'
 export { BottomSheet } from './components/BottomSheets/BottomSheet'
 export {
+  BalanceBottomSheet,
   DefaultBalanceSheetViews,
-  BalanceBottomSheet
+  BalanceBottomSheetButtonTheme
 } from './components/BottomSheets/BalanceBottomSheet'
 export { CountUp } from './components/CountUp'
 export { ErrorsBox } from './components/ErrorsBox'
