@@ -20,7 +20,6 @@ import { TokenIcon } from '../Icons/TokenIcon'
 import { CountUp } from '../CountUp'
 import { addTokenToMetamask } from '../../services/addTokenToMetamask'
 import { poolToast } from '../../services/poolToast'
-// import { DepositAmountInput } from './Input/DepositAmountInput'
 
 export enum DefaultBalanceSheetViews {
   'main',
@@ -40,11 +39,18 @@ export interface BalanceBottomSheetPrizePool {
   address: string
 }
 
+export interface BalanceBottomSheetButton {
+  label: string
+  onClick: () => void
+  theme: BalanceBottomSheetButtonTheme
+  disabled?: boolean
+}
+
 export interface BalanceBottomSheetProps {
   setView: Function
   selectedView: DefaultBalanceSheetViews
   withdrawView: React.ReactNode // // <WithdrawView setWithdrawTxId={setWithdrawTxId} withdrawTx={withdrawTx} setView={setView} />:
-  buttons: Array<object>
+  buttons: Array<BalanceBottomSheetButton>
   withdrawTx?: Transaction
   open: any
   onDismiss: any
@@ -83,7 +89,6 @@ export const BackButton = (props: { onClick: () => void }) => {
 
 const MainView = (props) => {
   const { prizePool, buttons, balances, withdrawTx } = props
-  // const { prizePool, buttons, setView, balances, withdrawTx } = props
   const { ticket } = balances
   const { chainId } = prizePool
 
@@ -111,30 +116,7 @@ const MainView = (props) => {
 
       {withdrawTx && <WithdrawReceipt withdrawTx={withdrawTx} />}
 
-      <div className='flex flex-col space-y-4'>
-        {/* <SquareButton
-          onClick={() => {
-            alert('push to deposit page')
-          }}
-        >
-          {t('deposit')}
-        </SquareButton>
-        <SquareButton
-          onClick={() => setView(DefaultBalanceSheetViews.withdraw)}
-          disabled={!ticket.hasBalance}
-          theme={SquareButtonTheme.tealOutline}
-        >
-          {t('withdraw')}
-        </SquareButton>
-        <button
-          onClick={() => setView(DefaultBalanceSheetViews.more)}
-          className='font-bold text-accent-3 dark:text-white'
-        >
-          {t('moreInfo')}
-        </button> */}
-
-        {buildButtons(buttons)}
-      </div>
+      <div className='flex flex-col space-y-4'>{buildButtons(buttons)}</div>
     </>
   )
 }
@@ -241,8 +223,6 @@ const getView = (props) => {
   switch (selectedView) {
     case DefaultBalanceSheetViews.main:
       return <MainView {...props} setView={setView} />
-    // case DefaultBalanceSheetViews.deposit:
-    //   return <DepositView {...props} setView={setView} />
     case DefaultBalanceSheetViews.withdraw:
       return withdrawView /* {...props} setView={setView} />*/
     case DefaultBalanceSheetViews.more:

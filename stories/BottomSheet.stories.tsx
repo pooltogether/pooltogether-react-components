@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { ethers, BigNumber } from 'ethers'
-import { numberWithCommas } from '@pooltogether/utilities'
+import { prettyNumber } from '@pooltogether/utilities'
 import { formatUnits } from '@ethersproject/units'
 import { useTransaction } from '@pooltogether/hooks'
 
@@ -56,29 +56,30 @@ const BalanceBottomSheetTemplateWrapper = (args) => {
     setSheetOpen(true)
   }
 
-  const prettyNumber = (amount: BigNumber, decimals: string): string =>
-    numberWithCommas(amount, { decimals }) as string
-
   const ticketBalance = ethers.BigNumber.from('1234120000')
   const ticketDecimals = '6'
   const ticket = {
-    hasBalance: true,
-    address: '0x04f2694c8fcee23e8fd0dfea1d4f5bb8c352111f',
-    symbol: 'sOHM',
+    address: '0xdd4d117723c257cee402285d3acf218e9a8236e1',
     amount: formatUnits(ticketBalance, ticketDecimals),
     amountUnformatted: ticketBalance,
-    amountPretty: prettyNumber(ticketBalance, ticketDecimals)
+    amountPretty: prettyNumber(ticketBalance, ticketDecimals),
+    decimals: ticketDecimals,
+    hasBalance: true,
+    name: 'PT Ticket Token',
+    symbol: 'PTaUSDC'
   }
 
   const tokenBalance = ethers.BigNumber.from('8728360000')
   const tokenDecimals = '6'
   const token = {
-    hasBalance: true,
-    address: '0xdd4d117723c257cee402285d3acf218e9a8236e1',
-    symbol: 'PTaUSDC',
+    address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
     amount: formatUnits(tokenBalance, tokenDecimals),
     amountUnformatted: tokenBalance,
-    amountPretty: prettyNumber(tokenBalance, tokenDecimals)
+    amountPretty: prettyNumber(tokenBalance, tokenDecimals),
+    decimals: tokenDecimals,
+    hasBalance: true,
+    symbol: 'USDC',
+    name: 'USDC Token'
   }
 
   const balances = { ticket, token }
