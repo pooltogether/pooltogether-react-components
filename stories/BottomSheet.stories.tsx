@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { ethers, BigNumber } from 'ethers'
+import { useTranslation } from 'react-i18next'
+import { ethers } from 'ethers'
 import { prettyNumber } from '@pooltogether/utilities'
 import { formatUnits } from '@ethersproject/units'
 import { useTransaction } from '@pooltogether/hooks'
@@ -7,7 +8,10 @@ import { useTransaction } from '@pooltogether/hooks'
 import { SquareButton } from '../src/components/Buttons/SquareButton'
 import { BottomSheet } from '../src/components/BottomSheets/BottomSheet'
 
-import { BalanceBottomSheet } from '../src/components/BottomSheets/BalanceBottomSheet'
+import {
+  BalanceBottomSheetButtonTheme,
+  BalanceBottomSheet
+} from '../src/components/BottomSheets/BalanceBottomSheet'
 import { DefaultBalanceSheetViews } from '../src/components/BottomSheets/BalanceBottomSheet'
 
 // BasicBottomSheet Story
@@ -46,6 +50,7 @@ const BalanceBottomSheetTemplate = (args) => <BalanceBottomSheetTemplateWrapper 
 
 const BalanceBottomSheetTemplateWrapper = (args) => {
   const [sheetOpen, setSheetOpen] = useState(false)
+  const { t } = useTranslation()
   const [selectedView, setView] = useState(DefaultBalanceSheetViews.main)
 
   const onDismiss = () => {
@@ -102,10 +107,30 @@ const BalanceBottomSheetTemplateWrapper = (args) => {
 
   const withdrawView = <div>App specific view here</div>
 
+  const buttons = [
+    {
+      theme: BalanceBottomSheetButtonTheme.primary,
+      label: t('deposit'),
+      onClick: () => setView(DefaultBalanceSheetViews.deposit)
+    },
+    {
+      theme: BalanceBottomSheetButtonTheme.secondary,
+      label: t('withdraw'),
+      disabled: !balances.ticket.hasBalance,
+      onClick: () => setView(DefaultBalanceSheetViews.withdraw)
+    },
+    {
+      theme: BalanceBottomSheetButtonTheme.tertiary,
+      label: t('moreInfo'),
+      onClick: () => setView(DefaultBalanceSheetViews.more)
+    }
+  ]
+
   return (
     <>
       <SquareButton onClick={openSheet}>Open sheet</SquareButton>
       <BalanceBottomSheet
+        buttons={buttons}
         setView={setView}
         selectedView={selectedView}
         withdrawView={withdrawView}
