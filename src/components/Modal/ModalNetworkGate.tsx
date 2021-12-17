@@ -1,6 +1,5 @@
 import React from 'react'
 import classNames from 'classnames'
-import { useTranslation } from 'react-i18next'
 import { useAddNetworkToMetamask } from '@pooltogether/hooks'
 import { getNetworkNiceNameByChainId } from '@pooltogether/utilities'
 import { useIsWalletMetamask } from '@pooltogether/hooks'
@@ -8,6 +7,7 @@ import { useIsWalletMetamask } from '@pooltogether/hooks'
 import { SquareButton } from '../Buttons/SquareButton'
 
 interface ModalNetworkGateProps {
+  t: Function
   wallet: object
   chainId: number
   className?: string
@@ -15,9 +15,7 @@ interface ModalNetworkGateProps {
 }
 
 export const ModalNetworkGate = (props: ModalNetworkGateProps) => {
-  const { className, chainId } = props
-
-  const { t } = useTranslation()
+  const { className, chainId, t } = props
 
   const networkName = getNetworkNiceNameByChainId(chainId)
 
@@ -48,15 +46,14 @@ export const ModalNetworkGate = (props: ModalNetworkGateProps) => {
 }
 
 interface NetworkSwitchButtonProps {
+  t: Function
   chainId: number
   wallet: object
   onSuccess?: () => void
 }
 
 const NetworkSwitchButton = (props: NetworkSwitchButtonProps) => {
-  const { chainId, onSuccess, wallet } = props
-
-  const { t } = useTranslation()
+  const { chainId, onSuccess, wallet, t } = props
 
   const addNetwork = useAddNetworkToMetamask(chainId, { onSuccess })
   const networkName = getNetworkNiceNameByChainId(chainId)
