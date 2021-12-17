@@ -2073,15 +2073,15 @@
   dependencies:
     evm-chains "^0.2.0"
 
-"@pooltogether/hooks@^1.4.2":
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/@pooltogether/hooks/-/hooks-1.4.2.tgz#405c632e4c1ee5d764c654bc4ffdb23453fcf8d1"
-  integrity sha512-yzXq4oFcY94ysohjSqqKZLslGSrz1WpNBfWVRCGjhrPWRHmEPBL/OvkiRJ5gBaEYD+F4neV8ZIg/lHgpQoC34A==
+"@pooltogether/hooks@^1.4.6":
+  version "1.4.6"
+  resolved "https://registry.yarnpkg.com/@pooltogether/hooks/-/hooks-1.4.6.tgz#663271c6e1aff7d242711a6025f6e786486a6223"
+  integrity sha512-LHWPENC0uRzeISGybyTXUWYTm/x99gtJS30M0/5QqyTT17at4MGV+e6W3IHHCKe3A/QkPpbsxews2w/WHqcNpg==
 
-"@pooltogether/utilities@^0.3.4":
-  version "0.3.4"
-  resolved "https://registry.yarnpkg.com/@pooltogether/utilities/-/utilities-0.3.4.tgz#a878b2b18fd37eb486fb6e1f7a8054920ee6ac6b"
-  integrity sha512-1A5Ac+vrhMK0CASDD1XmT/M6NVs4eWO+u3+FpzhGADqIBkKMxbVYfifKauyb+ncpaZk5xfpxPwfLVK+O/uHPCA==
+"@pooltogether/utilities@^0.3.6":
+  version "0.3.6"
+  resolved "https://registry.yarnpkg.com/@pooltogether/utilities/-/utilities-0.3.6.tgz#33038de731b2d71e82036a1995f6e31efa66de3e"
+  integrity sha512-vNgzKtHQYBPkDGQK5l2NqtXEzLM9OqYxxUILLWslrBwTD8hlOSfYuJ2RKcomywIst4e0hWRVlbRHkNkLYe0aiQ==
 
 "@popperjs/core@^2.5.4", "@popperjs/core@^2.6.0":
   version "2.11.0"
@@ -5784,6 +5784,11 @@ cosmiconfig@^7.0.0, cosmiconfig@^7.0.1:
     parse-json "^5.0.0"
     path-type "^4.0.0"
     yaml "^1.10.0"
+
+countup.js@^2.0.8:
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/countup.js/-/countup.js-2.0.8.tgz#eca0c31c9db3f7769cba494d9315cd52dbaaf1b9"
+  integrity sha512-pW3xwwD+hB+xmtI16xFcuLS0D5hSQqPQWkZOdgpKQyzxCquDNo2VCFPkRw12vmvdpnicXVTcjmYiakG6biwINg==
 
 cp-file@^7.0.0:
   version "7.0.0"
@@ -12080,6 +12085,13 @@ react-copy-to-clipboard@^5.0.3:
     copy-to-clipboard "^3"
     prop-types "^15.5.8"
 
+react-countup@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/react-countup/-/react-countup-6.1.0.tgz#ac9b923ecf1351a0c3281209ba55952345814cd8"
+  integrity sha512-0tN65l4ksaNa4rm8ZKshpGxbIHQ4RAh8TGaKYp06EZ7nZw+haXpW3dQTVDhTey9+10jDkJgdzyXKDmC96c1M8g==
+  dependencies:
+    countup.js "^2.0.8"
+
 react-dev-utils@^11.0.4:
   version "11.0.4"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-11.0.4.tgz#a7ccb60257a1ca2e0efe7a83e38e6700d17aa37a"
@@ -12196,6 +12208,11 @@ react-helmet-async@^1.0.7:
     prop-types "^15.7.2"
     react-fast-compare "^3.2.0"
     shallowequal "^1.1.0"
+
+react-hook-form@^7.22.1:
+  version "7.22.1"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.22.1.tgz#604cfb2572ed2fcbc7426982a320056cdc23cf18"
+  integrity sha512-c1jMj8k0AyvLhqU08B85HZGU2n1RknmyOEDcbROWaraW8kT4ga7kCsi/4XH6A7KCDzAM0sWoa30DVyqkIsJl9Q==
 
 react-hotkeys@^2.0.0:
   version "2.0.0"

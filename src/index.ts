@@ -67,7 +67,9 @@ export { ThemedClipSpinner } from './components/Loading/ThemedClipSpinner'
 export { LoadingDots } from './components/Loading/LoadingDots'
 
 // Modal
-export { Modal, ModalProps } from './components/Modal/Modal'
+export { Modal, ModalTitle, ModalProps } from './components/Modal/Modal'
+export { ModalNetworkGate } from './components/Modal/ModalNetworkGate'
+export { ModalTransactionSubmitted } from './components/Modal/ModalTransactionSubmitted'
 
 // Navigation
 export { BottomNavContainer } from './components/Navigation/BottomNavContainer'
@@ -112,7 +114,15 @@ export { TransactionStatusChecker } from './components/TransactionStatusChecker'
 
 // Components
 export { Accordion, ContentWrapper } from './components/Accordion'
+export { BottomSheet } from './components/BottomSheets/BottomSheet'
+export {
+  BalanceBottomSheet,
+  DefaultBalanceSheetViews,
+  BalanceBottomSheetButtonTheme
+} from './components/BottomSheets/BalanceBottomSheet'
+export { CountUp } from './components/CountUp'
 export { ErrorsBox } from './components/ErrorsBox'
+export { LinkToContractItem } from './components/LinkToContractItem'
 export { PageTitleAndBreadcrumbs } from './components/PageTitleAndBreadcrumbs'
 export { PoolCurrencyIcon } from './components/PoolCurrencyIcon'
 export { PrizeFrequencyChip } from './components/PrizeFrequencyChip'
@@ -145,6 +155,8 @@ import './styles/pool.css'
 import './styles/pool-toast.css'
 import './styles/animations.css'
 import './styles/transitions.css'
+
+import './styles/bottomSheet.css'
 
 import './styles/interactable-cards.css'
 import './styles/forms.css'

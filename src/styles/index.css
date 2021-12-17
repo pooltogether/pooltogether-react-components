@@ -12,6 +12,8 @@
 @import './animations.css';
 @import './transitions.css';
 
+@import './bottomSheet.css';
+
 @import './interactable-cards.css';
 @import './forms.css';
 @import './tabs.css';
