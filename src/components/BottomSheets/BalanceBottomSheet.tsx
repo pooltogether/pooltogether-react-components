@@ -139,18 +139,6 @@ const MainView = (props) => {
   )
 }
 
-const DepositView = (props) => {
-  const { setView, prizePool } = props
-  const { t } = useTranslation()
-
-  return (
-    <>
-      <BalanceBottomSheetTitle t={t} chainId={prizePool.chainId} />
-      <BackButton onClick={() => setView(DefaultBalanceSheetViews.main)} />
-    </>
-  )
-}
-
 export interface UsersPrizePoolBalances {
   ticket: TokenWithBalance
   token: TokenWithBalance
@@ -253,9 +241,8 @@ const getView = (props) => {
   switch (selectedView) {
     case DefaultBalanceSheetViews.main:
       return <MainView {...props} setView={setView} />
-    // return <MainView withdrawTx={withdrawTx} setView={setView} />
-    case DefaultBalanceSheetViews.deposit:
-      return <DepositView {...props} setView={setView} />
+    // case DefaultBalanceSheetViews.deposit:
+    //   return <DepositView {...props} setView={setView} />
     case DefaultBalanceSheetViews.withdraw:
       return withdrawView /* {...props} setView={setView} />*/
     case DefaultBalanceSheetViews.more:
