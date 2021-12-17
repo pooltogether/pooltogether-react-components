@@ -6,12 +6,7 @@
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
-  "files": [
-    "dist",
-    "src",
-    "config.js",
-    "README.md"
-  ],
+  "files": ["dist", "src", "config.js", "README.md"],
   "engines": {
     "node": ">=10"
   },
@@ -19,12 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/pooltogether/pooltogether-react-components.git"
   },
-  "keywords": [
-    "react",
-    "library",
-    "components",
-    "tailwindcss"
-  ],
+  "keywords": ["react", "library", "components", "tailwindcss"],
   "scripts": {
     "reinstall": "rm -rf ./node_modules && yarn",
     "start": "tsdx watch --onSuccess \"yalc push\"",
@@ -65,6 +55,7 @@
     "jotai": "^1.4.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-hook-form": "^7.22.1",
     "react-query": "^3.16.0",
     "tailwindcss": "^2.2.7"
   },
@@ -105,7 +96,9 @@
     "postcss-loader": "^6.2.1",
     "postcss-nesting": "^9.0.0",
     "react": "^17.0.2",
+    "react-countup": "^6.1.0",
     "react-dom": "^17.0.2",
+    "react-hook-form": "^7.22.1",
     "react-query": "^3.16.0",
     "react-spring-bottom-sheet": "^3.4.0",
     "rollup-plugin-postcss": "^4.0.1",
@@ -130,6 +123,7 @@
     "js-cookie": "^2.2.1",
     "react-content-loader": "^6.0.3",
     "react-copy-to-clipboard": "^5.0.3",
+    "react-countup": "^6.1.0",
     "react-device-detect": "^1.15.0",
     "react-hotkeys": "^2.0.0",
     "react-i18next": "^11.15.0",

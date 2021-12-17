@@ -35,3 +35,7 @@ export const GOVERNANCE_CONTRACT_ADDRESSES = {
     GovernanceReserve: '0xA5224da01a5A792946E4270a02457EB75412c84c'
   }
 }
+
+export const TOKEN_IMG_URL = {
+  PTaUSDC: 'https://app.pooltogether.com/ptausdc@2x.png'
+}

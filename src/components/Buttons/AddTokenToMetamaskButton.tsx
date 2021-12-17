@@ -5,9 +5,7 @@ import { Token } from '@pooltogether/hooks'
 import { poolToast } from '../../services/poolToast'
 import { addTokenToMetamask } from '../../services/addTokenToMetamask'
 
-const TOKEN_IMG_URL = {
-  PTaUSDC: 'https://app.pooltogether.com/ptausdc@2x.png'
-}
+import { TOKEN_IMG_URL } from '../../constants'
 
 export interface IAddTokenToMetamaskButtonProps {
   t: object
