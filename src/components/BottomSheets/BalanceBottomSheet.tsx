@@ -24,6 +24,7 @@ import { poolToast } from '../../services/poolToast'
 export enum DefaultBalanceSheetViews {
   'main',
   'deposit',
+  'depositReview',
   'withdraw',
   'more'
 }
@@ -49,9 +50,11 @@ export interface BalanceBottomSheetButton {
 export interface BalanceBottomSheetProps {
   setView: Function
   selectedView: DefaultBalanceSheetViews
-  withdrawView: React.ReactNode // // <WithdrawView setWithdrawTxId={setWithdrawTxId} withdrawTx={withdrawTx} setView={setView} />:
-  buttons: Array<BalanceBottomSheetButton>
+  withdrawView: React.ReactNode
   withdrawTx?: Transaction
+  depositView: React.ReactNode
+  depositTx?: Transaction
+  buttons: Array<BalanceBottomSheetButton>
   open: any
   onDismiss: any
   balances: UsersPrizePoolBalances
@@ -75,7 +78,7 @@ BalanceBottomSheet.defaultProps = {
   label: 'balance-bottom-sheet'
 }
 
-export const BackButton = (props: { onClick: () => void }) => {
+export const BalanceBottomSheetBackButton = (props: { onClick: () => void }) => {
   const { t } = useTranslation()
   return (
     <button
@@ -205,12 +208,12 @@ const MoreInfoView = (props: MoreInfoViewProps) => {
         prizePool={prizePool}
         token={token}
       /> */}
-      <BackButton onClick={() => setView(DefaultBalanceSheetViews.main)} />
+      <BalanceBottomSheetBackButton onClick={() => setView(DefaultBalanceSheetViews.main)} />
     </>
   )
 }
 
-const BalanceBottomSheetTitle = ({ t, chainId }) => (
+export const BalanceBottomSheetTitle = ({ t, chainId }) => (
   <ModalTitle
     chainId={chainId}
     title={t('depositsOnNetwork', { network: getNetworkNiceNameByChainId(chainId) })}
@@ -218,12 +221,14 @@ const BalanceBottomSheetTitle = ({ t, chainId }) => (
 )
 
 const getView = (props) => {
-  const { selectedView, setView, withdrawView } = props
+  const { selectedView, setView, withdrawView, depositView } = props
   switch (selectedView) {
     case DefaultBalanceSheetViews.main:
       return <MainView {...props} setView={setView} />
+    case DefaultBalanceSheetViews.deposit:
+      return depositView
     case DefaultBalanceSheetViews.withdraw:
-      return withdrawView /* {...props} setView={setView} />*/
+      return withdrawView
     case DefaultBalanceSheetViews.more:
       return <MoreInfoView {...props} setView={setView} />
   }
@@ -257,6 +262,7 @@ const buildButtons = (buttons) => {
           key={`balance-bottom-sheet-button-${button.label.replace(' ', '')}`}
           disabled={button.disabled}
           onClick={button.onClick}
+          className='font-semibold'
         >
           {button.label}
         </button>

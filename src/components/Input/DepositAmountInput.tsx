@@ -30,18 +30,13 @@ interface DepositAmountInputProps {
  * @returns
  */
 export const DepositAmountInput = (props: DepositAmountInputProps) => {
-  const { prizePool, className, widthClassName, form, inputKey, usersAddress } = props
+  const { className, widthClassName } = props
 
   return (
     <div
       className={classNames(className, widthClassName, 'flex flex-col', 'font-inter', 'text-xl')}
     >
-      <DepositInputHeader
-        prizePool={prizePool}
-        form={form}
-        inputKey={inputKey}
-        usersAddress={usersAddress}
-      />
+      <DepositInputHeader {...props} />
 
       <div
         className={classNames(
@@ -51,8 +46,8 @@ export const DepositAmountInput = (props: DepositAmountInputProps) => {
         )}
       >
         <div className='bg-tertiary w-full rounded-lg flex'>
-          <DepositToken prizePool={prizePool} />
-          <Input prizePool={prizePool} form={form} inputKey={inputKey} />
+          <DepositToken {...props} />
+          <Input {...props} />
         </div>
       </div>
     </div>
@@ -149,15 +144,16 @@ interface InputProps {
   prizePool: PrizePool
   form: UseFormReturn<FieldValues, object>
   inputKey: string
+  usersAddress: string
 }
 
 const Input = (props: InputProps) => {
-  const { form, inputKey, prizePool } = props
+  const { form, inputKey, prizePool, usersAddress } = props
   const { t } = useTranslation()
 
   const { register } = form
 
-  const validate = useDepositValidationRules(prizePool)
+  const validate = useDepositValidationRules(usersAddress, prizePool)
 
   const pattern = {
     value: /^\d*\.?\d*$/,
@@ -181,9 +177,9 @@ const Input = (props: InputProps) => {
  * @param prizePool
  * @returns
  */
-const useDepositValidationRules = (prizePool: PrizePool) => {
+const useDepositValidationRules = (usersAddress: string, prizePool: PrizePool) => {
   const { t } = useTranslation()
-  const usersAddress = useUsersAddress()
+
   const { data: prizePoolTokens } = usePrizePoolTokens(prizePool)
   const { data: usersBalancesData } = useUsersPrizePoolBalances(usersAddress, prizePool)
 
