@@ -1,5 +1,4 @@
 import React from 'react'
-import { useTranslation } from 'react-i18next'
 import classNames from 'classnames'
 import { Transaction } from '@pooltogether/hooks'
 import { formatBlockExplorerTxUrl } from '../Links/BlockExplorerLink'
@@ -12,16 +11,16 @@ import {
 } from '../Buttons/SquareButton'
 
 interface ModalTransactionSubmittedProps {
-  className?: string
+  t: Function
   chainId: number
   tx: Transaction
   closeModal: () => void
   hideCloseButton?: boolean
+  className?: string
 }
 
 export const ModalTransactionSubmitted = (props: ModalTransactionSubmittedProps) => {
-  const { chainId, tx, className, closeModal, hideCloseButton } = props
-  const { t } = useTranslation()
+  const { chainId, tx, className, closeModal, hideCloseButton, t } = props
 
   const url = formatBlockExplorerTxUrl(tx?.hash, chainId)
 

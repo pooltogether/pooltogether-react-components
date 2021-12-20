@@ -34,6 +34,7 @@ export { NetworkIcon } from './components/Icons/NetworkIcon'
 
 // Input
 export { CheckboxInputGroup } from './components/Input/CheckboxInputGroup'
+export { DepositAmountInput } from './components/Input/DepositAmountInput'
 export { DropdownInputGroup } from './components/Input/DropdownInputGroup'
 export { DropdownList } from './components/Input/DropdownList'
 export { InputLabel } from './components/Input/InputLabel'
@@ -117,8 +118,10 @@ export { Accordion, ContentWrapper } from './components/Accordion'
 export { BottomSheet } from './components/BottomSheets/BottomSheet'
 export {
   BalanceBottomSheet,
-  DefaultBalanceSheetViews,
-  BalanceBottomSheetButtonTheme
+  BalanceBottomSheetTitle,
+  BalanceBottomSheetBackButton,
+  BalanceBottomSheetButtonTheme,
+  DefaultBalanceSheetViews
 } from './components/BottomSheets/BalanceBottomSheet'
 export { CountUp } from './components/CountUp'
 export { ErrorsBox } from './components/ErrorsBox'

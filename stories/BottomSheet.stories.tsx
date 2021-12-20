@@ -105,7 +105,8 @@ const BalanceBottomSheetTemplateWrapper = (args) => {
   const [withdrawTxId, setWithdrawTxId] = useState(0)
   const withdrawTx = useTransaction(withdrawTxId)
 
-  const withdrawView = <div>App specific view here</div>
+  const depositView = <div>App specific deposit view here</div>
+  const withdrawView = <div>App specific withdraw view here</div>
 
   const buttons = [
     {
@@ -134,6 +135,8 @@ const BalanceBottomSheetTemplateWrapper = (args) => {
         buttons={buttons}
         setView={setView}
         selectedView={selectedView}
+        depositView={depositView}
+        depositTx={depositTx}
         withdrawView={withdrawView}
         withdrawTx={withdrawTx}
         open={sheetOpen}
