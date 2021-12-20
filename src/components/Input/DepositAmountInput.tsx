@@ -8,7 +8,7 @@ import { FieldValues, UseFormReturn } from 'react-hook-form'
 import { TokenIcon } from '../Icons/TokenIcon'
 import { ThemedClipSpinner } from '../Loading/ThemedClipSpinner'
 
-import WalletIcon from 'assets/images/icon-wallet.svg'
+import WalletIcon from '../../assets/images/icon-wallet.svg'
 
 interface PrizePool {
   address: string
