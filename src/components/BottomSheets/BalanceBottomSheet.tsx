@@ -135,7 +135,7 @@ export interface UsersPrizePoolBalances {
 }
 
 interface MoreInfoViewProps {
-  t: any
+  t: Function
   prizePool: BalanceBottomSheetPrizePool
   balances: UsersPrizePoolBalances
   setView: Function
