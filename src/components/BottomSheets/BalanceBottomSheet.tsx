@@ -32,7 +32,8 @@ export enum DefaultBalanceSheetViews {
 export enum BalanceBottomSheetButtonTheme {
   'primary',
   'secondary',
-  'tertiary'
+  'tertiary',
+  'rainbow'
 }
 
 export interface BalanceBottomSheetPrizePool {
@@ -52,6 +53,7 @@ export interface BalanceBottomSheetProps extends BottomSheetProps {
   selectedView: DefaultBalanceSheetViews
   withdrawView: React.ReactNode
   withdrawTx?: Transaction
+  claimView: React.ReactNode
   depositView: React.ReactNode
   depositTx?: Transaction
   moreInfoView?: React.ReactNode
@@ -238,10 +240,12 @@ export const BalanceBottomSheetTitle = ({ t, chainId }) => (
 )
 
 const getView = (props) => {
-  const { selectedView, setView, withdrawView, depositView, moreInfoView } = props
+  const { selectedView, setView, withdrawView, depositView, claimView, moreInfoView } = props
   switch (selectedView) {
     case DefaultBalanceSheetViews.main:
       return <MainView {...props} setView={setView} />
+    case DefaultBalanceSheetViews.claim:
+      return claimView
     case DefaultBalanceSheetViews.deposit:
       return depositView
     case DefaultBalanceSheetViews.withdraw:
@@ -287,6 +291,16 @@ const buildButtons = (buttons) => {
         >
           {button.label}
         </button>
+      )
+    } else if (button.theme === BalanceBottomSheetButtonTheme.rainbow) {
+      return (
+        <SquareButton
+          onClick={button.onClick}
+          disabled={button.disabled}
+          theme={SquareButtonTheme.rainbow}
+        >
+          {button.label}
+        </SquareButton>
       )
     } else {
       return (
