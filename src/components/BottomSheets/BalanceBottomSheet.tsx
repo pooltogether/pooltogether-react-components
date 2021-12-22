@@ -2,7 +2,6 @@ import React from 'react'
 import classnames from 'classnames'
 import FeatherIcon from 'feather-icons-react'
 import { Transaction, TokenWithBalance } from '@pooltogether/hooks'
-import { useTranslation } from 'react-i18next'
 import { useIsWalletMetamask, useIsWalletOnNetwork } from '@pooltogether/hooks'
 import {
   getMaxPrecision,
@@ -11,7 +10,7 @@ import {
 } from '@pooltogether/utilities'
 
 import { TOKEN_IMG_URL } from '../../constants'
-import { BottomSheet } from './BottomSheet'
+import { BottomSheetProps, BottomSheet } from './BottomSheet'
 import { SquareButton, SquareButtonTheme } from '../Buttons/SquareButton'
 import { BlockExplorerLink } from '../Links/BlockExplorerLink'
 import { LinkToContractItem } from '../LinkToContractItem'
@@ -47,21 +46,22 @@ export interface BalanceBottomSheetButton {
   disabled?: boolean
 }
 
-export interface BalanceBottomSheetProps {
+export interface BalanceBottomSheetProps extends BottomSheetProps {
   setView: Function
   selectedView: DefaultBalanceSheetViews
   withdrawView: React.ReactNode
   withdrawTx?: Transaction
   depositView: React.ReactNode
   depositTx?: Transaction
+  moreInfoView?: React.ReactNode
   buttons: Array<BalanceBottomSheetButton>
   open: any
   onDismiss: any
   balances: UsersPrizePoolBalances
   prizePool: BalanceBottomSheetPrizePool
-  network: object
+  network: number
   wallet: object
-  t: Function
+  t: any
   label?: string
   className?: string
 }
@@ -78,8 +78,14 @@ BalanceBottomSheet.defaultProps = {
   label: 'balance-bottom-sheet'
 }
 
-export const BalanceBottomSheetBackButton = (props: { onClick: () => void }) => {
-  const { t } = useTranslation()
+export interface BalanceBottomSheetBackButtonProps {
+  t: any
+  onClick: () => void
+}
+
+export const BalanceBottomSheetBackButton = (props: BalanceBottomSheetBackButtonProps) => {
+  const { t } = props
+
   return (
     <button
       onClick={props.onClick}
@@ -116,7 +122,7 @@ const MainView = (props) => {
         </span>
       </div>
 
-      {withdrawTx && <WithdrawReceipt withdrawTx={withdrawTx} />}
+      {withdrawTx && <WithdrawReceipt t={t} withdrawTx={withdrawTx} />}
 
       <div className='flex flex-col space-y-4'>{buildButtons(buttons)}</div>
     </>
@@ -129,11 +135,11 @@ export interface UsersPrizePoolBalances {
 }
 
 interface MoreInfoViewProps {
-  t: Function
+  t: any
   prizePool: BalanceBottomSheetPrizePool
   balances: UsersPrizePoolBalances
   setView: Function
-  network: Function
+  network: number
   wallet: DefaultBalanceSheetViews
 }
 
@@ -208,7 +214,7 @@ const MoreInfoView = (props: MoreInfoViewProps) => {
         prizePool={prizePool}
         token={token}
       /> */}
-      <BalanceBottomSheetBackButton onClick={() => setView(DefaultBalanceSheetViews.main)} />
+      <BalanceBottomSheetBackButton t={t} onClick={() => setView(DefaultBalanceSheetViews.main)} />
     </>
   )
 }
@@ -221,7 +227,7 @@ export const BalanceBottomSheetTitle = ({ t, chainId }) => (
 )
 
 const getView = (props) => {
-  const { selectedView, setView, withdrawView, depositView } = props
+  const { selectedView, setView, withdrawView, depositView, moreInfoView } = props
   switch (selectedView) {
     case DefaultBalanceSheetViews.main:
       return <MainView {...props} setView={setView} />
@@ -230,7 +236,7 @@ const getView = (props) => {
     case DefaultBalanceSheetViews.withdraw:
       return withdrawView
     case DefaultBalanceSheetViews.more:
-      return <MoreInfoView {...props} setView={setView} />
+      return moreInfoView || <MoreInfoView {...props} setView={setView} />
   }
 }
 
@@ -240,9 +246,13 @@ export interface ViewProps {
   setView: (view: DefaultBalanceSheetViews) => void
 }
 
-const WithdrawReceipt = (props: { withdrawTx: Transaction }) => {
-  const { withdrawTx } = props
-  const { t } = useTranslation()
+export interface WithdrawReceiptProps {
+  withdrawTx: Transaction
+  t: any
+}
+
+const WithdrawReceipt = (props: WithdrawReceiptProps) => {
+  const { t, withdrawTx } = props
 
   if (!withdrawTx) return null
 

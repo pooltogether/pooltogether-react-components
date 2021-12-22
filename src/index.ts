@@ -115,10 +115,11 @@ export { TransactionStatusChecker } from './components/TransactionStatusChecker'
 
 // Components
 export { Accordion, ContentWrapper } from './components/Accordion'
-export { BottomSheet } from './components/BottomSheets/BottomSheet'
+export { snapTo90, BottomSheet } from './components/BottomSheets/BottomSheet'
 export {
   BalanceBottomSheet,
   BalanceBottomSheetTitle,
+  BalanceBottomSheetPrizePool,
   BalanceBottomSheetBackButton,
   BalanceBottomSheetButtonTheme,
   DefaultBalanceSheetViews
