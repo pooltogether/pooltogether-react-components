@@ -4,9 +4,9 @@ import FeatherIcon from 'feather-icons-react'
 import { Transaction, TokenWithBalance } from '@pooltogether/hooks'
 import { useIsWalletMetamask, useIsWalletOnNetwork } from '@pooltogether/hooks'
 import {
-  getMaxPrecision,
   getNetworkNiceNameByChainId,
-  numberWithCommas
+  numberWithCommas,
+  getMaxPrecision
 } from '@pooltogether/utilities'
 
 import { TOKEN_IMG_URL } from '../../constants'
@@ -17,13 +17,14 @@ import { LinkToContractItem } from '../LinkToContractItem'
 import { ModalTitle } from '../Modal/Modal'
 import { TokenIcon } from '../Icons/TokenIcon'
 import { CountUp } from '../CountUp'
+import { Tooltip } from '../Containers/Tooltip'
 import { addTokenToMetamask } from '../../services/addTokenToMetamask'
 import { poolToast } from '../../services/poolToast'
 
 export enum DefaultBalanceSheetViews {
   'main',
   'deposit',
-  'depositReview',
+  'claim',
   'withdraw',
   'more'
 }
@@ -114,11 +115,21 @@ const MainView = (props) => {
           $<CountUp countTo={Number(ticket.amount)} />
         </span>
         <span className='mx-auto flex'>
-          <TokenIcon chainId={chainId} address={ticket.address} sizeClassName='w-4 h-4 my-auto' />
-          <span className='font-bold opacity-50 mx-1'>
-            {numberWithCommas(ticket.amount, { precision: getMaxPrecision(ticket.amount) })}
-          </span>
-          <span className='opacity-50'>{ticket.symbol}</span>
+          <Tooltip
+            id={`balance-bottom-sheet-key-${Math.random()}`}
+            tip={
+              <>
+                {numberWithCommas(ticket.amount, { precision: getMaxPrecision(ticket.amount) })}{' '}
+                {ticket.symbol}
+              </>
+            }
+          >
+            <TokenIcon chainId={chainId} address={ticket.address} sizeClassName='w-4 h-4 my-auto' />
+
+            <span className='font-bold opacity-50 mx-1'>{numberWithCommas(ticket.amount)}</span>
+
+            <span className='opacity-50'>{ticket.symbol}</span>
+          </Tooltip>
         </span>
       </div>
 

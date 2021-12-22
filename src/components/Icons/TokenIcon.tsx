@@ -93,7 +93,6 @@ import SOHM from '../../assets/Tokens/sohm.png'
 import PTaUSDC from '../../assets/Tokens/ptausdc.png'
 import TCAP from '../../assets/Tokens/tcap.png'
 import UNI_V2_LP_TICKET from '../../assets/Tokens/uni-v2-lp-pool.png'
-import UNI_V2_LP_TOKEN from '../../assets/Tokens/uni-v2-lp-pool.png'
 
 /**
  * Sometimes the CoinGecko images aren't the prettiest
