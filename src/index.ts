@@ -34,7 +34,7 @@ export { NetworkIcon } from './components/Icons/NetworkIcon'
 
 // Input
 export { CheckboxInputGroup } from './components/Input/CheckboxInputGroup'
-export { DepositAmountInput } from './components/Input/DepositAmountInput'
+export * from './components/Input/TokenAmountInput'
 export { DropdownInputGroup } from './components/Input/DropdownInputGroup'
 export { DropdownList } from './components/Input/DropdownList'
 export { InputLabel } from './components/Input/InputLabel'

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import classnames from 'classnames'
+import classNames from 'classnames'
 import FeatherIcon from 'feather-icons-react'
 import { Transaction, Amount, Token } from '@pooltogether/hooks'
 import { getNetworkNiceNameByChainId, numberWithCommas } from '@pooltogether/utilities'
@@ -13,14 +13,12 @@ import { TokenIcon } from '../Icons/TokenIcon'
 import { CountUp } from '../CountUp'
 import { addTokenToMetamask } from '../../services/addTokenToMetamask'
 import { poolToast } from '../../services/poolToast'
-import classNames from 'classnames'
+import { i18nTranslate } from 'src/types'
 
 enum DefaultViews {
   main = 'main',
   moreInfo = 'moreInfo'
 }
-
-type i18nTranslate = (i18nKey: string, data?: { [key: string]: string }) => string
 
 export interface View {
   id: string
@@ -45,7 +43,7 @@ export const BalanceBottomSheet = (props: BalanceBottomSheetProps) => {
     <BottomSheet
       open={open}
       onDismiss={onDismiss}
-      className={classnames(className, 'text-inverse dark:text-white')}
+      className={classNames(className, 'text-inverse dark:text-white')}
     >
       <View {...viewProps} setView={setSelectedView} />
       <BalanceBottomSheetBackButton
@@ -103,7 +101,7 @@ const MainView = (props: MainViewProps & { setView: (view: string) => void }) =>
 
       <div className='bg-white dark:bg-actually-black dark:bg-opacity-10 rounded-xl w-full py-6 flex flex-col mb-4'>
         <span
-          className={classnames('text-3xl mx-auto font-bold leading-none', {
+          className={classNames('text-3xl mx-auto font-bold leading-none', {
             'opacity-50': balance.amountUnformatted.isZero()
           })}
         >
