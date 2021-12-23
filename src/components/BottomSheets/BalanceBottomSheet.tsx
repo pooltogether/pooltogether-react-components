@@ -262,7 +262,7 @@ const TxReceipt = (props: { tx: Transaction; t?: i18nTranslate; className?: stri
 
   return (
     <div
-      className={classnames(
+      className={classNames(
         'bg-white bg-opacity-20 dark:bg-actually-black dark:bg-opacity-10 rounded-xl w-full py-6 flex justify-between',
         className
       )}
