@@ -89,15 +89,19 @@ interface MainViewProps {
   balanceUsd: Amount
   contractLinks: ContractLink[]
   title: string
+  banner?: React.ReactNode
 }
 
 const MainView = (props: MainViewProps & { setView: (view: string) => void }) => {
-  const { t, chainId, tx, views, token, balance, balanceUsd, setView, title } = props
+  const { t, chainId, tx, views, token, balance, balanceUsd, setView, title, banner } = props
 
   return (
     <>
       <ModalTitle chainId={chainId} title={title} className='mb-4' />
-      <div className='bg-white bg-opacity-20 dark:bg-actually-black dark:bg-opacity-10 rounded-xl w-full py-6 flex flex-col mb-4'>
+
+      {banner}
+
+      <div className='bg-white dark:bg-actually-black dark:bg-opacity-10 rounded-xl w-full py-6 flex flex-col mb-4'>
         <span
           className={classnames('text-3xl mx-auto font-bold leading-none', {
             'opacity-50': balance.amountUnformatted.isZero()
