@@ -232,12 +232,8 @@
 .square-btn--rainbow:disabled {
   @apply border-transparent;
   background-color: #1e012f;
-  color: #fff;
+  color: #000;
   opacity: 0.5;
-}
-
-.square-btn--rainbow:after {
-  display: none;
 }
 
 /* ------- Sizes ------- */
