@@ -4,7 +4,7 @@ import { renderIcon } from '@download/blockies'
 
 const BLOCKIE_DIAMETER = 22
 
-export function ProfileAvatar (props) {
+export function ProfileAvatar(props) {
   const { className, usersAddress } = props
 
   if (!usersAddress) {
@@ -51,7 +51,15 @@ const BlockieIdenticon = ({ address, diameter, alt, className }) => {
   return (
     <>
       <canvas ref={canvasRef} style={{ display: 'none' }} />
-      <img className={className} src={dataUrl} height={diameter} width={diameter} alt={alt || ''} />
+      {dataUrl && (
+        <img
+          className={className}
+          src={dataUrl}
+          height={diameter}
+          width={diameter}
+          alt={alt || ''}
+        />
+      )}
     </>
   )
 }

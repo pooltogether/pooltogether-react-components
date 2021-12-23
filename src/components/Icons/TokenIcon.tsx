@@ -160,6 +160,9 @@ export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
     '0x471ece3750da237f93b8e339c536989b8978a438': CELO,
     '0xddbdbe029f9800f7c49764f15a1a1e55755648e4': PT_CELO_EUR_TICKET,
     '0xa45ba19df569d536251ce65dd3120bf7873e14ec': PT_CELO_USD_TICKET
+  },
+  [NETWORK.avalanche]: {
+    '0xb27f379c050f6ed0973a01667458af6ecebc1d90': PTaUSDC
   }
 })
 

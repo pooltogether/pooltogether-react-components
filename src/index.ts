@@ -115,18 +115,11 @@ export { TransactionStatusChecker } from './components/TransactionStatusChecker'
 
 // Components
 export { Accordion, ContentWrapper } from './components/Accordion'
-export { snapTo90, BottomSheet } from './components/BottomSheets/BottomSheet'
-export {
-  BalanceBottomSheet,
-  BalanceBottomSheetTitle,
-  BalanceBottomSheetPrizePool,
-  BalanceBottomSheetBackButton,
-  BalanceBottomSheetButtonTheme,
-  DefaultBalanceSheetViews
-} from './components/BottomSheets/BalanceBottomSheet'
+export { BottomSheet } from './components/BottomSheets/BottomSheet'
+// export { BottomSheet, snapTo90 } from './components/BottomSheets/BottomSheet'
+export * from './components/BottomSheets/BalanceBottomSheet'
 export { CountUp } from './components/CountUp'
 export { ErrorsBox } from './components/ErrorsBox'
-export { LinkToContractItem } from './components/LinkToContractItem'
 export { PageTitleAndBreadcrumbs } from './components/PageTitleAndBreadcrumbs'
 export { PoolCurrencyIcon } from './components/PoolCurrencyIcon'
 export { PrizeFrequencyChip } from './components/PrizeFrequencyChip'

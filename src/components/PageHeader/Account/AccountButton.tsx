@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 import { useAtom } from 'jotai'
-import { transactionsAtom, useEnsName } from '@pooltogether/hooks'
+import { transactionsAtom } from '@pooltogether/hooks'
 
 import { ProfileAvatar } from './ProfileAvatar'
 import { ProfileName } from './ProfileName'
@@ -12,8 +12,6 @@ export function AccountButton(props) {
 
   const [transactions] = useAtom(transactionsAtom)
   const pendingTransactionsCount = transactions.filter((t) => !t.completed).length
-
-  const ensName = useEnsName(usersAddress)
 
   return (
     <button
@@ -39,7 +37,7 @@ export function AccountButton(props) {
         <>
           <ProfileAvatar usersAddress={usersAddress} className='mr-2' />
           <span className='my-auto'>
-            <ProfileName ensName={ensName} usersAddress={usersAddress} />
+            <ProfileName usersAddress={usersAddress} />
           </span>
         </>
       )}
