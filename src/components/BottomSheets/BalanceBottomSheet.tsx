@@ -2,49 +2,27 @@ import React, { useState } from 'react'
 import classnames from 'classnames'
 import FeatherIcon from 'feather-icons-react'
 import { Transaction, Amount, Token } from '@pooltogether/hooks'
-import { getNetworkNiceNameByChainId, numberWithCommas } from '@pooltogether/utilities'
-// import { TokenWithBalance } from '@pooltogether/hooks'
-// import { useIsWalletMetamask, useIsWalletOnNetwork } from '@pooltogether/hooks'
-// import {
-//   getMaxPrecision
-// } from '@pooltogether/utilities'
+import {
+  getNetworkNiceNameByChainId,
+  numberWithCommas,
+  getMaxPrecision
+} from '@pooltogether/utilities'
 
 import { TOKEN_IMG_URL } from '../../constants'
 import { BottomSheet } from './BottomSheet'
-// import { BottomSheetProps, BottomSheet } from './BottomSheet'
 import { SquareButton, SquareButtonTheme } from '../Buttons/SquareButton'
 import { BlockExplorerLink } from '../Links/BlockExplorerLink'
 import { ModalTitle } from '../Modal/Modal'
 import { TokenIcon } from '../Icons/TokenIcon'
 import { CountUp } from '../CountUp'
-// import { Tooltip } from '../Containers/Tooltip'
+import { Tooltip } from '../Containers/Tooltip'
 import { addTokenToMetamask } from '../../services/addTokenToMetamask'
 import { poolToast } from '../../services/poolToast'
-import classNames from 'classnames'
 
 enum DefaultViews {
   main = 'main',
   moreInfo = 'moreInfo'
 }
-// export enum DefaultBalanceSheetViews {
-//   'main',
-//   'deposit',
-//   'claim',
-//   'withdraw',
-//   'more'
-// }
-
-// export enum BalanceBottomSheetButtonTheme {
-//   'primary',
-//   'secondary',
-//   'tertiary',
-//   'rainbow'
-// }
-
-// export interface BalanceBottomSheetPrizePool {
-//   chainId: number
-//   address: string
-// }
 
 type i18nTranslate = (i18nKey: string, data?: { [key: string]: string }) => string
 
@@ -54,25 +32,6 @@ export interface View {
   view: (props: Partial<MainViewProps & MoreInfoViewProps>) => JSX.Element
   theme?: SquareButtonTheme
 }
-
-// export interface BalanceBottomSheetProps extends BottomSheetProps {
-//   setView: Function
-//   selectedView: DefaultBalanceSheetViews
-//   withdrawView: React.ReactNode
-//   withdrawTx?: Transaction
-//   claimView: React.ReactNode
-//   depositView: React.ReactNode
-//   depositTx?: Transaction
-//   moreInfoView?: React.ReactNode
-//   buttons: Array<BalanceBottomSheetButton>
-//   open: any
-//   onDismiss: any
-//   balances: UsersPrizePoolBalances
-//   prizePool: BalanceBottomSheetPrizePool
-//   network: number
-//   wallet: object
-//   t: any
-//   label?: string
 
 export interface BalanceBottomSheetProps extends MainViewProps, MoreInfoViewProps {
   open: boolean
@@ -95,7 +54,6 @@ export const BalanceBottomSheet = (props: BalanceBottomSheetProps) => {
       <View {...viewProps} setView={setSelectedView} />
       <BalanceBottomSheetBackButton
         t={props.t}
-        view={selectedView}
         onClick={() => setSelectedView(DefaultViews.main)}
       />
     </BottomSheet>
@@ -106,25 +64,13 @@ BalanceBottomSheet.defaultProps = {
   label: 'balance-bottom-sheet'
 }
 
-// export interface BalanceBottomSheetBackButtonProps {
-//   t: any
-//   onClick: () => void
-// }
+export const BalanceBottomSheetBackButton = (props: { onClick: () => void; t?: i18nTranslate }) => {
+  const { onClick, t } = props
 
-// export const BalanceBottomSheetBackButton = (props: BalanceBottomSheetBackButtonProps) => {
-//   const { t } = props
-
-export const BalanceBottomSheetBackButton = (props: {
-  onClick: () => void
-  t?: i18nTranslate
-  view: string
-}) => {
-  const { view, onClick, t } = props
-  if (view === DefaultViews.main) return null
   return (
     <button
       onClick={onClick}
-      className='font-bold text-lg absolute top-6 left-4 flex opacity-50 hover:opacity-100 transition-opacity'
+      className='font-bold text-lg absolute top-1 left-4 flex opacity-50 hover:opacity-100 transition-opacity'
     >
       <FeatherIcon icon='chevron-left' className='my-auto h-6 w-6' />
       {t?.('back') || 'Back'}
@@ -162,31 +108,21 @@ const MainView = (props: MainViewProps & { setView: (view: string) => void }) =>
         >
           $<CountUp countTo={Number(balanceUsd.amount)} />
         </span>
-        <span className='mx-auto flex'>
-          <TokenIcon chainId={chainId} address={token.address} sizeClassName='w-4 h-4 my-auto' />
-          <span className='font-bold opacity-50 mx-1'>{numberWithCommas(balance.amount)}</span>
-          <span className='opacity-50'>{token.symbol}</span>
-        </span>
-        {/* </div>
-      <Tooltip
+        <span className='mx-auto flex mt-1'>
+          <Tooltip
             id={`balance-bottom-sheet-key-${Math.random()}`}
             tip={
               <>
-                {numberWithCommas(ticket.amount, { precision: getMaxPrecision(ticket.amount) })}{' '}
-                {ticket.symbol}
+                {numberWithCommas(balance.amount, { precision: getMaxPrecision(balance.amount) })}{' '}
+                {token.symbol}
               </>
             }
           >
-            <TokenIcon chainId={chainId} address={ticket.address} sizeClassName='w-4 h-4 my-auto' />
-
-            <span className='font-bold opacity-50 mx-1'>{numberWithCommas(ticket.amount)}</span>
-
-            <span className='opacity-50'>{ticket.symbol}</span>
+            <TokenIcon chainId={chainId} address={token.address} sizeClassName='w-4 h-4 my-auto' />
+            <span className='font-bold opacity-50 mx-1'>{numberWithCommas(balance.amount)}</span>
+            <span className='opacity-50'>{token.symbol}</span>
           </Tooltip>
         </span>
-      </div>
-
-      {withdrawTx && <WithdrawReceipt t={t} withdrawTx={withdrawTx} />} */}
       </div>
 
       {tx && <TxReceipt tx={tx} t={t} className='mb-4' />}
@@ -208,16 +144,6 @@ const MainView = (props: MainViewProps & { setView: (view: string) => void }) =>
 
 interface ViewButtonProps extends View {
   setView: (view: string) => void
-}
-{
-  /* 
-interface MoreInfoViewProps {
-  t: Function
-  prizePool: BalanceBottomSheetPrizePool
-  balances: UsersPrizePoolBalances
-  setView: Function
-  network: number
-  wallet: DefaultBalanceSheetViews */
 }
 
 const ViewButton = (props: ViewButtonProps) => {
@@ -337,7 +263,7 @@ const TxReceipt = (props: { tx: Transaction; t?: i18nTranslate; className?: stri
 
   return (
     <div
-      className={classNames(
+      className={classnames(
         'bg-white bg-opacity-20 dark:bg-actually-black dark:bg-opacity-10 rounded-xl w-full py-6 flex justify-between',
         className
       )}
@@ -348,96 +274,17 @@ const TxReceipt = (props: { tx: Transaction; t?: i18nTranslate; className?: stri
   )
 }
 
-// const LinkToContractItem = (props: {
-//   t?: i18nTranslate
-//   chainId: number
-//   i18nKey: string
-//   address: string
-// }) => {
-//   const { t, chainId, i18nKey, address } = props
-//   return (
-//     <li className='w-full flex justify-between'>
-//       <span className='text-sm'>{t?.(i18nKey) || i18nKey}</span>
-//       <BlockExplorerLink shorten chainId={chainId} address={address} className='text-sm' />
-//     </li>
-//   )
-// }
-
-// const buildButtons = (buttons) => {
-//   return buttons.map((button) => {
-//     if (button.theme === BalanceBottomSheetButtonTheme.tertiary) {
-//       return (
-//         <button
-//           key={`balance-bottom-sheet-button-${button.label.replace(' ', '')}`}
-//           disabled={button.disabled}
-//           onClick={button.onClick}
-//           className='font-semibold'
-//         >
-//           {button.label}
-//         </button>
-//       )
-//     } else if (button.theme === BalanceBottomSheetButtonTheme.rainbow) {
-//       return (
-//         <SquareButton
-//           onClick={button.onClick}
-//           disabled={button.disabled}
-//           theme={SquareButtonTheme.rainbow}
-//         >
-//           {button.label}
-//         </SquareButton>
-//       )
-//     } else {
-//       return (
-//         <SquareButton
-//           onClick={button.onClick}
-//           disabled={button.disabled}
-//           theme={
-//             button.theme === BalanceBottomSheetButtonTheme.primary
-//               ? SquareButtonTheme.teal
-//               : SquareButtonTheme.tealOutline
-//           }
-//         >
-//           {button.label}
-//         </SquareButton>
-//       )
-//     }
-//   })
-
-// export const BalanceBottomSheetTitle = ({ t, chainId }) => (
-//   <ModalTitle
-//     chainId={chainId}
-//     title={t('depositsOnNetwork', { network: getNetworkNiceNameByChainId(chainId) })}
-//   />
-// )
-
-// const getView = (props) => {
-//   const { selectedView, setView, withdrawView, depositView, claimView, moreInfoView } = props
-//   switch (selectedView) {
-//     case DefaultBalanceSheetViews.main:
-//       return <MainView {...props} setView={setView} />
-//     case DefaultBalanceSheetViews.claim:
-//       return claimView
-//     case DefaultBalanceSheetViews.deposit:
-//       return depositView
-//     case DefaultBalanceSheetViews.withdraw:
-//       return withdrawView
-//     case DefaultBalanceSheetViews.more:
-//       return moreInfoView || <MoreInfoView {...props} setView={setView} />
-//   }
-// }
-
-// export interface ViewProps {
-//   balances: UsersPrizePoolBalances
-//   prizePool: BalanceBottomSheetPrizePool
-//   setView: (view: DefaultBalanceSheetViews) => void
-// }
-
-// export interface WithdrawReceiptProps {
-//   withdrawTx: Transaction
-//   t: any
-// }
-
-// const WithdrawReceipt = (props: WithdrawReceiptProps) => {
-//   const { t, withdrawTx } = props
-
-//   if (!withdrawTx) return null
+const LinkToContractItem = (props: {
+  t?: i18nTranslate
+  chainId: number
+  i18nKey: string
+  address: string
+}) => {
+  const { t, chainId, i18nKey, address } = props
+  return (
+    <li className='w-full flex justify-between'>
+      <span className='text-sm'>{t?.(i18nKey) || i18nKey}</span>
+      <BlockExplorerLink shorten chainId={chainId} address={address} className='text-sm' />
+    </li>
+  )
+}
