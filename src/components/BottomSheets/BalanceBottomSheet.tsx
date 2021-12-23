@@ -2,7 +2,11 @@ import React, { useState } from 'react'
 import classNames from 'classnames'
 import FeatherIcon from 'feather-icons-react'
 import { Transaction, Amount, Token } from '@pooltogether/hooks'
-import { getNetworkNiceNameByChainId, numberWithCommas } from '@pooltogether/utilities'
+import {
+  getNetworkNiceNameByChainId,
+  numberWithCommas,
+  getMaxPrecision
+} from '@pooltogether/utilities'
 
 import { TOKEN_IMG_URL } from '../../constants'
 import { BottomSheet } from './BottomSheet'
@@ -11,6 +15,7 @@ import { BlockExplorerLink } from '../Links/BlockExplorerLink'
 import { ModalTitle } from '../Modal/Modal'
 import { TokenIcon } from '../Icons/TokenIcon'
 import { CountUp } from '../CountUp'
+import { Tooltip } from '../Containers/Tooltip'
 import { addTokenToMetamask } from '../../services/addTokenToMetamask'
 import { poolToast } from '../../services/poolToast'
 import { i18nTranslate } from 'src/types'
@@ -48,7 +53,6 @@ export const BalanceBottomSheet = (props: BalanceBottomSheetProps) => {
       <View {...viewProps} setView={setSelectedView} />
       <BalanceBottomSheetBackButton
         t={props.t}
-        view={selectedView}
         onClick={() => setSelectedView(DefaultViews.main)}
       />
     </BottomSheet>
@@ -59,17 +63,13 @@ BalanceBottomSheet.defaultProps = {
   label: 'balance-bottom-sheet'
 }
 
-export const BalanceBottomSheetBackButton = (props: {
-  onClick: () => void
-  t?: i18nTranslate
-  view: string
-}) => {
-  const { view, onClick, t } = props
-  if (view === DefaultViews.main) return null
+export const BalanceBottomSheetBackButton = (props: { onClick: () => void; t?: i18nTranslate }) => {
+  const { onClick, t } = props
+
   return (
     <button
       onClick={onClick}
-      className='font-bold text-lg absolute top-6 left-4 flex opacity-50 hover:opacity-100 transition-opacity'
+      className='font-bold text-lg absolute top-1 left-4 flex opacity-50 hover:opacity-100 transition-opacity'
     >
       <FeatherIcon icon='chevron-left' className='my-auto h-6 w-6' />
       {t?.('back') || 'Back'}
@@ -107,10 +107,20 @@ const MainView = (props: MainViewProps & { setView: (view: string) => void }) =>
         >
           $<CountUp countTo={Number(balanceUsd.amount)} />
         </span>
-        <span className='mx-auto flex'>
-          <TokenIcon chainId={chainId} address={token.address} sizeClassName='w-4 h-4 my-auto' />
-          <span className='font-bold opacity-50 mx-1'>{numberWithCommas(balance.amount)}</span>
-          <span className='opacity-50'>{token.symbol}</span>
+        <span className='mx-auto flex mt-1'>
+          <Tooltip
+            id={`balance-bottom-sheet-key-${Math.random()}`}
+            tip={
+              <>
+                {numberWithCommas(balance.amount, { precision: getMaxPrecision(balance.amount) })}{' '}
+                {token.symbol}
+              </>
+            }
+          >
+            <TokenIcon chainId={chainId} address={token.address} sizeClassName='w-4 h-4 my-auto' />
+            <span className='font-bold opacity-50 mx-1'>{numberWithCommas(balance.amount)}</span>
+            <span className='opacity-50'>{token.symbol}</span>
+          </Tooltip>
         </span>
       </div>
 
@@ -240,6 +250,7 @@ const MoreInfoView = (props: MoreInfoViewProps) => {
         token={token}
       /> */}
       </ul>
+      {/* <BalanceBottomSheetBackButton t={t} onClick={() => setView(DefaultBalanceSheetViews.main)} /> */}
     </>
   )
 }
@@ -251,7 +262,7 @@ const TxReceipt = (props: { tx: Transaction; t?: i18nTranslate; className?: stri
 
   return (
     <div
-      className={classNames(
+      className={classnames(
         'bg-white bg-opacity-20 dark:bg-actually-black dark:bg-opacity-10 rounded-xl w-full py-6 flex justify-between',
         className
       )}

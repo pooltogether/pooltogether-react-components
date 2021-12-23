@@ -84,7 +84,6 @@ import PT_XSUSHI_TICKET from '../../assets/Tokens/pt-xsushi.png'
 import PT_BADGER_TICKET from '../../assets/Tokens/pt-badger.png'
 import PT_DAI_SPONSORSHIP from '../../assets/Tokens/pt-dai-sponsorship.png'
 import PT_USDC_SPONSORSHIP from '../../assets/Tokens/pt-usdc-sponsorship.png'
-import UNI_V2_LP_POOL from '../../assets/Tokens/uni-v2-lp-pool.png'
 import WMATIC from '../../assets/Tokens/wmatic.png'
 import PT_USDT_TICKET from '../../assets/Tokens/pt-usdt.png'
 import PT_USDT_SPONSORSHIP from '../../assets/Tokens/pt-usdt-sponsorship.png'
@@ -93,6 +92,7 @@ import PT_CELO_EUR_TICKET from '../../assets/Tokens/pt-celo-eur-ticket.png'
 import SOHM from '../../assets/Tokens/sohm.png'
 import PTaUSDC from '../../assets/Tokens/ptausdc.png'
 import TCAP from '../../assets/Tokens/tcap.png'
+import UNI_V2_LP_TICKET from '../../assets/Tokens/uni-v2-lp-pool.png'
 
 /**
  * Sometimes the CoinGecko images aren't the prettiest
@@ -121,7 +121,6 @@ export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
     '0x1f9840a85d5af5bf1d1762f925bdaddc4201f984': UNI,
     '0x1494ca1f11d487c2bbe4543e90080aeba4ba3c2b': DPI,
     '0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0': WMATIC,
-    '0xeb8928ee92efb06c44d072a24c2bcb993b61e543': UNI_V2_LP_POOL,
     '0xdac17f958d2ee523a2206206994597c13d831ec7': USDT,
     '0x334cbb5858417aee161b53ee0d5349ccf54514cf': PCDAI,
     '0xd81b1a8b1ad00baa2d6609e0bae28a38713872f7': PCUSDC,
@@ -134,7 +133,9 @@ export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
     '0xfdc192c153044dedb67c5a17b8651951cf70ee4a': PT_XSUSHI_TICKET,
     '0x04f2694c8fcee23e8fd0dfea1d4f5bb8c352111f': SOHM,
     '0xdd4d117723c257cee402285d3acf218e9a8236e1': PTaUSDC,
-    '0x16c52ceece2ed57dad87319d91b5e3637d50afa4': TCAP
+    '0x16c52ceece2ed57dad87319d91b5e3637d50afa4': TCAP,
+    '0xeb8928ee92efb06c44d072a24c2bcb993b61e543': UNI_V2_LP_TICKET,
+    '0x85cb0bab616fe88a89a35080516a8928f38b518b': UNI
   },
   [NETWORK.rinkeby]: {
     '0x5592ec0cfb4dbc12d3ab100b257153436a1f0fea': DAI
