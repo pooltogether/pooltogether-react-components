@@ -7,10 +7,12 @@ import {
   numberWithCommas,
   getMaxPrecision
 } from '@pooltogether/utilities'
+import { TransactionResponse } from '@ethersproject/abstract-provider'
 
 import { TOKEN_IMG_URL } from '../../constants'
 import { BottomSheet } from './BottomSheet'
 import { SquareButton, SquareButtonTheme } from '../Buttons/SquareButton'
+import { DepositAllowance, RevokeAllowanceButton } from '../Buttons/RevokeAllowanceButton'
 import { BlockExplorerLink } from '../Links/BlockExplorerLink'
 import { ModalTitle } from '../Modal/Modal'
 import { TokenIcon } from '../Icons/TokenIcon'
@@ -43,6 +45,7 @@ export const BalanceBottomSheet = (props: BalanceBottomSheetProps) => {
   const [selectedView, setSelectedView] = useState<string>(DefaultViews.main)
 
   const View = getView(selectedView, props.views)
+  // const View = useMemo(() => getView(selectedView, props.views), [selectedView])
 
   return (
     <BottomSheet
@@ -181,6 +184,11 @@ interface MoreInfoViewProps {
   contractLinks: ContractLink[]
   isWalletOnProperNetwork: boolean
   isWalletMetaMask: boolean
+  depositAllowance: DepositAllowance
+  isFetched: Boolean
+  useSendTransaction: any
+  revokeAllowanceCallTransaction: () => Promise<TransactionResponse>
+  refetch: () => void
 }
 
 const MoreInfoView = (props: MoreInfoViewProps) => {
@@ -244,13 +252,9 @@ const MoreInfoView = (props: MoreInfoViewProps) => {
             </SquareButton>
           </li>
         )}
-        {/* <RevokeAllowanceButton
-        isWalletOnProperNetwork={isWalletOnProperNetwork}
-        prizePool={prizePool}
-        token={token}
-      /> */}
+
+        <RevokeAllowanceButton {...props} token={token} />
       </ul>
-      {/* <BalanceBottomSheetBackButton t={t} onClick={() => setView(DefaultBalanceSheetViews.main)} /> */}
     </>
   )
 }
