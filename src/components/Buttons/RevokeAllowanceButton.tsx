@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import FeatherIcon from 'feather-icons-react'
 import { getNetworkNiceNameByChainId } from '@pooltogether/utilities'
 import { Token, useTransaction } from '@pooltogether/hooks'
-import { useTranslation } from 'react-i18next'
 import { BigNumber } from 'ethers'
 import { TransactionResponse } from '@ethersproject/abstract-provider'
 
@@ -16,6 +15,7 @@ export interface DepositAllowance {
 }
 
 interface RevokeAllowanceButtonProps {
+  t: Function
   isWalletOnProperNetwork: boolean
   depositAllowance: DepositAllowance
   isFetched: Boolean
@@ -28,6 +28,7 @@ interface RevokeAllowanceButtonProps {
 
 export const RevokeAllowanceButton = (props: RevokeAllowanceButtonProps) => {
   const {
+    t,
     isWalletOnProperNetwork,
     token,
     chainId,
@@ -38,7 +39,6 @@ export const RevokeAllowanceButton = (props: RevokeAllowanceButtonProps) => {
     useSendTransaction
   } = props
 
-  const { t } = useTranslation()
   const sendTx = useSendTransaction()
   const [approveTxId, setApproveTxId] = useState(0)
   const approveTx = useTransaction(approveTxId)
