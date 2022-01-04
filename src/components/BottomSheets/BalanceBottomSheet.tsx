@@ -10,6 +10,7 @@ import {
 import { TransactionResponse } from '@ethersproject/abstract-provider'
 
 import { TOKEN_IMG_URL } from '../../constants'
+import { i18nTranslate } from 'src/types'
 import { BottomSheet } from './BottomSheet'
 import { SquareButton, SquareButtonTheme } from '../Buttons/SquareButton'
 import { DepositAllowance, RevokeAllowanceButton } from '../Buttons/RevokeAllowanceButton'
@@ -20,7 +21,6 @@ import { CountUp } from '../CountUp'
 import { Tooltip } from '../Containers/Tooltip'
 import { addTokenToMetamask } from '../../services/addTokenToMetamask'
 import { poolToast } from '../../services/poolToast'
-import { i18nTranslate } from 'src/types'
 
 enum DefaultViews {
   main = 'main',
@@ -66,7 +66,7 @@ BalanceBottomSheet.defaultProps = {
   label: 'balance-bottom-sheet'
 }
 
-export const BalanceBottomSheetBackButton = (props: { onClick: () => void; t?: i18nTranslate }) => {
+export const BalanceBottomSheetBackButton = (props: { onClick: () => void; t: i18nTranslate }) => {
   const { onClick, t } = props
 
   return (
@@ -81,7 +81,7 @@ export const BalanceBottomSheetBackButton = (props: { onClick: () => void; t?: i
 }
 
 interface MainViewProps {
-  t?: i18nTranslate
+  t: i18nTranslate
   chainId: number
   views: View[]
   tx: Transaction
@@ -178,7 +178,7 @@ export interface ContractLink {
 }
 
 interface MoreInfoViewProps {
-  t?: i18nTranslate
+  t: i18nTranslate
   chainId: number
   token: Token
   contractLinks: ContractLink[]
@@ -253,13 +253,13 @@ const MoreInfoView = (props: MoreInfoViewProps) => {
           </li>
         )}
 
-        <RevokeAllowanceButton {...props} token={token} />
+        <RevokeAllowanceButton {...props} t={t} token={token} />
       </ul>
     </>
   )
 }
 
-const TxReceipt = (props: { tx: Transaction; t?: i18nTranslate; className?: string }) => {
+const TxReceipt = (props: { tx: Transaction; t: i18nTranslate; className?: string }) => {
   const { tx, t, className } = props
 
   if (!tx) return null
@@ -278,7 +278,7 @@ const TxReceipt = (props: { tx: Transaction; t?: i18nTranslate; className?: stri
 }
 
 const LinkToContractItem = (props: {
-  t?: i18nTranslate
+  t: i18nTranslate
   chainId: number
   i18nKey: string
   address: string

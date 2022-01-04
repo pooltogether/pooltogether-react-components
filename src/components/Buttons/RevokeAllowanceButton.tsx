@@ -5,6 +5,7 @@ import { Token, useTransaction } from '@pooltogether/hooks'
 import { BigNumber } from 'ethers'
 import { TransactionResponse } from '@ethersproject/abstract-provider'
 
+import { i18nTranslate } from 'src/types'
 import { BlockExplorerLink } from '../Links/BlockExplorerLink'
 import { poolToast } from '../../services/poolToast'
 import { SquareButton } from '../Buttons/SquareButton'
@@ -15,7 +16,7 @@ export interface DepositAllowance {
 }
 
 interface RevokeAllowanceButtonProps {
-  t: Function
+  t: i18nTranslate
   isWalletOnProperNetwork: boolean
   depositAllowance: DepositAllowance
   isFetched: Boolean
@@ -48,7 +49,7 @@ export const RevokeAllowanceButton = (props: RevokeAllowanceButtonProps) => {
       poolToast.warn(
         t(
           'switchToNetworkToRevokeToken',
-          `Switch to {{networkName}} to revoke '{{token}}' token allowance`,
+          // `Switch to {{networkName}} to revoke '{{token}}' token allowance`,
           {
             networkName: getNetworkNiceNameByChainId(chainId),
             token: token.symbol
