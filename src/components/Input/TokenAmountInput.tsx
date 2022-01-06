@@ -26,7 +26,7 @@ interface TokenAmountInputProps {
   }
   isWalletConnected: boolean
   i18nKey: string
-  t?: i18nTranslate
+  t: i18nTranslate
   className?: string
   widthClassName?: string
 }
@@ -96,7 +96,7 @@ interface InputHeaderProps {
   setValue: UseFormSetValue<FieldValues>
   trigger: UseFormTrigger<FieldValues>
   i18nKey?: string
-  t?: i18nTranslate
+  t: i18nTranslate
 }
 
 const InputHeader = (props: InputHeaderProps) => {
@@ -168,7 +168,7 @@ interface InputProps {
   validate: {
     [key: string]: (value: string) => boolean | string
   }
-  t?: i18nTranslate
+  t: i18nTranslate
 }
 
 const Input = (props: InputProps) => {

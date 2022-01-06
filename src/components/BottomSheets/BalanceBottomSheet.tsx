@@ -2,18 +2,25 @@ import React, { useState } from 'react'
 import classNames from 'classnames'
 import FeatherIcon from 'feather-icons-react'
 import { Transaction, Amount, Token } from '@pooltogether/hooks'
-import { getNetworkNiceNameByChainId, numberWithCommas } from '@pooltogether/utilities'
+import {
+  getNetworkNiceNameByChainId,
+  numberWithCommas,
+  getMaxPrecision
+} from '@pooltogether/utilities'
+import { TransactionResponse } from '@ethersproject/abstract-provider'
 
 import { TOKEN_IMG_URL } from '../../constants'
+import { i18nTranslate } from 'src/types'
 import { BottomSheet } from './BottomSheet'
 import { SquareButton, SquareButtonTheme, SquareLink } from '../Buttons/SquareButton'
+import { DepositAllowance, RevokeAllowanceButton } from '../Buttons/RevokeAllowanceButton'
 import { BlockExplorerLink } from '../Links/BlockExplorerLink'
 import { ModalTitle } from '../Modal/Modal'
 import { TokenIcon } from '../Icons/TokenIcon'
 import { CountUp } from '../CountUp'
+import { Tooltip } from '../Containers/Tooltip'
 import { addTokenToMetamask } from '../../services/addTokenToMetamask'
 import { poolToast } from '../../services/poolToast'
-import { i18nTranslate } from 'src/types'
 
 enum DefaultViews {
   main = 'main',
@@ -44,6 +51,7 @@ export const BalanceBottomSheet = (props: BalanceBottomSheetProps) => {
   const [selectedView, setSelectedView] = useState<string>(DefaultViews.main)
 
   const View = getView(selectedView, props.views)
+  // const View = useMemo(() => getView(selectedView, props.views), [selectedView])
 
   return (
     <BottomSheet
@@ -54,7 +62,6 @@ export const BalanceBottomSheet = (props: BalanceBottomSheetProps) => {
       <View {...viewProps} setView={setSelectedView} />
       <BalanceBottomSheetBackButton
         t={props.t}
-        view={selectedView}
         onClick={() => setSelectedView(DefaultViews.main)}
       />
     </BottomSheet>
@@ -65,17 +72,13 @@ BalanceBottomSheet.defaultProps = {
   label: 'balance-bottom-sheet'
 }
 
-export const BalanceBottomSheetBackButton = (props: {
-  onClick: () => void
-  t?: i18nTranslate
-  view: string
-}) => {
-  const { view, onClick, t } = props
-  if (view === DefaultViews.main) return null
+export const BalanceBottomSheetBackButton = (props: { onClick: () => void; t: i18nTranslate }) => {
+  const { onClick, t } = props
+
   return (
     <button
       onClick={onClick}
-      className='font-bold text-lg absolute top-6 left-4 flex opacity-50 hover:opacity-100 transition-opacity'
+      className='font-bold text-lg absolute top-1 left-4 flex opacity-50 hover:opacity-100 transition-opacity'
     >
       <FeatherIcon icon='chevron-left' className='my-auto h-6 w-6' />
       {t?.('back') || 'Back'}
@@ -84,7 +87,7 @@ export const BalanceBottomSheetBackButton = (props: {
 }
 
 interface MainViewProps {
-  t?: i18nTranslate
+  t: i18nTranslate
   chainId: number
   views: View[]
   tx: Transaction
@@ -126,10 +129,20 @@ const MainView = (props: MainViewProps & { setView: (view: string) => void }) =>
         >
           $<CountUp countTo={Number(balanceUsd.amount)} />
         </span>
-        <span className='mx-auto flex'>
-          <TokenIcon chainId={chainId} address={token.address} sizeClassName='w-4 h-4 my-auto' />
-          <span className='font-bold opacity-50 mx-1'>{numberWithCommas(balance.amount)}</span>
-          <span className='opacity-50'>{token.symbol}</span>
+        <span className='mx-auto flex mt-1'>
+          <Tooltip
+            id={`balance-bottom-sheet-key-${Math.random()}`}
+            tip={
+              <>
+                {numberWithCommas(balance.amount, { precision: getMaxPrecision(balance.amount) })}{' '}
+                {token.symbol}
+              </>
+            }
+          >
+            <TokenIcon chainId={chainId} address={token.address} sizeClassName='w-4 h-4 my-auto' />
+            <span className='font-bold opacity-50 mx-1'>{numberWithCommas(balance.amount)}</span>
+            <span className='opacity-50'>{token.symbol}</span>
+          </Tooltip>
         </span>
       </div>
 
@@ -196,12 +209,17 @@ export interface ContractLink {
 }
 
 interface MoreInfoViewProps {
-  t?: i18nTranslate
+  t: i18nTranslate
   chainId: number
   token: Token
   contractLinks: ContractLink[]
   isWalletOnProperNetwork: boolean
   isWalletMetaMask: boolean
+  depositAllowance: DepositAllowance
+  isFetched: Boolean
+  useSendTransaction: any
+  revokeAllowanceCallTransaction: () => Promise<TransactionResponse>
+  refetch: () => void
 }
 
 const MoreInfoView = (props: MoreInfoViewProps) => {
@@ -265,17 +283,14 @@ const MoreInfoView = (props: MoreInfoViewProps) => {
             </SquareButton>
           </li>
         )}
-        {/* <RevokeAllowanceButton
-        isWalletOnProperNetwork={isWalletOnProperNetwork}
-        prizePool={prizePool}
-        token={token}
-      /> */}
+
+        <RevokeAllowanceButton {...props} t={t} token={token} />
       </ul>
     </>
   )
 }
 
-const TxReceipt = (props: { tx: Transaction; t?: i18nTranslate; className?: string }) => {
+const TxReceipt = (props: { tx: Transaction; t: i18nTranslate; className?: string }) => {
   const { tx, t, className } = props
 
   if (!tx) return null
@@ -294,7 +309,7 @@ const TxReceipt = (props: { tx: Transaction; t?: i18nTranslate; className?: stri
 }
 
 const LinkToContractItem = (props: {
-  t?: i18nTranslate
+  t: i18nTranslate
   chainId: number
   i18nKey: string
   address: string

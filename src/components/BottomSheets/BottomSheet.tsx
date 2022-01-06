@@ -50,7 +50,7 @@ export const BottomSheet = (props: BottomSheetProps) => {
     <ReactSpringBottomSheet {...sheetProps} open={open} onDismiss={onDismiss}>
       <div className={classNames('px-4 pt-4 flex-grow ', className)}>{children}</div>
       {!hideCloseButton && (
-        <button className='flex-none mx-auto text-accent-3 font-bold pb-4 pt-6' onClick={onDismiss}>
+        <button className='flex-none mx-auto text-accent-3 font-bold p-2 my-3' onClick={onDismiss}>
           {t('Close')}
         </button>
       )}
