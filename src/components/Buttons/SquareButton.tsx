@@ -78,7 +78,7 @@ export const SquareLink: React.FC<SquareLinkProps> = (props) => {
       {chevron && (
         <FeatherIcon
           icon={'chevron-right'}
-          className={classnames('inline-block -mt-1', getChevronClassName(size))}
+          className={classnames('inline-block my-auto', getChevronClassName(size))}
         />
       )}
     </a>

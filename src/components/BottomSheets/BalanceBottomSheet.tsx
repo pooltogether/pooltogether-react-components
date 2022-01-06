@@ -6,7 +6,7 @@ import { getNetworkNiceNameByChainId, numberWithCommas } from '@pooltogether/uti
 
 import { TOKEN_IMG_URL } from '../../constants'
 import { BottomSheet } from './BottomSheet'
-import { SquareButton, SquareButtonTheme } from '../Buttons/SquareButton'
+import { SquareButton, SquareButtonTheme, SquareLink } from '../Buttons/SquareButton'
 import { BlockExplorerLink } from '../Links/BlockExplorerLink'
 import { ModalTitle } from '../Modal/Modal'
 import { TokenIcon } from '../Icons/TokenIcon'
@@ -18,6 +18,12 @@ import { i18nTranslate } from 'src/types'
 enum DefaultViews {
   main = 'main',
   moreInfo = 'moreInfo'
+}
+
+export interface Link {
+  id: string
+  label: React.ReactNode
+  href: string
 }
 
 export interface View {
@@ -87,11 +93,24 @@ interface MainViewProps {
   balanceUsd: Amount
   contractLinks: ContractLink[]
   title: string
+  externalLinks?: Link[]
   banner?: React.ReactNode
 }
 
 const MainView = (props: MainViewProps & { setView: (view: string) => void }) => {
-  const { t, chainId, tx, views, token, balance, balanceUsd, setView, title, banner } = props
+  const {
+    t,
+    chainId,
+    tx,
+    views,
+    token,
+    balance,
+    balanceUsd,
+    setView,
+    title,
+    banner,
+    externalLinks
+  } = props
 
   return (
     <>
@@ -117,9 +136,21 @@ const MainView = (props: MainViewProps & { setView: (view: string) => void }) =>
       {tx && <TxReceipt tx={tx} t={t} className='mb-4' />}
 
       <div className='flex flex-col space-y-4'>
+        {externalLinks.map((externalLink) => (
+          <SquareLink
+            key={externalLink.id}
+            href={externalLink.href}
+            chevron
+            className='flex justify-center'
+          >
+            {externalLink.label}
+          </SquareLink>
+        ))}
+
         {views.map((view) => (
           <ViewButton key={view.id} {...view} setView={setView} />
         ))}
+
         <button
           onClick={() => setView(DefaultViews.moreInfo)}
           className='font-bold pt-2 hover:opacity-50 transition-opacity'
