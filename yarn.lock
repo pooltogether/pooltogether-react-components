@@ -2073,10 +2073,10 @@
   dependencies:
     evm-chains "^0.2.0"
 
-"@pooltogether/hooks@^1.4.7":
-  version "1.4.7"
-  resolved "https://registry.yarnpkg.com/@pooltogether/hooks/-/hooks-1.4.7.tgz#40c84d4da2e5846a7e69ec491c286bda810f2649"
-  integrity sha512-2yBBgj8ff0hF0GcLyan3KUVM8AvgCWRmdOiZduZEONu672pWqgrHV5vfEzh1YU5w0UucHu1Lf5r+O855c6XQLQ==
+"@pooltogether/hooks@^1.4.9":
+  version "1.4.9"
+  resolved "https://registry.yarnpkg.com/@pooltogether/hooks/-/hooks-1.4.9.tgz#499f6d074e896d2f9f7c39e17e1a01c26293e352"
+  integrity sha512-AhAmSpXytVbHXmkw2El7zLBF+fwG5Q+RIfygf/854NYTSiwTEsk8pKoz/hLwoFYuoZe+F+5VXGwJe9QU/nI9Bw==
 
 "@pooltogether/utilities@^0.3.6":
   version "0.3.6"
