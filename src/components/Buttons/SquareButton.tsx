@@ -61,12 +61,13 @@ interface SquareLinkProps
   chevron?: boolean
 }
 
-export const SquareLink: React.FC<SquareLinkProps> = (props) => {
+export const SquareLink: React.FC<SquareLinkProps> = React.forwardRef((props, ref) => {
   const { chevron, theme, size, className, ...linkProps } = props
 
   return (
     <a
       {...linkProps}
+      ref={ref}
       className={classnames(
         'square-btn',
         getThemeClassName(theme),
@@ -83,7 +84,7 @@ export const SquareLink: React.FC<SquareLinkProps> = (props) => {
       )}
     </a>
   )
-}
+})
 
 SquareLink.defaultProps = {
   theme: SquareButtonTheme.teal,

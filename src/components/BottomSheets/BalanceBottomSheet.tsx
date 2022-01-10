@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import classNames from 'classnames'
 import FeatherIcon from 'feather-icons-react'
 import { Transaction, Amount, Token } from '@pooltogether/hooks'
@@ -7,13 +7,11 @@ import {
   numberWithCommas,
   getMaxPrecision
 } from '@pooltogether/utilities'
-import { TransactionResponse } from '@ethersproject/abstract-provider'
 
 import { TOKEN_IMG_URL } from '../../constants'
 import { i18nTranslate } from 'src/types'
 import { BottomSheet } from './BottomSheet'
 import { SquareButton, SquareButtonTheme, SquareLink } from '../Buttons/SquareButton'
-import { DepositAllowance, RevokeAllowanceButton } from '../Buttons/RevokeAllowanceButton'
 import { BlockExplorerLink } from '../Links/BlockExplorerLink'
 import { ModalTitle } from '../Modal/Modal'
 import { TokenIcon } from '../Icons/TokenIcon'
@@ -50,8 +48,7 @@ export const BalanceBottomSheet = (props: BalanceBottomSheetProps) => {
   const { open, onDismiss, className, ...viewProps } = props
   const [selectedView, setSelectedView] = useState<string>(DefaultViews.main)
 
-  const View = getView(selectedView, props.views)
-  // const View = useMemo(() => getView(selectedView, props.views), [selectedView])
+  const View = useMemo(() => getView(selectedView, props.views), [selectedView])
 
   return (
     <BottomSheet
@@ -62,6 +59,7 @@ export const BalanceBottomSheet = (props: BalanceBottomSheetProps) => {
       <View {...viewProps} setView={setSelectedView} />
       <BalanceBottomSheetBackButton
         t={props.t}
+        selectedView={selectedView}
         onClick={() => setSelectedView(DefaultViews.main)}
       />
     </BottomSheet>
@@ -72,13 +70,19 @@ BalanceBottomSheet.defaultProps = {
   label: 'balance-bottom-sheet'
 }
 
-export const BalanceBottomSheetBackButton = (props: { onClick: () => void; t: i18nTranslate }) => {
-  const { onClick, t } = props
+export const BalanceBottomSheetBackButton = (props: {
+  onClick: () => void
+  t: i18nTranslate
+  selectedView: string
+}) => {
+  const { onClick, t, selectedView } = props
+
+  if (selectedView === DefaultViews.main) return null
 
   return (
     <button
       onClick={onClick}
-      className='font-bold text-lg absolute top-1 left-4 flex opacity-50 hover:opacity-100 transition-opacity'
+      className='font-bold text-lg absolute top-6 left-4 flex opacity-50 hover:opacity-100 transition-opacity'
     >
       <FeatherIcon icon='chevron-left' className='my-auto h-6 w-6' />
       {t?.('back') || 'Back'}
@@ -96,6 +100,7 @@ interface MainViewProps {
   balanceUsd: Amount
   contractLinks: ContractLink[]
   title: string
+  internalLinks?: JSX.Element
   externalLinks?: Link[]
   banner?: React.ReactNode
 }
@@ -112,6 +117,7 @@ const MainView = (props: MainViewProps & { setView: (view: string) => void }) =>
     setView,
     title,
     banner,
+    internalLinks,
     externalLinks
   } = props
 
@@ -146,10 +152,12 @@ const MainView = (props: MainViewProps & { setView: (view: string) => void }) =>
         </span>
       </div>
 
-      {tx && <TxReceipt tx={tx} t={t} className='mb-4' />}
+      {tx && <TxReceipt chainId={chainId} tx={tx} t={t} className='mb-4' />}
 
       <div className='flex flex-col space-y-4'>
-        {externalLinks.map((externalLink) => (
+        {internalLinks}
+
+        {externalLinks?.map((externalLink) => (
           <SquareLink
             key={externalLink.id}
             href={externalLink.href}
@@ -215,11 +223,11 @@ interface MoreInfoViewProps {
   contractLinks: ContractLink[]
   isWalletOnProperNetwork: boolean
   isWalletMetaMask: boolean
-  depositAllowance: DepositAllowance
-  isFetched: Boolean
-  useSendTransaction: any
-  revokeAllowanceCallTransaction: () => Promise<TransactionResponse>
-  refetch: () => void
+  // depositAllowance: DepositAllowance
+  // isFetched: Boolean
+  // useSendTransaction: any
+  // revokeAllowanceCallTransaction: () => Promise<TransactionResponse>
+  // refetch: () => void
 }
 
 const MoreInfoView = (props: MoreInfoViewProps) => {
@@ -284,26 +292,33 @@ const MoreInfoView = (props: MoreInfoViewProps) => {
           </li>
         )}
 
-        <RevokeAllowanceButton {...props} t={t} token={token} />
+        {/* <RevokeAllowanceButton {...props} t={t} token={token} /> */}
       </ul>
     </>
   )
 }
 
-const TxReceipt = (props: { tx: Transaction; t: i18nTranslate; className?: string }) => {
-  const { tx, t, className } = props
+const TxReceipt = (props: {
+  tx: Transaction
+  chainId: number
+  t: i18nTranslate
+  className?: string
+}) => {
+  const { chainId, tx, t, className } = props
+
+  console.log({ tx })
 
   if (!tx) return null
 
   return (
     <div
       className={classNames(
-        'bg-white bg-opacity-20 dark:bg-actually-black dark:bg-opacity-10 rounded-xl w-full py-6 flex justify-between',
+        'bg-white bg-opacity-20 dark:bg-actually-black dark:bg-opacity-10 rounded-xl w-full px-4 py-6 flex justify-between',
         className
       )}
     >
       <span className='font-bold'>{t?.('transaction') || 'Transaction'}</span>
-      <BlockExplorerLink chainId={tx.chainId} txHash={tx.hash} />
+      <BlockExplorerLink chainId={chainId} txHash={tx.hash} shorten />
     </div>
   )
 }
