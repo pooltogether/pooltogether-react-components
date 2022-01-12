@@ -36,7 +36,7 @@ interface TokenAmountInputProps {
  * @param props
  * @returns
  */
-export const TokenAmountInput = (props: TokenAmountInputProps) => {
+export const TokenAmountInput: React.FC<TokenAmountInputProps> = (props) => {
   const {
     className,
     widthClassName,

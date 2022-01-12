@@ -46,7 +46,7 @@
   "peerDependencies": {
     "@pooltogether/current-pool-data": "^3.7.2",
     "@pooltogether/evm-chains-extended": "^0.6.4-beta.1",
-    "@pooltogether/hooks": "^1.4.6",
+    "@pooltogether/hooks": "^1.4.9",
     "@pooltogether/utilities": "^0.3.6",
     "eth-revert-reason": "^1.0.3",
     "ethers": "^5.4.6",
@@ -64,7 +64,7 @@
     "@pooltogether/current-pool-data": "^3.7.2",
     "@pooltogether/etherplex": "^1.1.2",
     "@pooltogether/evm-chains-extended": "^0.6.4-beta.1",
-    "@pooltogether/hooks": "^1.4.7",
+    "@pooltogether/hooks": "^1.4.9",
     "@pooltogether/utilities": "^0.3.6",
     "@rollup/plugin-url": "^6.1.0",
     "@size-limit/preset-small-lib": "^6.0.4",
