@@ -58,6 +58,12 @@ a {
   @apply cursor-pointer;
 }
 
+@screen sm {
+  a {
+    font-size: inherit;
+  }
+}
+
 .nav--account-transactions-button__loader {
   transform: scale(0.8);
 }

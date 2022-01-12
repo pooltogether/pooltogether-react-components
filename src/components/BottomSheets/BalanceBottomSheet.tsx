@@ -31,6 +31,7 @@ export interface View {
   id: string
   label: React.ReactNode
   view: (props: Partial<MainViewProps & MoreInfoViewProps>) => JSX.Element
+  disabled?: boolean
   theme?: SquareButtonTheme
 }
 
@@ -72,7 +73,7 @@ export const BalanceBottomSheetBackButton = (props: { onClick: () => void; t: i1
   return (
     <button
       onClick={onClick}
-      className='font-bold text-lg absolute top-1 left-4 flex opacity-50 hover:opacity-100 transition-opacity'
+      className='font-bold text-lg absolute top-1 left-4 xs:top-2 xs:left-6 flex opacity-50 hover:opacity-100 transition-opacity'
     >
       <FeatherIcon icon='chevron-left' className='my-auto h-6 w-6' />
       {t?.('back') || 'Back'}
@@ -149,9 +150,9 @@ interface ViewButtonProps extends View {
 }
 
 const ViewButton = (props: ViewButtonProps) => {
-  const { id, label, theme, setView } = props
+  const { disabled, id, label, theme, setView } = props
   return (
-    <SquareButton theme={theme} onClick={() => setView(id)}>
+    <SquareButton disabled={disabled} theme={theme} onClick={() => setView(id)}>
       {label}
     </SquareButton>
   )
