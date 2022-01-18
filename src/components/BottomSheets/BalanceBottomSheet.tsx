@@ -94,13 +94,13 @@ export const BalanceBottomSheetBackButton = (props: {
 interface MainViewProps {
   t: i18nTranslate
   chainId: number
-  views: View[]
   tx: Transaction
   token: Token
   balance: Amount
   balanceUsd: Amount
   contractLinks: ContractLink[]
   title: string
+  views?: View[]
   internalLinks?: JSX.Element
   externalLinks?: Link[]
   banner?: React.ReactNode
@@ -169,7 +169,7 @@ const MainView = (props: MainViewProps & { setView: (view: string) => void }) =>
           </SquareLink>
         ))}
 
-        {views.map((view) => (
+        {views?.map((view) => (
           <ViewButton key={view.id} {...view} setView={setView} />
         ))}
 
