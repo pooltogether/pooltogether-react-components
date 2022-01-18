@@ -1,12 +1,17 @@
 {
   "name": "@pooltogether/react-components",
-  "version": "1.6.21",
+  "version": "1.6.22",
   "description": "PoolTogether UI elements in a shared lib",
   "author": "PoolTogether",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
-  "files": ["dist", "src", "config.js", "README.md"],
+  "files": [
+    "dist",
+    "src",
+    "config.js",
+    "README.md"
+  ],
   "engines": {
     "node": ">=10"
   },
@@ -14,7 +19,12 @@
     "type": "git",
     "url": "git+https://github.com/pooltogether/pooltogether-react-components.git"
   },
-  "keywords": ["react", "library", "components", "tailwindcss"],
+  "keywords": [
+    "react",
+    "library",
+    "components",
+    "tailwindcss"
+  ],
   "scripts": {
     "reinstall": "rm -rf ./node_modules && yarn",
     "start": "tsdx watch --onSuccess \"yalc push\"",
