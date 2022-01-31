@@ -54,7 +54,10 @@ export const BalanceBottomSheet = (props: BalanceBottomSheetProps) => {
   return (
     <BottomSheet
       open={open}
-      onDismiss={onDismiss}
+      onDismiss={() => {
+        onDismiss()
+        setSelectedView(DefaultViews.main)
+      }}
       className={classNames(className, 'text-inverse dark:text-white')}
     >
       <View {...viewProps} setView={setSelectedView} />
