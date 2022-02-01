@@ -19,9 +19,9 @@ import TelegramLogo from '../../assets/Socials/telegram-logo.svg'
 const sharedClasses =
   'relative leading-none w-full flex justify-start items-center py-2 px-0 mb-1 ml-0 trans outline-none focus:outline-none active:outline-none h-10'
 
-const headerClasses = 'text-inverse text-lg font-bold'
+const headerClasses = 'text-lg font-bold hover:text-highlight-2'
 
-const childClasses = 'text-xs text-accent-4 hover:text-highlight-2'
+const childClasses = 'text-xs opacity-70 hover:text-highlight-2'
 
 const socialsLinkData = [
   {
