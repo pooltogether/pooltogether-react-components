@@ -39,7 +39,7 @@ const socialsLinkData = [
         )
       },
       {
-        href: 'https://www.notion.so/PoolTogether-Knowledge-Base-fa721ccefa3242eaabd125a8415acd27',
+        href: 'docs.pooltogether.com',
         langKey: 'knowledgeBase',
         label: 'Knowledge Base',
         icon: <img src={KnowledgeBaseIcon} className='w-4 opacity-70 mx-auto' />
