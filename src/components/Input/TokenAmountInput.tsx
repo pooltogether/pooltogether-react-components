@@ -29,6 +29,7 @@ interface TokenAmountInputProps {
   t: i18nTranslate
   className?: string
   widthClassName?: string
+  bgClassName?: string
 }
 
 /**
@@ -40,6 +41,7 @@ export const TokenAmountInput: React.FC<TokenAmountInputProps> = (props) => {
   const {
     className,
     widthClassName,
+    bgClassName,
     form,
     inputKey,
     token,
@@ -70,12 +72,13 @@ export const TokenAmountInput: React.FC<TokenAmountInputProps> = (props) => {
 
       <div
         className={classNames(
-          'p-0.5 bg-tertiary rounded-lg overflow-hidden',
+          bgClassName,
+          'p-0.5 rounded-lg overflow-hidden',
           'transition-all hover:bg-gradient-cyan focus-within:bg-pt-gradient',
           'cursor-pointer'
         )}
       >
-        <div className='bg-tertiary w-full rounded-lg flex'>
+        <div className={classNames('w-full rounded-lg flex', bgClassName)}>
           <InputToken chainId={chainId} token={token} />
           <Input register={register} inputKey={inputKey} validate={validate} t={t} />
         </div>
@@ -85,7 +88,8 @@ export const TokenAmountInput: React.FC<TokenAmountInputProps> = (props) => {
 }
 
 TokenAmountInput.defaultProps = {
-  widthClassName: 'w-full'
+  widthClassName: 'w-full',
+  bgClassName: 'bg-tertiary'
 }
 
 interface InputHeaderProps {

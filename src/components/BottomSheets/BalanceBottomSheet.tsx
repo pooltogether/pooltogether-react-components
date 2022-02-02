@@ -49,7 +49,10 @@ export const BalanceBottomSheet = (props: BalanceBottomSheetProps) => {
   const { open, onDismiss, className, ...viewProps } = props
   const [selectedView, setSelectedView] = useState<string>(DefaultViews.main)
 
-  const View = useMemo(() => getView(selectedView, props.views), [selectedView])
+  const View = useMemo(
+    () => getView(selectedView, props.views, props.moreInfoViews),
+    [selectedView]
+  )
 
   return (
     <BottomSheet
@@ -86,7 +89,7 @@ export const BalanceBottomSheetBackButton = (props: {
   return (
     <button
       onClick={onClick}
-      className='font-bold text-lg absolute top-6 left-4 xs:top-2 xs:left-6 flex opacity-50 hover:opacity-100 transition-opacity'
+      className='font-bold text-lg absolute top-6 left-4 xs:top-2 xs:left-6 flex opacity-50 hover:opacity-100 transition-opacity m-0'
     >
       <FeatherIcon icon='chevron-left' className='my-auto h-6 w-6' />
       {t?.('back') || 'Back'}
@@ -204,13 +207,16 @@ ViewButton.defaultProps = {
   theme: SquareButtonTheme.tealOutline
 }
 
-const getView = (selectedView: string, views: View[]) => {
+const getView = (selectedView: string, views: View[], moreInfoViews: View[]) => {
   if (selectedView === DefaultViews.main) {
     return MainView
   } else if (selectedView === DefaultViews.moreInfo) {
     return MoreInfoView
   } else {
-    return views.find((view) => view.id === selectedView).view
+    let view =
+      views.find((view) => view.id === selectedView) ||
+      moreInfoViews.find((view) => view.id === selectedView)
+    return view.view
   }
 }
 
@@ -225,6 +231,8 @@ interface MoreInfoViewProps {
   chainId: number
   token: Token
   contractLinks: ContractLink[]
+  moreInfoViews?: View[]
+  delegate?: string
   isWalletOnProperNetwork: boolean
   isWalletMetaMask: boolean
   // depositAllowance: DepositAllowance
@@ -234,8 +242,18 @@ interface MoreInfoViewProps {
   // refetch: () => void
 }
 
-const MoreInfoView = (props: MoreInfoViewProps) => {
-  const { t, chainId, token, contractLinks, isWalletOnProperNetwork, isWalletMetaMask } = props
+const MoreInfoView = (props: MoreInfoViewProps & { setView: (view: string) => void }) => {
+  const {
+    t,
+    setView,
+    chainId,
+    delegate,
+    token,
+    moreInfoViews,
+    contractLinks,
+    isWalletOnProperNetwork,
+    isWalletMetaMask
+  } = props
   const handleAddTokenToMetaMask = async () => {
     if (!token) {
       return
@@ -281,23 +299,32 @@ const MoreInfoView = (props: MoreInfoViewProps) => {
           ))}
         </ul>
       )}
-      <ul className='space-y-4'>
+
+      {delegate && (
+        <div className='bg-white bg-opacity-20 dark:bg-actually-black dark:bg-opacity-10 rounded-xl w-full p-4 mb-4 flex justify-between'>
+          <span className='text-sm'>{t?.('delegatingDeposits') || 'Delegating deposits'}</span>
+          <BlockExplorerLink shorten chainId={chainId} address={delegate} className='text-sm' />
+        </div>
+      )}
+      <div className='flex flex-col space-y-4'>
+        {moreInfoViews?.map((view) => (
+          <ViewButton key={view.id} {...view} setView={setView} />
+        ))}
+
         {isWalletMetaMask && (
-          <li>
-            <SquareButton
-              onClick={handleAddTokenToMetaMask}
-              className='flex w-full items-center justify-center'
-            >
-              <FeatherIcon icon='plus-circle' className='w-5 mr-1' />{' '}
-              {t?.('addTicketTokenToMetamask', {
-                token: token.symbol
-              }) || `Add ${token.symbol} to MetaMask`}
-            </SquareButton>
-          </li>
+          <SquareButton
+            onClick={handleAddTokenToMetaMask}
+            className='flex w-full items-center justify-center'
+          >
+            <FeatherIcon icon='plus-circle' className='w-5 mr-1' />{' '}
+            {t?.('addTicketTokenToMetamask', {
+              token: token.symbol
+            }) || `Add ${token.symbol} to MetaMask`}
+          </SquareButton>
         )}
 
         {/* <RevokeAllowanceButton {...props} t={t} token={token} /> */}
-      </ul>
+      </div>
     </>
   )
 }
