@@ -35,6 +35,7 @@ export interface View {
   id: string
   label: React.ReactNode
   view: (props: Partial<MainViewProps & MoreInfoViewProps>) => JSX.Element
+  icon?: string
   disabled?: boolean
   theme?: SquareButtonTheme
 }
@@ -195,10 +196,11 @@ interface ViewButtonProps extends View {
 }
 
 const ViewButton = (props: ViewButtonProps) => {
-  const { disabled, id, label, theme, setView } = props
+  const { disabled, id, label, icon, theme, setView } = props
   return (
     <SquareButton disabled={disabled} theme={theme} onClick={() => setView(id)}>
-      {label}
+      {icon && <FeatherIcon icon={icon} className='mr-1 my-auto h-5 w-5' />}
+      <span>{label}</span>
     </SquareButton>
   )
 }
@@ -316,7 +318,7 @@ const MoreInfoView = (props: MoreInfoViewProps & { setView: (view: string) => vo
             onClick={handleAddTokenToMetaMask}
             className='flex w-full items-center justify-center'
           >
-            <FeatherIcon icon='plus-circle' className='w-5 mr-1' />{' '}
+            <FeatherIcon icon='plus-circle' className='w-5 h-5 mr-1' />{' '}
             {t?.('addTicketTokenToMetamask', {
               token: token.symbol
             }) || `Add ${token.symbol} to MetaMask`}
