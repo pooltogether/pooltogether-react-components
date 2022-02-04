@@ -22,6 +22,7 @@ export interface ModalProps {
   shadowClassName?: string
   overflowClassName?: string
   style?: object
+  noPad?: boolean
 }
 
 export const Modal = (props: ModalProps) => {
@@ -40,7 +41,8 @@ export const Modal = (props: ModalProps) => {
     roundedClassName,
     shadowClassName,
     overflowClassName,
-    style
+    style,
+    noPad
   } = props
 
   const [isDialogOpen, setIsDialogOpen] = useState(isOpen)
@@ -83,7 +85,7 @@ export const Modal = (props: ModalProps) => {
               heightClassName,
               maxWidthClassName,
               maxHeightClassName,
-              paddingClassName,
+              noPad ? null : paddingClassName,
               bgClassName,
               roundedClassName,
               shadowClassName,

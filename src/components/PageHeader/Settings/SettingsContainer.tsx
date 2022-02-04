@@ -57,8 +57,6 @@ export function SettingsContainer(props: {
         isOpen={isOpen}
         closeModal={() => toggleOpen()}
         label='settings modal'
-        paddingClassName='px-4 py-6 sm:px-6 sm:py-6'
-        maxWidthClassName='max-w-4xl'
         className='text-inverse'
       >
         <h6 className='text-lg mb-2 font-semibold'>{t('settings', 'Settings')}</h6>

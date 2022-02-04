@@ -39,13 +39,13 @@ const socialsLinkData = [
         )
       },
       {
-        href: 'docs.pooltogether.com',
+        href: 'https://docs.pooltogether.com',
         langKey: 'knowledgeBase',
         label: 'Knowledge Base',
         icon: <img src={KnowledgeBaseIcon} className='w-4 opacity-70 mx-auto' />
       },
       {
-        href: 'https://docs.pooltogether.com/',
+        href: 'https://v4.docs.pooltogether.com/',
         langKey: 'documentation',
         label: 'Documentation',
         icon: <img src={DocsIcon} className='w-3 opacity-70 mx-auto' />

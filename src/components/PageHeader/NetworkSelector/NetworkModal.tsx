@@ -1,5 +1,4 @@
 import React from 'react'
-import classnames from 'classnames'
 import {
   useIsWalletMetamask,
   useAddNetworkToMetamask,
@@ -7,6 +6,8 @@ import {
   useIsWalletOnSupportedNetwork
 } from '@pooltogether/hooks'
 import { getNetworkNiceNameByChainId } from '@pooltogether/utilities'
+import classNames from 'classnames'
+
 import { Modal } from '../../Modal/Modal'
 import { NetworkIcon } from '../../Icons/NetworkIcon'
 
@@ -26,15 +27,17 @@ export const NetworkModal = (props) => {
             {t?.('selectASupportedNetworkMetamask') ||
               'Select a supported network to be prompted to switch in your MetaMask wallet.'}
           </Description>
-          {supportedNetworks.map((chainId) => (
-            <NetworkButton
-              network={network}
-              t={t}
-              key={chainId}
-              chainId={chainId}
-              closeModal={closeModal}
-            />
-          ))}
+          <div className='flex flex-col space-y-2 mb-4'>
+            {supportedNetworks.map((chainId) => (
+              <NetworkButton
+                network={network}
+                t={t}
+                key={chainId}
+                chainId={chainId}
+                closeModal={closeModal}
+              />
+            ))}
+          </div>
           <CurrentlyConnectedTo
             t={t}
             currentNetworkName={currentNetworkName}
@@ -53,9 +56,11 @@ export const NetworkModal = (props) => {
           {t?.('pleaseSwitchToASupportedNetwork') ||
             'Please switch to a supported network in your wallet.'}
         </Description>
-        {supportedNetworks.map((chainId) => (
-          <NetworkItem network={network} t={t} key={chainId} chainId={chainId} />
-        ))}
+        <div className='flex flex-col space-y-2 mb-4'>
+          {supportedNetworks.map((chainId) => (
+            <NetworkItem network={network} t={t} key={chainId} chainId={chainId} />
+          ))}
+        </div>
         <CurrentlyConnectedTo
           t={t}
           currentNetworkName={currentNetworkName}
@@ -74,7 +79,7 @@ const Description = (props) => <p className='mb-4 text-sm text-accent-1'>{props.
 const CurrentlyConnectedTo = (props) => (
   <p className='text-xxxs mt-auto'>
     {props.t?.('currentlyConnectedTo') || 'Currently connected to:'}{' '}
-    <b className={classnames({ 'ml-1 text-red': !props.isWalletOnSupportedNetwork })}>
+    <b className={classNames({ 'ml-1 text-red': !props.isWalletOnSupportedNetwork })}>
       {props.currentNetworkName}
     </b>
   </p>
@@ -88,10 +93,13 @@ const NetworkItem = (props) => {
 
   return (
     <div
-      className={classnames('flex justify-center mb-4 last:mb-0 w-full text-center py-2 rounded', {
-        'pool-gradient-1': isCurrentNetwork,
-        'bg-body': !isCurrentNetwork
-      })}
+      className={classNames(
+        'bg-pt-purple-lighter dark:bg-pt-purple-darker rounded-lg p-4 flex items-center w-full transition-colors border',
+        {
+          'border-default': isCurrentNetwork,
+          'border-transparent': !isCurrentNetwork
+        }
+      )}
     >
       <NetworkIcon chainId={chainId} className='mr-2' />
       <span>{networkName}</span>
@@ -107,21 +115,20 @@ const NetworkButton = (props) => {
   const addNetwork = useAddNetworkToMetamask(chainId, { onSuccess: closeModal })
 
   return (
-    <div className='flex mb-4 last:mb-0'>
-      <button
-        className={classnames(
-          'w-full flex items-center justify-center py-2 rounded transition hover:text-white',
-          {
-            'pool-gradient-1 text-white': isCurrentNetwork,
-            'bg-body border border-body hover:bg-pt-purple-bright hover:border-accent-3': !isCurrentNetwork
-          }
-        )}
-        type='button'
-        onClick={addNetwork}
-      >
-        <NetworkIcon chainId={chainId} className='mr-2' />
-        <span>{networkName}</span>
-      </button>
-    </div>
+    <button
+      type='button'
+      onClick={addNetwork}
+      className={classNames(
+        'bg-pt-purple-lighter dark:bg-pt-purple-darker rounded-lg p-4 flex items-center w-full transition-colors',
+        'border hover:border-highlight-1',
+        {
+          'border-default': isCurrentNetwork,
+          'border-transparent': !isCurrentNetwork
+        }
+      )}
+    >
+      <NetworkIcon chainId={chainId} className='mr-2' />
+      <span className='font-bold text-lg'>{networkName}</span>
+    </button>
   )
 }

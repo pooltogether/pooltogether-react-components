@@ -9,6 +9,7 @@ export const TransactionsModal = (props) => {
 
   return (
     <Modal
+      noPad
       isOpen={isOpen}
       closeModal={closeModal}
       label='transactions modal'
