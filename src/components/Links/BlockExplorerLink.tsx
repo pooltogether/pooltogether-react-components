@@ -81,7 +81,8 @@ export const formatBlockExplorerTxUrl = (tx, networkId) => {
     const blockExplorerUrl = getChain(Number(networkId)).blockExplorerUrls[0]
     return `${blockExplorerUrl}/tx/${tx}`
   } catch (e) {
-    throw new Error('Chain ID not supported')
+    console.error('Chain Id not supported', { chainId: Number(networkId) })
+    return null
   }
 }
 
@@ -90,6 +91,7 @@ export const formatBlockExplorerAddressUrl = (address, networkId) => {
     const blockExplorerUrl = getChain(Number(networkId)).blockExplorerUrls[0]
     return `${blockExplorerUrl}/address/${address}`
   } catch (e) {
-    throw new Error('Chain ID not supported')
+    console.error('Chain Id not supported', { chainId: Number(networkId) })
+    return null
   }
 }

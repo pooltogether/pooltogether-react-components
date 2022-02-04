@@ -2078,10 +2078,10 @@
   resolved "https://registry.yarnpkg.com/@pooltogether/hooks/-/hooks-1.4.9.tgz#499f6d074e896d2f9f7c39e17e1a01c26293e352"
   integrity sha512-AhAmSpXytVbHXmkw2El7zLBF+fwG5Q+RIfygf/854NYTSiwTEsk8pKoz/hLwoFYuoZe+F+5VXGwJe9QU/nI9Bw==
 
-"@pooltogether/utilities@^0.3.6":
-  version "0.3.6"
-  resolved "https://registry.yarnpkg.com/@pooltogether/utilities/-/utilities-0.3.6.tgz#33038de731b2d71e82036a1995f6e31efa66de3e"
-  integrity sha512-vNgzKtHQYBPkDGQK5l2NqtXEzLM9OqYxxUILLWslrBwTD8hlOSfYuJ2RKcomywIst4e0hWRVlbRHkNkLYe0aiQ==
+"@pooltogether/utilities@^0.3.8":
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/@pooltogether/utilities/-/utilities-0.3.8.tgz#f4fa0e9618c97a152e637575560ee226d9e9752d"
+  integrity sha512-+9+Lw7IP6B1wvLXK/Dwi8SPkPetaCd4ayr6fS+xWwJup9xdMZmyRR+sc3VwwF/1whu5GmfhZe2X0OV6FTcXWKw==
 
 "@popperjs/core@^2.5.4", "@popperjs/core@^2.6.0":
   version "2.11.0"

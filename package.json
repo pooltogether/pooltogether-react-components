@@ -75,7 +75,7 @@
     "@pooltogether/etherplex": "^1.1.2",
     "@pooltogether/evm-chains-extended": "^0.6.4-beta.1",
     "@pooltogether/hooks": "^1.4.9",
-    "@pooltogether/utilities": "^0.3.6",
+    "@pooltogether/utilities": "^0.3.8",
     "@rollup/plugin-url": "^6.1.0",
     "@size-limit/preset-small-lib": "^6.0.4",
     "@storybook/addon-actions": "^6.4.9",
