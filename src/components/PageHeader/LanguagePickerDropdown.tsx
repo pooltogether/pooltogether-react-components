@@ -22,6 +22,10 @@ export function LanguagePickerDropdown(props) {
       name: 'French',
       nativeName: 'Français'
     },
+    hi: {
+      name: 'Hindi',
+      nativeName: 'Hindī'
+    },
     it: {
       name: 'Italian',
       nativeName: 'Italiana'
