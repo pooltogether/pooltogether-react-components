@@ -12,5 +12,5 @@ export const LoadingScreen = (props: { isInitialized: boolean; children: React.R
     )
   }
 
-  return children
+  return <>{children}</>
 }

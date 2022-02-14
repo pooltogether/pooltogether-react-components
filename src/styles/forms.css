@@ -11,14 +11,6 @@ label {
   @apply block cursor-pointer text-left;
 }
 
-button {
-  transition: all 75ms ease-in-out;
-}
-
-.dark-theme button:hover {
-  @apply text-inverse;
-}
-
 form:after {
   content: '';
   display: table;
