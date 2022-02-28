@@ -5,7 +5,7 @@ export const SettingsItem = (props) => (
   <div className='pt-4 sm:pt-2'>
     <div className='flex items-center justify-between px-2'>
       <div>
-        <span className='flex text-accent-1 font-bold text-xxs'>
+        <span className='flex text-accent font-bold text-xxs'>
           <span className='uppercase'>{props.label}</span>
           {props.tip && <Tooltip className='ml-1 my-auto' tip={props.tip} id={props.label} />}
         </span>

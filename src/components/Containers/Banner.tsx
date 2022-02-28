@@ -31,7 +31,7 @@ export const Banner = (props: BannerProps) => {
   if (theme === BannerTheme.rainbow) {
     return (
       <div
-        className={classnames(bannerClasses, 'pool-gradient-3 text-purple', className)}
+        className={classnames(bannerClasses, 'pool-gradient-3 text-pt-purple', className)}
         style={style}
       >
         {children}

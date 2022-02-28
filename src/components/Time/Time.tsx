@@ -36,9 +36,12 @@ export const Time = (props: TimeProps) => {
     unitsClassName,
     unitsColorClassName
   } = props
-  const { days, hours, minutes, seconds: secs } = useMemo(() => getTimeBreakdown(seconds), [
-    seconds
-  ])
+  const {
+    days,
+    hours,
+    minutes,
+    seconds: secs
+  } = useMemo(() => getTimeBreakdown(seconds), [seconds])
   const textClassName = noColors ? undefined : getTimeColorClassName(seconds)
 
   return (
@@ -98,7 +101,7 @@ const getTimeColorClassName = (seconds: number) => {
   return seconds >= SECONDS_PER_DAY
     ? 'text-green'
     : seconds >= EIGHT_HOURS_IN_SECONDS
-    ? 'text-orange'
+    ? 'text-pt-orange'
     : 'text-red'
 }
 
@@ -168,8 +171,8 @@ const TimeUnit = (props: {
 
 TimeUnit.defaultProps = {
   exactDigits: false,
-  backgroundColorClassName: 'bg-tertiary',
-  unitsColorClassName: 'text-tertiary',
+  backgroundColorClassName: 'bg-purple-50 dark:bg-purple-600',
+  unitsColorClassName: 'text-gray-600',
   unitsClassName: 'text-xxxs'
 }
 
@@ -190,5 +193,5 @@ const TimeDigit = (props: {
 )
 
 TimeDigit.defaultProps = {
-  backgroundColorClassName: 'bg-tertiary'
+  backgroundColorClassName: 'bg-purple-50 dark:bg-purple-600'
 }

@@ -1,9 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
-import { SECONDS_PER_DAY } from '@pooltogether/current-pool-data'
 import { usePrizePeriodTimeLeft } from '@pooltogether/hooks'
-
-const EIGHT_HOURS_IN_SECONDS = 28800
+import { EIGHT_HOURS_IN_SECONDS, SECONDS_PER_DAY } from '../../constants'
 
 export const PrizeCountdown = (props) => {
   const { t } = props
@@ -61,7 +59,7 @@ export const PrizeCountdown = (props) => {
   const LeftSideJsx = ({ digit }) => {
     return (
       <span
-        className={`bg-tertiary text-${textColor} font-bold rounded-sm`}
+        className={`bg-purple-50 dark:bg-purple-600 text-${textColor} font-bold rounded-sm`}
         style={{
           padding: '2px 8px',
           margin: '0 1px'
@@ -75,7 +73,7 @@ export const PrizeCountdown = (props) => {
   const RightSideJsx = ({ digit }) => {
     return (
       <span
-        className={`bg-tertiary text-${textColor} font-bold rounded-sm`}
+        className={`bg-purple-50 dark:bg-purple-600 text-${textColor} font-bold rounded-sm`}
         style={{
           padding: '2px 8px',
           margin: '0 1px'

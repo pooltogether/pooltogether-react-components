@@ -3,9 +3,9 @@ import classnames from 'classnames'
 import { LinkIcon } from '../Icons/LinkIcon'
 
 export const LinkTheme = Object.freeze({
-  default: 'text-inverse hover:text-highlight-1',
-  accent: 'text-highlight-1 hover:text-inverse',
-  light: 'text-accent-1 hover:text-highlight-1'
+  default: 'text-inverse hover:text-purple-500',
+  accent: 'text-purple-500 hover:text-inverse',
+  light: 'text-accent hover:text-purple-500'
 })
 
 export const ExternalLink = (props) => {
@@ -38,5 +38,5 @@ ExternalLink.defaultProps = {
   iconClassName: 'w-4 h-4 ml-1 mb-1',
   openInSameTab: false,
   theme: LinkTheme.default,
-  displayClassName: 'inline-block h-fit-content'
+  displayClassName: 'inline-block h-fit'
 }

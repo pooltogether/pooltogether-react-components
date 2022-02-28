@@ -31,7 +31,7 @@
 }
 
 [data-reach-tooltip] {
-  @apply text-inverse bg-primary rounded-lg;
+  @apply bg-purple-800 rounded-lg;
   box-shadow: 0 -10px 10px -1px rgba(0, 0, 0, 0.1), 0 20px 20px -3px rgba(0, 0, 0, 0.1),
     rgba(14, 16, 40, 0.2) 0px 15px 30px;
   border: 0;
@@ -66,11 +66,11 @@
 
 [data-reach-menu-list],
 [data-reach-menu-items] {
-  @apply bg-card py-0 text-xxs xs:text-sm rounded-lg shadow-lg;
+  @apply bg-white dark:bg-purple-700 py-0 text-xxs xs:text-sm rounded-lg shadow-lg;
 }
 
 [data-reach-menu-item] {
-  @apply px-3 py-2 font-bold text-primary cursor-pointer my-0 sm:my-0;
+  @apply px-3 py-2 font-bold cursor-pointer my-0 sm:my-0 text-gray-700 dark:text-gray-300;
 }
 
 [data-reach-menu-item]:first-child {
@@ -81,30 +81,22 @@
   @apply rounded-t-none;
 }
 
-.dark [data-reach-menu-item] {
-  @apply text-accent-1;
-}
-
 @screen sm {
   [data-reach-menu-item] {
     @apply px-5 py-3;
   }
 }
 
-.dark [data-reach-menu-item].selected {
-  @apply text-white bg-card-selected;
+[data-reach-menu-item].selected {
+  @apply text-white bg-purple-50 dark:bg-purple-600;
 }
 
-.dark [data-reach-menu-item]:hover {
-  @apply text-white bg-highlight-5;
+[data-reach-menu-item]:hover {
+  @apply text-white bg-pt-purple;
 }
 
 .light [data-reach-menu-item].selected {
-  @apply text-default bg-accent-grey-1;
-}
-
-.light [data-reach-menu-item]:hover {
-  @apply bg-highlight-1 text-white;
+  @apply text-pt-purple-light bg-gray-50;
 }
 
 /* DIALOG / MODALS */
@@ -136,8 +128,7 @@
 }
 
 [data-reach-dialog-overlay] {
-  background: var(--color-bg-overlay);
-  backdrop-filter: blur(2px);
+  @apply bg-black/[.6] backdrop-blur-sm;
   border-radius: 0;
   bottom: 0;
   top: 0;

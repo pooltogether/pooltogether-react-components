@@ -13,6 +13,12 @@
   }
 }
 
+html,
+body,
+table {
+  scroll-behavior: smooth;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -23,52 +29,9 @@ body {
   height: auto;
 }
 
-.nav--pool-logo-container {
-  width: 50px;
-}
-
-@screen xs {
-  .nav--pool-logo-container {
-    width: 80px;
-  }
-}
-
-@screen sm {
-  .nav--pool-logo-container {
-    min-width: 154px;
-  }
-}
-
-@screen lg {
-  .nav-and-footer-container {
-    max-width: 1400px;
-  }
-}
-
-.top-side-nav {
-  max-width: 234px;
-}
-
-@screen lg {
-  .top-side-nav {
-    max-width: 268px;
-  }
-}
-
-/* Sizes */
-
-.w-fit-content {
-  width: fit-content;
-}
-
-.h-fit-content {
-  height: fit-content;
-}
-
 /* Page Layout */
 
 .grid-page-wrapper {
-  @apply text-inverse;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr;

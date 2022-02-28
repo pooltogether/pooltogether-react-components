@@ -3,6 +3,8 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Fonts */
+
 @font-face {
   font-family: 'Titillium Web';
   src: url('/fonts/TitilliumWeb-Regular.woff2') format('woff2'),
@@ -110,6 +112,8 @@ explicitly, e.g.
   src: url('/fonts/Inter.var.woff2?v=3.15') format('woff2');
 }
 
+/* Sizing */
+
 html,
 body,
 table {
@@ -132,7 +136,8 @@ h6 {
 }
 
 a {
-  transition: color 0.2s ease-out;
+  text-decoration: none;
+  @apply cursor-pointer;
 }
 
 h1 {
@@ -215,38 +220,4 @@ h6 {
   h6 {
     @apply text-base;
   }
-}
-
-.text-caption {
-  @apply text-accent-1 text-xxxs;
-}
-
-@screen sm {
-  .text-caption {
-    @apply text-sm;
-  }
-}
-
-.text-caption-2 {
-  @apply text-accent-2 text-xxxxs font-inter;
-}
-
-@screen sm {
-  .text-caption-2 {
-    @apply text-xxxs;
-  }
-}
-
-@screen lg {
-  .text-caption-2 {
-    @apply text-xxs;
-  }
-}
-
-.text-caption-2 a {
-  @apply text-accent-2;
-}
-
-.text-pt-gradient {
-  @apply bg-clip-text text-transparent bg-pt-gradient;
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTimeCountdown } from '@pooltogether/hooks'
 
-import { i18nTranslate } from 'src/types'
+import { i18nTranslate } from '../../types'
 
 interface SimpleCountDownProps {
   seconds: number

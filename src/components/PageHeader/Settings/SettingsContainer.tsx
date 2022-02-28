@@ -45,8 +45,8 @@ export function SettingsContainer(props: {
           sizeClassName,
           className,
           {
-            'text-highlight-2': !isOpen,
-            'text-highlight-1': isOpen
+            'text-pt-teal': !isOpen,
+            'text-purple-500': isOpen
           }
         )}
       >

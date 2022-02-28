@@ -10,10 +10,10 @@ import {
 } from 'react-hook-form'
 
 import { TokenIcon } from '../Icons/TokenIcon'
-import { ThemedClipSpinner } from '../Loading/ThemedClipSpinner'
+import { LoadingSpinner } from '../Loading/LoadingSpinner'
 
 import WalletIcon from '../../assets/Misc/icon-wallet.svg'
-import { i18nTranslate } from 'src/types'
+import { i18nTranslate } from '../../types'
 
 interface TokenAmountInputProps {
   inputKey: string
@@ -89,7 +89,7 @@ export const TokenAmountInput: React.FC<TokenAmountInputProps> = (props) => {
 
 TokenAmountInput.defaultProps = {
   widthClassName: 'w-full',
-  bgClassName: 'bg-tertiary'
+  bgClassName: 'bg-purple-50 dark:bg-purple-600'
 }
 
 interface InputHeaderProps {
@@ -129,7 +129,7 @@ const InputHeader = (props: InputHeaderProps) => {
         >
           <img src={WalletIcon} className='mr-2' style={{ maxHeight: 12 }} />
           {!isBalanceFetched ? (
-            <ThemedClipSpinner sizeClassName='w-3 h-3' className='mr-2 opacity-50' />
+            <LoadingSpinner sizeClassName='w-3 h-3' className='mr-2 opacity-50' />
           ) : (
             <span className='mr-1'>{balance.amountPretty || 0}</span>
           )}

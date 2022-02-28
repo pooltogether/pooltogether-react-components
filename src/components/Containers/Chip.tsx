@@ -6,7 +6,7 @@ export const Chip = (props) => {
   let { bgClasses, textClasses } = props
 
   bgClasses = bgClasses || 'bg-accent-grey-5'
-  textClasses = textClasses || 'text-accent-1'
+  textClasses = textClasses || 'text-accent'
 
   const sizeClasses = props.size || 'text-xxxxs xs:text-xxxs sm:text-xxxs lg:text-xxxs'
 

@@ -1,0 +1,87 @@
+.theme-toggler--light,
+.theme-toggler--dark {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.theme-toggler {
+  border-radius: 100px;
+  position: relative;
+  cursor: pointer;
+  color: #9f7aea;
+  height: 28px;
+  border-radius: 100px;
+  width: 89px;
+}
+
+@screen sm {
+  .theme-toggler {
+    height: 24px;
+    width: 74px;
+  }
+}
+
+.toggle {
+  @apply bg-pt-teal dark:bg-pt-purple;
+  color: #9f7aea;
+  height: 24px;
+  border-radius: 100px;
+  position: absolute;
+  top: 2px;
+  width: 50%;
+  background-color: #fff;
+  box-shadow: 0 2px 15px rgba(124, 107, 107, 0.15);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateX(5%);
+}
+
+@screen sm {
+  .toggle {
+    height: 20px;
+  }
+}
+
+.dark .toggle {
+  transform: translateX(95%);
+}
+
+.theme-toggler:hover .toggle {
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.25);
+}
+
+.dark .theme-toggler .theme-toggler--light {
+  @apply text-pt-teal;
+  opacity: 0.7;
+}
+
+.dark .theme-toggler .theme-toggler--dark {
+  @apply text-pt-teal;
+}
+
+.light .theme-toggler:hover .theme-toggler--light {
+  @apply text-pt-orange;
+}
+
+.light .theme-toggler:hover .theme-toggler--dark {
+  color: #300e69;
+}
+
+.dark .theme-toggler:hover .theme-toggler--light {
+  @apply text-white;
+  opacity: 1;
+}
+
+.dark .theme-toggler:hover .theme-toggler--dark {
+  @apply text-pt-orange;
+}
+
+.theme-toggler--names {
+  margin: 0 8px 0 7px;
+  padding-top: 6px;
+}
+
+@screen sm {
+  .theme-toggler--names {
+    margin: 0 3px 0 2px;
+    padding-top: 6px;
+  }
+}

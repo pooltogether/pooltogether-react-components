@@ -75,7 +75,7 @@ const Container = (props) => <div className='flex flex-col h-full p-4'>{props.ch
 const Header = (props) => (
   <h5 className='font-semibold uppercase text-inverse mb-2'>{props.children}</h5>
 )
-const Description = (props) => <p className='mb-4 text-sm text-accent-1'>{props.children}</p>
+const Description = (props) => <p className='mb-4 text-sm text-accent'>{props.children}</p>
 const CurrentlyConnectedTo = (props) => (
   <p className='text-xxxs mt-auto'>
     {props.t?.('currentlyConnectedTo') || 'Currently connected to:'}{' '}

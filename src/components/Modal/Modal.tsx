@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import classnames from 'classnames'
 import FeatherIcon from 'feather-icons-react'
 import Dialog from '@reach/dialog'
-import { motion, AnimatePresence } from 'framer-motion'
-import { useReducedMotion } from '@pooltogether/hooks'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { NetworkIcon } from '../Icons/NetworkIcon'
 
 export interface ModalProps {
@@ -106,7 +105,7 @@ export const Modal = (props: ModalProps) => {
 Modal.defaultProps = {
   noPad: false,
   noSize: false,
-  bgClassName: 'bg-new-modal',
+  bgClassName: 'bg-purple-50 dark:bg-pt-purple',
   roundedClassName: 'rounded-none sm:rounded-xl',
   maxWidthClassName: 'sm:max-w-lg',
   widthClassName: 'w-screen sm:w-full',

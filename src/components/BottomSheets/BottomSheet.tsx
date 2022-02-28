@@ -1,7 +1,5 @@
 import React from 'react'
 import classNames from 'classnames'
-import { useTranslation } from 'react-i18next'
-import { ScreenSize, useScreenSize } from '@pooltogether/hooks'
 
 import { Modal } from '../Modal/Modal'
 import {
@@ -9,8 +7,11 @@ import {
   BottomSheetProps as ReactSpringBottomSheetProps
 } from 'react-spring-bottom-sheet'
 import { SnapPointProps } from 'react-spring-bottom-sheet/dist/types'
+import { ScreenSize, useScreenSize } from '@pooltogether/hooks'
+import { i18nTranslate } from '../../types'
 
 export interface BottomSheetProps extends ReactSpringBottomSheetProps {
+  t?: i18nTranslate
   className?: string
   label?: string
   hideCloseButton?: boolean
@@ -27,10 +28,10 @@ export const BottomSheet = (props: BottomSheetProps) => {
     label,
     hideCloseButton,
     maxWidthClassName,
+    t,
     ...sheetProps
   } = props
   const size = useScreenSize()
-  const { t } = useTranslation()
 
   if (size > ScreenSize.sm) {
     return (
@@ -51,7 +52,7 @@ export const BottomSheet = (props: BottomSheetProps) => {
       <div className={classNames('px-4 pt-4 flex-grow ', className)}>{children}</div>
       {!hideCloseButton && (
         <button className='flex-none mx-auto text-accent-3 font-bold p-2 my-3' onClick={onDismiss}>
-          {t('Close')}
+          {t?.('Close') || 'Close'}
         </button>
       )}
     </ReactSpringBottomSheet>

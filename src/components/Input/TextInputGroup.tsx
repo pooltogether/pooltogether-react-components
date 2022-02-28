@@ -73,14 +73,14 @@ export const TextInputGroup = (props) => {
     ? labelClassName
     : classnames(DEFAULT_INPUT_LABEL_CLASS_NAME, {
         'cursor-not-allowed font-whitesmoke': disabled,
-        'text-accent-1': !disabled
+        'text-accent': !disabled
       })
 
   rightLabelClassName = rightLabelClassName
     ? rightLabelClassName
     : classnames(DEFAULT_INPUT_LABEL_CLASS_NAME, 'text-right', {
         'cursor-not-allowed font-whitesmoke': disabled,
-        'text-accent-1': !disabled
+        'text-accent': !disabled
       })
 
   unitsClassName = unitsClassName

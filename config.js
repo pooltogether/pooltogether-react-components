@@ -1,186 +1,137 @@
-const { colors } = require('tailwindcss/defaultTheme')
+const colors = require('tailwindcss/colors')
 const deepMerge = require('deepmerge')
 
 const pooltogetherReactTailwindUIConfig = {
   darkMode: 'class',
+  content: ['./src/**/*.{html,js,jsx,ts,tsx}'],
   corePlugins: {
     container: true
   },
   theme: {
-    // this gives us:
-    // null (mobile),
-    // xs (tablet),
-    // sm (941px - 1481px)
-    // lg (1481px+)
     screens: {
       xs: '531px',
       sm: '941px',
       lg: '1481px'
     },
     colors: {
-      'actually-black': colors.black,
-      'white': colors.white,
+      // Defaults
+      'inherit': colors.inherit,
+      'current': colors.current,
       'transparent': colors.transparent,
-      'cyan': {},
-      'blue': {},
-      'green': {},
-      'purple': {},
-      'orange': {},
-      'pink': {},
-      'teal': {},
-      'gradient-magenta': '#ff77e1',
-      'gradient-cyan': '#17e1fd',
-      'gradient-yellow': '#ffed47',
-      'pt-teal': {
-        lighter: '#adfff3',
-        light: '#70fde6',
-        bright: '#1ef7d6',
-        DEFAULT: '#35f0d0',
-        dark: '#0ea3a4'
+      'black': colors.black,
+      'white': colors.white,
+      // Common PT Colors
+      'pt-purple': '#4c249f',
+      'pt-purple-light': '#a472f7',
+      'pt-gray-purple': '#7665ac',
+      'pt-teal': '#35f0d0',
+      'pt-cyan': '#17e1fd',
+      'pt-yellow': '#ffed47',
+      'pt-magenta': '#ff77e1',
+      'pt-red': '#ff6666',
+      'pt-orange': '#ff9303',
+      'pt-blue': '#3857ee',
+      // Full colors
+      'gray': {
+        50: '#F9F8F9',
+        100: '#EAE9ED',
+        200: '#DBD8E1',
+        300: '#CBC5D7',
+        400: '#bbb2ce',
+        500: '#A198B3',
+        600: '#867E98',
+        700: '#6C657C',
+        800: '#534C60',
+        900: '#393443'
       },
-      'pt-purple': {
-        lightest: '#f2edfe',
-        lighter: '#dacdf7',
-        light: '#9f82d7',
-        bright: '#5227a7',
-        DEFAULT: '#4c249f',
-        dark: '#341762',
-        darker: '#2d0b5a',
-        darkest: '#1a083a'
+      'yellow': {
+        50: '#FEFCE8',
+        100: '#FEF7B2',
+        200: '#FFF27D',
+        300: '#FFED47',
+        400: '#EBC73A',
+        500: '#D7A32F',
+        600: '#BE8627',
+        700: '#A46C1F',
+        800: '#8B5418',
+        900: '#713E12'
       },
-      'pt-red': {
-        light: '#ff6666',
-        DEFAULT: '#e61b1b'
+      'cyan': {
+        50: '#ecfeff',
+        100: '#cffafe',
+        200: '#a5f3fc',
+        300: '#67e8f9',
+        400: '#17e1fd',
+        500: '#06b6d4',
+        600: '#0891b2',
+        700: '#0e7490',
+        800: '#155e75',
+        900: '#164e63'
+      },
+      'magenta': {
+        50: '#FAF7F9',
+        100: '#F3E5F0',
+        200: '#F1CFE9',
+        300: '#F2B5E4',
+        400: '#F798E2',
+        500: '#ff77e1',
+        600: '#D359C0',
+        700: '#A73E9C',
+        800: '#7B2876',
+        900: '#4F164E'
+      },
+      'purple': {
+        50: '#F2EDFE',
+        100: '#DACDF7',
+        200: '#BCA8E6',
+        300: '#A187D6',
+        400: '#8969C5',
+        500: '#6847A4',
+        600: '#4C2C83',
+        700: '#341762',
+        800: '#260F4E',
+        900: '#1A083A'
+      },
+      'red': {
+        50: '#FEF2F2',
+        100: '#FCCECE',
+        200: '#FAAAAA',
+        300: '#F98686',
+        400: '#F76363',
+        500: '#EF3E3E',
+        600: '#E61B1B',
+        700: '#C41E1E',
+        800: '#A11F1F',
+        900: '#7F1D1D'
+      },
+      'blue': {
+        50: '#EFF6FF',
+        100: '#CDE3FF',
+        200: '#ABCFFF',
+        300: '#8ABBFF',
+        400: '#68A7FF',
+        500: '#497CF6',
+        600: '#3857EE',
+        700: '#2F4ECD',
+        800: '#2645AB',
+        900: '#1E3A8A'
+      },
+      'teal': {
+        50: '#ECFEFF',
+        100: '#CEFFFB',
+        200: '#ADFFF3',
+        300: '#76FCE7',
+        400: '#3EF3D4',
+        500: '#2FDFC9',
+        600: '#23CBBE',
+        700: '#17B8B2',
+        800: '#0EA3A4',
+        900: '#078889'
       }
     },
     extend: {
       backgroundImage: {
-        'pt-gradient':
-          'linear-gradient( 77.6deg, var(--color-pt-gradient-cyan) 0%, var(--color-pt-gradient-magenta) 48.47%, var(--color-pt-gradient-yellow) 88.67%)'
-      },
-      backgroundColor: {
-        'body': 'var(--color-bg-body)',
-        'card': 'var(--color-bg-card)',
-        'card-selected': 'var(--color-bg-card-selected)',
-        'card-purple': 'var(--color-bg-card-purple)',
-        'almost-transparent': 'var(--color-almost-transparent)',
-        'primary': 'var(--color-bg-primary)',
-        'secondary': 'var(--color-bg-secondary)',
-        'tertiary': 'var(--color-bg-tertiary)',
-        'new-modal': 'var(--color-bg-new-modal)',
-        'default': 'var(--color-bg-default)',
-        'input': 'var(--color-bg-input)',
-        'darkened': 'var(--color-bg-darkened)',
-        'inverse': 'var(--color-bg-inverse)',
-        'inverse-purple': 'var(--color-bg-inverse-purple)',
-        'overlay': 'var(--color-bg-overlay)',
-        'overlay-white': 'var(--color-bg-overlay-white)',
-        'black': 'var(--color-bg-black)',
-        'highlight-1': 'var(--color-bg-highlight-1)',
-        'highlight-2': 'var(--color-bg-highlight-2)',
-        'highlight-3': 'var(--color-bg-highlight-3)',
-        'highlight-4': 'var(--color-bg-highlight-4)',
-        'highlight-5': 'var(--color-bg-highlight-5)',
-        'highlight-6': 'var(--color-bg-highlight-6)',
-        'highlight-7': 'var(--color-bg-highlight-7)',
-        'highlight-8': 'var(--color-bg-highlight-8)',
-        'highlight-9': 'var(--color-bg-highlight-9)',
-        'new-btn': 'var(--color-bg-new-btn)',
-        'new-btn-hover': 'var(--color-bg-new-btn-hover)',
-        'raspberry': 'var(--color-bg-raspberry)',
-        'functional-red': 'var(--color-bg-functional-red)',
-        'warning-red': 'var(--color-bg-warning-red)',
-        'red': 'var(--color-bg-red)',
-        'green': 'var(--color-bg-green)',
-        'orange': 'var(--color-bg-orange)',
-        'orange-darkened': 'var(--color-bg-orange-darkened)',
-        'blue': 'var(--color-bg-blue)',
-        'teal': 'var(--color-bg-teal)',
-        'accent-grey-1': 'var(--color-bg-accent-grey-1)',
-        'accent-grey-2': 'var(--color-bg-accent-grey-2)',
-        'accent-grey-3': 'var(--color-bg-accent-grey-3)',
-        'accent-grey-4': 'var(--color-bg-accent-grey-4)',
-        'accent-grey-5': 'var(--color-bg-accent-grey-5)',
-        'purple': 'var(--color-bg-purple)',
-        'light-purple-10': 'var(--color-bg-light-purple-10)',
-        'light-purple-70': 'var(--color-bg-light-purple-70)',
-        'gradient-purple': 'var(--color-pt-gradient-purple)'
-      },
-      textColor: {
-        'accent-1': 'var(--color-text-accent-1)',
-        'accent-2': 'var(--color-text-accent-2)',
-        'accent-3': 'var(--color-text-accent-3)',
-        'accent-4': 'var(--color-text-accent-4)',
-        'almost-transparent': 'var(--color-almost-transparent)',
-        'black': 'var(--color-text-black)',
-        'primary': 'var(--color-text-primary)',
-        'primary-soft': 'var(--color-text-primary-soft)',
-        'secondary': 'var(--color-text-secondary)',
-        'tertiary': 'var(--color-text-tertiary)',
-        'default': 'var(--color-text-default)',
-        'darkened': 'var(--color-text-darkened)',
-        'default-soft': 'var(--color-text-default-soft)',
-        'inverse': 'var(--color-text-inverse)',
-        'inverse-purple': 'var(--color-text-inverse-purple)',
-        'inverse-soft': 'var(--color-text-inverse-soft)',
-        'match': 'var(--color-text-match)',
-        'match-purple': 'var(--color-text-match-purple)',
-        'highlight-1': 'var(--color-text-highlight-1)',
-        'highlight-2': 'var(--color-text-highlight-2)',
-        'highlight-3': 'var(--color-text-highlight-3)',
-        'highlight-4': 'var(--color-text-highlight-4)',
-        'highlight-6': 'var(--color-text-highlight-6)',
-        'highlight-7': 'var(--color-text-highlight-7)',
-        'highlight-9': 'var(--color-text-highlight-9)',
-        'raspberry': 'var(--color-text-raspberry)',
-        'functional-red': 'var(--color-text-functional-red)',
-        'red': 'var(--color-text-red)',
-        'green': 'var(--color-text-green)',
-        'orange': 'var(--color-text-orange)',
-        'yellow': 'var(--color-text-yellow)',
-        'blue': 'var(--color-text-blue)',
-        'teal': 'var(--color-text-teal)',
-        'accent-grey-1': 'var(--color-text-accent-grey-1)',
-        'purple': 'var(--color-text-purple)',
-        'gradient-purple': 'var(--color-pt-gradient-purple)'
-      },
-      borderColor: {
-        'body': 'var(--color-border-body)',
-        'accent-1': 'var(--color-border-accent-1)',
-        'accent-2': 'var(--color-border-accent-2)',
-        'accent-3': 'var(--color-border-accent-3)',
-        'accent-4': 'var(--color-border-accent-4)',
-        'primary': 'var(--color-border-primary)',
-        'card': 'var(--color-border-card)',
-        'secondary': 'var(--color-border-secondary)',
-        'default': 'var(--color-border-default)',
-        'inverse': 'var(--color-border-inverse)',
-        'highlight-1': 'var(--color-border-highlight-1)',
-        'highlight-2': 'var(--color-border-highlight-2)',
-        'highlight-3': 'var(--color-border-highlight-3)',
-        'highlight-4': 'var(--color-border-highlight-4)',
-        'highlight-5': 'var(--color-border-highlight-5)',
-        'highlight-6': 'var(--color-border-highlight-6)',
-        'highlight-7': 'var(--color-border-highlight-7)',
-        'highlight-8': 'var(--color-border-highlight-8)',
-        'raspberry': 'var(--color-border-raspberry)',
-        'functional-red': 'var(--color-text-functional-red)',
-        'red': 'var(--color-border-red)',
-        'green': 'var(--color-border-green)',
-        'orange': 'var(--color-border-orange)',
-        'transparent': 'var(--color-border-transparent)'
-      },
-      boxShadow: {
-        'xs': '0 1px 4px 0 rgba(0, 0, 0, .05), 0 1px 1px -1px rgba(0, 0, 0, .03)',
-        'sm': '0 2px 6px 0 rgba(0, 0, 0, .07), 0 1px 2px -1px rgba(0, 0, 0, .04)',
-        'md': '0 3px 8px -1px rgba(0, 0, 0, .1), 0 1px 5px -1px rgba(0, 0, 0, .06)',
-        'lg': '0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -2px rgba(0, 0, 0, .05)',
-        'xl': '0 10px 25px -1px rgba(0, 0, 0, .1), 0 10px 10px 5px rgba(0, 0, 0, .04)',
-        '2xl': '0 25px 50px -12px rgba(0, 0, 0, .25)',
-        '3xl': '0 20px 30px -3px rgba(0, 0, 0, .2), 0 15px 15px -3px rgba(0, 0, 0, .1)',
-        '4xl': '0 30px 40px -3px rgba(0, 0, 0, .25), 0 20px 20px -3px rgba(0, 0, 0, .15)',
-        'inner': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
-        'inner-lg': 'inset 0 1px 5px 0 rgba(0, 0, 0, 0.2)'
+        'pt-gradient': 'linear-gradient( 77.6deg, #17e1fd 0%, #ff77e1 48.47%, #ffed47 88.67%)'
       },
       minHeight: {
         '0': '0',
@@ -293,54 +244,10 @@ const pooltogetherReactTailwindUIConfig = {
           'Segoe UI Symbol',
           'Noto Color Emoji'
         ]
-      },
-      opacity: {
-        0: '0',
-        10: '.1',
-        20: '.2',
-        30: '.3',
-        40: '.4',
-        50: '.5',
-        60: '.6',
-        70: '.7',
-        80: '.8',
-        90: '.9',
-        100: '1'
-      },
-      fill: (theme) => ({
-        // 'indigo': theme('colors.indigo.500')
-      })
+      }
     }
   },
-  variants: {
-    extend: {
-      backgroundImage: ['focus-within'],
-      margin: ['responsive', 'last', 'first'],
-      padding: ['responsive', 'last'],
-      borderColor: ['hover', 'focus', 'active', 'last', 'focus-within'],
-      textColor: ['hover', 'focus', 'active', 'responsive'],
-      backgroundColor: ['hover', 'focus', 'active', 'responsive', 'focus-within'],
-      borderRadius: ['responsive'],
-      borderWidth: ['hover'],
-      opacity: ['hover', 'focus']
-    }
-  },
-  plugins: [],
-  purge: false
-  // purge: [
-  //   './src/components/**/*.jsx',
-  //   './src/components/**/*.js',
-  //   './src/pages/**/*.jsx',
-  //   './src/pages/**/*.js'
-  //   './src/views/**/*.jsx',
-  //   './src/views/**/*.js'
-  //   './src/components/**/*.tsx',
-  //   './src/components/**/*.ts',
-  //   './src/pages/**/*.tsx',
-  //   './src/pages/**/*.ts'
-  //   './src/views/**/*.tsx',
-  //   './src/views/**/*.ts'
-  // ],
+  plugins: []
 }
 
 function arrayMergeFn(destinationArray, sourceArray) {
@@ -355,16 +262,8 @@ function arrayMergeFn(destinationArray, sourceArray) {
  * @param {object} tailwindConfig - Tailwind config object
  * @return {object} new config object
  */
-function wrapper(tailwindConfig) {
-  let purge
-  if (Array.isArray(tailwindConfig.purge)) {
-    purge = {
-      content: tailwindConfig.purge
-    }
-  } else {
-    purge = tailwindConfig.purge
-  }
-  return deepMerge({ ...tailwindConfig, purge }, pooltogetherReactTailwindUIConfig, {
+function wrapper(tailwindConfig = {}) {
+  return deepMerge(tailwindConfig, pooltogetherReactTailwindUIConfig, {
     arrayMerge: arrayMergeFn
   })
 }

@@ -6,12 +6,12 @@
 
 /* Teal */
 .square-btn--teal {
-  @apply border-pt-teal-bright bg-pt-teal text-purple;
+  @apply border-teal-300 bg-pt-teal text-pt-purple;
 }
 
 .square-btn--teal:not([disabled]):hover,
 .square-btn--teal:not([disabled]):focus {
-  @apply text-purple bg-pt-teal-bright;
+  @apply text-pt-purple bg-teal-300;
 
   box-shadow: 0 0 0 3px rgba(53, 240, 208, 0.5);
 }
@@ -28,13 +28,13 @@
 
 /* Teal Outline */
 .square-btn--teal-outline {
-  @apply border-pt-teal-bright text-pt-teal-bright;
+  @apply border-teal-300 text-teal-300;
   background-color: transparent;
 }
 
 .square-btn--teal-outline:not([disabled]):hover,
 .square-btn--teal-outline:not([disabled]):focus {
-  @apply text-pt-teal-bright;
+  @apply text-teal-300;
   box-shadow: 0 0 0 3px rgba(53, 240, 208, 0.5);
 }
 
@@ -51,12 +51,12 @@
 
 /* Purple */
 .square-btn--purple {
-  @apply border-pt-purple-bright bg-pt-purple text-white;
+  @apply border-purple-500 bg-pt-purple text-white;
 }
 
 .square-btn--purple:not([disabled]):hover,
 .square-btn--purple:not([disabled]):focus {
-  @apply text-white bg-pt-purple-bright;
+  @apply text-white bg-pt-purple;
   box-shadow: 0 0 0 3px rgba(112, 13, 242, 0.25);
 }
 
@@ -80,7 +80,7 @@
 
 .square-btn--purple-outline:not([disabled]):hover,
 .square-btn--purple-outline:not([disabled]):focus {
-  @apply text-purple;
+  @apply text-pt-purple;
   box-shadow: 0 0 0 3px rgba(104, 9, 209, 0.563);
   color: #baa2f2;
 }
@@ -95,7 +95,7 @@
 
 /* Orange */
 .square-btn--orange {
-  @apply border-orange text-white bg-orange;
+  @apply border-pt-orange text-white bg-pt-orange;
 }
 
 .square-btn--orange:not([disabled]):hover,
@@ -114,13 +114,13 @@
 
 /* Orange Outline */
 .square-btn--orange-outline {
-  @apply border-orange text-orange;
+  @apply border-pt-orange text-pt-orange;
   background-color: transparent;
 }
 
 .square-btn--orange-outline:not([disabled]):hover,
 .square-btn--orange-outline:not([disabled]):focus {
-  @apply text-orange;
+  @apply text-pt-orange;
   box-shadow: 0 0 0 3px rgba(211, 120, 2, 0.363);
 }
 

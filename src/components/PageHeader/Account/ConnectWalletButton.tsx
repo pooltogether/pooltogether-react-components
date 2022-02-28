@@ -1,13 +1,12 @@
 import React from 'react'
-
-import { Button } from '../../Buttons/Button'
+import { SquareButton } from '../../Buttons/SquareButton'
 
 export const ConnectWalletButton = (props) => {
   const { connectWallet, t, className } = props
 
   return (
-    <Button onClick={() => connectWallet()} textSize='xxxs' className={className}>
+    <SquareButton onClick={() => connectWallet()} className={className}>
       {t?.('connectWallet') || 'Connect wallet'}
-    </Button>
+    </SquareButton>
   )
 }

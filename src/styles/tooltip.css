@@ -1,0 +1,15 @@
+.__react_component_tooltip.type-custom {
+  font-size: 16px;
+}
+
+.__react_component_tooltip.show.type-custom {
+  opacity: 0.97;
+  padding: 8px 21px 20px;
+  box-shadow: 0px 0px 8px #000;
+}
+
+@screen xs {
+  .__react_component_tooltip.show.type-custom {
+    padding: 8px 21px;
+  }
+}

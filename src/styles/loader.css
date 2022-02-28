@@ -3,13 +3,12 @@
 }
 
 .lds-dual-ring:after {
+  @apply border-2 border-x-pt-purple-light border-y-transparent
   content: ' ';
   display: block;
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  border: 2px solid var(--color-text-default);
-  border-color: var(--color-text-default) transparent var(--color-text-default) transparent;
   animation: lds-dual-ring 0.9s linear infinite;
 }
 

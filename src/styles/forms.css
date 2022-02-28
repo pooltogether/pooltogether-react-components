@@ -46,24 +46,24 @@ input[type='submit'][disabled] {
   @apply cursor-not-allowed;
 }
 
-.fieldset {
-  @apply py-2 mb-0 w-full;
-}
-
-@screen xs {
-  .fieldset {
-    max-width: 550px;
+.dark {
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #1a083a inset !important;
+    -webkit-text-fill-color: #fff !important;
   }
 }
 
-@screen sm {
-  .fieldset {
-    max-width: 800px;
+.light {
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #fff inset !important;
+    -webkit-text-fill-color: #4c249f !important;
   }
-}
-
-.fieldset label {
-  @apply text-accent-2 font-bold text-xxs xs:text-xs sm:text-sm px-4 sm:px-8;
 }
 
 .check {
@@ -91,13 +91,6 @@ input[type='submit'][disabled] {
   }
 }
 
-a.button-scale:hover,
-.button-scale:hover:enabled,
-.button-scale:focus:enabled,
-.button-scale:active:enabled {
-  transform: scale(1.02) translateY(-3px);
-}
-
 input[type='number']::-webkit-outer-spin-button,
 input[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -106,30 +99,4 @@ input[type='number']::-webkit-inner-spin-button {
 
 input[type='number'] {
   -moz-appearance: textfield;
-}
-
-.radio-input {
-  @apply mr-2 sm:mx-6;
-  min-height: 200px;
-}
-
-.radio-input:first-child {
-  @apply mr-2 sm:mr-6 ml-0;
-}
-
-.radio-input:last-child {
-  @apply ml-2 sm:ml-6 mr-0;
-}
-
-@screen sm {
-  .radio-input {
-    max-width: 340px;
-    min-height: 240px;
-  }
-}
-
-@screen lg {
-  .radio-input {
-    max-width: 370px;
-  }
 }

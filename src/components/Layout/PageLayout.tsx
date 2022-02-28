@@ -1,9 +1,9 @@
 import React from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { useReducedMotion, AnimatePresence, motion } from 'framer-motion'
 import { useAtom } from 'jotai'
-import { useReducedMotion, useScreenSize, ScreenSize } from '@pooltogether/hooks'
 
 import { NotificationBannerList, notificationBannerVisibleAtom } from './NotificationBannerList'
+import { ScreenSize, useScreenSize } from '@pooltogether/hooks'
 
 /**
  * Default layout includes a page header, side nav for desktop screens and bottom nav for mobile

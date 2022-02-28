@@ -1,16 +1,24 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import classnames from 'classnames'
-import { ThemeContext } from '../ThemeContextProvider'
 
-export const LoadingSpinner = (props) => {
-  const { theme } = useContext(ThemeContext)
-  const { className, displayClassName } = props
+export function LoadingSpinner(props) {
+  const { sizeClassName, size, className } = props
 
-  const lightClass = theme === 'dark' && 'white'
-
-  return <span className={classnames(className, displayClassName, `loader01 ${lightClass}`)}></span>
+  return (
+    <div
+      className={classnames('lds-dual-ring', className, size ? '' : sizeClassName)}
+      style={
+        size
+          ? {
+              width: size,
+              height: size
+            }
+          : undefined
+      }
+    />
+  )
 }
 
 LoadingSpinner.defaultProps = {
-  displayClassName: 'inline-block'
+  sizeClassName: 'w-5 h-5'
 }
