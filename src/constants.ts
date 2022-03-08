@@ -37,5 +37,5 @@ export const GOVERNANCE_CONTRACT_ADDRESSES = {
 }
 
 export const TOKEN_IMG_URL = {
-  PTaUSDC: 'https://app.pooltogether.com/ptausdc@2x.png'
+  PTaUSDC: 'https://pooltogether.com/ptausdc@2x.png'
 }

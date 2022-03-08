@@ -256,6 +256,7 @@ const MoreInfoView = (props: MoreInfoViewProps & { setView: (view: string) => vo
     isWalletOnProperNetwork,
     isWalletMetaMask
   } = props
+
   const handleAddTokenToMetaMask = async () => {
     if (!token) {
       return
@@ -338,8 +339,6 @@ const TxReceipt = (props: {
   className?: string
 }) => {
   const { chainId, tx, t, className } = props
-
-  console.log({ tx })
 
   if (!tx) return null
 
