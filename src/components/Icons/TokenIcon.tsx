@@ -55,6 +55,7 @@ import ARTO from '../../assets/Tokens/arto.png'
 import RAI from '../../assets/Tokens/rai.png'
 import BNB from '../../assets/Tokens/bnb.svg'
 import CAKE from '../../assets/Tokens/cake.png'
+import aDAI from '../../assets/Tokens/adai.png'
 import DAI from '../../assets/Tokens/dai.png'
 import GUSD from '../../assets/Tokens/gusd.svg'
 import INDEX from '../../assets/Tokens/index.png'
@@ -102,6 +103,7 @@ export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
     '0x57bc752ec42238bb60a6e65b0de82ef44013225d': ARTO,
     '0x03ab458634910aad20ef5f1c8ee96f1d6ac54919': RAI,
     '0x6b175474e89094c44da98b954eedeac495271d0f': DAI,
+    '0x028171bca77440897b824ca71d1c56cac55b68a3': aDAI,
     '0x056fd409e1d7a124bd7017459dfea2f387b6d5cd': GUSD,
     '0x6b3595068778dd592e39a122f4f5a5cf09c90fe2': SUSHI,
     '0xc00e94cb662c3520282e6f5717214004a7f26888': COMP,
