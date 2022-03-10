@@ -73,6 +73,7 @@ import SUSHI from '../../assets/Tokens/sushi.png'
 import COMP from '../../assets/Tokens/comp.svg'
 import BOND from '../../assets/Tokens/bond.png'
 import AAVE from '../../assets/Tokens/aave.png'
+import STKAAVE from '../../assets/Tokens/stkaave.png'
 import DEFISOCKS from '../../assets/Tokens/defisocks.png'
 import BOOKS from '../../assets/Tokens/books.png'
 import LOTTO from '../../assets/Tokens/lotto.png'
@@ -94,6 +95,7 @@ import SOHM from '../../assets/Tokens/sohm.png'
 import PTaUSDC from '../../assets/Tokens/ptausdc.png'
 import TCAP from '../../assets/Tokens/tcap.png'
 import UNI_V2_LP_TICKET from '../../assets/Tokens/uni-v2-lp-pool.png'
+import WAVAX from '../../assets/Tokens/wavax.png'
 
 /**
  * Sometimes the CoinGecko images aren't the prettiest
@@ -112,6 +114,7 @@ export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
     '0x0cec1a9154ff802e7934fc916ed7ca50bde6844e': POOL,
     '0x0391d2021f89dc339f60fff84546ea23e337750f': BOND,
     '0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9': AAVE,
+    '0x4da27a545c0c5b758a6ba100e3a049001de870f5': STKAAVE,
     '0x9d942bd31169ed25a1ca78c776dab92de104e50e': DEFISOCKS,
     '0x117c2aca45d87958ba054cb85af0fd57be00d624': BOOKS,
     '0xb0dfd28d3cf7a5897c694904ace292539242f858': LOTTO,
@@ -164,7 +167,8 @@ export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
     '0xa45ba19df569d536251ce65dd3120bf7873e14ec': PT_CELO_USD_TICKET
   },
   [NETWORK.avalanche]: {
-    '0xb27f379c050f6ed0973a01667458af6ecebc1d90': PTaUSDC
+    '0xb27f379c050f6ed0973a01667458af6ecebc1d90': PTaUSDC,
+    '0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7': WAVAX
   }
 })
 
