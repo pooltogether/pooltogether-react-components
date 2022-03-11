@@ -4,27 +4,29 @@ import classnames from 'classnames'
 import { Tooltip } from '../Containers/Tooltip'
 
 export const CheckboxInputGroup = (props) => {
-  const { id, hint, label, handleClick, checked } = props
+  const { id, hint, label, className, handleClick, disabled, checked } = props
 
   let { marginClasses } = props
 
-  const defaultClasses =
-    'font-bold flex justify-start items-start xs:items-center trans trans-faster cursor-pointer font-bold outline-none focus:outline-none hover:outline-none active:outline-none leading-none px-0 py-1'
-  const roundedClasses = 'rounded-sm'
-  marginClasses = marginClasses ?? 'mt-1 mb-1 sm:mb-3 lg:mb-4'
-  const textClasses = 'text-xs'
-
   return (
     <div
-      className={classnames(defaultClasses, textClasses, marginClasses, roundedClasses, {
-        'text-inverse inner-lg': checked,
-        'text-inverse': !checked
-      })}
+      className={classnames(
+        className,
+        marginClasses,
+        'trans trans-faster cursor-pointer rounded-sm outline-none focus:outline-none hover:outline-none active:outline-none flex space-x-3',
+        {
+          'text-inverse inner-lg': checked,
+          'text-inverse': !checked,
+          'cursor-not-allowed': disabled
+        }
+      )}
     >
       <div
         id={id}
         onClick={handleClick}
-        className={classnames('flex items-center justify-center my-auto mr-3 leading-none')}
+        className={classnames('flex items-center justify-center my-auto leading-none', {
+          'pointer-events-none': disabled
+        })}
       >
         <div
           className={classnames('flex items-center rounded-sm w-4 h-4 border-2 trans', {
@@ -45,12 +47,14 @@ export const CheckboxInputGroup = (props) => {
         </div>
       </div>
 
-      <div
-        onClick={handleClick}
-        className='text-left flex flex-col items-start justify-start leading-snug'
-      >
-        {label}
-      </div>
+      {label && (
+        <div
+          onClick={handleClick}
+          className='text-left flex flex-col items-start justify-start leading-snug'
+        >
+          {label}
+        </div>
+      )}
 
       {hint && <Tooltip tip={hint} id={id} />}
     </div>

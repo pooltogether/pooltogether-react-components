@@ -1,6 +1,6 @@
 import React from 'react'
+import FeatherIcon from 'feather-icons-react'
 import classNames from 'classnames'
-import { useTranslation } from 'react-i18next'
 import { ScreenSize, useScreenSize } from '@pooltogether/hooks'
 
 import { Modal } from '../Modal/Modal'
@@ -30,7 +30,6 @@ export const BottomSheet = (props: BottomSheetProps) => {
     ...sheetProps
   } = props
   const size = useScreenSize()
-  const { t } = useTranslation()
 
   if (size > ScreenSize.sm) {
     return (
@@ -48,12 +47,8 @@ export const BottomSheet = (props: BottomSheetProps) => {
 
   return (
     <ReactSpringBottomSheet {...sheetProps} open={open} onDismiss={onDismiss}>
-      <div className={classNames('px-4 pt-4 flex-grow ', className)}>{children}</div>
-      {!hideCloseButton && (
-        <button className='flex-none mx-auto text-accent-3 font-bold p-2 my-3' onClick={onDismiss}>
-          {t('Close')}
-        </button>
-      )}
+      <CloseBottomSheetButton closeModal={onDismiss} hide={hideCloseButton} />
+      <div className={classNames('px-4 pt-4 flex-grow pb-8', className)}>{children}</div>
     </ReactSpringBottomSheet>
   )
 }
@@ -63,3 +58,18 @@ BottomSheet.defaultProps = {
 }
 
 export const snapTo90 = (snapPoints: SnapPointProps) => snapPoints.maxHeight * 0.9
+
+const CloseBottomSheetButton: React.FC<{ closeModal: () => void; hide: boolean }> = (props) => {
+  const { closeModal, hide } = props
+
+  if (hide) return null
+
+  return (
+    <button
+      className='my-auto ml-auto close-button trans text-inverse opacity-80 hover:opacity-100 absolute right-6 top-6'
+      onClick={closeModal}
+    >
+      <FeatherIcon icon='x' className='w-6 h-6' />
+    </button>
+  )
+}

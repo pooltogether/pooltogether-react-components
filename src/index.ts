@@ -31,6 +31,8 @@ export { LinkIcon } from './components/Icons/LinkIcon'
 export { TokenIcon } from './components/Icons/TokenIcon'
 export { PoolIcon } from './components/Icons/PoolIcon'
 export { NetworkIcon } from './components/Icons/NetworkIcon'
+export { ProfileAvatar } from './components/PageHeader/Account/ProfileAvatar'
+export { ProfileName } from './components/PageHeader/Account/ProfileName'
 
 // Input
 export { CheckboxInputGroup } from './components/Input/CheckboxInputGroup'
@@ -150,7 +152,7 @@ import './styles/themes.css'
 import './styles/typography.css'
 import './styles/tables.css'
 import './styles/pool.css'
-import './styles/pool-toast.css'
+import './styles/toast.css'
 import './styles/animations.css'
 import './styles/transitions.css'
 
