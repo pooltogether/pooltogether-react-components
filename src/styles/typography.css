@@ -63,6 +63,24 @@
     url('/fonts/Inter-ExtraBold.woff?v=3.15') format('woff');
 }
 
+@font-face {
+  font-family: 'Averta Regular';
+  src: url('/fonts/averta-regular-webfont.woff2') format('woff2'),
+    url('/fonts/averta-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Averta Semibold';
+  src: url('/fonts/averta-semibold-webfont.woff2') format('woff2'),
+    url('/fonts/averta-semibold-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* -------------------------------------------------------
 Variable font.
 Usage:
