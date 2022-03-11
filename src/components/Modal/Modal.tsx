@@ -145,7 +145,7 @@ export const ModalTitle = (props: ModalTitleProps) => {
       ) : (
         icon
       )}
-      <div className='mx-auto text-2xl font-bold text-inverse'>{title}</div>
+      <div className='mx-auto text-xl font-bold text-inverse text-center'>{title}</div>
     </div>
   )
 }

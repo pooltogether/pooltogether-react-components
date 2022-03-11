@@ -1,6 +1,7 @@
 import React from 'react'
 import FeatherIcon from 'feather-icons-react'
 import classnames from 'classnames'
+import classNames from 'classnames'
 
 export enum SquareButtonTheme {
   teal = 'teal',
@@ -28,10 +29,11 @@ export interface SquareButtonProps
   theme?: SquareButtonTheme
   size?: SquareButtonSize
   chevron?: boolean
+  noCenter?: boolean
 }
 
 export const SquareButton: React.FC<SquareButtonProps> = (props) => {
-  const { theme, size, className, ...buttonProps } = props
+  const { theme, size, noCenter, className, ...buttonProps } = props
 
   return (
     <button
@@ -39,6 +41,7 @@ export const SquareButton: React.FC<SquareButtonProps> = (props) => {
         'square-btn',
         getThemeClassName(theme),
         getSizeClassName(size),
+        getCenterClassName(noCenter),
         className
       )}
       {...buttonProps}
@@ -48,7 +51,8 @@ export const SquareButton: React.FC<SquareButtonProps> = (props) => {
 
 SquareButton.defaultProps = {
   theme: SquareButtonTheme.teal,
-  size: SquareButtonSize.md
+  size: SquareButtonSize.md,
+  noCenter: false
 }
 
 interface SquareLinkProps
@@ -56,13 +60,14 @@ interface SquareLinkProps
     React.AnchorHTMLAttributes<HTMLAnchorElement>,
     HTMLAnchorElement
   > {
+  noCenter?: boolean
   theme?: SquareButtonTheme
   size?: SquareButtonSize
   chevron?: boolean
 }
 
 export const SquareLink: React.FC<SquareLinkProps> = React.forwardRef((props, ref) => {
-  const { chevron, theme, size, className, ...linkProps } = props
+  const { chevron, theme, size, noCenter, className, ...linkProps } = props
 
   return (
     <a
@@ -72,6 +77,7 @@ export const SquareLink: React.FC<SquareLinkProps> = React.forwardRef((props, re
         'square-btn',
         getThemeClassName(theme),
         getSizeClassName(size),
+        getCenterClassName(noCenter),
         className
       )}
     >
@@ -87,6 +93,7 @@ export const SquareLink: React.FC<SquareLinkProps> = React.forwardRef((props, re
 })
 
 SquareLink.defaultProps = {
+  noCenter: false,
   theme: SquareButtonTheme.teal,
   size: SquareButtonSize.md
 }
@@ -152,4 +159,10 @@ const getSizeClassName = (size: SquareButtonSize): string => {
       return 'square-btn--lg'
     }
   }
+}
+
+const getCenterClassName = (noCenter: boolean): string => {
+  return classNames({
+    'flex items-center justify-center': !noCenter
+  })
 }
