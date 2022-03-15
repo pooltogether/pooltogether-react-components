@@ -31,6 +31,7 @@ export { LinkIcon } from './components/Icons/LinkIcon'
 export { TokenIcon } from './components/Icons/TokenIcon'
 export { PoolIcon } from './components/Icons/PoolIcon'
 export { NetworkIcon } from './components/Icons/NetworkIcon'
+export { WalletIcon } from './components/Icons/WalletIcon'
 export { ProfileAvatar } from './components/PageHeader/Account/ProfileAvatar'
 export { ProfileName } from './components/PageHeader/Account/ProfileName'
 
