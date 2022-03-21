@@ -36,19 +36,22 @@ export const Time = (props: TimeProps) => {
     unitsClassName,
     unitsColorClassName
   } = props
-  const { days, hours, minutes, seconds: secs } = useMemo(() => getTimeBreakdown(seconds), [
-    seconds
-  ])
+  const {
+    days,
+    hours,
+    minutes,
+    seconds: secs
+  } = useMemo(() => getTimeBreakdown(seconds), [seconds])
   const textClassName = noColors ? undefined : getTimeColorClassName(seconds)
 
   return (
     <div className={classNames(className, 'flex')}>
       {!hideDays && (
         <TimeUnit
-          unit='day'
+          unit='days'
           amount={days}
           textClassName={textClassName}
-          className='mr-2'
+          className='mr-2 xs:mr-4'
           backgroundColorClassName={backgroundColorClassName}
           timeClassName={timeClassName}
           unitsClassName={unitsClassName}
@@ -110,7 +113,12 @@ Time.defaultProps = {
 }
 
 const Colon = (props: { className?: string }) => (
-  <span className={classNames(props.className, 'font-bold px-1')}>:</span>
+  <span
+    style={{ paddingLeft: 3, paddingRight: 2 }}
+    className={classNames(props.className, 'font-bold')}
+  >
+    :
+  </span>
 )
 
 const TimeUnit = (props: {
@@ -143,7 +151,7 @@ const TimeUnit = (props: {
 
   return (
     <div className={classNames(className, 'flex flex-col space-y-1')}>
-      <div className='flex space-x-px'>
+      <div className='flex space-x-0.5'>
         {amounts.map((amount, index) => (
           <TimeDigit
             backgroundColorClassName={backgroundColorClassName}
@@ -179,8 +187,9 @@ const TimeDigit = (props: {
   backgroundColorClassName?: string
 }) => (
   <div
+    style={{ minWidth: 26 }}
     className={classNames(
-      `font-bold rounded-sm px-2 py-0.5`,
+      `text-center font-bold rounded-sm px-2 py-0.5`,
       props.backgroundColorClassName,
       props.className
     )}
