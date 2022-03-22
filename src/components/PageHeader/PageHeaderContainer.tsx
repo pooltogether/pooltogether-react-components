@@ -1,5 +1,6 @@
-import classNames from 'classnames'
 import React from 'react'
+import classNames from 'classnames'
+import { useScreenSize, ScreenSize } from '@pooltogether/hooks'
 
 import { HeaderLogo } from './HeaderLogo'
 
@@ -21,6 +22,14 @@ interface PageHeaderContainerProps extends LinkProps {
  */
 export const PageHeaderContainer = (props: PageHeaderContainerProps) => {
   const { className, Link, as, href, style } = props
+
+  const screenSize = useScreenSize()
+
+  let anchorStyle = { height: '60px', width: '151px' }
+  if (screenSize <= ScreenSize.sm) {
+    anchorStyle = { height: '36px', width: '21px' }
+  }
+
   return (
     <div
       className={classNames(
@@ -30,7 +39,7 @@ export const PageHeaderContainer = (props: PageHeaderContainerProps) => {
       style={style}
     >
       <Link as={as} href={href}>
-        <a className='min-w-max'>
+        <a style={anchorStyle}>
           <HeaderLogo />
         </a>
       </Link>
