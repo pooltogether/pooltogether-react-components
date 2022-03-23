@@ -1,3 +1,25 @@
+* {
+  --toastify-color-light: #fff;
+  --toastify-color-dark: #000;
+  --toastify-color-info: #81abf8;
+  --toastify-color-success: #affcef;
+  --toastify-color-warning: #f7c27d;
+  --toastify-color-error: #f95a5a;
+  --toastify-icon-color-success: var(--toastify-color-success);
+  --toastify-icon-color-warning: var(--toastify-color-warning);
+  --toastify-icon-color-error: var(--toastify-color-error);
+  --toastify-color-progress-light: linear-gradient(to right, #17e1fd 10%, #ff77e1 50%, #fff177);
+  --toastify-color-progress-info: var(--toastify-color-info);
+  --toastify-color-progress-success: var(--toastify-color-success);
+  --toastify-color-progress-warning: var(--toastify-color-warning);
+  --toastify-color-progress-error: var(--toastify-color-error);
+}
+
+/* TODO: Figure out why we can't click to close these after we remove 'poolToast' concept */
+.Toastify__close-button {
+  display: none;
+}
+
 .Toastify__toast-container {
   z-index: 99999 !important;
 }
@@ -10,18 +32,28 @@
   @apply px-3;
 }
 
-.Toastify__progress-bar--success {
-  background: var(--color-bg-highlight-1);
+@screen sm {
+  .Toastify__toast-container {
+    min-width: 516px;
+  }
+}
+
+.Toastify__toast--success {
+  background: var(--color-bg-green);
 }
 
 .Toastify__toast--warning {
   background: var(--color-bg-orange);
 }
 
-.Toastify__toast--default {
-  background: var(--color-bg-black);
+.Toastify__toast--info {
+  background: var(--color-bg-blue);
 }
 
-.Toastify__toast--success .Toastify__toast-icon svg {
-  fill: var(--color-bg-highlight-1);
+.Toastify__progress-bar--default {
+  background: linear-gradient(60deg, #17e1fd 10%, #ff77e1 50%, #fff177);
+}
+
+.Toastify__toast--default {
+  color: white;
 }

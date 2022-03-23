@@ -1,21 +1,10 @@
-import { toast, cssTransition } from 'react-toastify'
-
-const Blur = cssTransition({
-  enter: `blur-enter`,
-  exit: `blur-exit`,
-  duration: [450, 400],
-  appendPosition: true
-})
-
-const DEFAULT_OPTIONS = {
-  transition: Blur
-}
+import { toast } from 'react-toastify'
 
 export const poolToast = {
   dismiss: () => {
     toast.dismiss()
   },
-  rainbow: (message, options = DEFAULT_OPTIONS) => {
+  rainbow: (message, options) => {
     toast.dismiss()
     toast(message, options)
 
@@ -23,19 +12,19 @@ export const poolToast = {
       setTimeout(toast.dismiss, 7000)
     }
   },
-  success: (message, options = DEFAULT_OPTIONS) => {
+  success: (message, options) => {
     toast.dismiss()
     toast.success(message, options)
   },
-  error: (message, options = DEFAULT_OPTIONS) => {
+  error: (message, options) => {
     toast.dismiss()
     toast.error(message, options)
   },
-  info: (message, options = DEFAULT_OPTIONS) => {
+  info: (message, options) => {
     toast.dismiss()
     toast.info(message, options)
   },
-  warn: (message, options = DEFAULT_OPTIONS) => {
+  warn: (message, options) => {
     toast.dismiss()
     toast.warn(message, options)
   }
