@@ -8,7 +8,7 @@ select:-internal-autofill-selected {
 }
 
 input {
-  @apply bg-darkened text-inverse;
+  @apply bg-pt-purple-darker text-inverse rounded-lg;
 }
 
 ::placeholder {

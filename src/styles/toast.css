@@ -5,3 +5,7 @@
 .Toastify__toast--success .Toastify__toast-icon svg {
   fill: var(--color-bg-highlight-1);
 }
+
+.Toastify__toast-container {
+  z-index: 10000 !important;
+}
