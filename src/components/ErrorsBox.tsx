@@ -33,5 +33,5 @@ export function ErrorsBox(props: ErrorsBoxProps) {
 ErrorsBox.defaultProps = {
   className: 'mb-2',
   colorClassName: 'text-red',
-  fontClassName: 'font-semibold font-inter text-center'
+  fontClassName: 'font-semibold text-center'
 }

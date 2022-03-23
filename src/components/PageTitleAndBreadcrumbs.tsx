@@ -35,7 +35,7 @@ export const PageTitleAndBreadcrumbs = (props) => {
           />
         )}
       </div>
-      <div className='inline-block text-left text-accent-2 font-inter relative uppercase mt-3 font-normal opacity-80 hover:opacity-100 trans'>
+      <div className='inline-block text-left text-accent-2 relative uppercase mt-3 font-normal opacity-80 hover:opacity-100 trans'>
         {breadcrumbs?.map((crumb, index) => (
           <span className='text-xxxs sm:text-xxs' key={`crumb-${index}`}>
             {crumb.href && crumb.as ? (

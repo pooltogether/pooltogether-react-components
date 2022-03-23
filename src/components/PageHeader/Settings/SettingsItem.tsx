@@ -3,7 +3,7 @@ import { Tooltip } from '../../Containers/Tooltip'
 
 export const SettingsItem = (props) => (
   <div className='pt-4 sm:pt-2'>
-    <div className='flex items-center justify-between px-2'>
+    <div className='flex items-center justify-between px-4 xs:px-0'>
       <div>
         <span className='flex text-accent-1 font-bold text-xxs'>
           <span className='uppercase'>{props.label}</span>
