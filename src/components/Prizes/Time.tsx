@@ -163,7 +163,7 @@ const TimeUnit = (props: {
       </div>
       <span
         className={classNames(
-          'uppercase text-center font-bold',
+          'uppercase text-center font-bold opacity-60',
           unitsColorClassName,
           unitsClassName
         )}
@@ -177,7 +177,7 @@ const TimeUnit = (props: {
 TimeUnit.defaultProps = {
   exactDigits: false,
   backgroundColorClassName: 'bg-tertiary',
-  unitsColorClassName: 'text-tertiary',
+  unitsColorClassName: 'text-accent-4',
   unitsClassName: 'text-xxxs'
 }
 

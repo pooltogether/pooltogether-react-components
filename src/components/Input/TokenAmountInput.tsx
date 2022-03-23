@@ -56,9 +56,7 @@ export const TokenAmountInput: React.FC<TokenAmountInputProps> = (props) => {
   const { register, setValue, trigger } = form
 
   return (
-    <div
-      className={classNames(className, widthClassName, 'flex flex-col', 'font-inter', 'text-xl')}
-    >
+    <div className={classNames(className, widthClassName, 'flex flex-col text-xl')}>
       <InputHeader
         i18nKey={i18nKey}
         t={t}
@@ -114,7 +112,7 @@ const InputHeader = (props: InputHeaderProps) => {
   const isBalanceFetched = isWalletConnected && Boolean(balance)
 
   return (
-    <div className='flex justify-between font-inter text-xs uppercase font-semibold text-pt-purple-dark text-opacity-60 dark:text-pt-purple-lighter mb-1'>
+    <div className='flex justify-between text-xs uppercase font-semibold text-pt-purple-dark text-opacity-60 dark:text-pt-purple-lighter mb-1'>
       <span className={classNames('')}>{(i18nKey && t?.(i18nKey)) || 'Amount'}</span>
       {isWalletConnected && (
         <button
