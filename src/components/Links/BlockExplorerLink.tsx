@@ -38,7 +38,7 @@ export const BlockExplorerLink = (props) => {
           'sm:hidden': !shorten
         })}
       >
-        {shortenHash({ hash: display })}
+        {shortenHash({ hash: display, short: true })}
       </span>
       <span
         className={classnames('hidden', {

@@ -119,8 +119,7 @@ export { TransactionStatusChecker } from './components/TransactionStatusChecker'
 
 // Components
 export { Accordion, ContentWrapper } from './components/Accordion'
-export { BottomSheet } from './components/BottomSheets/BottomSheet'
-// export { BottomSheet, snapTo90 } from './components/BottomSheets/BottomSheet'
+export { BottomSheet, BottomSheetTitle } from './components/BottomSheets/BottomSheet'
 export * from './components/BottomSheets/BalanceBottomSheet'
 export { CountUp } from './components/CountUp'
 export { ErrorsBox } from './components/ErrorsBox'

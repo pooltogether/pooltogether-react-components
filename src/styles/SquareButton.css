@@ -239,7 +239,7 @@
 /* ------- Sizes ------- */
 
 .square-btn--sm {
-  @apply py-1 px-2 text-sm;
+  @apply py-1 px-2 text-xs;
 }
 
 .square-btn--md {
