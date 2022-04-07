@@ -16,6 +16,7 @@ module.exports = {
           // require('cssnano')
         ],
         inject: true,
+        minimize: true,
         // only write out CSS for the first bundle (avoids pointless extra files):
         extract: !!options.writeMeta
       }),

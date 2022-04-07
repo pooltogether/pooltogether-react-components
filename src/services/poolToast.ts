@@ -4,7 +4,7 @@ export const poolToast = {
   dismiss: () => {
     toast.dismiss()
   },
-  rainbow: (message, options) => {
+  rainbow: (message, options?) => {
     toast.dismiss()
     toast(message, options)
 
@@ -12,19 +12,19 @@ export const poolToast = {
       setTimeout(toast.dismiss, 7000)
     }
   },
-  success: (message, options) => {
+  success: (message, options?) => {
     toast.dismiss()
     toast.success(message, options)
   },
-  error: (message, options) => {
+  error: (message, options?) => {
     toast.dismiss()
     toast.error(message, options)
   },
-  info: (message, options) => {
+  info: (message, options?) => {
     toast.dismiss()
     toast.info(message, options)
   },
-  warn: (message, options) => {
+  warn: (message, options?) => {
     toast.dismiss()
     toast.warn(message, options)
   }

@@ -45,9 +45,10 @@ module.exports = pooltogetherTheme({
 });
 ```
 
+Wrap your app in `ThemeContextProvider`
 ```js
 // _app.jsx
-import "@pooltogether/pooltogether-react-components/dist/index.css";
+import { ThemeContextProvider } from '@pooltogether/react-components'
 ```
 
 Now you can use any components you want:

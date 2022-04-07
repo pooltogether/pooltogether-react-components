@@ -3,52 +3,16 @@ import classnames from 'classnames'
 
 import { DropdownList } from '../Input/DropdownList'
 
-// TODO: Switch this back to being dynamically generated based on locize
-export function LanguagePickerDropdown(props) {
-  const langs = {
-    en: {
-      name: 'English',
-      nativeName: 'English'
-    },
-    es: {
-      name: 'Spanish',
-      nativeName: 'Español'
-    },
-    de: {
-      name: 'German',
-      nativeName: 'Deutsch'
-    },
-    fr: {
-      name: 'French',
-      nativeName: 'Français'
-    },
-    hi: {
-      name: 'Hindi',
-      nativeName: 'Hindī'
-    },
-    it: {
-      name: 'Italian',
-      nativeName: 'Italiana'
-    },
-    ko: {
-      name: 'Korean',
-      nativeName: '한국어 (韓國語)'
-    },
-    pt: {
-      name: 'Portuguese',
-      nativeName: 'Português'
-    },
-    tr: {
-      name: 'Turkish',
-      nativeName: 'Türkçe'
-    },
-    zh: {
-      name: 'Zhōngwén',
-      nativeName: '中文'
-    }
-  }
+interface LanguagePickerDropdownProps {
+  langs: { [locale: string]: { name: string; nativeName: string } }
+  currentLang: string
+  changeLang: (locale: string) => void
+  className?: string
+}
 
-  const { currentLang, changeLang, className } = props
+// TODO: Switch this back to being dynamically generated based on locize
+export function LanguagePickerDropdown(props: LanguagePickerDropdownProps) {
+  const { langs, currentLang, changeLang, className } = props
 
   const formatValue = (key) => {
     const lang = langs[key]

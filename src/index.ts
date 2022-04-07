@@ -141,30 +141,4 @@ export { addTokenToMetamask } from './services/addTokenToMetamask'
 export { getLegacyButtonClassNames } from './utils/getLegacyButtonClassNames'
 
 // Styles
-import './styles/tailwind.css'
-
-import './styles/utils.css'
-import './styles/toast-blur.css'
-import './styles/layout.css'
-import './styles/loader.css'
-import './styles/themes.css'
-
-import './styles/typography.css'
-import './styles/tables.css'
-import './styles/pool.css'
-import './styles/toast.css'
-import './styles/animations.css'
-import './styles/transitions.css'
-
-import './styles/bottomSheet.css'
-
-import './styles/interactable-cards.css'
-import './styles/forms.css'
-import './styles/tabs.css'
-import './styles/tickets.css'
-
-import './styles/bnc-onboard--custom.css'
-import './styles/reach--custom.css'
-import './styles/vx--custom.css'
-
-import './styles/SquareButton.css'
+import './styles/index.css'
