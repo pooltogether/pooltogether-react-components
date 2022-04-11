@@ -15,10 +15,10 @@ module.exports = {
           require('autoprefixer')
           // require('cssnano')
         ],
-        inject: true,
+        inject: false,
         minimize: true,
         // only write out CSS for the first bundle (avoids pointless extra files):
-        extract: !!options.writeMeta
+        extract: 'globals.css'
       }),
       ...config.plugins
     ]
