@@ -49,6 +49,7 @@ Wrap your app in `ThemeContextProvider`
 ```js
 // _app.jsx
 import { ThemeContextProvider } from '@pooltogether/react-components'
+import '@pooltogether/react-components/dist/globals.css'
 ```
 
 Now you can use any components you want:
