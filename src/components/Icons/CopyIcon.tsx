@@ -9,7 +9,12 @@ export const CopyIcon = (props) => {
   const [copied, setCopied] = useState(false)
 
   return (
-    <CopyToClipboard text={text} onCopy={setCopied(true)}>
+    <CopyToClipboard
+      text={text}
+      onCopy={() => {
+        setCopied(true)
+      }}
+    >
       {copied ? (
         <>Copied!</>
       ) : (
