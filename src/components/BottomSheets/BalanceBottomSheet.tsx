@@ -19,6 +19,7 @@ import { CountUp } from '../CountUp'
 import { Tooltip } from '../Containers/Tooltip'
 import { addTokenToMetamask } from '../../services/addTokenToMetamask'
 import { poolToast } from '../../services/poolToast'
+import { RevokeAllowanceButton } from '../Buttons/RevokeAllowanceButton'
 
 enum DefaultViews {
   main = 'main',
@@ -43,11 +44,12 @@ export interface View {
 export interface BalanceBottomSheetProps extends MainViewProps, MoreInfoViewProps {
   open: boolean
   onDismiss: () => void
+  label?: string
   className?: string
 }
 
 export const BalanceBottomSheet = (props: BalanceBottomSheetProps) => {
-  const { open, onDismiss, className, ...viewProps } = props
+  const { open, onDismiss, className, label, ...viewProps } = props
   const [selectedView, setSelectedView] = useState<string>(DefaultViews.main)
 
   const View = useMemo(
@@ -57,6 +59,7 @@ export const BalanceBottomSheet = (props: BalanceBottomSheetProps) => {
 
   return (
     <BottomSheet
+      label={label}
       open={open}
       onDismiss={() => {
         onDismiss()
@@ -235,6 +238,7 @@ interface MoreInfoViewProps {
   contractLinks: ContractLink[]
   moreInfoViews?: View[]
   delegate?: string
+  sendRevokeAllowanceTransaction?: () => Promise<number>
   isWalletOnProperNetwork: boolean
   isWalletMetaMask: boolean
   // depositAllowance: DepositAllowance
@@ -244,10 +248,15 @@ interface MoreInfoViewProps {
   // refetch: () => void
 }
 
-const MoreInfoView = (props: MoreInfoViewProps & { setView: (view: string) => void }) => {
+const MoreInfoView = (
+  props: MoreInfoViewProps & {
+    setView: (view: string) => void
+  }
+) => {
   const {
     t,
     setView,
+    sendRevokeAllowanceTransaction,
     chainId,
     delegate,
     token,
@@ -326,7 +335,15 @@ const MoreInfoView = (props: MoreInfoViewProps & { setView: (view: string) => vo
           </SquareButton>
         )}
 
-        {/* <RevokeAllowanceButton {...props} t={t} token={token} /> */}
+        {sendRevokeAllowanceTransaction && (
+          <RevokeAllowanceButton
+            t={t}
+            token={token}
+            isWalletOnProperNetwork={isWalletOnProperNetwork}
+            chainId={chainId}
+            sendRevokeAllowanceTransaction={sendRevokeAllowanceTransaction}
+          />
+        )}
       </div>
     </>
   )
