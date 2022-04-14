@@ -30,6 +30,7 @@ interface TokenAmountInputProps {
   className?: string
   widthClassName?: string
   bgClassName?: string
+  autoComplete?: string
 }
 
 /**
@@ -50,7 +51,8 @@ export const TokenAmountInput: React.FC<TokenAmountInputProps> = (props) => {
     chainId,
     t,
     validate,
-    i18nKey
+    i18nKey,
+    autoComplete
   } = props
 
   const { register, setValue, trigger } = form
@@ -78,7 +80,13 @@ export const TokenAmountInput: React.FC<TokenAmountInputProps> = (props) => {
       >
         <div className={classNames('w-full rounded-lg flex', bgClassName)}>
           <InputToken chainId={chainId} token={token} />
-          <Input register={register} inputKey={inputKey} validate={validate} t={t} />
+          <Input
+            autoComplete={autoComplete}
+            register={register}
+            inputKey={inputKey}
+            validate={validate}
+            t={t}
+          />
         </div>
       </div>
     </div>
@@ -165,6 +173,7 @@ const InputToken = (props: { chainId: number; token: Token }) => {
 }
 
 interface InputProps {
+  autoComplete?: string
   inputKey: string
   register: UseFormRegister<FieldValues>
   validate: {
@@ -174,7 +183,7 @@ interface InputProps {
 }
 
 const Input = (props: InputProps) => {
-  const { register, inputKey, validate, t } = props
+  const { autoComplete, register, inputKey, validate, t } = props
 
   const pattern = {
     value: /^\d*\.?\d*$/,
@@ -187,6 +196,7 @@ const Input = (props: InputProps) => {
         'bg-transparent w-full outline-none focus:outline-none active:outline-none text-right py-4 pr-8 pl-4 font-semibold'
       )}
       placeholder='0.0'
+      autoComplete={autoComplete}
       {...register(inputKey, { required: true, pattern, validate })}
     />
   )
