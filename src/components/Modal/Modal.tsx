@@ -131,9 +131,9 @@ const CloseModalButton = (props) => {
 
 interface ModalTitleProps {
   className?: string
-  icon?: any
+  icon?: React.ReactNode
   title: string
-  chainId: number
+  chainId?: number
 }
 
 export const ModalTitle = (props: ModalTitleProps) => {
@@ -149,3 +149,5 @@ export const ModalTitle = (props: ModalTitleProps) => {
     </div>
   )
 }
+
+ModalTitle.defaultProps = { icon: null }

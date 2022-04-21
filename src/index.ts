@@ -10,7 +10,6 @@ export {
   SquareLink,
   SquareButtonProps
 } from './components/Buttons/SquareButton'
-export { Button } from './components/Buttons/Button'
 
 // Containers
 export { Amount } from './components/Containers/Amount'
@@ -21,8 +20,6 @@ export { Chip } from './components/Containers/Chip'
 export { Collapse } from './components/Containers/Collapse'
 export { CountBadge } from './components/Containers/CountBadge'
 export { Tabs, Tab, Content, ContentPane } from './components/Containers/Tabs'
-export { TicketRow } from './components/Containers/TicketRow'
-export { TipBanner } from './components/Containers/TipBanner'
 export { overrideToolTipPosition, Tooltip } from './components/Containers/Tooltip'
 
 // Icons
@@ -32,8 +29,6 @@ export { TokenIcon } from './components/Icons/TokenIcon'
 export { PoolIcon } from './components/Icons/PoolIcon'
 export { NetworkIcon } from './components/Icons/NetworkIcon'
 export { WalletIcon } from './components/Icons/WalletIcon'
-export { ProfileAvatar } from './components/PageHeader/Account/ProfileAvatar'
-export { ProfileName } from './components/PageHeader/Account/ProfileName'
 
 // Input
 export { CheckboxInputGroup } from './components/Input/CheckboxInputGroup'
@@ -41,8 +36,6 @@ export * from './components/Input/TokenAmountInput'
 export { DropdownInputGroup } from './components/Input/DropdownInputGroup'
 export { DropdownList } from './components/Input/DropdownList'
 export { InputLabel } from './components/Input/InputLabel'
-export { TextInputGroup } from './components/Input/TextInputGroup'
-export { SimpleInput, RoundInput, RectangularInput } from './components/Input/TextInputs'
 export { Switch } from './components/Input/Switch'
 
 // Layout
@@ -52,7 +45,6 @@ export {
   notificationBannerVisibleAtom,
   NotificationBannerList
 } from './components/Layout/NotificationBannerList'
-export { Tagline } from './components/Layout/Tagline'
 
 // Links
 export { ButtonLink } from './components/Links/ButtonLink'
@@ -62,7 +54,6 @@ export {
   formatBlockExplorerAddressUrl
 } from './components/Links/BlockExplorerLink'
 export { ExternalLink, LinkTheme } from './components/Links/ExternalLink'
-export { InternalLink } from './components/Links/InternalLink'
 
 // Loading
 export { LoadingLogo } from './components/Loading/LoadingLogo'
@@ -77,23 +68,6 @@ export { ModalTransactionSubmitted } from './components/Modal/ModalTransactionSu
 
 // Navigation
 export { BottomNavContainer } from './components/Navigation/BottomNavContainer'
-export {
-  BottomNavLink,
-  BottomVoteIcon,
-  BottomAccountIcon,
-  BottomPodsIcon,
-  BottomRewardsIcon,
-  BottomPoolsIcon
-} from './components/Navigation/BottomNavLink'
-export { SideNavContainer } from './components/Navigation/SideNavContainer'
-export {
-  SideNavLink,
-  SideVoteIcon,
-  SideAccountIcon,
-  SideRewardsIcon,
-  SidePodsIcon,
-  SidePoolsIcon
-} from './components/Navigation/SideNavLink'
 export { SocialLinks } from './components/Navigation/SocialLinks'
 export { NavPoolBalance } from './components/Navigation/NavPoolBalance'
 
@@ -105,21 +79,16 @@ export { FeatureRequestSettingsItem } from './components/PageHeader/Settings/Fea
 export { SettingsItem } from './components/PageHeader/Settings/SettingsItem'
 export { HeaderLogo } from './components/PageHeader/HeaderLogo'
 export { LanguagePickerDropdown } from './components/PageHeader/LanguagePickerDropdown'
-export { NetworkSelector } from './components/PageHeader/NetworkSelector'
 export { PageHeaderContainer } from './components/PageHeader/PageHeaderContainer'
-export { Account } from './components/PageHeader/Account/index'
 
 // Prizes
 export { PrizeCountdown } from './components/Prizes/PrizeCountdown'
 export { SimpleCountDown } from './components/Prizes/SimpleCountdown'
 export { Time, TimeProps } from './components/Prizes/Time'
 
-// TransactionStatusChecker
-export { TransactionStatusChecker } from './components/TransactionStatusChecker'
-
 // Components
 export { Accordion, ContentWrapper } from './components/Accordion'
-export { BottomSheet, BottomSheetTitle } from './components/BottomSheets/BottomSheet'
+export { BottomSheet } from './components/BottomSheets/BottomSheet'
 export * from './components/BottomSheets/BalanceBottomSheet'
 export { CountUp } from './components/CountUp'
 export { ErrorsBox } from './components/ErrorsBox'
@@ -127,8 +96,6 @@ export { PageTitleAndBreadcrumbs } from './components/PageTitleAndBreadcrumbs'
 export { PoolCurrencyIcon } from './components/PoolCurrencyIcon'
 export { PrizeFrequencyChip } from './components/PrizeFrequencyChip'
 export { ThemeContext, ThemeContextProvider, ColorTheme } from './components/ThemeContextProvider'
-export { TxRefetchListener } from './components/TxRefetchListener'
-export { TxStatus } from './components/TxStatus'
 
 // Toasts 🍞
 export { ToastContainer } from 'react-toastify'
@@ -136,9 +103,6 @@ export { poolToast } from './services/poolToast'
 
 // MetaMask Functionality
 export { addTokenToMetamask } from './services/addTokenToMetamask'
-
-// Utils
-export { getLegacyButtonClassNames } from './utils/getLegacyButtonClassNames'
 
 // Styles
 import './styles/index.css'

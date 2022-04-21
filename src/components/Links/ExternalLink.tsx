@@ -38,5 +38,5 @@ ExternalLink.defaultProps = {
   iconClassName: 'w-4 h-4 ml-1 mb-1',
   openInSameTab: false,
   theme: LinkTheme.default,
-  displayClassName: 'inline-block h-fit-content'
+  displayClassName: 'inline-block h-fit-content items-center'
 }

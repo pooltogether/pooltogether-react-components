@@ -1,30 +1,27 @@
-import { useScreenSize, ScreenSize } from '@pooltogether/hooks'
-import React, { useContext } from 'react'
+import React from 'react'
+import classNames from 'classnames'
 
-import { ThemeContext } from '../ThemeContextProvider'
+import MobileLogoDark from '../../assets/PoolTogetherLogos/pooltogether-p-purple.svg'
+import MobileLogo from '../../assets/PoolTogetherLogos/pooltogether-p.svg'
+import DesktopLogoDark from '../../assets/PoolTogetherLogos/pooltogether-full-logo-purple.svg'
+import DesktopLogo from '../../assets/PoolTogetherLogos/pooltogether-full-logo.svg'
 
-import MobileLogo from '../../assets/PoolTogetherLogos/pooltogether-p-purple.svg'
-import MobileLogoDark from '../../assets/PoolTogetherLogos/pooltogether-p.svg'
-import DesktopLogo from '../../assets/PoolTogetherLogos/pooltogether-full-logo-purple.svg'
-import DesktopLogoDark from '../../assets/PoolTogetherLogos/pooltogether-full-logo.svg'
-
-export const HeaderLogo = () => {
-  const screenSize = useScreenSize()
-  const { theme } = useContext(ThemeContext)
-
-  if (screenSize <= ScreenSize.sm) {
-    return (
-      <img
-        src={theme === 'dark' ? MobileLogoDark : MobileLogo}
-        style={{ height: '36px', width: '21px' }}
-      />
-    )
-  }
-
+export const HeaderLogo: React.FC = () => {
   return (
-    <img
-      src={theme === 'dark' ? DesktopLogoDark : DesktopLogo}
-      style={{ height: '60px', width: '151px' }}
-    />
+    <>
+      <ImageContainer className='hidden sm:dark:block w-40 h-14' src={DesktopLogo} />
+      <ImageContainer className='hidden dark:hidden sm:block w-40 h-14' src={DesktopLogoDark} />
+      <ImageContainer className='hidden dark:block sm:dark:hidden w-7 h-12' src={MobileLogo} />
+      <ImageContainer className='block sm:hidden dark:hidden  w-7 h-12' src={MobileLogoDark} />
+    </>
+  )
+}
+
+const ImageContainer = (props) => {
+  const { className, ...imageProps } = props
+  return (
+    <div className={classNames(className)}>
+      <img {...imageProps} alt='PoolTogether Logo' />
+    </div>
   )
 }

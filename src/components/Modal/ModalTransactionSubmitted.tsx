@@ -1,6 +1,5 @@
 import React from 'react'
 import classNames from 'classnames'
-import { Transaction } from '@pooltogether/hooks'
 import { formatBlockExplorerTxUrl } from '../Links/BlockExplorerLink'
 
 import {
@@ -13,16 +12,16 @@ import {
 interface ModalTransactionSubmittedProps {
   t: Function
   chainId: number
-  tx: Transaction
+  hash: string
   closeModal: () => void
   hideCloseButton?: boolean
   className?: string
 }
 
 export const ModalTransactionSubmitted = (props: ModalTransactionSubmittedProps) => {
-  const { chainId, tx, className, closeModal, hideCloseButton, t } = props
+  const { chainId, hash, className, closeModal, hideCloseButton, t } = props
 
-  const url = formatBlockExplorerTxUrl(tx?.hash, chainId)
+  const url = formatBlockExplorerTxUrl(hash, chainId)
 
   return (
     <div className={classNames('flex flex-col', className)}>

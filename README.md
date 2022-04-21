@@ -17,12 +17,9 @@ Component Groups
 - [PageHeader](https://github.com/pooltogether/pooltogether-react-components/tree/main/src/components/PageHeader)
 
 Top level components
-- [TransactionStatusChecker](https://github.com/pooltogether/pooltogether-react-components/tree/main/src/components/TransactionStatusChecker)
 - [PageTitleAndBreadcrumbs](https://github.com/pooltogether/pooltogether-react-components/tree/main/src/components/PageTitleAndBreadcrumbs.jsx)
 - [PoolCurrencyIcon](https://github.com/pooltogether/pooltogether-react-components/tree/main/src/components/PoolCurrencyIcon.jsx)
 - [ThemeContextProvider](https://github.com/pooltogether/pooltogether-react-components/tree/main/src/components/ThemeContextProvider.jsx)
-- [TxStatus](https://github.com/pooltogether/pooltogether-react-components/tree/main/src/components/TxStatus.jsx)
-
 
 ## Installation:
 
@@ -56,9 +53,9 @@ Now you can use any components you want:
 
 ```js
 import React from "react";
-import { Button } from "@pooltogether/pooltogether-react-components";
+import { SquareButton } from "@pooltogether/pooltogether-react-components";
 
-<Button type="submit">Submit</Button>;
+<SquareButton type="submit">Submit</SquareButton>;
 
 // -------------------
 

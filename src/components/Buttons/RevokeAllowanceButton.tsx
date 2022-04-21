@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import FeatherIcon from 'feather-icons-react'
 import { getNetworkNiceNameByChainId } from '@pooltogether/utilities'
-import { Token, useTransaction } from '@pooltogether/hooks'
+import { Token } from '@pooltogether/hooks'
 import { BigNumber } from 'ethers'
 
 import { i18nTranslate } from 'src/types'
-import { BlockExplorerLink } from '../Links/BlockExplorerLink'
 import { poolToast } from '../../services/poolToast'
 import { SquareButton } from '../Buttons/SquareButton'
 
@@ -25,9 +24,6 @@ interface RevokeAllowanceButtonProps {
 export const RevokeAllowanceButton = (props: RevokeAllowanceButtonProps) => {
   const { t, isWalletOnProperNetwork, token, chainId, sendRevokeAllowanceTransaction } = props
 
-  const [approveTxId, setApproveTxId] = useState(0)
-  const approveTx = useTransaction(approveTxId)
-
   const handleRevokeAllowanceClick = async () => {
     if (!isWalletOnProperNetwork) {
       poolToast.warn(
@@ -42,26 +38,12 @@ export const RevokeAllowanceButton = (props: RevokeAllowanceButtonProps) => {
       return null
     }
 
-    const txId = await sendRevokeAllowanceTransaction()
-    setApproveTxId(txId)
-  }
-
-  if (approveTx?.sent && !approveTx?.cancelled) {
-    return (
-      <div className='flex justify-between bg-white bg-opacity-20 dark:bg-actually-black dark:bg-opacity-10 rounded-xl w-full p-4'>
-        <span>
-          {t?.(`revokePoolAllowance`, { ticker: token.symbol }) ||
-            `Revoke ${token.symbol} allowance`}
-        </span>
-        <span>
-          <BlockExplorerLink shorten chainId={chainId} txHash={approveTx.hash} />
-        </span>
-      </div>
-    )
+    sendRevokeAllowanceTransaction()
   }
 
   return (
     <SquareButton
+      disabled={!isWalletOnProperNetwork}
       onClick={handleRevokeAllowanceClick}
       className='flex w-full items-center justify-center'
     >

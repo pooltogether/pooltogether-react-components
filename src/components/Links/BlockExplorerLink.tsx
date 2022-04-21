@@ -5,6 +5,7 @@ import { shorten as shortenHash } from '@pooltogether/utilities'
 
 import { CopyIcon } from '../Icons/CopyIcon'
 import { ExternalLink, LinkTheme } from './ExternalLink'
+import classNames from 'classnames'
 
 export const BlockExplorerLink = (props) => {
   const {
@@ -63,7 +64,9 @@ export const BlockExplorerLink = (props) => {
       >
         {!noText && (children || defaultText)}
       </ExternalLink>
-      {copyable && <CopyIcon className='ml-2 my-auto' text={display} />}
+      {copyable && (
+        <CopyIcon className={classNames(className, iconClassName, theme, 'ml-2')} text={display} />
+      )}
     </>
   )
 }
@@ -73,7 +76,7 @@ BlockExplorerLink.defaultProps = {
   noText: false,
   noUnderline: false,
   theme: LinkTheme.default,
-  iconClassName: 'h-4 w-4 ml-1 my-auto'
+  iconClassName: 'h-4 w-4 ml-1'
 }
 
 export const formatBlockExplorerTxUrl = (tx, networkId) => {

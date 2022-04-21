@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react'
 import classNames from 'classnames'
 import FeatherIcon from 'feather-icons-react'
-import { Transaction, Amount, Token } from '@pooltogether/hooks'
+import { Amount, Token } from '@pooltogether/hooks'
 import {
   getNetworkNiceNameByChainId,
   numberWithCommas,
@@ -104,12 +104,12 @@ export const BalanceBottomSheetBackButton = (props: {
 interface MainViewProps {
   t: i18nTranslate
   chainId: number
-  tx: Transaction
   token: Token
   balance: Amount
   balanceUsd: Amount
   contractLinks: ContractLink[]
   title: string
+  transactionHash?: string
   views?: View[]
   internalLinks?: JSX.Element
   externalLinks?: Link[]
@@ -120,7 +120,7 @@ const MainView = (props: MainViewProps & { setView: (view: string) => void }) =>
   const {
     t,
     chainId,
-    tx,
+    transactionHash,
     views,
     token,
     balance,
@@ -163,7 +163,7 @@ const MainView = (props: MainViewProps & { setView: (view: string) => void }) =>
         </span>
       </div>
 
-      {tx && <TxReceipt chainId={chainId} tx={tx} t={t} className='mb-4' />}
+      <TxReceipt chainId={chainId} transactionHash={transactionHash} t={t} className='mb-4' />
 
       <div className='flex flex-col space-y-4'>
         {internalLinks}
@@ -241,11 +241,6 @@ interface MoreInfoViewProps {
   sendRevokeAllowanceTransaction?: () => Promise<number>
   isWalletOnProperNetwork: boolean
   isWalletMetaMask: boolean
-  // depositAllowance: DepositAllowance
-  // isFetched: Boolean
-  // useSendTransaction: any
-  // revokeAllowanceCallTransaction: () => Promise<TransactionResponse>
-  // refetch: () => void
 }
 
 const MoreInfoView = (
@@ -350,14 +345,14 @@ const MoreInfoView = (
 }
 
 const TxReceipt = (props: {
-  tx: Transaction
+  transactionHash: string
   chainId: number
   t: i18nTranslate
   className?: string
 }) => {
-  const { chainId, tx, t, className } = props
+  const { chainId, transactionHash, t, className } = props
 
-  if (!tx) return null
+  if (!transactionHash) return null
 
   return (
     <div
@@ -367,7 +362,7 @@ const TxReceipt = (props: {
       )}
     >
       <span className='font-bold'>{t?.('transaction') || 'Transaction'}</span>
-      <BlockExplorerLink chainId={chainId} txHash={tx.hash} shorten />
+      <BlockExplorerLink chainId={chainId} txHash={transactionHash} shorten />
     </div>
   )
 }

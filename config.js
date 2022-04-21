@@ -326,6 +326,7 @@ const pooltogetherReactTailwindUIConfig = {
   },
   variants: {
     extend: {
+      display: ['dark'],
       backgroundImage: ['focus-within'],
       margin: ['responsive', 'last', 'first'],
       padding: ['responsive', 'last'],

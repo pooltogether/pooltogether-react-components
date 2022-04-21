@@ -2,7 +2,6 @@ import React from 'react'
 import FeatherIcon from 'feather-icons-react'
 import classNames from 'classnames'
 import { ScreenSize, useScreenSize } from '@pooltogether/hooks'
-import { NetworkIcon } from '../Icons/NetworkIcon'
 
 import { Modal } from '../Modal/Modal'
 import {
@@ -72,29 +71,5 @@ const CloseBottomSheetButton: React.FC<{ closeModal: () => void; hide: boolean }
     >
       <FeatherIcon icon='x' className='w-6 h-6' />
     </button>
-  )
-}
-
-interface BottomSheetTitleProps {
-  className?: string
-  icon?: any
-  title: string
-  chainId: number
-}
-
-export const BottomSheetTitle = (props: BottomSheetTitleProps) => {
-  const { className, title, chainId, icon } = props
-
-  return (
-    <div className={classNames('flex flex-col mx-auto', className)}>
-      {chainId ? (
-        <NetworkIcon chainId={chainId} className='mx-auto mb-2' sizeClassName='w-8 h-8' />
-      ) : (
-        icon
-      )}
-      <div className='mx-auto text-sm xs:text-lg sm:text-xl mb-4 font-bold text-inverse text-center'>
-        {title}
-      </div>
-    </div>
   )
 }
