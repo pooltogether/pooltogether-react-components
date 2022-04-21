@@ -24,9 +24,10 @@ export const PageHeaderContainer = (props: PageHeaderContainerProps) => {
   return (
     <div
       className={classNames(
-        'flex justify-between items-center mx-auto max-w-screen-lg px-4 sm:px-8 py-4 sm:pb-6 sm:pt-5 z-30 sticky top-0 bg-page-header',
+        'flex justify-between items-center mx-auto max-w-screen-lg px-4 sm:px-8 py-4 sm:pb-6 sm:pt-5 sticky top-0 bg-page-header',
         className
       )}
+      style={{ zIndex: 3 }}
     >
       <Link as={as} href={href}>
         <a>
