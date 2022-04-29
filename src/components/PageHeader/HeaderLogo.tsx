@@ -9,10 +9,10 @@ import DesktopLogo from '../../assets/PoolTogetherLogos/pooltogether-full-logo.s
 export const HeaderLogo: React.FC = () => {
   return (
     <>
-      <ImageContainer className='hidden sm:dark:block w-40 h-14' src={DesktopLogo} />
-      <ImageContainer className='hidden dark:hidden sm:block w-40 h-14' src={DesktopLogoDark} />
+      <ImageContainer className='hidden sm:dark:block w-32 h-12' src={DesktopLogo} />
+      <ImageContainer className='hidden dark:hidden sm:block w-32 h-12' src={DesktopLogoDark} />
       <ImageContainer className='hidden dark:block sm:dark:hidden w-7 h-12' src={MobileLogo} />
-      <ImageContainer className='block sm:hidden dark:hidden  w-7 h-12' src={MobileLogoDark} />
+      <ImageContainer className='block sm:hidden dark:hidden w-7 h-12' src={MobileLogoDark} />
     </>
   )
 }
