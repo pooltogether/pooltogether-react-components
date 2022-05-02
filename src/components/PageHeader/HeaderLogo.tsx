@@ -6,13 +6,35 @@ import MobileLogo from '../../assets/PoolTogetherLogos/pooltogether-p.svg'
 import DesktopLogoDark from '../../assets/PoolTogetherLogos/pooltogether-full-logo-purple.svg'
 import DesktopLogo from '../../assets/PoolTogetherLogos/pooltogether-full-logo.svg'
 
-export const HeaderLogo: React.FC = () => {
+export const HeaderLogo = (props) => {
+  const { desktopSizeClassNames, centered } = props
+
+  const extendedClassNames = {
+    'mx-auto': centered
+  }
+
   return (
     <>
-      <ImageContainer className='hidden sm:dark:block w-32 h-12' src={DesktopLogo} />
-      <ImageContainer className='hidden dark:hidden sm:block w-32 h-12' src={DesktopLogoDark} />
-      <ImageContainer className='hidden dark:block sm:dark:hidden w-7 h-12' src={MobileLogo} />
-      <ImageContainer className='block sm:hidden dark:hidden w-7 h-12' src={MobileLogoDark} />
+      <ImageContainer
+        className={classNames('hidden sm:dark:block', desktopSizeClassNames, extendedClassNames)}
+        src={DesktopLogo}
+      />
+      <ImageContainer
+        className={classNames(
+          'hidden dark:hidden sm:block',
+          desktopSizeClassNames,
+          extendedClassNames
+        )}
+        src={DesktopLogoDark}
+      />
+      <ImageContainer
+        className={classNames('hidden dark:block sm:dark:hidden w-7 h-12', extendedClassNames)}
+        src={MobileLogo}
+      />
+      <ImageContainer
+        className={classNames('block sm:hidden dark:hidden w-7 h-12', extendedClassNames)}
+        src={MobileLogoDark}
+      />
     </>
   )
 }
@@ -24,4 +46,9 @@ const ImageContainer = (props) => {
       <img {...imageProps} alt='PoolTogether Logo' />
     </div>
   )
+}
+
+HeaderLogo.defaultProps = {
+  centered: false,
+  desktopSizeClassNames: 'w-32 h-12'
 }
