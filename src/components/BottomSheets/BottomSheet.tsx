@@ -77,9 +77,9 @@ const CloseBottomSheetButton: React.FC<{ closeModal: () => void; hide: boolean }
 
 interface BottomSheetTitleProps {
   className?: string
-  icon?: any
   title: string
-  chainId: number
+  icon?: any
+  chainId?: number
 }
 
 export const BottomSheetTitle = (props: BottomSheetTitleProps) => {
