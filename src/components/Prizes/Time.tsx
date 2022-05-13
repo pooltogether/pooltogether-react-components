@@ -9,6 +9,7 @@ const EIGHT_HOURS_IN_SECONDS = 28800
 export interface TimeProps {
   seconds: number
   className?: string
+  colonYOffset?: number
   getTimeColorClassName?: (seconds: number) => string
   backgroundColorClassName?: string
   unitsColorClassName?: string
@@ -26,6 +27,7 @@ export const Time = (props: TimeProps) => {
     seconds,
     noColors,
     className,
+    colonYOffset,
     getTimeColorClassName,
     hideDays,
     hideHours,
@@ -43,6 +45,7 @@ export const Time = (props: TimeProps) => {
     seconds: secs
   } = useMemo(() => getTimeBreakdown(seconds), [seconds])
   const textClassName = noColors ? undefined : getTimeColorClassName(seconds)
+  console.log({ days, hours })
 
   return (
     <div className={classNames(className, 'flex')}>
@@ -69,7 +72,7 @@ export const Time = (props: TimeProps) => {
           unitsColorClassName={unitsColorClassName}
         />
       )}
-      <Colon className={textClassName} />
+      <Colon className={textClassName} yOffset={colonYOffset} />
       {!hideMinutes && (
         <TimeUnit
           unit='min'
@@ -81,7 +84,7 @@ export const Time = (props: TimeProps) => {
           unitsColorClassName={unitsColorClassName}
         />
       )}
-      <Colon className={textClassName} />
+      <Colon className={textClassName} yOffset={colonYOffset} />
       {!hideSeconds && (
         <TimeUnit
           unit='sec'
@@ -112,10 +115,10 @@ Time.defaultProps = {
   getTimeColorClassName
 }
 
-const Colon = (props: { className?: string }) => (
+const Colon = (props: { className?: string; yOffset: number }) => (
   <span
-    style={{ paddingLeft: 3, paddingRight: 2 }}
-    className={classNames(props.className, 'font-bold')}
+    style={{ paddingLeft: 3, paddingRight: 2, top: props.yOffset || 0 }}
+    className={classNames(props.className, 'relative font-bold')}
   >
     :
   </span>

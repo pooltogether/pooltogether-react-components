@@ -1,6 +1,6 @@
 {
   "name": "@pooltogether/react-components",
-  "version": "1.12.8",
+  "version": "1.12.9",
   "description": "PoolTogether UI elements in a shared lib",
   "author": "PoolTogether Inc.",
   "license": "MIT",
@@ -65,7 +65,7 @@
     "@pooltogether/etherplex": "^1.1.2",
     "@pooltogether/evm-chains-extended": "^0.6.4-beta.1",
     "@pooltogether/hooks": "^1.8.0",
-    "@pooltogether/utilities": "^0.3.8",
+    "@pooltogether/utilities": "^0.3.10",
     "@rollup/plugin-url": "^6.1.0",
     "@size-limit/preset-small-lib": "^6.0.4",
     "@storybook/addon-actions": "^6.4.9",
