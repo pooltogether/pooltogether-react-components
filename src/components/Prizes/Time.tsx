@@ -44,8 +44,8 @@ export const Time = (props: TimeProps) => {
     minutes,
     seconds: secs
   } = useMemo(() => getTimeBreakdown(seconds), [seconds])
+
   const textClassName = noColors ? undefined : getTimeColorClassName(seconds)
-  console.log({ days, hours })
 
   return (
     <div className={classNames(className, 'flex')}>
