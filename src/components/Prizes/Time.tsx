@@ -192,7 +192,7 @@ const TimeDigit = (props: {
   <div
     style={{ minWidth: 26 }}
     className={classNames(
-      `text-center font-bold rounded-sm px-2 py-0.5`,
+      `text-center font-bold rounded-sm px-2 py-1`,
       props.backgroundColorClassName,
       props.className
     )}
