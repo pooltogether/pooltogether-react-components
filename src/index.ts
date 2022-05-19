@@ -96,10 +96,7 @@ export { PageTitleAndBreadcrumbs } from './components/PageTitleAndBreadcrumbs'
 export { PoolCurrencyIcon } from './components/PoolCurrencyIcon'
 export { PrizeFrequencyChip } from './components/PrizeFrequencyChip'
 export { ThemeContext, ThemeContextProvider, ColorTheme } from './components/ThemeContextProvider'
-
-// Toasts 🍞
-export { ToastContainer } from 'react-toastify'
-export { poolToast } from './services/poolToast'
+export { TransactionToast, TransactionToastStatus } from './components/TransactionToast'
 
 // MetaMask Functionality
 export { addTokenToMetamask } from './services/addTokenToMetamask'

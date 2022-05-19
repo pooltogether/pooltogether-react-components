@@ -2,14 +2,13 @@ import React from 'react'
 import classnames from 'classnames'
 import FeatherIcon from 'feather-icons-react'
 import CopyToClipboard from 'react-copy-to-clipboard'
-
-import { poolToast } from '../../services/poolToast'
+import { toast } from 'react-toastify'
 
 export const CopyIcon = (props) => {
   const { t, text, className } = props
 
   const handleCopy = () => {
-    poolToast.success(t?.('copiedToClipboard') || 'Copied to clipboard')
+    toast.success(t?.('copiedToClipboard') || 'Copied to clipboard')
   }
 
   return (

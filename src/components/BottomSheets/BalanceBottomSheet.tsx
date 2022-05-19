@@ -18,8 +18,8 @@ import { TokenIcon } from '../Icons/TokenIcon'
 import { CountUp } from '../CountUp'
 import { Tooltip } from '../Containers/Tooltip'
 import { addTokenToMetamask } from '../../services/addTokenToMetamask'
-import { poolToast } from '../../services/poolToast'
 import { RevokeAllowanceButton } from '../Buttons/RevokeAllowanceButton'
+import { toast } from 'react-toastify'
 
 enum DefaultViews {
   main = 'main',
@@ -267,7 +267,7 @@ const MoreInfoView = (
     }
 
     if (!isWalletOnProperNetwork) {
-      poolToast.warn(
+      toast.warn(
         t?.('switchToNetworkToAddToken', {
           networkName: getNetworkNiceNameByChainId(chainId),
           token: token.symbol

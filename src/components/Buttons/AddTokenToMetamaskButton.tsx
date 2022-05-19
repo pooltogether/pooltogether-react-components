@@ -2,10 +2,10 @@ import React from 'react'
 import { getNetworkNiceNameByChainId } from '@pooltogether/utilities'
 import { Token } from '@pooltogether/hooks'
 
-import { poolToast } from '../../services/poolToast'
 import { addTokenToMetamask } from '../../services/addTokenToMetamask'
 
 import { TOKEN_IMG_URL } from '../../constants'
+import { toast } from 'react-toastify'
 
 export interface IAddTokenToMetamaskButtonProps {
   t: Function
@@ -32,7 +32,7 @@ export function AddTokenToMetamaskButton(props) {
     e.preventDefault()
 
     if (!isWalletOnProperNetwork) {
-      poolToast.warn(
+      toast.warn(
         t('switchToNetworkToAddToken', `Switch to {{networkName}} to add token '{{token}}'`, {
           networkName: currentNetworkName,
           token: token.symbol

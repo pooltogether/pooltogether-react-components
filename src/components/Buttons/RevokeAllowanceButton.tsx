@@ -5,8 +5,8 @@ import { Token } from '@pooltogether/hooks'
 import { BigNumber } from 'ethers'
 
 import { i18nTranslate } from 'src/types'
-import { poolToast } from '../../services/poolToast'
 import { SquareButton } from '../Buttons/SquareButton'
+import { toast } from 'react-toastify'
 
 export interface DepositAllowance {
   allowanceUnformatted: BigNumber
@@ -26,7 +26,7 @@ export const RevokeAllowanceButton = (props: RevokeAllowanceButtonProps) => {
 
   const handleRevokeAllowanceClick = async () => {
     if (!isWalletOnProperNetwork) {
-      poolToast.warn(
+      toast.warn(
         t?.('switchToNetworkToRevokeToken', {
           networkName: getNetworkNiceNameByChainId(chainId),
           token: token.symbol

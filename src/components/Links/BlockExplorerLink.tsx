@@ -7,7 +7,20 @@ import { CopyIcon } from '../Icons/CopyIcon'
 import { ExternalLink, LinkTheme } from './ExternalLink'
 import classNames from 'classnames'
 
-export const BlockExplorerLink = (props) => {
+export const BlockExplorerLink: React.FC<{
+  chainId: number
+  address?: string
+  txHash?: string
+  children?: React.ReactNode
+  className?: string
+  shorten?: boolean
+  noIcon?: boolean
+  noText?: boolean
+  underline?: boolean
+  iconClassName?: string
+  copyable?: boolean
+  theme?: string
+}> = (props) => {
   const {
     address,
     txHash,
@@ -74,7 +87,7 @@ export const BlockExplorerLink = (props) => {
 BlockExplorerLink.defaultProps = {
   noIcon: false,
   noText: false,
-  noUnderline: false,
+  underline: false,
   theme: LinkTheme.default,
   iconClassName: 'h-4 w-4 ml-1'
 }
