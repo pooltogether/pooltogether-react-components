@@ -6,6 +6,7 @@ import FeatherIcon from 'feather-icons-react'
 import MetaMask from '../../assets/Wallets/metamask-icon.png'
 import Coinbase from '../../assets/Wallets/coinbase-icon.svg'
 import WalletConnect from '../../assets/Wallets/walletconnect-icon.svg'
+import Injected from '../../assets/Wallets/injected-icon.svg'
 
 interface WalletIconProps {
   wallet: string
@@ -38,5 +39,6 @@ export const WALLET_MAPPING = Object.freeze({
   'metamask': MetaMask,
   'coinbase': Coinbase,
   'coinbase wallet': Coinbase,
-  'walletconnect': WalletConnect
+  'walletconnect': WalletConnect,
+  'injected': Injected
 })
