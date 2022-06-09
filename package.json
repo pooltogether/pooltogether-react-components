@@ -6,7 +6,12 @@
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
-  "files": ["dist", "src", "config.js", "README.md"],
+  "files": [
+    "dist",
+    "src",
+    "config.js",
+    "README.md"
+  ],
   "engines": {
     "node": ">=10"
   },
@@ -14,7 +19,12 @@
     "type": "git",
     "url": "git+https://github.com/pooltogether/pooltogether-react-components.git"
   },
-  "keywords": ["react", "library", "components", "tailwindcss"],
+  "keywords": [
+    "react",
+    "library",
+    "components",
+    "tailwindcss"
+  ],
   "scripts": {
     "reinstall": "rm -rf ./node_modules && yarn",
     "start": "tsdx watch --onSuccess \"yalc push\"",
@@ -46,8 +56,8 @@
   "peerDependencies": {
     "@pooltogether/current-pool-data": "^3.7.2",
     "@pooltogether/evm-chains-extended": "^0.6.4-beta.1",
-    "@pooltogether/hooks": "^1.8.0",
-    "@pooltogether/utilities": "^0.3.6",
+    "@pooltogether/hooks": "^1.9.0",
+    "@pooltogether/utilities": "^0.3.11",
     "eth-revert-reason": "^1.0.3",
     "ethers": "^5.6.4",
     "feather-icons-react": "^0.4.1",
@@ -64,8 +74,8 @@
     "@pooltogether/current-pool-data": "^3.7.2",
     "@pooltogether/etherplex": "^1.1.2",
     "@pooltogether/evm-chains-extended": "^0.6.4-beta.1",
-    "@pooltogether/hooks": "^1.8.0",
-    "@pooltogether/utilities": "^0.3.10",
+    "@pooltogether/hooks": "^1.9.0",
+    "@pooltogether/utilities": "^0.3.11",
     "@rollup/plugin-url": "^6.1.0",
     "@size-limit/preset-small-lib": "^6.0.4",
     "@storybook/addon-actions": "^6.4.9",
