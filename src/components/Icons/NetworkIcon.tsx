@@ -11,6 +11,8 @@ import PoALogo from '../../assets/Networks/poa-icon.png'
 import XDaiLogo from '../../assets/Networks/xdai-icon.png'
 import PolygonLogo from '../../assets/Networks/polygon-icon.png'
 import CeloColoredLogo from '../../assets/Networks/celo-colored.png'
+import OptimismLogo from '../../assets/Networks/optimism-icon.png'
+
 
 export const NetworkIcon = (props) => {
   const { sizeClassName, className, chainId, onClick } = props
@@ -42,5 +44,7 @@ export const NETWORK_MAPPING = Object.freeze({
   [NETWORK.mumbai]: PolygonLogo,
   [NETWORK.celo]: CeloColoredLogo,
   [NETWORK.avalanche]: Avalanche,
-  [NETWORK.fuji]: Avalanche
+  [NETWORK.fuji]: Avalanche,
+  [NETWORK.optimism]: OptimismLogo,
+  [NETWORK['optimism-kovan']]: OptimismLogo,
 })
