@@ -4,15 +4,16 @@ import { useCoingeckoTokenImage } from '@pooltogether/hooks'
 import { NETWORK } from '@pooltogether/utilities'
 
 interface TokenIconProps {
-  sizeClassName?: string
-  className?: string
   chainId: number
   address: string
+  sizeClassName?: string
+  className?: string
+  style?: object
   onClick?: React.MouseEventHandler<HTMLImageElement>
 }
 
 export const TokenIcon = (props: TokenIconProps) => {
-  const { sizeClassName, className, chainId, address, onClick } = props
+  const { sizeClassName, className, chainId, address, onClick, style } = props
 
   const { data: tokenImage, isFetched } = useCoingeckoTokenImage(chainId, address)
 
@@ -30,6 +31,7 @@ export const TokenIcon = (props: TokenIconProps) => {
         className={classnames('inline-block rounded-full', className, sizeClassName)}
         onClick={onClick}
         alt={`token icon`}
+        style={style}
       />
     )
   }
@@ -143,7 +145,10 @@ export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
     '0x85cb0bab616fe88a89a35080516a8928f38b518b': UNI
   },
   [NETWORK.rinkeby]: {
-    '0x5592ec0cfb4dbc12d3ab100b257153436a1f0fea': DAI
+    '0x5592ec0cfb4dbc12d3ab100b257153436a1f0fea': DAI,
+    '0x4aaded56bd7c69861e8654719195fca9c670eb45': DAI,
+    '0xeb8f08a975ab53e34d8a0330e0d34de942c95926': USDC,
+    '0xb18d016cdd2d9439a19f15633005a6b2cd6aa774': USDC
   },
   [NETWORK.polygon]: {
     '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270': WMATIC,
