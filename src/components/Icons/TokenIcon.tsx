@@ -145,6 +145,7 @@ export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
     '0x85cb0bab616fe88a89a35080516a8928f38b518b': UNI
   },
   [NETWORK.rinkeby]: {
+    '0x6a9865ade2b6207daac49f8bcba9705deb0b0e6d': DAI,
     '0x5592ec0cfb4dbc12d3ab100b257153436a1f0fea': DAI,
     '0x4aaded56bd7c69861e8654719195fca9c670eb45': DAI,
     '0xeb8f08a975ab53e34d8a0330e0d34de942c95926': USDC,

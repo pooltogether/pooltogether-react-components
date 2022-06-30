@@ -160,15 +160,6 @@
 /* Rainbow */
 .square-btn--rainbow {
   @apply text-white;
-
-  background-image: linear-gradient(
-    130deg,
-    rgba(76, 36, 159, 1) -10%,
-    rgb(13, 172, 245) 40%,
-    rgb(249, 71, 210) 70%,
-    rgb(254, 220, 111) 120%
-  );
-  background-size: 400% 400%;
   border: none;
   z-index: 1;
 }
@@ -178,49 +169,10 @@
   padding-top: 0.625rem;
 }
 
-.gradient-background-anim {
-  background: #1d1f20;
-  position: relative;
-}
-
-.gradient-background-anim:after {
-  @apply rounded-lg;
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: linear-gradient(85deg, #f37055 -30%, #ef4e7b, #f947d2, #0dacf5, #f947d2, #fedc6f);
-  z-index: -1;
-  animation: animatedgradient 3s ease alternate infinite;
-  animation-timing-function: steps(30);
-  background-size: 300% 300%;
-}
-
-@keyframes animatedgradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
 .square-btn--rainbow:not([disabled]):hover,
 .square-btn--rainbow:not([disabled]):focus {
   @apply text-white;
 
-  background-image: linear-gradient(
-    130deg,
-    rgba(76, 36, 159, 1) -10%,
-    rgb(13, 172, 245) 40%,
-    rgb(249, 71, 210) 70%,
-    rgb(254, 220, 111) 120%
-  );
   border-color: transparent;
   box-shadow: 0 0 0 3px rgba(195, 120, 245, 0.5);
 }
@@ -248,4 +200,43 @@
 
 .square-btn--lg {
   @apply py-2 px-4 text-lg;
+}
+
+/* https://stackoverflow.com/questions/63787241/css-how-to-create-an-infinitely-moving-repeating-linear-gradient */
+.seamless-gradient-animation {
+  --d: 1800px;
+  --angle: 150deg;
+  --sin: 0.5; /* = sin(angle) */
+  --w: 100%;
+
+  position: relative;
+  z-index: 0;
+}
+
+.seamless-gradient-animation::before {
+  @apply rounded-lg;
+  content: '';
+  height: 100%;
+  left: 0;
+  width: var(--w);
+  position: absolute;
+  z-index: -1;
+
+  background: repeating-linear-gradient(
+    var(--angle),
+    var(--color-pt-gradient-cyan),
+    var(--color-pt-gradient-magenta),
+    var(--color-pt-gradient-yellow),
+    var(--color-pt-gradient-magenta),
+    var(--color-pt-gradient-cyan) var(--d)
+  );
+
+  background-size: calc(var(--d) / var(--sin)) 100%;
+  animation: seamless-gradient-animation 20s linear infinite reverse;
+}
+
+@keyframes seamless-gradient-animation {
+  0% {
+    background-position: calc(var(--d) / var(--sin)) 0;
+  }
 }

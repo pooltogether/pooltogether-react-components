@@ -141,7 +141,7 @@ const getThemeClassName = (theme: SquareButtonTheme): string => {
       return 'square-btn--black-outline'
     }
     case SquareButtonTheme.rainbow: {
-      return 'square-btn--rainbow gradient-background-anim'
+      return 'square-btn--rainbow seamless-gradient-animation'
     }
   }
 }
