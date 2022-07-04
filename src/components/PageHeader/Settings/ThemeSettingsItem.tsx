@@ -7,7 +7,7 @@ import { SettingsItem } from './SettingsItem'
 export const ThemeSettingsItem = (props) => {
   const { t } = props
   return (
-    <SettingsItem label={t('theme', 'Theme')}>
+    <SettingsItem label={t?.('theme', 'Theme') || 'Theme'}>
       <ThemeSwitcher />
     </SettingsItem>
   )

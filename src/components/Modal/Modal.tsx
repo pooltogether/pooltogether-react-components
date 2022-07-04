@@ -5,11 +5,13 @@ import Dialog from '@reach/dialog'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useReducedMotion } from '@pooltogether/hooks'
 import { NetworkIcon } from '../Icons/NetworkIcon'
+import classNames from 'classnames'
 
 export interface ModalProps {
   isOpen: boolean
   closeModal: () => void
   label: string
+  title?: React.ReactNode
   children: React.ReactNode
   className?: string
   widthClassName?: string
@@ -22,7 +24,8 @@ export interface ModalProps {
   shadowClassName?: string
   overflowClassName?: string
   style?: object
-  noPad?: boolean
+  onPreviousClick?: () => void
+  onNextClick?: () => void
 }
 
 export const Modal = (props: ModalProps) => {
@@ -31,6 +34,7 @@ export const Modal = (props: ModalProps) => {
     closeModal,
     children,
     label,
+    title,
     className,
     widthClassName,
     heightClassName,
@@ -42,7 +46,8 @@ export const Modal = (props: ModalProps) => {
     shadowClassName,
     overflowClassName,
     style,
-    noPad
+    onPreviousClick,
+    onNextClick
   } = props
 
   const [isDialogOpen, setIsDialogOpen] = useState(isOpen)
@@ -79,22 +84,29 @@ export const Modal = (props: ModalProps) => {
               opacity: 1,
               translateY: 0
             }}
+            style={style}
             className={classnames(
               'mx-auto relative',
               widthClassName,
               heightClassName,
               maxWidthClassName,
               maxHeightClassName,
-              noPad ? null : paddingClassName,
               bgClassName,
+              paddingClassName,
               roundedClassName,
               shadowClassName,
               overflowClassName,
               className
             )}
-            style={style}
           >
-            <CloseModalButton closeModal={closeModal} />
+            <div className='absolute w-full flex justify-between p-2 px-4 top-0 left-0'>
+              <div className='absolute left-4 flex space-x-2 items-center'>
+                {onPreviousClick && <PreviousButton onClick={onPreviousClick} />}
+                {onNextClick && <NextButton onClick={onNextClick} />}
+              </div>
+              <CloseModalButton closeModal={closeModal} />
+              <SimpleModalTitle title={title} />
+            </div>
             {children}
           </motion.div>
         )}
@@ -105,28 +117,40 @@ export const Modal = (props: ModalProps) => {
 
 Modal.defaultProps = {
   noPad: false,
-  noSize: false,
   bgClassName: 'bg-new-modal',
   roundedClassName: 'rounded-none sm:rounded-xl',
   maxWidthClassName: 'sm:max-w-lg',
   widthClassName: 'w-screen sm:w-full',
   heightClassName: 'h-screen sm:h-auto',
   maxHeightClassName: 'max-h-screen',
-  paddingClassName: 'px-2 xs:px-8 py-10',
+  paddingClassName: 'px-2 xs:px-8 pt-12 pb-2 xs:pb-10 ',
   shadowClassName: 'shadow-3xl',
   overflowClassName: 'overflow-y-auto'
 }
 
-const CloseModalButton = (props) => {
-  const { closeModal } = props
+const CloseModalButton = (props) => (
+  <ModalHeaderButton icon='x' onClick={props.closeModal} className='absolute right-4' />
+)
+const PreviousButton = (props) => <ModalHeaderButton icon='arrow-left' onClick={props.onClick} />
+const NextButton = (props) => <ModalHeaderButton icon='arrow-right' onClick={props.onClick} />
+
+const ModalHeaderButton: React.FC<{ onClick: () => void; className?: string; icon: string }> = (
+  props
+) => {
+  const { onClick, className, icon } = props
   return (
     <button
-      className='my-auto ml-auto close-button trans text-inverse opacity-80 hover:opacity-100 absolute right-6 top-6'
-      onClick={closeModal}
+      className={classNames('trans text-inverse opacity-100 hover:opacity-70 stroke-2', className)}
+      onClick={onClick}
     >
-      <FeatherIcon icon='x' className='w-6 h-6' />
+      <FeatherIcon icon={icon} className='w-6 h-6' />
     </button>
   )
+}
+
+const SimpleModalTitle: React.FC<{ title?: React.ReactNode }> = (props) => {
+  const { title } = props
+  return <span className='text-inverse font-semibold mx-auto min-h-10'>{title}</span>
 }
 
 interface ModalTitleProps {

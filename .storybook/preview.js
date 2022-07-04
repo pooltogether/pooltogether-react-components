@@ -3,6 +3,7 @@ import { HotKeys } from 'react-hotkeys'
 import { QueryClient, QueryClientProvider } from 'react-query'
 
 import { HOTKEYS_KEY_MAP } from '../src/constants'
+import { ThemeSettingsItem } from '../src/components/PageHeader/Settings/ThemeSettingsItem'
 import { ThemeContextProvider } from 'src/components/ThemeContextProvider'
 
 import 'react-spring-bottom-sheet/dist/style.css'
@@ -28,7 +29,12 @@ export const decorators = [
       <QueryClientProvider client={queryClient}>
         <ThemeContextProvider>
           <Suspense fallback={<Loader />}>
-            <Story />
+            <div className='flex justify-end'>
+              <ThemeSettingsItem />
+            </div>
+            <div className='bg-body text-inverse'>
+              <Story />
+            </div>
           </Suspense>
         </ThemeContextProvider>
       </QueryClientProvider>

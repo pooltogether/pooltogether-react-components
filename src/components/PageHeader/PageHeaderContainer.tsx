@@ -22,10 +22,7 @@ export const PageHeaderContainer = (props: PageHeaderContainerProps) => {
   const { className, Link, as, href } = props
 
   return (
-    <div
-      className={classNames('w-full bg-page-header sticky top-0', className)}
-      style={{ zIndex: 3 }}
-    >
+    <div className={classNames('w-full sticky top-0', className)} style={{ zIndex: 3 }}>
       <div
         className={classNames(
           'flex justify-between items-center mx-auto max-w-screen-lg px-4 sm:px-8 py-4 sm:pb-6 sm:pt-5',

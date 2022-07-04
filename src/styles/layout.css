@@ -73,6 +73,10 @@ body {
   height: fit-content;
 }
 
+.h-inherit {
+  height: inherit;
+}
+
 /* Page Layout */
 
 .grid-page-wrapper {

@@ -17,7 +17,7 @@ import { GOVERNANCE_CONTRACT_ADDRESSES } from '../../../src/constants'
 import Squiggle from '../../assets/Misc/squiggle.svg'
 import { Modal } from '../Modal/Modal'
 import { PoolIcon } from '../Icons/PoolIcon'
-import { ButtonLink } from '../Links/ButtonLink'
+import { ButtonLink } from '../Buttons/Button'
 
 const P_POOL_ADDRESS = '0x396b4489da692788e327e2e4b2b0459a5ef26791'
 
@@ -108,10 +108,7 @@ const PoolBalanceModal = (props) => {
     : zeroBn
   const delegatedBalanceFormatted = numberWithCommas(delegatedBalance || zeroBn)
 
-  const totalPool = delegatedBalance
-    .add(pPoolBalance)
-    .add(usersBalanceBN)
-    .add(totalClaimablePool)
+  const totalPool = delegatedBalance.add(pPoolBalance).add(usersBalanceBN).add(totalClaimablePool)
 
   return (
     <Modal
@@ -164,20 +161,10 @@ const PoolBalanceModal = (props) => {
           </div>
         </div>
 
-        <ButtonLink
-          textSize='xxxs'
-          href='https://app.pooltogether.com/account#governance-claims'
-          width='w-full'
-          className='mt-4'
-        >
+        <ButtonLink href='https://app.pooltogether.com/account#governance-claims' className='mt-4'>
           {t('claimPool')}
         </ButtonLink>
-        <ButtonLink
-          textSize='xxxs'
-          href='https://sybil.org/#/delegates/pool'
-          width='w-full'
-          className='mt-4'
-        >
+        <ButtonLink href='https://sybil.org/#/delegates/pool' className='mt-4'>
           {t('activateVotingPower')}
         </ButtonLink>
       </div>

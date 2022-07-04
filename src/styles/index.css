@@ -3,7 +3,7 @@
 @import './toast-blur.css';
 @import './layout.css';
 @import './loader.css';
-@import './SquareButton.css';
+@import './button.css';
 
 @import './typography.css';
 @import './tables.css';
@@ -22,3 +22,7 @@
 @import './reach--custom.css';
 @import './bnc-onboard--custom.css';
 @import './vx--custom.css';
+
+/* Slick Carousel */
+@import './slick.css';
+@import './slick-theme.css';

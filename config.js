@@ -28,6 +28,8 @@ const pooltogetherReactTailwindUIConfig = {
       'orange': {},
       'pink': {},
       'teal': {},
+      'gradient-purple': '#7201FF',
+      'gradient-pink': '#9E01FF',
       'gradient-magenta': '#ff77e1',
       'gradient-cyan': '#17e1fd',
       'gradient-yellow': '#ffed47',

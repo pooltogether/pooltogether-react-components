@@ -5,7 +5,7 @@ import { Token } from '@pooltogether/hooks'
 import { BigNumber } from 'ethers'
 
 import { i18nTranslate } from 'src/types'
-import { SquareButton } from '../Buttons/SquareButton'
+import { Button } from '../Buttons/Button'
 import { toast } from 'react-toastify'
 
 export interface DepositAllowance {
@@ -42,13 +42,13 @@ export const RevokeAllowanceButton = (props: RevokeAllowanceButtonProps) => {
   }
 
   return (
-    <SquareButton
+    <Button
       disabled={!isWalletOnProperNetwork}
       onClick={handleRevokeAllowanceClick}
       className='flex w-full items-center justify-center'
     >
       <FeatherIcon icon='minus-circle' className='w-5 mr-1' />
       {t?.(`revokePoolAllowance`, { ticker: token.symbol }) || `Revoke ${token.symbol} allowance`}
-    </SquareButton>
+    </Button>
   )
 }
