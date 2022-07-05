@@ -175,6 +175,10 @@ export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
   [NETWORK.avalanche]: {
     '0xb27f379c050f6ed0973a01667458af6ecebc1d90': PTaUSDC,
     '0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7': WAVAX
+  },
+  [NETWORK.optimism]: {
+    '0x5E5b54cd73872ba3103cd95A58067A7079d0259b': PTaUSDC,
+    // '0x4200000000000000000000000000000000000042': OP
   }
 })
 
