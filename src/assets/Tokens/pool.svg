@@ -1,14 +1,21 @@
 <svg width="318" height="318" viewBox="0 0 318 318" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0)">
-<circle cx="159" cy="159" r="159" fill="url(#paint0_linear)"/>
-<path d="M166.159 43.5034C202.243 43.5034 231.495 73.2437 231.495 109.93V148.126C231.495 184.812 202.243 214.553 166.159 214.553C160.491 214.553 154.991 213.819 149.747 212.44L149.748 216.949C149.748 243.786 128.246 265.593 101.556 266.027L100.746 266.033V119.894L100.821 119.893L100.823 109.93C100.823 73.2437 130.075 43.5034 166.159 43.5034ZM166.159 93.3236C157.138 93.3236 149.825 100.759 149.825 109.93V148.126C149.825 157.297 157.138 164.732 166.159 164.732C175.18 164.732 182.493 157.297 182.493 148.126V109.93C182.493 100.759 175.18 93.3236 166.159 93.3236Z" fill="white"/>
+<g clip-path="url(#clip0_1273_2)">
+<circle cx="159" cy="159" r="159" fill="#7E46F2"/>
+<g filter="url(#filter0_d_1273_2)">
+<path d="M166.036 51C199.705 51 227 78.7984 227 113.09V148.791C227 183.082 199.705 210.881 166.036 210.881C160.747 210.881 155.616 210.195 150.722 208.905L150.723 213.12C150.723 238.205 130.66 258.589 105.756 258.994L105 259V122.403L105.07 122.401L105.072 113.09C105.072 78.7984 132.366 51 166.036 51ZM166.036 97.5672C157.618 97.5672 150.795 104.517 150.795 113.09V148.791C150.795 157.364 157.618 164.313 166.036 164.313C174.453 164.313 181.277 157.364 181.277 148.791V113.09C181.277 104.517 174.453 97.5672 166.036 97.5672Z" fill="white"/>
+</g>
 </g>
 <defs>
-<linearGradient id="paint0_linear" x1="159" y1="0" x2="159" y2="318" gradientUnits="userSpaceOnUse">
-<stop stop-color="#7E46F2"/>
-<stop offset="1" stop-color="#46279A"/>
-</linearGradient>
-<clipPath id="clip0">
+<filter id="filter0_d_1273_2" x="105" y="51" width="132" height="218" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="10" dy="10"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1273_2"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1273_2" result="shape"/>
+</filter>
+<clipPath id="clip0_1273_2">
 <rect width="318" height="318" fill="white"/>
 </clipPath>
 </defs>

@@ -145,9 +145,11 @@ export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
     '0x85cb0bab616fe88a89a35080516a8928f38b518b': UNI
   },
   [NETWORK.rinkeby]: {
+    '0xc4e90a8dc6caab329f08ed3c8abc6b197cf0f40a': POOL,
     '0x6a9865ade2b6207daac49f8bcba9705deb0b0e6d': DAI,
     '0x5592ec0cfb4dbc12d3ab100b257153436a1f0fea': DAI,
     '0x4aaded56bd7c69861e8654719195fca9c670eb45': DAI,
+    '0x4dbcdf9b62e891a7cec5a2568c3f4faf9e8abe2b': USDC,
     '0xeb8f08a975ab53e34d8a0330e0d34de942c95926': USDC,
     '0xb18d016cdd2d9439a19f15633005a6b2cd6aa774': USDC
   },
@@ -177,7 +179,7 @@ export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
     '0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7': WAVAX
   },
   [NETWORK.optimism]: {
-    '0x5E5b54cd73872ba3103cd95A58067A7079d0259b': PTaUSDC,
+    '0x5E5b54cd73872ba3103cd95A58067A7079d0259b': PTaUSDC
     // '0x4200000000000000000000000000000000000042': OP
   }
 })
