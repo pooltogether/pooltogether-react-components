@@ -98,6 +98,7 @@ import PTaUSDC from '../../assets/Tokens/ptausdc.png'
 import TCAP from '../../assets/Tokens/tcap.png'
 import UNI_V2_LP_TICKET from '../../assets/Tokens/uni-v2-lp-pool.png'
 import WAVAX from '../../assets/Tokens/wavax.png'
+import OP from '../../assets/Tokens/op.svg'
 
 /**
  * Sometimes the CoinGecko images aren't the prettiest
@@ -180,8 +181,8 @@ export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
   },
   [NETWORK.optimism]: {
     '0x5E5b54cd73872ba3103cd95A58067A7079d0259b': PTaUSDC,
-    '0x62BB4fc73094c83B5e952C2180B23fA7054954c4': PTaUSDC
-    // '0x4200000000000000000000000000000000000042': OP
+    '0x62BB4fc73094c83B5e952C2180B23fA7054954c4': PTaUSDC,
+    '0x4200000000000000000000000000000000000042': OP
   }
 })
 
