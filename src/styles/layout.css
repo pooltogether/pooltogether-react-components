@@ -155,3 +155,25 @@ body {
     padding-left: var(--sidebar-width-lg);
   }
 }
+
+/* Scrollbar */
+
+/* width */
+.minimal-scrollbar::-webkit-scrollbar {
+  @apply h-2;
+}
+
+/* Track */
+.minimal-scrollbar::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+/* Handle */
+.minimal-scrollbar::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-actually-black bg-opacity-10 hover:bg-opacity-20 dark:bg-white dark:bg-opacity-10 dark:hover:bg-opacity-20 transition filter blur-lg;
+}
+
+/* Handle on hover */
+.minimal-scrollbar::-webkit-scrollbar-thumb:hover {
+  @apply cursor-pointer;
+}

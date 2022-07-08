@@ -9,6 +9,7 @@ import Slider from 'react-slick'
  */
 export const Carousel: React.FC<{
   children: React.ReactNode
+  className?: string
   // settinsdhttps://react-slick.neostack.com/docs/api/
   settings?: {
     adaptiveHeight?: boolean
@@ -25,9 +26,9 @@ export const Carousel: React.FC<{
     speed?: number
   }
 }> = (props) => {
-  const { children, settings } = props
+  const { children, className, settings } = props
 
-  return <Slider {...settings} children={children} />
+  return <Slider {...settings} children={children} className={className} />
 }
 
 Carousel.defaultProps = {
@@ -36,7 +37,6 @@ Carousel.defaultProps = {
     dots: true,
     speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1,
-    className: 'p-4'
+    slidesToScroll: 1
   }
 }

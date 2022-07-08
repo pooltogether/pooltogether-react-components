@@ -15,12 +15,14 @@ export interface ModalProps {
   children: React.ReactNode
   className?: string
   widthClassName?: string
-  heightClassName?: string
+  modalHeightClassName?: string
+  contentHeightClassName?: string
   maxWidthClassName?: string
   maxHeightClassName?: string
   paddingClassName?: string
   bgClassName?: string
   roundedClassName?: string
+  headerRoundedClassName?: string
   shadowClassName?: string
   overflowClassName?: string
   style?: object
@@ -37,12 +39,14 @@ export const Modal = (props: ModalProps) => {
     title,
     className,
     widthClassName,
-    heightClassName,
+    modalHeightClassName,
+    contentHeightClassName,
     maxWidthClassName,
     maxHeightClassName,
     paddingClassName,
     bgClassName,
     roundedClassName,
+    headerRoundedClassName,
     shadowClassName,
     overflowClassName,
     style,
@@ -86,28 +90,32 @@ export const Modal = (props: ModalProps) => {
             }}
             style={style}
             className={classnames(
-              'mx-auto relative',
+              'mx-auto relative overflow-hidden',
               widthClassName,
-              heightClassName,
+              modalHeightClassName,
               maxWidthClassName,
               maxHeightClassName,
               bgClassName,
-              paddingClassName,
               roundedClassName,
-              shadowClassName,
-              overflowClassName,
-              className
+              shadowClassName
             )}
           >
-            <div className='absolute w-full flex justify-between p-2 px-4 top-0 left-0'>
-              <div className='absolute left-4 flex space-x-2 items-center'>
-                {onPreviousClick && <PreviousButton onClick={onPreviousClick} />}
-                {onNextClick && <NextButton onClick={onNextClick} />}
+            <div className={classNames(overflowClassName, contentHeightClassName)}>
+              <div
+                className={classNames(
+                  'sticky w-full flex justify-between p-2 px-4 top-0 left-0 backdrop-filter backdrop-blur-md z-20 overflow-hidden',
+                  headerRoundedClassName
+                )}
+              >
+                <div className='absolute left-4 flex space-x-2 items-center'>
+                  {onPreviousClick && <PreviousButton onClick={onPreviousClick} />}
+                  {onNextClick && <NextButton onClick={onNextClick} />}
+                </div>
+                <CloseModalButton closeModal={closeModal} className='absolute right-4' />
+                <SimpleModalTitle title={title} />
               </div>
-              <CloseModalButton closeModal={closeModal} />
-              <SimpleModalTitle title={title} />
+              <div className={classNames(paddingClassName, className)}>{children}</div>
             </div>
-            {children}
           </motion.div>
         )}
       </AnimatePresence>
@@ -119,17 +127,19 @@ Modal.defaultProps = {
   noPad: false,
   bgClassName: 'bg-new-modal',
   roundedClassName: 'rounded-none sm:rounded-xl',
+  headerRoundedClassName: 'rounded-none sm:rounded-t-xl',
   maxWidthClassName: 'sm:max-w-lg',
   widthClassName: 'w-screen sm:w-full',
-  heightClassName: 'h-screen sm:h-auto',
+  modalHeightClassName: 'h-screen sm:h-auto',
   maxHeightClassName: 'max-h-screen',
-  paddingClassName: 'px-2 xs:px-8 pt-12 pb-2 xs:pb-10 ',
+  paddingClassName: 'px-2 xs:px-8 pt-10 pb-2 xs:pb-10 ',
   shadowClassName: 'shadow-3xl',
-  overflowClassName: 'overflow-y-auto'
+  overflowClassName: 'overflow-y-auto minimal-scrollbar',
+  contentHeightClassName: 'h-full'
 }
 
 const CloseModalButton = (props) => (
-  <ModalHeaderButton icon='x' onClick={props.closeModal} className='absolute right-4' />
+  <ModalHeaderButton icon='x' onClick={props.closeModal} className={props.className} />
 )
 const PreviousButton = (props) => <ModalHeaderButton icon='arrow-left' onClick={props.onClick} />
 const NextButton = (props) => <ModalHeaderButton icon='arrow-right' onClick={props.onClick} />

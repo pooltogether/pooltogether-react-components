@@ -19,7 +19,7 @@ export { Carousel } from './components/Containers/Carousel'
 export { Chip } from './components/Containers/Chip'
 export { Collapse } from './components/Containers/Collapse'
 export { CountBadge } from './components/Containers/CountBadge'
-export { Tabs, Tab, Content, ContentPane } from './components/Containers/Tabs'
+export { Tabs, Tab } from './components/Containers/Tabs'
 export { overrideToolTipPosition, Tooltip } from './components/Containers/Tooltip'
 export {
   ViewStateMachine,

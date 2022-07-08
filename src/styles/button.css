@@ -51,24 +51,38 @@
 
 /* Pink */
 .pt-btn--pink {
-  @apply border-pt-teal-bright bg-pt-teal text-purple;
+  @apply border-transparent dark:bg-gradient-pink bg-gradient-magenta text-inverse;
 }
 
 .pt-btn--pink:not([disabled]):hover,
 .pt-btn--pink:not([disabled]):focus {
-  @apply text-purple bg-pt-teal-bright;
-
-  box-shadow: 0 0 0 3px rgba(53, 240, 208, 0.5);
+  @apply ring-2 dark:ring-gradient-pink ring-gradient-magenta dark:ring-opacity-50 ring-opacity-50;
 }
 
 .pt-btn--pink:not([disabled]):active {
-  box-shadow: 0 0 0 2px rgba(53, 240, 208, 0.3);
+  @apply ring-opacity-30 dark:ring-opacity-30;
 }
 
 .pt-btn--pink:disabled {
+  @apply opacity-50;
+}
+
+/* Transparent */
+.pt-btn--transparent {
+  @apply bg-actually-black bg-opacity-10 border-transparent border-opacity-0 text-inverse;
+}
+
+.pt-btn--transparent:not([disabled]):hover,
+.pt-btn--transparent:not([disabled]):focus {
+  @apply ring-2 ring-actually-black ring-opacity-5 text-opacity-90;
+}
+
+.pt-btn--transparent:not([disabled]):active {
+  @apply ring-2 ring-actually-black ring-opacity-10 text-opacity-95;
+}
+
+.pt-btn--transparent:disabled {
   @apply border-transparent;
-  background-color: #270255;
-  color: #6c48a7;
 }
 
 /* inverse */
@@ -290,5 +304,5 @@
 }
 
 .pt-btn--lg {
-  @apply py-2 px-4 text-lg;
+  @apply py-3 px-4 text-lg;
 }

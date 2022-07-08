@@ -5,16 +5,17 @@ import classNames from 'classnames'
 
 export enum ButtonTheme {
   teal = 'teal',
-  tealOutline = 'tealOutline',
+  tealOutline = 'teal-outline',
   purple = 'purple',
-  purpleOutline = 'purpleOutline',
+  purpleOutline = 'purple-outline',
   orange = 'orange',
-  orangeOutline = 'orangeOutline',
+  orangeOutline = 'orange-outline',
   inverse = 'inverse',
   pink = 'pink',
   black = 'black',
-  blackOutline = 'blackOutline',
-  rainbow = 'rainbow'
+  blackOutline = 'black-outline',
+  rainbow = 'rainbow',
+  transparent = 'transparent'
 }
 
 export enum ButtonSize {
@@ -95,7 +96,7 @@ export const ButtonLink: React.FC<ButtonLinkProps> = React.forwardRef((props, re
         className
       )}
     >
-      {props.children}{' '}
+      {props.children}
       {chevron && (
         <FeatherIcon
           icon={'chevron-right'}
@@ -130,48 +131,19 @@ const getChevronClassName = (size: ButtonSize): string => {
 
 const getThemeClassName = (theme: ButtonTheme): string => {
   switch (theme) {
-    default:
-    case ButtonTheme.teal: {
-      return 'pt-btn--teal'
-    }
-    case ButtonTheme.tealOutline: {
-      return 'pt-btn--teal-outline'
-    }
-    case ButtonTheme.purple: {
-      return 'pt-btn--purple'
-    }
-    case ButtonTheme.purpleOutline: {
-      return 'pt-btn--purple-outline'
-    }
-    case ButtonTheme.orange: {
-      return 'pt-btn--orange'
-    }
-    case ButtonTheme.orangeOutline: {
-      return 'pt-btn--orange-outline'
-    }
-    case ButtonTheme.black: {
-      return 'pt-btn--black'
-    }
-    case ButtonTheme.blackOutline: {
-      return 'pt-btn--black-outline'
-    }
     case ButtonTheme.rainbow: {
       return 'pt-btn--rainbow gradient-background-anim'
+    }
+    default: {
+      return `pt-btn--${theme || ButtonTheme.teal}`
     }
   }
 }
 
 const getSizeClassName = (size: ButtonSize): string => {
   switch (size) {
-    default:
-    case ButtonSize.sm: {
-      return 'pt-btn--sm'
-    }
-    case ButtonSize.md: {
-      return 'pt-btn--md'
-    }
-    case ButtonSize.lg: {
-      return 'pt-btn--lg'
+    default: {
+      return `pt-btn--${size}`
     }
   }
 }
