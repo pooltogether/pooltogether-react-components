@@ -29,7 +29,7 @@ export const PageHeaderContainer = (props: PageHeaderContainerProps) => {
   const handleScroll = useDebouncedCallback(
     () => _setScrollClassName(window.scrollY > 0 ? scrollBgClassName : noScrollBgClassName),
     [],
-    200,
+    10,
     { leading: true }
   )
 

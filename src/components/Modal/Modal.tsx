@@ -16,13 +16,11 @@ export interface ModalProps {
   className?: string
   widthClassName?: string
   modalHeightClassName?: string
-  contentHeightClassName?: string
   maxWidthClassName?: string
   maxHeightClassName?: string
   paddingClassName?: string
   bgClassName?: string
   roundedClassName?: string
-  headerRoundedClassName?: string
   shadowClassName?: string
   overflowClassName?: string
   style?: object
@@ -40,13 +38,11 @@ export const Modal = (props: ModalProps) => {
     className,
     widthClassName,
     modalHeightClassName,
-    contentHeightClassName,
     maxWidthClassName,
     maxHeightClassName,
     paddingClassName,
     bgClassName,
     roundedClassName,
-    headerRoundedClassName,
     shadowClassName,
     overflowClassName,
     style,
@@ -74,48 +70,39 @@ export const Modal = (props: ModalProps) => {
         {isOpen && (
           <motion.div
             id='modal-animation-wrapper'
-            key={label}
+            key={`modal-${label}`}
             transition={{ duration: shouldReduceMotion ? 0 : 0.1, ease: 'linear' }}
             initial={{
-              opacity: 0,
-              translateY: 20
+              opacity: 0
             }}
             exit={{
-              opacity: 0,
-              translateY: 20
+              opacity: 0
             }}
             animate={{
-              opacity: 1,
-              translateY: 0
+              opacity: 1
             }}
             style={style}
             className={classnames(
-              'mx-auto relative overflow-hidden',
+              'mx-auto relative flex flex-col',
               widthClassName,
               modalHeightClassName,
-              maxWidthClassName,
+              'xs:' + maxWidthClassName,
               maxHeightClassName,
               bgClassName,
               roundedClassName,
-              shadowClassName
+              shadowClassName,
+              overflowClassName
             )}
           >
-            <div className={classNames(overflowClassName, contentHeightClassName)}>
-              <div
-                className={classNames(
-                  'sticky w-full flex justify-between p-2 px-4 top-0 left-0 backdrop-filter backdrop-blur-md z-20 overflow-hidden',
-                  headerRoundedClassName
-                )}
-              >
-                <div className='absolute left-4 flex space-x-2 items-center'>
-                  {onPreviousClick && <PreviousButton onClick={onPreviousClick} />}
-                  {onNextClick && <NextButton onClick={onNextClick} />}
-                </div>
-                <CloseModalButton closeModal={closeModal} className='absolute right-4' />
-                <SimpleModalTitle title={title} />
+            <div className='sticky top-0 flex py-1'>
+              <div className='absolute left-4 flex space-x-2 items-center top-1'>
+                {onPreviousClick && <PreviousButton onClick={onPreviousClick} />}
+                {onNextClick && <NextButton onClick={onNextClick} />}
               </div>
-              <div className={classNames(paddingClassName, className)}>{children}</div>
+              <CloseModalButton closeModal={closeModal} className='absolute top-1 right-4' />
+              <SimpleModalTitle title={title} className='mx-auto my-1' />
             </div>
+            <div className={classNames(paddingClassName, className)}>{children}</div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -126,16 +113,14 @@ export const Modal = (props: ModalProps) => {
 Modal.defaultProps = {
   noPad: false,
   bgClassName: 'bg-new-modal',
-  roundedClassName: 'rounded-none sm:rounded-xl',
-  headerRoundedClassName: 'rounded-none sm:rounded-t-xl',
-  maxWidthClassName: 'sm:max-w-lg',
-  widthClassName: 'w-screen sm:w-full',
-  modalHeightClassName: 'h-screen sm:h-auto',
+  roundedClassName: 'rounded-none xs:rounded-xl',
+  maxWidthClassName: 'max-w-lg',
+  widthClassName: 'w-screen xs:w-full',
+  modalHeightClassName: 'h-screen xs:h-auto',
   maxHeightClassName: 'max-h-screen',
-  paddingClassName: 'px-2 xs:px-8 pt-10 pb-2 xs:pb-10 ',
+  paddingClassName: 'px-2 xs:px-8 py-6 xs:py-10',
   shadowClassName: 'shadow-3xl',
-  overflowClassName: 'overflow-y-auto minimal-scrollbar',
-  contentHeightClassName: 'h-full'
+  overflowClassName: 'overflow-y-auto minimal-scrollbar'
 }
 
 const CloseModalButton = (props) => (
@@ -150,7 +135,10 @@ const ModalHeaderButton: React.FC<{ onClick: () => void; className?: string; ico
   const { onClick, className, icon } = props
   return (
     <button
-      className={classNames('trans text-inverse opacity-100 hover:opacity-70 stroke-2', className)}
+      className={classNames(
+        'trans text-inverse opacity-100 hover:opacity-70 stroke-2 backdrop-filter backdrop-blur-sm rounded-full',
+        className
+      )}
       onClick={onClick}
     >
       <FeatherIcon icon={icon} className='w-6 h-6' />
@@ -158,9 +146,18 @@ const ModalHeaderButton: React.FC<{ onClick: () => void; className?: string; ico
   )
 }
 
-const SimpleModalTitle: React.FC<{ title?: React.ReactNode }> = (props) => {
-  const { title } = props
-  return <span className='text-inverse font-semibold mx-auto min-h-10'>{title}</span>
+const SimpleModalTitle: React.FC<{ title?: React.ReactNode; className?: string }> = (props) => {
+  const { title, className } = props
+  return (
+    <span
+      className={classNames(
+        'text-inverse font-semibold backdrop-filter backdrop-blur-sm rounded-full px-1',
+        className
+      )}
+    >
+      {title}
+    </span>
+  )
 }
 
 interface ModalTitleProps {

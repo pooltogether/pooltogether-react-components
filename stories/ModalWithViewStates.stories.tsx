@@ -18,11 +18,13 @@ const views: ModalWithViewStateView[] = [
   {
     id: ViewIds.primary,
     view: (props) => (
-      <div className='flex flex-col'>
+      <div className='flex flex-col h-full pb-10 mb-10'>
         <span>{props.description}</span>
         <span>{props.count}</span>
         <button onClick={() => props.increment()}>increment</button>
-        <button onClick={() => props.setSelectedViewId(ViewIds.secondary)}>NEXT</button>
+        <div className='bg-pt-red-light mt-auto flex justify-end'>
+          <button onClick={() => props.setSelectedViewId(ViewIds.secondary)}>Next view</button>
+        </div>
       </div>
     ),
     title: 'Primary'
@@ -30,16 +32,20 @@ const views: ModalWithViewStateView[] = [
   {
     id: ViewIds.secondary,
     view: (props) => (
-      <div className='flex flex-col'>
+      <div className='flex flex-col mb-10 pb-10'>
         <span>{props.description}</span>
-        <button disabled={!props?.previous} onClick={() => props?.previous()}>
-          Previous view
-        </button>
-        <button disabled={!props?.next} onClick={() => props?.next()}>
-          Next view
-        </button>
+
         <span>{props.count}</span>
         <button onClick={() => props.increment()}>increment</button>
+        <div className='bg-pt-red h-128'>Realllly talllllll</div>
+        <div className='bg-pt-red-light mt-auto flex justify-between'>
+          <button disabled={!props?.previous} onClick={() => props?.previous()}>
+            Previous view
+          </button>
+          <button disabled={!props?.next} onClick={() => props?.next()}>
+            Next view
+          </button>
+        </div>
       </div>
     ),
     title: 'Secondary',
@@ -49,17 +55,18 @@ const views: ModalWithViewStateView[] = [
   {
     id: ViewIds.tertiary,
     view: (props) => (
-      <div className='flex flex-col'>
-        <button disabled={!props?.previous} onClick={() => props?.previous()}>
-          Previous view
-        </button>
-        <span>{props.description}</span>
-        <button disabled={!props?.next} onClick={() => props?.next()}>
-          Next view
-        </button>
+      <div className='flex flex-col mb-10'>
         <button onClick={() => props.setSelectedViewId(ViewIds.primary)}>Back to Primary</button>
         <span>{props.count}</span>
         <button onClick={() => props.increment()}>increment</button>
+        <div className='bg-pt-red-light mt-auto flex justify-between'>
+          <button disabled={!props?.previous} onClick={() => props?.previous()}>
+            Previous view
+          </button>
+          <button disabled={!props?.next} onClick={() => props?.next()}>
+            Next view
+          </button>
+        </div>
       </div>
     ),
     previousViewId: ViewIds.secondary

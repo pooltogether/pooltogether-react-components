@@ -1,3 +1,4 @@
+import classNames from 'classnames'
 import React from 'react'
 import Slider from 'react-slick'
 
@@ -10,7 +11,8 @@ import Slider from 'react-slick'
 export const Carousel: React.FC<{
   children: React.ReactNode
   className?: string
-  // settinsdhttps://react-slick.neostack.com/docs/api/
+  marginClassName?: string
+  // https://react-slick.neostack.com/docs/api/
   settings?: {
     adaptiveHeight?: boolean
     arrows?: boolean
@@ -26,9 +28,11 @@ export const Carousel: React.FC<{
     speed?: number
   }
 }> = (props) => {
-  const { children, className, settings } = props
+  const { children, className, marginClassName, settings } = props
 
-  return <Slider {...settings} children={children} className={className} />
+  return (
+    <Slider {...settings} children={children} className={classNames(className, marginClassName)} />
+  )
 }
 
 Carousel.defaultProps = {
@@ -38,5 +42,6 @@ Carousel.defaultProps = {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1
-  }
+  },
+  marginClassName: 'mb-4'
 }

@@ -1,7 +1,7 @@
 import React, { ReactNode, useMemo, useState } from 'react'
-import classnames from 'classnames'
-import classNames from 'classnames'
+import { v4 as uuid } from 'uuid'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
+import classNames from 'classnames'
 
 export interface Tab {
   id: string
@@ -19,35 +19,36 @@ export const Tabs: React.FC<{
   const [selectedTabId, setSelectedTabId] = useState(initialTabId)
   const selectedTab = useMemo(() => tabs.find((tab) => tab.id === selectedTabId), [selectedTabId])
   const shouldReduceMotion = useReducedMotion()
+  const id = useMemo(() => uuid(), [])
 
   return (
-    <AnimatePresence>
-      <motion.div
-        id='tab-animation-wrapper'
-        transition={{ duration: shouldReduceMotion ? 0 : 0.1, ease: 'easeIn' }}
-        initial={{
-          opacity: 0
-        }}
-        exit={{
-          opacity: 0
-        }}
-        animate={{
-          opacity: 1
-        }}
-        className={classnames('flex flex-col', className)}
-      >
-        <div className={classNames('space-x-4', titleClassName)}>
-          {tabs.map((tab) => (
-            <TabTitle
-              {...tab}
-              isSelected={tab.id === selectedTabId}
-              setSelected={() => setSelectedTabId(tab.id)}
-            />
-          ))}
-        </div>
-        <div>{selectedTab.view}</div>
-      </motion.div>
-    </AnimatePresence>
+    <>
+      <div className={classNames('space-x-4', titleClassName)}>
+        {tabs.map((tab) => (
+          <TabTitle
+            key={`${id}-tab-${tab.id}`}
+            {...tab}
+            isSelected={tab.id === selectedTabId}
+            setSelected={() => setSelectedTabId(tab.id)}
+          />
+        ))}
+      </div>
+      <AnimatePresence>
+        <motion.div
+          key={`tab-animation-wrapper-${selectedTabId}`}
+          transition={{ duration: shouldReduceMotion ? 0 : 0.1, ease: 'easeIn' }}
+          initial={{
+            opacity: 0
+          }}
+          animate={{
+            opacity: 1
+          }}
+          className={classNames('flex flex-col', className)}
+        >
+          {selectedTab.view}
+        </motion.div>
+      </AnimatePresence>
+    </>
   )
 }
 
@@ -59,7 +60,7 @@ export const TabTitle: React.FC<
   return (
     <button
       onClick={setSelected}
-      className={classnames(
+      className={classNames(
         'text-inverse leading-none trans font-bold border-b-2 pb-3 trans hover:opacity-80',
         textClassName,
         {

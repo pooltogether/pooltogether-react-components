@@ -61,6 +61,7 @@ export { LoadingDots } from './components/Loading/LoadingDots'
 
 // Modal
 export { Modal, ModalTitle, ModalProps } from './components/Modal/Modal'
+export { SettingsModal } from './components/Modal/SettingsModal'
 export {
   ModalWithViewState,
   ModalWithViewStateProps,

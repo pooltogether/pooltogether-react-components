@@ -5,10 +5,14 @@ import { Modal, ModalProps } from './Modal'
 export type ModalWithViewStateView = View & {
   title?: React.ReactNode
   bgClassName?: string
+  onCloseViewId?: string | number
 }
 
 export type ModalWithViewStateProps = Omit<ModalProps, 'children'> &
-  ViewStateMachineProps<ModalWithViewStateView> & { hideNavButtons?: boolean; [key: string]: any }
+  ViewStateMachineProps<ModalWithViewStateView> & {
+    hideNavButtons?: boolean
+    [key: string]: any
+  }
 
 /**
  * NOTE: The way props are passed to views is kinda a hack.
@@ -25,7 +29,7 @@ export function ModalWithViewState(props: ModalWithViewStateProps) {
     className,
     outerClassName,
     widthClassName,
-    heightClassName,
+    modalHeightClassName,
     maxWidthClassName,
     maxHeightClassName,
     paddingClassName,
@@ -62,11 +66,17 @@ export function ModalWithViewState(props: ModalWithViewStateProps) {
     <Modal
       className={className}
       isOpen={isOpen}
-      closeModal={closeModal}
+      closeModal={() => {
+        console.log('closeModal', { selectedView })
+        if (selectedView.onCloseViewId !== undefined) {
+          setSelectedViewId(selectedView.onCloseViewId)
+        }
+        closeModal()
+      }}
       label={label}
       title={selectedView.title !== undefined ? selectedView.title : title}
       widthClassName={widthClassName}
-      heightClassName={heightClassName}
+      modalHeightClassName={modalHeightClassName}
       maxWidthClassName={maxWidthClassName}
       maxHeightClassName={maxHeightClassName}
       paddingClassName={paddingClassName}

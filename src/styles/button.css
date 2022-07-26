@@ -74,7 +74,7 @@
 
 .pt-btn--transparent:not([disabled]):hover,
 .pt-btn--transparent:not([disabled]):focus {
-  @apply ring-2 ring-actually-black ring-opacity-5 text-opacity-90;
+  @apply ring-2 ring-actually-black ring-opacity-5 text-opacity-90 bg-opacity-5;
 }
 
 .pt-btn--transparent:not([disabled]):active {

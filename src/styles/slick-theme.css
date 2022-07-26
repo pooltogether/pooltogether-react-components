@@ -91,9 +91,7 @@
 }
 
 .slick-dots {
-  @apply space-x-2;
-  position: absolute;
-  bottom: -25px;
+  @apply space-x-2 absolute -bottom-7;
   display: block;
   width: 100%;
   margin: 0;
