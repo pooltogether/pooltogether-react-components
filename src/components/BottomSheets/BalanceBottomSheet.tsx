@@ -104,6 +104,7 @@ export const BalanceBottomSheetBackButton = (props: {
 interface MainViewProps {
   t: i18nTranslate
   chainId: number
+  ticket: Token
   token: Token
   balance: Amount
   balanceUsd: Amount
@@ -122,7 +123,7 @@ const MainView = (props: MainViewProps & { setView: (view: string) => void }) =>
     chainId,
     transactionHash,
     views,
-    token,
+    ticket,
     balance,
     balanceUsd,
     setView,
@@ -152,13 +153,13 @@ const MainView = (props: MainViewProps & { setView: (view: string) => void }) =>
             tip={
               <>
                 {numberWithCommas(balance.amount, { precision: getMaxPrecision(balance.amount) })}{' '}
-                {token.symbol}
+                {ticket.symbol}
               </>
             }
           >
-            <TokenIcon chainId={chainId} address={token.address} sizeClassName='w-4 h-4 my-auto' />
+            <TokenIcon chainId={chainId} address={ticket.address} sizeClassName='w-4 h-4 my-auto' />
             <span className='font-bold opacity-50 mx-1'>{numberWithCommas(balance.amount)}</span>
-            <span className='opacity-50'>{token.symbol}</span>
+            <span className='opacity-50'>{ticket.symbol}</span>
           </Tooltip>
         </span>
       </div>
@@ -234,11 +235,12 @@ export interface ContractLink {
 interface MoreInfoViewProps {
   t: i18nTranslate
   chainId: number
+  ticket: Token
   token: Token
   contractLinks: ContractLink[]
   moreInfoViews?: View[]
   delegate?: string
-  sendRevokeAllowanceTransaction?: () => Promise<number>
+  sendRevokeAllowanceTransaction?: () => Promise<string>
   isWalletOnProperNetwork: boolean
   isWalletMetaMask: boolean
 }
@@ -254,6 +256,7 @@ const MoreInfoView = (
     sendRevokeAllowanceTransaction,
     chainId,
     delegate,
+    ticket,
     token,
     moreInfoViews,
     contractLinks,
@@ -261,8 +264,8 @@ const MoreInfoView = (
     isWalletMetaMask
   } = props
 
-  const handleAddTokenToMetaMask = async () => {
-    if (!token) {
+  const handleAddTicketToMetaMask = async () => {
+    if (!ticket) {
       return
     }
 
@@ -270,20 +273,20 @@ const MoreInfoView = (
       toast.warn(
         t?.('switchToNetworkToAddToken', {
           networkName: getNetworkNiceNameByChainId(chainId),
-          token: token.symbol
+          token: ticket.symbol
         }) ||
           `Switch your wallet's network to ${getNetworkNiceNameByChainId(chainId)} to add token '${
-            token.symbol
+            ticket.symbol
           }'`
       )
       return null
     }
 
     addTokenToMetamask(
-      token.symbol,
-      token.address,
-      Number(token.decimals),
-      TOKEN_IMG_URL[token.symbol]
+      ticket.symbol,
+      ticket.address,
+      Number(ticket.decimals),
+      TOKEN_IMG_URL[ticket.symbol]
     )
   }
 
@@ -320,13 +323,13 @@ const MoreInfoView = (
 
         {isWalletMetaMask && (
           <SquareButton
-            onClick={handleAddTokenToMetaMask}
+            onClick={handleAddTicketToMetaMask}
             className='flex w-full items-center justify-center'
           >
             <FeatherIcon icon='plus-circle' className='w-5 h-5 mr-1' />{' '}
             {t?.('addTicketTokenToMetamask', {
-              token: token.symbol
-            }) || `Add ${token.symbol} to MetaMask`}
+              token: ticket.symbol
+            }) || `Add ${ticket.symbol} to MetaMask`}
           </SquareButton>
         )}
 

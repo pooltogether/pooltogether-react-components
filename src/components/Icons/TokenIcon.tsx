@@ -98,7 +98,7 @@ import PTaUSDC from '../../assets/Tokens/ptausdc.png'
 import TCAP from '../../assets/Tokens/tcap.png'
 import UNI_V2_LP_TICKET from '../../assets/Tokens/uni-v2-lp-pool.png'
 import WAVAX from '../../assets/Tokens/wavax.png'
-import OP from '../../assets/Tokens/op.svg'
+import OP from '../../assets/Tokens/optimism-icon.png'
 
 /**
  * Sometimes the CoinGecko images aren't the prettiest

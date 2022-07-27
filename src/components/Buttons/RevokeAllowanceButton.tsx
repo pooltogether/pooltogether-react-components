@@ -18,7 +18,7 @@ interface RevokeAllowanceButtonProps {
   isWalletOnProperNetwork: boolean
   chainId: number
   token: Token
-  sendRevokeAllowanceTransaction: () => Promise<number>
+  sendRevokeAllowanceTransaction: () => Promise<string>
 }
 
 export const RevokeAllowanceButton = (props: RevokeAllowanceButtonProps) => {
