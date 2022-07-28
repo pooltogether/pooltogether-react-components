@@ -77,7 +77,7 @@ export function ViewStateMachine<T extends View>(props: ViewStateMachineProps<T>
     <AnimatePresence>
       <motion.div
         key={`view-state-machine-animation-wrapper-${selectedViewId}`}
-        transition={{ duration: shouldReduceMotion ? 0 : 0.15, ease: 'easeIn' }}
+        transition={{ duration: shouldReduceMotion ? 0 : 0.1, ease: 'easeIn' }}
         initial={{
           opacity: 0
         }}

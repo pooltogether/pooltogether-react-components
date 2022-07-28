@@ -95,12 +95,12 @@ export const Modal = (props: ModalProps) => {
             )}
           >
             <div className='sticky top-0 flex py-1'>
-              <div className='absolute left-4 flex space-x-2 items-center top-1'>
+              <div className='absolute left-4 flex space-x-2 items-center top-2'>
                 {onPreviousClick && <PreviousButton onClick={onPreviousClick} />}
                 {onNextClick && <NextButton onClick={onNextClick} />}
               </div>
-              <CloseModalButton closeModal={closeModal} className='absolute top-1 right-4' />
-              <SimpleModalTitle title={title} className='mx-auto my-1' />
+              <CloseModalButton closeModal={closeModal} className='absolute top-2 right-4' />
+              <SimpleModalTitle title={title} className='mx-auto leading-none my-2' />
             </div>
             <div className={classNames(paddingClassName, className)}>{children}</div>
           </motion.div>

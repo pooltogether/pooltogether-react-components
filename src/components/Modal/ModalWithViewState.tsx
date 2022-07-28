@@ -6,6 +6,8 @@ export type ModalWithViewStateView = View & {
   title?: React.ReactNode
   bgClassName?: string
   onCloseViewId?: string | number
+  hideNextNavButton?: boolean
+  hidePreviousNavButton?: boolean
 }
 
 export type ModalWithViewStateProps = Omit<ModalProps, 'children'> &
@@ -53,12 +55,14 @@ export function ModalWithViewState(props: ModalWithViewStateProps) {
   )
 
   const previous =
-    !hideNavButtons && selectedView.previousViewId !== undefined
+    !hideNavButtons &&
+    !selectedView.hidePreviousNavButton &&
+    selectedView.previousViewId !== undefined
       ? () => setSelectedViewId(selectedView.previousViewId)
       : null
 
   const next =
-    !hideNavButtons && selectedView.nextViewId !== undefined
+    !hideNavButtons && !selectedView.hideNextNavButton && selectedView.nextViewId !== undefined
       ? () => setSelectedViewId(selectedView.nextViewId)
       : null
 
