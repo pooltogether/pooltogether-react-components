@@ -3,43 +3,64 @@ import classnames from 'classnames'
 import { useCoingeckoTokenImage } from '@pooltogether/hooks'
 import { NETWORK } from '@pooltogether/utilities'
 
-interface TokenIconProps {
+export const TokenIcon: React.FC<{
   chainId: number
   address: string
   sizeClassName?: string
   className?: string
   style?: object
   onClick?: React.MouseEventHandler<HTMLImageElement>
-}
-
-export const TokenIcon = (props: TokenIconProps) => {
-  const { sizeClassName, className, chainId, address, onClick, style } = props
-
-  const { data: tokenImage, isFetched } = useCoingeckoTokenImage(chainId, address)
-
+}> = (props) => {
   const imageOverride = getParameterCaseInsensitive(
-    TOKEN_IMAGE_OVERRIDES?.[chainId],
-    address.toLowerCase()
+    TOKEN_IMAGE_OVERRIDES?.[props.chainId],
+    props.address?.toLowerCase()
   )
 
-  if (imageOverride || (isFetched && tokenImage)) {
-    const src = imageOverride || tokenImage
+  if (imageOverride) {
+    return <TokenIconImg {...props} src={imageOverride} />
+  }
+  return <CoingeckoTokenIcon {...props} />
+}
 
+const CoingeckoTokenIcon: React.FC<{
+  chainId: number
+  address: string
+  sizeClassName?: string
+  className?: string
+  style?: object
+  onClick?: React.MouseEventHandler<HTMLImageElement>
+}> = (props) => {
+  const { data: tokenImage } = useCoingeckoTokenImage(props.chainId, props.address)
+  return <TokenIconImg {...props} src={tokenImage} />
+}
+
+const TokenIconImg: React.FC<{
+  src: string
+  sizeClassName?: string
+  className?: string
+  style?: object
+  onClick?: React.MouseEventHandler<HTMLImageElement>
+}> = (props) => {
+  if (!props.src) {
     return (
-      <img
-        src={src}
-        className={classnames('inline-block rounded-full', className, sizeClassName)}
-        onClick={onClick}
-        alt={`token icon`}
-        style={style}
+      <div
+        className={classnames(
+          'inline-block rounded-full bg-overlay-white',
+          props.className,
+          props.sizeClassName
+        )}
+        onClick={props.onClick}
       />
     )
   }
 
   return (
-    <div
-      className={classnames('inline-block rounded-full bg-overlay-white', className, sizeClassName)}
-      onClick={onClick}
+    <img
+      src={props.src}
+      className={classnames('inline-block rounded-full', props.className, props.sizeClassName)}
+      onClick={props.onClick}
+      alt={`token icon`}
+      style={props.style}
     />
   )
 }
@@ -194,5 +215,5 @@ export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
  * Allows you to not worry about putting keys in the TOKEN_IMAGE_OVERRIDES object checksummed or lowercase
  */
 function getParameterCaseInsensitive(object, key) {
-  return object?.[Object.keys(object).find((k) => k.toLowerCase() === key.toLowerCase())]
+  return object?.[Object.keys(object).find((k) => k.toLowerCase() === key?.toLowerCase())]
 }

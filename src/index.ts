@@ -26,6 +26,7 @@ export { overrideToolTipPosition, Tooltip } from './components/Containers/Toolti
 export { CopyIcon } from './components/Icons/CopyIcon'
 export { LinkIcon } from './components/Icons/LinkIcon'
 export { TokenIcon } from './components/Icons/TokenIcon'
+export { TokenIconWithNetwork } from './components/Icons/TokenIconWithNetwork'
 export { PoolIcon } from './components/Icons/PoolIcon'
 export { NetworkIcon } from './components/Icons/NetworkIcon'
 export { WalletIcon } from './components/Icons/WalletIcon'

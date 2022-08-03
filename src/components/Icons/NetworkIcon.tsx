@@ -13,8 +13,12 @@ import PolygonLogo from '../../assets/Networks/polygon-icon.png'
 import CeloColoredLogo from '../../assets/Networks/celo-colored.png'
 import OptimismLogo from '../../assets/Networks/optimism-icon.png'
 
-
-export const NetworkIcon = (props) => {
+export const NetworkIcon: React.FC<{
+  chainId: number
+  sizeClassName?: string
+  className?: string
+  onClick?: React.MouseEventHandler<HTMLImageElement>
+}> = (props) => {
   const { sizeClassName, className, chainId, onClick } = props
 
   const src = NETWORK_MAPPING[chainId] || DefaultNetworkLogo
@@ -46,5 +50,5 @@ export const NETWORK_MAPPING = Object.freeze({
   [NETWORK.avalanche]: Avalanche,
   [NETWORK.fuji]: Avalanche,
   [NETWORK.optimism]: OptimismLogo,
-  [NETWORK['optimism-kovan']]: OptimismLogo,
+  [NETWORK['optimism-kovan']]: OptimismLogo
 })
