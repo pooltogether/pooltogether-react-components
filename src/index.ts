@@ -30,6 +30,7 @@ export { TokenIconWithNetwork } from './components/Icons/TokenIconWithNetwork'
 export { PoolIcon } from './components/Icons/PoolIcon'
 export { NetworkIcon } from './components/Icons/NetworkIcon'
 export { WalletIcon } from './components/Icons/WalletIcon'
+export { ExchangeIcon, ExchangeKey } from './components/Icons/ExchangeIcon'
 
 // Input
 export { CheckboxInputGroup } from './components/Input/CheckboxInputGroup'
