@@ -47,7 +47,7 @@ export const BottomSheet = (props: BottomSheetProps) => {
   }
 
   return (
-    <ReactSpringBottomSheet {...sheetProps} open={open} onDismiss={onDismiss}>
+    <ReactSpringBottomSheet {...sheetProps} open={open} onDismiss={onDismiss} className='z-40'>
       <CloseBottomSheetButton closeModal={onDismiss} hide={hideCloseButton} />
       <div className={classNames('px-4 pt-4 flex-grow pb-8', className)}>{children}</div>
     </ReactSpringBottomSheet>

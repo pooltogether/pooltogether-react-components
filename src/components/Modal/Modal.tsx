@@ -80,7 +80,7 @@ export const Modal = (props: ModalProps) => {
               translateY: 0
             }}
             className={classnames(
-              'mx-auto relative',
+              'mx-auto relative z-40',
               widthClassName,
               heightClassName,
               maxWidthClassName,
