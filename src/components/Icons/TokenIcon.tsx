@@ -123,6 +123,7 @@ import OP from '../../assets/Tokens/optimism-icon.png'
 
 /**
  * Sometimes the CoinGecko images aren't the prettiest
+ * NOTE: All addresses are lowercased
  */
 export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
   [NETWORK.mainnet]: {
@@ -201,8 +202,8 @@ export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
     '0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7': WAVAX
   },
   [NETWORK.optimism]: {
-    '0x5E5b54cd73872ba3103cd95A58067A7079d0259b': PTaUSDC,
-    '0x62BB4fc73094c83B5e952C2180B23fA7054954c4': PTaUSDC,
+    '0x5e5b54cd73872ba3103cd95a58067a7079d0259b': PTaUSDC,
+    '0x62bb4fc73094c83b5e952c2180b23fa7054954c4': PTaUSDC,
     '0x4200000000000000000000000000000000000042': OP
   }
 })
