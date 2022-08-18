@@ -7,6 +7,7 @@ import MetaMask from '../../assets/Wallets/metamask-icon.png'
 import Coinbase from '../../assets/Wallets/coinbase-icon.svg'
 import WalletConnect from '../../assets/Wallets/walletconnect-icon.svg'
 import Injected from '../../assets/Wallets/injected-icon.svg'
+import Enkrypt from '../../assets/Wallets/enkrypt-icon.svg'
 
 interface WalletIconProps {
   wallet: string
@@ -40,5 +41,6 @@ export const WALLET_MAPPING = Object.freeze({
   'coinbase': Coinbase,
   'coinbase wallet': Coinbase,
   'walletconnect': WalletConnect,
-  'injected': Injected
+  'injected': Injected,
+  'enkrypt': Enkrypt
 })
