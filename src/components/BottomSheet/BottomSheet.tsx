@@ -17,6 +17,17 @@ export interface BottomSheetProps extends ReactSpringBottomSheetProps {
   hideCloseButton?: boolean
   // Modal specific props, pull from ModalProps as needed
   maxWidthClassName?: string
+  widthClassName?: string
+  maxHeightClassName?: string
+  paddingClassName?: string
+  bgClassName?: string
+  roundedClassName?: string
+  shadowClassName?: string
+  overflowClassName?: string
+  modalHeightClassName?: string
+  style?: object
+  onPreviousClick?: () => void
+  onNextClick?: () => void
 }
 
 export const BottomSheet = (props: BottomSheetProps) => {
@@ -28,6 +39,17 @@ export const BottomSheet = (props: BottomSheetProps) => {
     label,
     hideCloseButton,
     maxWidthClassName,
+    shadowClassName,
+    widthClassName,
+    maxHeightClassName,
+    paddingClassName,
+    modalHeightClassName,
+    bgClassName,
+    roundedClassName,
+    overflowClassName,
+    style,
+    onPreviousClick,
+    onNextClick,
     ...sheetProps
   } = props
   const size = useScreenSize()
@@ -39,7 +61,17 @@ export const BottomSheet = (props: BottomSheetProps) => {
         isOpen={open}
         closeModal={onDismiss}
         className={className}
+        modalHeightClassName={modalHeightClassName}
         maxWidthClassName={maxWidthClassName}
+        widthClassName={widthClassName}
+        maxHeightClassName={maxHeightClassName}
+        paddingClassName={paddingClassName}
+        bgClassName={bgClassName}
+        roundedClassName={roundedClassName}
+        overflowClassName={overflowClassName}
+        style={style}
+        onPreviousClick={onPreviousClick}
+        onNextClick={onNextClick}
       >
         {children}
       </Modal>
@@ -49,13 +81,16 @@ export const BottomSheet = (props: BottomSheetProps) => {
   return (
     <ReactSpringBottomSheet {...sheetProps} open={open} onDismiss={onDismiss} className='z-40'>
       <CloseBottomSheetButton closeModal={onDismiss} hide={hideCloseButton} />
-      <div className={classNames('px-4 pt-4 flex-grow pb-8', className)}>{children}</div>
+      <div className={classNames('px-4 pt-4 flex-grow pb-8', className, overflowClassName)}>
+        {children}
+      </div>
     </ReactSpringBottomSheet>
   )
 }
 
 BottomSheet.defaultProps = {
-  label: 'bottom-sheet'
+  label: 'bottom-sheet',
+  overflowClassName: 'overflow-y-auto minimal-scrollbar'
 }
 
 export const snapTo90 = (snapPoints: SnapPointProps) => snapPoints.maxHeight * 0.9

@@ -101,6 +101,10 @@ export { Time, TimeProps } from './components/Prizes/Time'
 // Components
 export { Accordion, ContentWrapper } from './components/Accordion'
 export { BottomSheet, BottomSheetTitle, snapTo90 } from './components/BottomSheet/BottomSheet'
+export {
+  BottomSheetWithViewState,
+  BottomSheetWithViewStateProps
+} from './components/BottomSheet/BottomSheetWithViewState'
 export { CountUp } from './components/CountUp'
 export { ErrorsBox } from './components/ErrorsBox'
 export { PageTitleAndBreadcrumbs } from './components/PageTitleAndBreadcrumbs'

@@ -83,10 +83,10 @@ export const Modal = (props: ModalProps) => {
             }}
             style={style}
             className={classnames(
-              'mx-auto relative flex flex-col',
+              'mx-auto flex flex-col',
               widthClassName,
               modalHeightClassName,
-              'xs:' + maxWidthClassName,
+              maxWidthClassName,
               maxHeightClassName,
               bgClassName,
               roundedClassName,
@@ -94,13 +94,15 @@ export const Modal = (props: ModalProps) => {
               overflowClassName
             )}
           >
-            <div className='sticky top-0 flex py-1'>
+            <div className='sticky top-0'>
               <div className='absolute left-4 flex space-x-2 items-center top-2'>
                 {onPreviousClick && <PreviousButton onClick={onPreviousClick} />}
                 {onNextClick && <NextButton onClick={onNextClick} />}
               </div>
               <CloseModalButton closeModal={closeModal} className='absolute top-2 right-4' />
-              <SimpleModalTitle title={title} className='mx-auto leading-none my-2' />
+              <div className='inset-x-0 top-0 flex justify-center'>
+                <SimpleModalTitle title={title} className='mx-auto leading-none my-4 xs:my-2' />
+              </div>
             </div>
             <div className={classNames(paddingClassName, className)}>{children}</div>
           </motion.div>
@@ -113,12 +115,12 @@ export const Modal = (props: ModalProps) => {
 Modal.defaultProps = {
   noPad: false,
   bgClassName: 'bg-new-modal',
-  roundedClassName: 'rounded-none xs:rounded-xl',
-  maxWidthClassName: 'max-w-lg',
+  roundedClassName: 'rounded-none xs:rounded',
+  maxWidthClassName: 'xs:max-w-lg',
   widthClassName: 'w-screen xs:w-full',
-  modalHeightClassName: 'h-screen xs:h-auto',
+  modalHeightClassName: 'h-actually-full-screen xs:h-auto',
   maxHeightClassName: 'max-h-screen',
-  paddingClassName: 'px-2 xs:px-8 py-6 xs:py-10',
+  paddingClassName: 'px-2 xs:px-8 pt-2 pb-12 xs:py-12',
   shadowClassName: 'shadow-3xl',
   overflowClassName: 'overflow-y-auto minimal-scrollbar'
 }
@@ -141,7 +143,7 @@ const ModalHeaderButton: React.FC<{ onClick: () => void; className?: string; ico
       )}
       onClick={onClick}
     >
-      <FeatherIcon icon={icon} className='w-6 h-6' />
+      <FeatherIcon icon={icon} className='w-8 h-8 xs:w-6 xs:h-6' />
     </button>
   )
 }

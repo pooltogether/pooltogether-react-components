@@ -41,25 +41,31 @@ export const TokenAmountInputFlat: React.FC<TokenAmountInputFlatProps> = (props)
     autoComplete
   } = props
 
-  const { register, setValue } = form
+  const { register, setValue, watch } = form
+
+  const inputVal = watch(inputKey)
 
   return (
     <div
       className={classNames(
         className,
         widthClassName,
-        'flex flex-row text-xl xs:text-2xl font-bold space-x-2'
+        'flex flex-row font-bold space-x-2 items-center'
       )}
     >
       <MaxButton setValue={setValue} balance={balance} inputKey={inputKey} token={token} />
       <Input
+        fontSizeClassName={classNames('transition', {
+          'text-4xl sm:text-10xl': inputVal?.length >= 7,
+          'text-10xl': !inputVal || inputVal?.length < 7
+        })}
         autoComplete={autoComplete}
         register={register}
         inputKey={inputKey}
         validate={validate}
         t={t}
       />
-      <InputToken chainId={chainId} token={token} />
+      <InputToken className='text-xl xs:text-2xl' chainId={chainId} token={token} />
     </div>
   )
 }
@@ -69,15 +75,15 @@ TokenAmountInputFlat.defaultProps = {
   bgClassName: 'bg-tertiary'
 }
 
-const InputToken = (props: { chainId: number; token: Token }) => {
-  const { token } = props
+const InputToken = (props: { className?: string; chainId: number; token: Token }) => {
+  const { token, className } = props
 
   if (!token) {
     return null
   }
 
   return (
-    <div className={classNames('flex items-center', 'placeholder-white placeholder-opacity-50')}>
+    <div className={classNames(className, 'flex items-center')}>
       <span className=''>{token.symbol}</span>
     </div>
   )
@@ -91,10 +97,12 @@ interface InputProps {
     [key: string]: (value: string) => boolean | string
   }
   t?: i18nTranslate
+  className?: string
+  fontSizeClassName?: string
 }
 
 const Input = (props: InputProps) => {
-  const { autoComplete, register, inputKey, validate, t } = props
+  const { autoComplete, fontSizeClassName, className, register, inputKey, validate, t } = props
 
   const pattern = {
     value: /^\d*\.?\d*$/,
@@ -104,13 +112,19 @@ const Input = (props: InputProps) => {
   return (
     <input
       className={classNames(
-        'bg-transparent outline-none w-full text-xl xs:text-2xl focus:outline-none active:outline-none text-right flex-grow'
+        fontSizeClassName,
+        className,
+        'bg-transparent outline-none w-full focus:outline-none active:outline-none text-right flex-grow'
       )}
       placeholder='0.0'
       autoComplete={autoComplete}
       {...register(inputKey, { required: true, pattern, validate })}
     />
   )
+}
+
+Input.defaultProps = {
+  fontSizeClassName: 'text-xl xs:text-2xl'
 }
 
 const MaxButton: React.FC<{

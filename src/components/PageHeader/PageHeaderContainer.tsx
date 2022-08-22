@@ -17,7 +17,7 @@ export const PageHeaderContainer: React.FC<{
     <div className={className} style={{ zIndex: 3 }}>
       <div
         className={classNames(
-          'flex justify-between items-center mx-auto max-w-screen-lg px-4 sm:px-8 py-1',
+          'flex justify-between items-center mx-auto max-w-screen-lg px-4 sm:px-8 py-2',
           className
         )}
         style={{ zIndex: 3 }}

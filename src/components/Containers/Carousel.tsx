@@ -26,6 +26,8 @@ export const Carousel: React.FC<{
     slidesToShow?: number
     slidesToScroll?: number
     speed?: number
+    nextArrow?: (props: any) => JSX.Element
+    prevArrow?: (props: any) => JSX.Element
   }
 }> = (props) => {
   const { children, className, marginClassName, settings } = props

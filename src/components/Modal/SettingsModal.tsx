@@ -66,7 +66,7 @@ export const SettingsModal: React.FC<{
       views={views}
       selectedViewId={selectedViewId}
       setSelectedViewId={setSelectedViewId}
-      maxWidthClassName='max-w-sm'
+      maxWidthClassName='xs:max-w-sm'
       // View props
       chainId={walletChainId}
       t={t}

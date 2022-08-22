@@ -214,7 +214,8 @@ const pooltogetherReactTailwindUIConfig = {
         '96': '24rem',
         '112': '28rem',
         '128': '32rem',
-        '75vh': '75vh'
+        '75vh': '75vh',
+        'actually-full-screen': 'calc(var(--vh, 1vh) * 100)'
       },
       minWidth: {
         '0': '0',
