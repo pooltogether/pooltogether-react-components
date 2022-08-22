@@ -41,7 +41,7 @@ table {
 hr {
   border: 0;
   height: 0;
-  border-top: 3px solid rgba(60, 8, 165, 0.3);
+  border-top: 3px solid rgba(255, 255, 255, 0.05);
   border-bottom: none;
   background: transparent;
   margin: 20px auto;
@@ -49,7 +49,7 @@ hr {
 }
 
 .light hr {
-  border-color: var(--color-bg-accent-grey-3);
+  border-top: 3px solid rgba(0, 0, 0, 0.05);
 }
 
 a {

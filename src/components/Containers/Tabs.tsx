@@ -1,70 +1,79 @@
-import React from 'react'
-import classnames from 'classnames'
+import React, { ReactNode, useMemo, useState } from 'react'
+import { v4 as uuid } from 'uuid'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
+import classNames from 'classnames'
 
-export const Tabs = ({ children, className }) => {
-  return <nav className={classnames('flex', className)}>{children}</nav>
+export interface Tab {
+  id: string
+  title: ReactNode
+  view: ReactNode
 }
 
-export const Tab = (props) => {
-  const {
-    isSelected,
-    onClick,
-    children,
-    className,
-    textClassName,
-    paddingClassName,
-    tabDeselectedClassName,
-    tabSelectedClassName
-  } = props
+export const Tabs: React.FC<{
+  tabs: Tab[]
+  initialTabId: string
+  titleClassName?: string
+  className?: string
+}> = (props) => {
+  const { tabs, className, titleClassName, initialTabId } = props
+  const [selectedTabId, setSelectedTabId] = useState(initialTabId)
+  const selectedTab = useMemo(() => tabs.find((tab) => tab.id === selectedTabId), [selectedTabId])
+  const shouldReduceMotion = useReducedMotion()
+  const id = useMemo(() => uuid(), [])
 
   return (
-    <a
-      onClick={onClick}
-      className={classnames(
-        className,
-        paddingClassName,
+    <>
+      <div className={classNames('space-x-4', titleClassName)}>
+        {tabs.map((tab) => (
+          <TabTitle
+            key={`${id}-tab-${tab.id}`}
+            {...tab}
+            isSelected={tab.id === selectedTabId}
+            setSelected={() => setSelectedTabId(tab.id)}
+          />
+        ))}
+      </div>
+      <AnimatePresence>
+        <motion.div
+          key={`tab-animation-wrapper-${selectedTabId}`}
+          transition={{ duration: shouldReduceMotion ? 0 : 0.1, ease: 'easeIn' }}
+          initial={{
+            opacity: 0
+          }}
+          animate={{
+            opacity: 1
+          }}
+          className={classNames('flex flex-col', className)}
+        >
+          {selectedTab.view}
+        </motion.div>
+      </AnimatePresence>
+    </>
+  )
+}
+
+export const TabTitle: React.FC<
+  { isSelected: boolean; setSelected: () => void; textClassName?: string } & Tab
+> = (props) => {
+  const { isSelected, setSelected, title, textClassName } = props
+
+  return (
+    <button
+      onClick={setSelected}
+      className={classNames(
+        'text-inverse leading-none trans font-bold border-b-2 pb-3 trans hover:opacity-80',
         textClassName,
-        'cursor-pointer capitalize leading-none trans tracking-wider outline-none focus:outline-none active:outline-none font-bold',
         {
-          [tabDeselectedClassName]: !isSelected,
-          [tabSelectedClassName]: isSelected
+          'border-inverse': isSelected,
+          'border-transparent opacity-60': !isSelected
         }
       )}
-      style={{ height: 'max-content' }}
     >
-      {children}
-    </a>
+      {title}
+    </button>
   )
 }
 
-Tab.defaultProps = {
-  className: '',
-  paddingClassName: 'px-2 py-1',
-  textClassName: 'text-sm xs:text-lg lg:text-xl',
-  tabDeselectedClassName:
-    'text-accent-1 hover:text-inverse border-default border-b-0 hover:border-b-2',
-  tabSelectedClassName: 'text-inverse border-b-2 border-default'
-}
-
-export const Content = ({ children, className }) => {
-  return <div className={className}>{children}</div>
-}
-
-export const ContentPane = ({ children, className, isSelected, alwaysPresent }) => {
-  let hiddenClassName = 'hidden'
-
-  if (alwaysPresent) {
-    hiddenClassName = 'pointer-events-none opacity-0 w-0 flex-shrink'
-  }
-
-  return (
-    <div
-      className={classnames({
-        [hiddenClassName]: !isSelected,
-        [className]: isSelected
-      })}
-    >
-      {children}
-    </div>
-  )
+TabTitle.defaultProps = {
+  textClassName: 'text-lg'
 }

@@ -53,9 +53,9 @@ Now you can use any components you want:
 
 ```js
 import React from "react";
-import { SquareButton } from "@pooltogether/pooltogether-react-components";
+import { Button } from "@pooltogether/pooltogether-react-components";
 
-<SquareButton type="submit">Submit</SquareButton>;
+<Button type="submit">Submit</Button>;
 
 // -------------------
 

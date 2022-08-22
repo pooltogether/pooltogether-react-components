@@ -1,22 +1,26 @@
-import React from 'react'
-import { BottomSheet } from '../src/components/BottomSheets/BottomSheet'
+import React, { useState } from 'react'
+import { BottomSheet } from '../src/components/BottomSheet/BottomSheet'
+import { ModalTitle } from '../src/components/Modal/Modal'
+import { Button } from '../src/components/Buttons/Button'
 
 // BasicBottomSheet Story
 const BasicBottomSheetTemplate = (args) => <BasicBottomSheetTemplateWrapper />
 
 const BasicBottomSheetTemplateWrapper = (args) => {
-  const open = true
-  const onDismiss = () => {}
+  const [isOpen, setIsOpen] = useState(true)
 
   return (
     <>
+      <Button onClick={() => setIsOpen(true)}>Open</Button>
+
       <BottomSheet
-        open={open}
-        onDismiss={onDismiss}
+        open={isOpen}
+        onDismiss={() => setIsOpen(false)}
         label={`Bottom sheet example`}
         className='space-y-4'
       >
-        <div className='text-inverse'>I'm a basic bottom sheet</div>
+        <ModalTitle chainId={1} title={'Bottom Sheet Title'} />
+        <div>I'm a basic bottom sheet</div>
       </BottomSheet>
     </>
   )

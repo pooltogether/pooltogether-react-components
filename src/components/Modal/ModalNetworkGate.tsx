@@ -4,7 +4,7 @@ import { useAddNetworkToMetamask } from '@pooltogether/hooks'
 import { getNetworkNiceNameByChainId } from '@pooltogether/utilities'
 import { useIsWalletMetamask } from '@pooltogether/hooks'
 
-import { SquareButton } from '../Buttons/SquareButton'
+import { Button } from '../Buttons/Button'
 
 interface ModalNetworkGateProps {
   t: Function
@@ -65,8 +65,8 @@ const NetworkSwitchButton = (props: NetworkSwitchButtonProps) => {
   }
 
   return (
-    <SquareButton onClick={addNetwork}>
+    <Button onClick={addNetwork}>
       {t('switchToNetworkName', 'Switch to {{networkName}}', { networkName })}
-    </SquareButton>
+    </Button>
   )
 }

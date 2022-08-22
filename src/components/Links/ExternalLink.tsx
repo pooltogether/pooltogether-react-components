@@ -3,7 +3,7 @@ import classnames from 'classnames'
 import { LinkIcon } from '../Icons/LinkIcon'
 
 export const LinkTheme = Object.freeze({
-  default: 'text-inverse hover:text-highlight-1',
+  default: 'hover:opacity-70',
   accent: 'text-highlight-1 hover:text-inverse',
   light: 'text-accent-1 hover:text-highlight-1'
 })

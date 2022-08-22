@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import ReactCountUp from 'react-countup'
-import { usePreviousValue } from 'beautiful-react-hooks'
+import usePreviousValue from 'beautiful-react-hooks/usePreviousValue'
 
 interface CountUpProps {
-  countFrom?: number
-  countTo: number
-  decimals?: number
+  countFrom?: number | string
+  countTo: number | string
+  decimals?: number | string
   duration?: number
 }
 
@@ -22,11 +22,11 @@ export function CountUp(props: CountUpProps) {
 
   return (
     <ReactCountUp
-      start={prev}
-      end={value}
+      start={Number(prev)}
+      end={Number(value)}
       duration={duration}
       separator={','}
-      decimals={decimalsToUse}
+      decimals={Number(decimalsToUse)}
     />
   )
 }

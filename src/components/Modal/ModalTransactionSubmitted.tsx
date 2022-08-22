@@ -2,12 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 import { formatBlockExplorerTxUrl } from '../Links/BlockExplorerLink'
 
-import {
-  SquareButton,
-  SquareButtonTheme,
-  SquareButtonSize,
-  SquareLink
-} from '../Buttons/SquareButton'
+import { Button, ButtonTheme, ButtonSize, ButtonLink } from '../Buttons/Button'
 
 interface ModalTransactionSubmittedProps {
   t: Function
@@ -25,24 +20,24 @@ export const ModalTransactionSubmitted = (props: ModalTransactionSubmittedProps)
 
   return (
     <div className={classNames('flex flex-col', className)}>
-      <SquareLink
+      <ButtonLink
         target='_blank'
         href={url}
-        theme={SquareButtonTheme.tealOutline}
-        size={SquareButtonSize.md}
+        theme={ButtonTheme.tealOutline}
+        size={ButtonSize.md}
         className='w-full text-center'
       >
         {t('viewReceipt', 'View receipt')}
-      </SquareLink>
+      </ButtonLink>
       {!hideCloseButton && (
-        <SquareButton
+        <Button
           onClick={() => closeModal()}
-          theme={SquareButtonTheme.purpleOutline}
-          size={SquareButtonSize.sm}
+          theme={ButtonTheme.purpleOutline}
+          size={ButtonSize.sm}
           className='w-full text-center mt-4'
         >
           {t('close', 'Close')}
-        </SquareButton>
+        </Button>
       )}
     </div>
   )

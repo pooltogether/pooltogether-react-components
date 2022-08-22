@@ -1,21 +1,25 @@
 import React, { useState } from 'react'
+import FeatherIcon from 'feather-icons-react'
 import classnames from 'classnames'
 import { Modal } from '../../Modal/Modal'
+import classNames from 'classnames'
 
-export function SettingsIcon(props) {
+export const SettingsIcon: React.FC<{
+  className?: string
+  colorClassName?: string
+  sizeClassName?: string
+}> = (props) => {
   return (
-    <svg
-      {...props}
-      width='100%'
-      height='100%'
-      viewBox='0 0 19 12'
-      fill='none'
-      xmlns='http://www.w3.org/2000/svg'
-      className='stroke-current'
-    >
-      <path strokeWidth={2} strokeLinecap='round' d='M1 1h13M1 7h17M1 13h11' />
-    </svg>
+    <FeatherIcon
+      icon='menu'
+      className={classNames(props.className, props.colorClassName, props.sizeClassName)}
+    />
   )
+}
+
+SettingsIcon.defaultProps = {
+  colorClassName: 'text-gradient-magenta',
+  sizeClassName: 'h-6 w-6'
 }
 
 /**
