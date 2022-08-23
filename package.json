@@ -47,11 +47,11 @@
   "size-limit": [
     {
       "path": "dist/react-components.cjs.production.min.js",
-      "limit": "10 KB"
+      "limit": "53 KB"
     },
     {
       "path": "dist/react-components.esm.js",
-      "limit": "10 KB"
+      "limit": "43 KB"
     }
   ],
   "peerDependencies": {
