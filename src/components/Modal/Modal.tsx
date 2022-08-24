@@ -51,7 +51,6 @@ export const Modal = (props: ModalProps) => {
   } = props
 
   const [isDialogOpen, setIsDialogOpen] = useState(isOpen)
-
   useEffect(() => {
     if (isOpen) {
       setIsDialogOpen(true)
@@ -115,7 +114,7 @@ export const Modal = (props: ModalProps) => {
 Modal.defaultProps = {
   noPad: false,
   bgClassName: 'bg-new-modal',
-  roundedClassName: 'rounded-none xs:rounded',
+  roundedClassName: 'rounded-none xs:rounded-xl',
   maxWidthClassName: 'xs:max-w-lg',
   widthClassName: 'w-screen xs:w-full',
   modalHeightClassName: 'h-actually-full-screen xs:h-auto',

@@ -37,6 +37,7 @@ export const BottomSheet = (props: BottomSheetProps) => {
     onDismiss,
     className,
     label,
+    title,
     hideCloseButton,
     maxWidthClassName,
     shadowClassName,
@@ -57,6 +58,7 @@ export const BottomSheet = (props: BottomSheetProps) => {
   if (size > ScreenSize.sm) {
     return (
       <Modal
+        title={title}
         label={label}
         isOpen={open}
         closeModal={onDismiss}
@@ -80,6 +82,7 @@ export const BottomSheet = (props: BottomSheetProps) => {
 
   return (
     <ReactSpringBottomSheet {...sheetProps} open={open} onDismiss={onDismiss} className='z-40'>
+      {!!title && <BottomSheetTitle title={title} />}
       <CloseBottomSheetButton closeModal={onDismiss} hide={hideCloseButton} />
       <div className={classNames('px-4 pt-4 flex-grow pb-8', className, overflowClassName)}>
         {children}

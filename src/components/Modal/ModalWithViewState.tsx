@@ -71,7 +71,6 @@ export function ModalWithViewState(props: ModalWithViewStateProps) {
       className={className}
       isOpen={isOpen}
       closeModal={() => {
-        console.log('closeModal', { selectedView })
         if (selectedView.onCloseViewId !== undefined) {
           setSelectedViewId(selectedView.onCloseViewId)
         }

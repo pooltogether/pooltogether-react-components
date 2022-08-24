@@ -63,7 +63,7 @@ export const Tooltip = (props) => {
         )}
         overridePosition={overrideToolTipPosition}
       >
-        <>
+        <div>
           <button
             onClick={() => {
               const current = ref.current
@@ -75,7 +75,7 @@ export const Tooltip = (props) => {
             <FeatherIcon icon='x' className='w-4 h-4 text-inverse' />
           </button>
           {tip}
-        </>
+        </div>
       </ReactTooltip>
     </>
   )

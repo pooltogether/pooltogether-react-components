@@ -43,7 +43,6 @@ export function ViewStateMachine<T extends View>(props: ViewStateMachineProps<T>
 
   const selectedView = useMemo(() => {
     const view = views.find((view) => view.id === selectedViewId)
-    console.log('New view', { view })
     return view
   }, [selectedViewId])
 

@@ -72,7 +72,6 @@ export function BottomSheetWithViewState(props: BottomSheetWithViewStateProps) {
       className={className}
       open={open}
       onDismiss={() => {
-        console.log('closeModal', { selectedView })
         if (selectedView.onCloseViewId !== undefined) {
           setSelectedViewId(selectedView.onCloseViewId)
         }

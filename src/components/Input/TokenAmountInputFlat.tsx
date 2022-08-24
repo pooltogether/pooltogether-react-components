@@ -18,6 +18,7 @@ interface TokenAmountInputFlatProps {
   t?: i18nTranslate
   className?: string
   widthClassName?: string
+  heightClassName?: string
   bgClassName?: string
   autoComplete?: string
 }
@@ -31,6 +32,7 @@ export const TokenAmountInputFlat: React.FC<TokenAmountInputFlatProps> = (props)
   const {
     className,
     widthClassName,
+    heightClassName,
     form,
     inputKey,
     token,
@@ -50,13 +52,15 @@ export const TokenAmountInputFlat: React.FC<TokenAmountInputFlatProps> = (props)
       className={classNames(
         className,
         widthClassName,
+        heightClassName,
         'flex flex-row font-bold space-x-2 items-center'
       )}
     >
       <MaxButton setValue={setValue} balance={balance} inputKey={inputKey} token={token} />
       <Input
         fontSizeClassName={classNames('transition', {
-          'text-4xl sm:text-10xl': inputVal?.length >= 7,
+          'text-xl sm:text-8xl': inputVal?.length >= 12,
+          'text-3xl sm:text-10xl': inputVal?.length >= 7 && inputVal?.length < 12,
           'text-10xl': !inputVal || inputVal?.length < 7
         })}
         autoComplete={autoComplete}
@@ -71,6 +75,7 @@ export const TokenAmountInputFlat: React.FC<TokenAmountInputFlatProps> = (props)
 }
 
 TokenAmountInputFlat.defaultProps = {
+  heightClassName: 'h-24',
   widthClassName: 'w-full',
   bgClassName: 'bg-tertiary'
 }
@@ -116,8 +121,10 @@ const Input = (props: InputProps) => {
         className,
         'bg-transparent outline-none w-full focus:outline-none active:outline-none text-right flex-grow'
       )}
+      type='number'
       placeholder='0.0'
       autoComplete={autoComplete}
+      inputMode='numeric'
       {...register(inputKey, { required: true, pattern, validate })}
     />
   )
