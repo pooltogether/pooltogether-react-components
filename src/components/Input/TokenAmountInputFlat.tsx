@@ -121,7 +121,6 @@ const Input = (props: InputProps) => {
         className,
         'bg-transparent outline-none w-full focus:outline-none active:outline-none text-right flex-grow'
       )}
-      type='number'
       placeholder='0.0'
       autoComplete={autoComplete}
       inputMode='numeric'
