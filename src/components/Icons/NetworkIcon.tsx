@@ -51,7 +51,7 @@ export const NETWORK_MAPPING = Object.freeze({
   [NETWORK.avalanche]: Avalanche,
   [NETWORK.fuji]: Avalanche,
   [NETWORK.optimism]: OptimismLogo,
-  [NETWORK['optimism-kovan']]: OptimismLogo,
+  [NETWORK['optimism-goerli']]: OptimismLogo,
   [NETWORK.arbitrum]: ArbitrumLogo,
-  [NETWORK['arbitrum-kovan']]: ArbitrumLogo
+  [NETWORK['arbitrum-goerli']]: ArbitrumLogo
 })
