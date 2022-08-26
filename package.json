@@ -1,6 +1,6 @@
 {
   "name": "@pooltogether/react-components",
-  "version": "1.18.2",
+  "version": "1.19.0-beta.4",
   "description": "PoolTogether UI elements in a shared lib",
   "author": "PoolTogether Inc.",
   "license": "MIT",
@@ -13,7 +13,7 @@
     "README.md"
   ],
   "engines": {
-    "node": ">=10"
+    "node": ">=16"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,7 @@
     "build": "tsdx build",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
+    "lint:fix": "tsdx lint --fix",
     "prepare": "tsdx build",
     "size": "size-limit",
     "analyze": "size-limit --why",
@@ -46,18 +47,18 @@
   "size-limit": [
     {
       "path": "dist/react-components.cjs.production.min.js",
-      "limit": "10 KB"
+      "limit": "535 KB"
     },
     {
       "path": "dist/react-components.esm.js",
-      "limit": "10 KB"
+      "limit": "430 KB"
     }
   ],
   "peerDependencies": {
     "@pooltogether/current-pool-data": "^3.7.2",
-    "@pooltogether/evm-chains-extended": "^0.7.0",
-    "@pooltogether/hooks": "^1.10.0",
-    "@pooltogether/utilities": "^0.4.0",
+    "@pooltogether/evm-chains-extended": "0.7.2-beta.4",
+    "@pooltogether/hooks": "1.11.0-beta.4",
+    "@pooltogether/utilities": "0.5.2-beta.2",
     "eth-revert-reason": "^1.0.3",
     "ethers": "^5.6.4",
     "feather-icons-react": "^0.4.1",
@@ -73,9 +74,9 @@
     "@babel/preset-env": "^7.16.4",
     "@pooltogether/current-pool-data": "^3.7.2",
     "@pooltogether/etherplex": "^1.1.2",
-    "@pooltogether/evm-chains-extended": "^0.7.0",
-    "@pooltogether/hooks": "^1.10.0",
-    "@pooltogether/utilities": "^0.4.0",
+    "@pooltogether/evm-chains-extended": "0.7.2-beta.4",
+    "@pooltogether/hooks": "1.11.0-beta.4",
+    "@pooltogether/utilities": "0.5.2-beta.2",
     "@rollup/plugin-url": "^6.1.0",
     "@size-limit/preset-small-lib": "^6.0.4",
     "@storybook/addon-actions": "^6.4.9",
@@ -89,6 +90,7 @@
     "babel-loader": "^8.2.3",
     "beautiful-react-hooks": "^1.0.2",
     "cssnano": "^5.0.10",
+    "eslint-plugin-prettier": "3.4.1",
     "eth-revert-reason": "^1.0.3",
     "ethers": "^5.6.4",
     "feather-icons-react": "^0.4.1",
