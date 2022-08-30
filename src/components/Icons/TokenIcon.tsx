@@ -6,9 +6,9 @@ import { NETWORK } from '@pooltogether/utilities'
 export const TokenIcon: React.FC<{
   chainId: number
   address: string
+  style?: React.CSSProperties
   sizeClassName?: string
   className?: string
-  style?: object
   onClick?: React.MouseEventHandler<HTMLImageElement>
 }> = (props) => {
   const imageOverride = getParameterCaseInsensitive(
@@ -27,7 +27,7 @@ const CoingeckoTokenIcon: React.FC<{
   address: string
   sizeClassName?: string
   className?: string
-  style?: object
+  style?: React.CSSProperties
   onClick?: React.MouseEventHandler<HTMLImageElement>
 }> = (props) => {
   const { data: tokenImage } = useCoingeckoTokenImage(props.chainId, props.address)
@@ -38,12 +38,13 @@ const TokenIconImg: React.FC<{
   src: string
   sizeClassName?: string
   className?: string
-  style?: object
+  style?: React.CSSProperties
   onClick?: React.MouseEventHandler<HTMLImageElement>
 }> = (props) => {
   if (!props.src) {
     return (
       <div
+        style={props.style}
         className={classnames(
           'inline-block rounded-full bg-overlay-white',
           props.className,

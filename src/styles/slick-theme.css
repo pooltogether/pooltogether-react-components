@@ -54,17 +54,17 @@
 }
 
 .slick-prev {
-  @apply absolute left-0 sm:left-20;
+  @apply absolute left-0 xs:left-4 sm:left-20 md:left-48 lg:left-96;
 }
 [dir='rtl'] .slick-prev {
-  @apply absolute right-0 sm:right-20;
+  @apply absolute right-0 xs:right-4 sm:right-20 md:right-48 lg:right-96;
 }
 
 .slick-next {
-  @apply absolute right-0 sm:right-20;
+  @apply absolute right-0 xs:right-4 sm:right-20 md:right-48 lg:right-96;
 }
 [dir='rtl'] .slick-next {
-  @apply absolute left-0 sm:left-20;
+  @apply absolute left-0 xs:left-4 sm:left-20 md:left-48 lg:left-96;
 }
 
 /* Dots */

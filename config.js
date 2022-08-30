@@ -230,7 +230,16 @@ const pooltogetherReactTailwindUIConfig = {
         '1/4': '25%',
         '1/2': '50%',
         '3/4': '75%',
-        'full': '100%'
+        'full': '100%',
+        '1/4-screen': '25vw',
+        '1/2-screen': '50vw',
+        '3/4-screen': '75vw'
+      },
+      maxHeight: {
+        '90-screen': '90vh',
+        '1/4-screen': '25vh',
+        '1/2-screen': '50vh',
+        '3/4-screen': '75vh'
       },
       lineHeight: {
         relaxed: 1.75
