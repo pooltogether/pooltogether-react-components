@@ -93,7 +93,7 @@ export const Modal = (props: ModalProps) => {
               overflowClassName
             )}
           >
-            <div className='sticky top-0'>
+            <div className='z-1 sticky top-0 backdrop-filter backdrop-blur-xl'>
               <div className='absolute left-4 flex space-x-2 items-center top-2'>
                 {onPreviousClick && <PreviousButton onClick={onPreviousClick} />}
                 {onNextClick && <NextButton onClick={onNextClick} />}
@@ -136,10 +136,7 @@ const ModalHeaderButton: React.FC<{ onClick: () => void; className?: string; ico
   const { onClick, className, icon } = props
   return (
     <button
-      className={classNames(
-        'trans text-inverse opacity-100 hover:opacity-70 stroke-2 backdrop-filter backdrop-blur-sm rounded-full',
-        className
-      )}
+      className={classNames('trans text-inverse opacity-100 hover:opacity-70 stroke-2', className)}
       onClick={onClick}
     >
       <FeatherIcon icon={icon} className='w-8 h-8 xs:w-6 xs:h-6' />
@@ -149,16 +146,7 @@ const ModalHeaderButton: React.FC<{ onClick: () => void; className?: string; ico
 
 const SimpleModalTitle: React.FC<{ title?: React.ReactNode; className?: string }> = (props) => {
   const { title, className } = props
-  return (
-    <span
-      className={classNames(
-        'text-inverse font-semibold backdrop-filter backdrop-blur-sm rounded-full px-1',
-        className
-      )}
-    >
-      {title}
-    </span>
-  )
+  return <span className={classNames('text-inverse font-semibold px-1', className)}>{title}</span>
 }
 
 interface ModalTitleProps {

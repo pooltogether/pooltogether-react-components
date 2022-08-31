@@ -84,10 +84,10 @@
   display: inline-block;
   cursor: pointer;
   position: relative;
-  @apply w-2 h-2 rounded-full;
+  @apply w-2.5 h-2.5 rounded-full;
 }
 .slick-dots li button {
-  @apply w-2 h-2 cursor-pointer bg-transparent outline-none text-transparent;
+  @apply w-2.5 h-2.5 cursor-pointer bg-transparent outline-none text-transparent;
 }
 
 .slick-dots li:not(.slick-active) {
@@ -96,7 +96,7 @@
   position: relative;
   background: #ffffff;
   opacity: 20%;
-  @apply w-2 h-2 rounded-full;
+  @apply w-2.5 h-2.5 rounded-full;
 }
 
 .light .slick-dots li:not(.slick-active) {
