@@ -1,7 +1,6 @@
 import React from 'react'
 import FeatherIcon from 'feather-icons-react'
 import classNames from 'classnames'
-
 import { Modal } from '../Modal/Modal'
 import {
   BottomSheet as ReactSpringBottomSheet,
