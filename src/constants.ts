@@ -1,4 +1,4 @@
-import { SECONDS_PER_DAY } from '@pooltogether/current-pool-data'
+import { SECONDS_PER_DAY } from '@pooltogether/utilities'
 
 export const MOCK_POOL = {
   chainId: 1,

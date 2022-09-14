@@ -1,6 +1,5 @@
 import React from 'react'
 import classnames from 'classnames'
-import { useCoingeckoTokenImage } from '@pooltogether/hooks'
 import { NETWORK } from '@pooltogether/utilities'
 
 export const TokenIcon: React.FC<{
@@ -30,8 +29,9 @@ const CoingeckoTokenIcon: React.FC<{
   style?: object
   onClick?: React.MouseEventHandler<HTMLImageElement>
 }> = (props) => {
-  const { data: tokenImage } = useCoingeckoTokenImage(props.chainId, props.address)
-  return <TokenIconImg {...props} src={tokenImage} />
+  return null
+  const { data: tokenData } = useCoingeckoTokenData(props.chainId, props.address)
+  return <TokenIconImg {...props} src={tokenData?.image?.small} />
 }
 
 const TokenIconImg: React.FC<{
@@ -120,6 +120,7 @@ import TCAP from '../../assets/Tokens/tcap.png'
 import UNI_V2_LP_TICKET from '../../assets/Tokens/uni-v2-lp-pool.png'
 import WAVAX from '../../assets/Tokens/wavax.png'
 import OP from '../../assets/Tokens/optimism-icon.png'
+import { useCoingeckoTokenData } from '../../hooks/useCoingeckoTokenData'
 
 /**
  * Sometimes the CoinGecko images aren't the prettiest

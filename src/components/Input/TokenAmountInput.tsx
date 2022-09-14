@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import classNames from 'classnames'
-import { Amount, Token } from '@pooltogether/hooks'
 import {
   FieldValues,
   UseFormRegister,
@@ -8,12 +7,10 @@ import {
   UseFormSetValue,
   UseFormTrigger
 } from 'react-hook-form'
-
 import { TokenIcon } from '../Icons/TokenIcon'
 import { ThemedClipSpinner } from '../Loading/ThemedClipSpinner'
-
 import WalletIcon from '../../assets/Misc/icon-wallet.svg'
-import { i18nTranslate } from 'src/types'
+import { Amount, i18nTranslate, Token } from '../../types'
 
 interface TokenAmountInputProps {
   inputKey: string

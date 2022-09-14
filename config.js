@@ -15,6 +15,7 @@ const pooltogetherReactTailwindUIConfig = {
     screens: {
       xs: '531px',
       sm: '941px',
+      md: '1200px',
       lg: '1481px'
     },
     colors: {
@@ -28,9 +29,14 @@ const pooltogetherReactTailwindUIConfig = {
       'orange': {},
       'pink': {},
       'teal': {},
+      'gradient-purple': '#7201FF',
+      'gradient-pink': '#9E01FF',
       'gradient-magenta': '#ff77e1',
       'gradient-cyan': '#17e1fd',
       'gradient-yellow': '#ffed47',
+      'pt-green': {
+        DEFAULT: '#56BB69'
+      },
       'pt-teal': {
         lighter: '#adfff3',
         light: '#70fde6',
@@ -39,14 +45,14 @@ const pooltogetherReactTailwindUIConfig = {
         dark: '#0ea3a4'
       },
       'pt-purple': {
-        lightest: '#f2edfe',
+        lightest: '#F5F5F5',
         lighter: '#dacdf7',
         light: '#9f82d7',
         bright: '#5227a7',
         DEFAULT: '#4c249f',
         dark: '#341762',
         darker: '#2d0b5a',
-        darkest: '#1a083a'
+        darkest: '#21064e'
       },
       'pt-red': {
         light: '#ff6666',
@@ -104,7 +110,7 @@ const pooltogetherReactTailwindUIConfig = {
         'purple': 'var(--color-bg-purple)',
         'light-purple-10': 'var(--color-bg-light-purple-10)',
         'light-purple-70': 'var(--color-bg-light-purple-70)',
-        'gradient-purple': 'var(--color-pt-gradient-purple)'
+        'pt-gradient-purple': 'var(--color-pt-gradient-purple)'
       },
       textColor: {
         'accent-1': 'var(--color-text-accent-1)',
@@ -208,7 +214,8 @@ const pooltogetherReactTailwindUIConfig = {
         '96': '24rem',
         '112': '28rem',
         '128': '32rem',
-        '75vh': '75vh'
+        '75vh': '75vh',
+        'actually-full-screen': 'calc(var(--vh, 1vh) * 100)'
       },
       minWidth: {
         '0': '0',
@@ -223,7 +230,16 @@ const pooltogetherReactTailwindUIConfig = {
         '1/4': '25%',
         '1/2': '50%',
         '3/4': '75%',
-        'full': '100%'
+        'full': '100%',
+        '1/4-screen': '25vw',
+        '1/2-screen': '50vw',
+        '3/4-screen': '75vw'
+      },
+      maxHeight: {
+        '90-screen': '90vh',
+        '1/4-screen': '25vh',
+        '1/2-screen': '50vh',
+        '3/4-screen': '75vh'
       },
       lineHeight: {
         relaxed: 1.75
@@ -257,54 +273,7 @@ const pooltogetherReactTailwindUIConfig = {
         '14xl': '5rem'
       },
       fontFamily: {
-        sans: [
-          'Titillium Web',
-          'Roboto',
-          'Helvetica Neue',
-          'Arial',
-          'Noto Sans',
-          'sans-serif',
-          'Apple Color Emoji',
-          'Segoe UI Emoji',
-          'Segoe UI Symbol',
-          'Noto Color Emoji'
-        ],
-        serif: [
-          'Titillium Web',
-          'Roboto',
-          'Helvetica Neue',
-          'Arial',
-          'Noto Sans',
-          'sans-serif',
-          'Apple Color Emoji',
-          'Segoe UI Emoji',
-          'Segoe UI Symbol',
-          'Noto Color Emoji'
-        ],
-        inter: [
-          'Inter',
-          'Roboto',
-          'Helvetica Neue',
-          'Arial',
-          'Noto Sans',
-          'sans-serif',
-          'Apple Color Emoji',
-          'Segoe UI Emoji',
-          'Segoe UI Symbol',
-          'Noto Color Emoji'
-        ],
-        averta: [
-          'Averta Regular',
-          'Roboto',
-          'Helvetica Neue',
-          'Arial',
-          'Noto Sans',
-          'sans-serif',
-          'Apple Color Emoji',
-          'Segoe UI Emoji',
-          'Segoe UI Symbol',
-          'Noto Color Emoji'
-        ]
+        sans: ['Averta', 'system-ui']
       },
       opacity: {
         0: '0',
@@ -332,6 +301,17 @@ const pooltogetherReactTailwindUIConfig = {
         7: 7,
         8: 8,
         9: 9
+      },
+      keyframes: {
+        'rainbow-text': {
+          '0%': { color: '#17e1fd' },
+          '33%': { color: '#ff77e1' },
+          '66%': { color: '#ffed47' },
+          '100%': { color: '#17e1fd' }
+        }
+      },
+      animation: {
+        rainbow: 'rainbow-text 5s ease-in-out 0s infinite'
       }
     }
   },
@@ -345,8 +325,10 @@ const pooltogetherReactTailwindUIConfig = {
       textColor: ['hover', 'focus', 'active', 'responsive'],
       backgroundColor: ['hover', 'focus', 'active', 'responsive', 'focus-within'],
       borderRadius: ['responsive'],
-      borderWidth: ['hover', 'first'],
-      opacity: ['hover', 'focus', 'disabled']
+      borderWidth: ['hover', 'first', 'last'],
+      opacity: ['hover', 'focus', 'disabled'],
+      animation: ['hover'],
+      textAlign: ['last']
     }
   },
   plugins: [],

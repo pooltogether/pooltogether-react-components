@@ -25,7 +25,7 @@
 }
 
 .Toastify__toast-container .Toastify__toast {
-  @apply font-averta font-semibold;
+  @apply font-semibold;
 }
 
 .Toastify__toast-container .Toastify__toast-body {

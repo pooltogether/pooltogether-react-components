@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ReactCountUp from 'react-countup'
-import { usePreviousValue } from 'beautiful-react-hooks'
+import usePreviousValue from 'beautiful-react-hooks/usePreviousValue'
 
 interface CountUpProps {
   countFrom?: number

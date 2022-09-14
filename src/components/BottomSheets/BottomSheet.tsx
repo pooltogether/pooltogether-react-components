@@ -1,7 +1,6 @@
 import React from 'react'
 import FeatherIcon from 'feather-icons-react'
 import classNames from 'classnames'
-import { ScreenSize, useScreenSize } from '@pooltogether/hooks'
 
 import { Modal } from '../Modal/Modal'
 import {
@@ -10,6 +9,7 @@ import {
 } from 'react-spring-bottom-sheet'
 import { NetworkIcon } from '../Icons/NetworkIcon'
 import { SnapPointProps } from 'react-spring-bottom-sheet/dist/types'
+import { ScreenSize, useScreenSize } from '../../hooks/useScreenSize'
 
 export interface BottomSheetProps extends ReactSpringBottomSheetProps {
   className?: string

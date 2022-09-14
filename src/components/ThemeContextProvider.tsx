@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Cookies from 'js-cookie'
 import { GlobalHotKeys } from 'react-hotkeys'
-import { useCookieOptions } from '@pooltogether/hooks'
 
 import { HOTKEYS_KEY_MAP } from '../constants'
+import { useCookieOptions } from '../hooks/useCookieOptions'
 
 const THEME_KEY = 'theme'
 

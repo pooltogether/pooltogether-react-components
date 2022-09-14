@@ -1,50 +1,57 @@
 import React from 'react'
 import classNames from 'classnames'
-
 import { HeaderLogo } from './HeaderLogo'
 
-interface LinkProps {
-  as: string
-  href: string
-}
-
-interface PageHeaderContainerProps extends LinkProps {
-  Link: React.FC<LinkProps>
-  className?: string
-  children: React.ReactNode
-}
-
 /**
- * TODO: Migrate remaining components
+ *
  * @returns
  */
-export const PageHeaderContainer = (props: PageHeaderContainerProps) => {
-  const { className, Link, as, href } = props
+export const PageHeaderContainer: React.FC<{
+  logo?: React.ReactNode
+  className?: string
+  marginClassName?: string
+  maxWidthClassName?: string
+  positionClassName?: string
+  styleClassName?: string
+}> = (props) => {
+  const {
+    children,
+    logo,
+    className,
+    marginClassName,
+    positionClassName,
+    styleClassName,
+    maxWidthClassName
+  } = props
 
   return (
     <div
-      className={classNames('w-full bg-page-header sticky top-0', className)}
+      className={classNames(
+        'w-full',
+        className,
+        marginClassName,
+        positionClassName,
+        styleClassName
+      )}
       style={{ zIndex: 3 }}
     >
       <div
         className={classNames(
-          'flex justify-between items-center mx-auto max-w-screen-lg px-4 sm:px-8 py-4 sm:pb-6 sm:pt-5',
-          className
+          'flex justify-between items-center mx-auto px-4 sm:px-8 py-2',
+          maxWidthClassName
         )}
         style={{ zIndex: 3 }}
       >
-        <Link as={as} href={href}>
-          <a>
-            <HeaderLogo />
-          </a>
-        </Link>
-        {props.children}
+        {logo}
+        {children}
       </div>
     </div>
   )
 }
-
 PageHeaderContainer.defaultProps = {
-  as: '/',
-  href: '/'
+  maxWidthClassName: 'max-w-screen-lg',
+  positionClassName: 'sticky top-0',
+  marginClassName: 'mb-4',
+  styleClassName: 'backdrop-filter backdrop-blur-xl',
+  logo: HeaderLogo
 }

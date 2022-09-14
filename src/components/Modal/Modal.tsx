@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import classnames from 'classnames'
 import FeatherIcon from 'feather-icons-react'
 import Dialog from '@reach/dialog'
-import { motion, AnimatePresence } from 'framer-motion'
-import { useReducedMotion } from '@pooltogether/hooks'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { NetworkIcon } from '../Icons/NetworkIcon'
 
 export interface ModalProps {

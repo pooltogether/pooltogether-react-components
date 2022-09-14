@@ -1,7 +1,7 @@
 import React from 'react'
-import { useIsTestnets } from '@pooltogether/hooks'
 import { SettingsItem } from './SettingsItem'
 import { CheckboxInputGroup } from '../../Input/CheckboxInputGroup'
+import { useIsTestnets } from '../../../hooks/useIsTestnets'
 
 export const TestnetSettingsItem = (props) => {
   const { t } = props
