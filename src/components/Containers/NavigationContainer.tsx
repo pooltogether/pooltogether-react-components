@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import classNames from 'classnames'
-import { useOnScroll } from '@pooltogether/hooks/src/hooks/app/useOnScroll'
+import { useOnScroll } from 'src/hooks/useOnScroll'
 
 export const NavigationContainer: React.FC<{ className?: string }> = (props) => {
   const { children, className } = props

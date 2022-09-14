@@ -7,8 +7,10 @@ export { i18nTranslate } from './types'
 export { useCoingeckoTokenData } from './hooks/useCoingeckoTokenData'
 export { useCookieOptions } from './hooks/useCookieOptions'
 export { useIsTestnets } from './hooks/useIsTestnets'
+export { useOnScroll } from './hooks/useOnScroll'
 export { useScreenSize } from './hooks/useScreenSize'
 export { useTimeCountdown } from './hooks/useTimeCountdown'
+export { useWindowFocus } from './hooks/useWindowFocus'
 
 // ------- Component Groups -------
 
