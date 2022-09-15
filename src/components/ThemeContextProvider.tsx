@@ -16,7 +16,7 @@ export const ThemeContext = React.createContext<{
   theme: ColorTheme
   toggleTheme: () => void
 }>({
-  theme: Cookies.get(THEME_KEY) || ColorTheme.dark,
+  theme: ColorTheme.dark,
   toggleTheme: () => {}
 })
 
@@ -25,28 +25,17 @@ export function ThemeContextProvider(props) {
   const cookieOptions = useCookieOptions()
 
   useEffect(() => {
-    let stored = Cookies.get(THEME_KEY)
-
     const documentElement = document.documentElement
-    documentElement.classList.add(ColorTheme.dark)
 
-    if (typeof window !== 'undefined' && window.matchMedia) {
-      const setThemeAutomatically = (newValue) => {
-        if (newValue === ColorTheme.dark) {
-          documentElement.classList.add(ColorTheme.dark)
-          documentElement.classList.remove(ColorTheme.light)
-
-          setTheme(ColorTheme.dark)
-        } else if (newValue === ColorTheme.light) {
-          documentElement.classList.add(ColorTheme.light)
-          documentElement.classList.remove(ColorTheme.dark)
-
-          setTheme(ColorTheme.light)
-        }
-      }
-
-      // onLoad
-      setThemeAutomatically(stored)
+    const stored: ColorTheme = Cookies.get(THEME_KEY)
+    if (stored === ColorTheme.dark) {
+      documentElement.classList.add(ColorTheme.dark)
+      documentElement.classList.remove(ColorTheme.light)
+      setTheme(ColorTheme.dark)
+    } else if (stored === ColorTheme.light) {
+      documentElement.classList.add(ColorTheme.light)
+      documentElement.classList.remove(ColorTheme.dark)
+      setTheme(ColorTheme.light)
     }
   }, [])
 

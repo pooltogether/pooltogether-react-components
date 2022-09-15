@@ -7,7 +7,7 @@ import { LoadingDots } from './LoadingDots'
 import LogoDark from '../../assets/PoolTogetherLogos/pooltogether-p.svg'
 import Logo from '../../assets/PoolTogetherLogos/pooltogether-p-purple.svg'
 
-export function LoadingLogo (props) {
+export function LoadingLogo(props) {
   const { theme } = useContext(ThemeContext)
 
   return (

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import useWindowScroll from 'beautiful-react-hooks/useWindowScroll'
 import useDebouncedCallback from 'beautiful-react-hooks/useDebouncedCallback'
 
@@ -8,9 +8,11 @@ export const useOnScroll = (options: {
   onScrollTop?: () => void
   onScrollDown?: () => void
 }) => {
-  const [prevScrollTop, setScrollTop] = useState(typeof window !== 'undefined' ? window.scrollY : 0)
+  const [prevScrollTop, setScrollTop] = useState(0)
   const onWindowScroll = useWindowScroll()
   const { onScroll, onScrollDown, onScrollUp, onScrollTop } = options
+
+  useEffect(() => setScrollTop(window.scrollY), [])
 
   const _onWindowScroll = useDebouncedCallback(
     (event: UIEvent) => {
