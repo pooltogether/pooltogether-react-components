@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import classNames from 'classnames'
 import { useOnScroll } from '../../hooks/useOnScroll'
 
-export const NavigationContainer: React.FC<{ className?: string }> = (props) => {
+export const NavigationContainer: React.FC<{ children: React.ReactNode; className?: string }> = (
+  props
+) => {
   const { children, className } = props
 
   const [positionClassName, setPositionClassName] = useState('transform translate-y-0')

@@ -1,9 +1,40 @@
 import classNames from 'classnames'
 import React from 'react'
 import { i18nTranslate } from '../../types'
+import { UrlObject } from 'url'
+
+declare type Url = string | UrlObject
+declare type InternalLinkProps = {
+  href: Url
+  as?: Url
+  replace?: boolean
+  scroll?: boolean
+  shallow?: boolean
+  passHref?: boolean
+  prefetch?: boolean
+  locale?: string | false
+  legacyBehavior?: boolean
+  /**
+   * requires experimental.newNextLinkBehavior
+   */
+  onMouseEnter?: (e: any) => void
+  /**
+   * requires experimental.newNextLinkBehavior
+   */
+  onTouchStart?: (e: any) => void
+  /**
+   * requires experimental.newNextLinkBehavior
+   */
+  onClick?: (e: any) => void
+}
 
 export const NavigationLink: React.FC<{
-  Link: React.FC<{ href: string }>
+  Link: React.ForwardRefExoticComponent<
+    Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof InternalLinkProps> &
+      InternalLinkProps & {
+        children?: React.ReactNode
+      } & React.RefAttributes<HTMLAnchorElement>
+  >
   pathname: string
   t: i18nTranslate
   regex?: RegExp

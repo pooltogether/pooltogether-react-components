@@ -7,6 +7,7 @@ import { HeaderLogo } from './HeaderLogo'
  * @returns
  */
 export const PageHeaderContainer: React.FC<{
+  children?: React.ReactNode
   logo?: React.ReactNode
   className?: string
   marginClassName?: string
@@ -53,5 +54,5 @@ PageHeaderContainer.defaultProps = {
   positionClassName: 'sticky top-0',
   marginClassName: 'mb-4',
   styleClassName: 'backdrop-filter backdrop-blur-xl',
-  logo: HeaderLogo
+  logo: <HeaderLogo />
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 
 export const Accordion = (props) => {
   const { i, expanded, setExpanded, openUpwards } = props
@@ -21,6 +21,7 @@ export const Accordion = (props) => {
     <>
       {!openUpwards && header}
       <AnimatePresence initial={false}>
+        <>
         {isOpen && (
           <motion.div
             key='content'
@@ -36,7 +37,7 @@ export const Accordion = (props) => {
           >
             <ContentWrapper>{props.content}</ContentWrapper>
           </motion.div>
-        )}
+        )}</>
       </AnimatePresence>
       {openUpwards && header}
     </>

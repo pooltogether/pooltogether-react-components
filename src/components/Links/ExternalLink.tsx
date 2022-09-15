@@ -9,6 +9,7 @@ export enum LinkTheme {
 }
 
 export const ExternalLink: React.FC<{
+  children: React.ReactNode
   href: string
   theme?: LinkTheme
   underline?: boolean
