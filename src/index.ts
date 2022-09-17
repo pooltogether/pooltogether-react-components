@@ -99,7 +99,6 @@ export { ErrorsBox } from './components/ErrorsBox'
 export { PageTitleAndBreadcrumbs } from './components/PageTitleAndBreadcrumbs'
 export { PoolCurrencyIcon } from './components/PoolCurrencyIcon'
 export { PrizeFrequencyChip } from './components/PrizeFrequencyChip'
-export { ThemeContext, ThemeContextProvider, ColorTheme } from './components/ThemeContextProvider'
 
 // Styles
 import './styles/index.css'
