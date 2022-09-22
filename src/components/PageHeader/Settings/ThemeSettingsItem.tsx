@@ -19,6 +19,7 @@ const ThemeSwitcher = (props: { t: i18nTranslate }) => {
     <button
       onClick={() => setTheme(themes[(themes.indexOf(theme) + 1) % themes.length])}
       className='transition-opacity hover:opacity-70'
+      disabled={!theme}
     >
       {theme === 'system' && (
         <b>{`${t?.('system') || 'System'} (${
