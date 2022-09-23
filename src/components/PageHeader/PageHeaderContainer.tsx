@@ -10,14 +10,16 @@ import { HeaderLogo } from './HeaderLogo'
 export const PageHeaderContainer: React.FC<{
   href: string
   className?: string
+  maxWidthClassName?: string
 }> = (props) => {
-  const { className, href } = props
+  const { className, maxWidthClassName, href } = props
 
   return (
     <div className={className} style={{ zIndex: 3 }}>
       <div
         className={classNames(
-          'flex justify-between items-center mx-auto max-w-screen-lg px-4 sm:px-8 py-2',
+          'flex justify-between items-center mx-auto px-4 sm:px-8 py-2',
+          maxWidthClassName,
           className
         )}
         style={{ zIndex: 3 }}
@@ -33,4 +35,8 @@ export const PageHeaderContainer: React.FC<{
       </div>
     </div>
   )
+}
+
+PageHeaderContainer.defaultProps = {
+  maxWidthClassName: 'max-w-screen-lg'
 }
