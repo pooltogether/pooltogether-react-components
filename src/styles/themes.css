@@ -241,14 +241,6 @@
   background: radial-gradient(rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 0) 70%);
 }
 
-.dark .pool-logo:after {
-  background-image: url('/pooltogether-white-mark.svg');
-}
-
-.light .pool-logo:after {
-  background-image: url('/pooltogether-purple-mark.svg');
-}
-
 .dark .pool-gradient-1 {
   background: linear-gradient(334deg, #4c249f 28%, rgba(255, 119, 225, 0.9) 164%), #290b5a;
 }
@@ -267,18 +259,6 @@
 
 .pool-gradient-3 {
   background: linear-gradient(60deg, #17e1fd 10%, #ff77e1 50%, #fff177);
-}
-
-@screen sm {
-  .dark .pool-logo:after {
-    background-image: url('/pooltogether-logo.svg');
-  }
-}
-
-@screen sm {
-  .light .pool-logo:after {
-    background-image: url('/pooltogether-logo-dark.svg');
-  }
 }
 
 input:-webkit-autofill,
