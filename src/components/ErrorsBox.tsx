@@ -2,11 +2,7 @@ import classNames from 'classnames'
 import React from 'react'
 
 interface ErrorsBoxProps {
-  errors: {
-    [x: string]: {
-      message: string
-    }
-  }
+  errors: string[]
   className?: string
   colorClassName: string
   fontClassName: string
@@ -20,14 +16,9 @@ interface ErrorsBoxProps {
 export function ErrorsBox(props: ErrorsBoxProps) {
   const { errors, className, colorClassName, fontClassName } = props
 
-  const errorMessages = errors ? Object.values(errors).map((error) => error.message) : []
-  if (errorMessages.length === 0) return null
+  if (errors.length === 0) return null
 
-  return (
-    <div className={classNames(className, fontClassName, colorClassName)}>
-      {errorMessages.map((errorMsg) => errorMsg)}
-    </div>
-  )
+  return <div className={classNames(className, fontClassName, colorClassName)}>{errors}</div>
 }
 
 ErrorsBox.defaultProps = {

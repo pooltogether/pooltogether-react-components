@@ -1,6 +1,6 @@
 {
   "name": "@pooltogether/react-components",
-  "version": "2.0.0-beta.7",
+  "version": "2.0.0-beta.8",
   "description": "PoolTogether UI elements in a shared lib",
   "author": "PoolTogether Inc.",
   "license": "MIT",
@@ -13,7 +13,7 @@
     "README.md"
   ],
   "engines": {
-    "node": ">=10"
+    "node": ">=16"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,7 @@
     "build": "tsdx build",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
+    "lint:fix": "tsdx lint --fix",
     "prepare": "tsdx build",
     "size": "size-limit",
     "analyze": "size-limit --why",
@@ -46,26 +47,24 @@
   "size-limit": [
     {
       "path": "dist/react-components.cjs.production.min.js",
-      "limit": "10 KB"
+      "limit": "535 KB"
     },
     {
       "path": "dist/react-components.esm.js",
-      "limit": "10 KB"
+      "limit": "430 KB"
     }
   ],
   "peerDependencies": {
     "@pooltogether/current-pool-data": "^3.7.2",
-    "@pooltogether/evm-chains-extended": "^0.7.0",
-    "@pooltogether/hooks": "^2.0.0-beta.1",
-    "@pooltogether/utilities": "^0.4.0",
+    "@pooltogether/utilities": "^0.6.2",
     "beautiful-react-hooks": "^3.6.2",
     "eth-revert-reason": "^1.0.3",
     "ethers": "^5.6.4",
     "feather-icons-react": "^0.4.1",
-    "framer-motion": "^4.1.17",
+    "framer-motion": "^7.3.5",
     "jotai": "^1.4.3",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-query": "^3.16.0",
     "react-slick": "^0.29.0",
     "react-spring-bottom-sheet": "^3.4.0",
@@ -74,11 +73,8 @@
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.4",
-    "@pooltogether/current-pool-data": "^3.7.2",
     "@pooltogether/etherplex": "^1.1.2",
-    "@pooltogether/evm-chains-extended": "^0.7.0",
-    "@pooltogether/hooks": "2.0.0-beta.3",
-    "@pooltogether/utilities": "^0.4.0",
+    "@pooltogether/utilities": "^0.6.2",
     "@rollup/plugin-url": "^6.1.0",
     "@size-limit/preset-small-lib": "^6.0.4",
     "@storybook/addon-actions": "^6.4.9",
@@ -86,21 +82,22 @@
     "@storybook/addon-links": "^6.4.9",
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/react": "^6.4.9",
-    "@types/react": "^17.0.34",
-    "@types/react-dom": "^17.0.11",
+    "@types/react": "^18.0.20",
+    "@types/react-dom": "^18.0.6",
     "autoprefixer": "^10.4.0",
     "babel-loader": "^8.2.3",
     "beautiful-react-hooks": "^3.6.2",
     "cssnano": "^5.0.10",
+    "eslint-plugin-prettier": "3.4.1",
     "eth-revert-reason": "^1.0.3",
     "ethers": "^5.6.4",
     "feather-icons-react": "^0.4.1",
-    "framer-motion": "^4.1.17",
+    "framer-motion": "^7.3.5",
     "graphql": "^16.1.0",
     "graphql-request": "^3.7.0",
     "graphql-tag": "^2.12.6",
     "husky": "^7.0.4",
-    "i18next": "^21.6.0",
+    "i18next": "^21.9.1",
     "i18next-browser-languagedetector": "^6.1.2",
     "i18next-http-backend": "^1.3.1",
     "jotai": "^1.4.3",
@@ -110,11 +107,11 @@
     "postcss-import": "^14.0.2",
     "postcss-loader": "^6.2.1",
     "postcss-nesting": "^9.0.0",
-    "react": "17.0.2",
+    "react": "^18.2.0",
     "react-countup": "^6.1.0",
-    "react-dom": "17.0.2",
+    "react-dom": "^18.2.0",
     "react-hook-form": "^7.22.1",
-    "react-i18next": "^11.15.6",
+    "react-i18next": "^11.18.6",
     "react-query": "^3.16.0",
     "react-slick": "^0.29.0",
     "react-spring-bottom-sheet": "^3.4.0",
@@ -124,7 +121,7 @@
     "tsconfig-paths-webpack-plugin": "^3.5.2",
     "tsdx": "^0.14.1",
     "tslib": "^2.3.1",
-    "typescript": "^4.4.4"
+    "typescript": "^4.8.3"
   },
   "dependencies": {
     "@download/blockies": "^1.0.3",
@@ -135,6 +132,7 @@
     "classnames": "^2.2.6",
     "deep-equal": "^2.0.5",
     "js-cookie": "^2.2.1",
+    "next-themes": "^0.2.1",
     "react-content-loader": "^6.0.3",
     "react-copy-to-clipboard": "^5.0.3",
     "react-countup": "^6.1.0",

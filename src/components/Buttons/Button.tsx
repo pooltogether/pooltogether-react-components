@@ -21,7 +21,8 @@ export enum ButtonTheme {
 export enum ButtonSize {
   sm = 'sm',
   md = 'md',
-  lg = 'lg'
+  lg = 'lg',
+  xl = 'xl'
 }
 
 export enum ButtonRadius {

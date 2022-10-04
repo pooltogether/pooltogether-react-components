@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import React, { ButtonHTMLAttributes, DetailedHTMLProps, FC } from 'react'
+import React from 'react'
 import Slider from 'react-slick'
 
 /**
@@ -25,9 +25,12 @@ export const Carousel: React.FC<{
     lazyLoad?: 'ondemand' | 'progressive'
     slidesToShow?: number
     slidesToScroll?: number
+    autoplay?: boolean
+    autoplaySpeed?: number
+    fade?: boolean
     speed?: number
-    nextArrow?: FC<DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>>
-    prevArrow?: FC<DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>>
+    nextArrow?: React.ReactNode
+    prevArrow?: React.ReactNode
   }
 }> = (props) => {
   const { children, className, marginClassName, settings } = props

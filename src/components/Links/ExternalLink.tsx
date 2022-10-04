@@ -2,13 +2,25 @@ import React from 'react'
 import classnames from 'classnames'
 import { LinkIcon } from '../Icons/LinkIcon'
 
-export const LinkTheme = Object.freeze({
-  default: 'hover:opacity-70',
-  accent: 'text-highlight-1 hover:text-inverse',
-  light: 'text-accent-1 hover:text-highlight-1'
-})
+export enum LinkTheme {
+  default = 'text-inverse hover:text-highlight-1',
+  accent = 'text-highlight-1 hover:text-inverse',
+  light = 'text-accent-1 hover:text-highlight-1'
+}
 
-export const ExternalLink = (props) => {
+export const ExternalLink: React.FC<{
+  children: React.ReactNode
+  href: string
+  theme?: LinkTheme
+  underline?: boolean
+  openInSameTab?: boolean
+  title?: string
+  noIcon?: boolean
+  className?: string
+  displayClassName?: string
+  colorClassName?: string
+  iconClassName?: string
+}> = (props) => {
   return (
     <a
       className={classnames(

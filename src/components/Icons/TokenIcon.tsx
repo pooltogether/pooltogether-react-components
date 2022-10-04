@@ -1,6 +1,5 @@
 import React from 'react'
 import classnames from 'classnames'
-import { useCoingeckoTokenImage } from '@pooltogether/hooks'
 import { NETWORK } from '@pooltogether/utilities'
 
 export const TokenIcon: React.FC<{
@@ -30,8 +29,8 @@ const CoingeckoTokenIcon: React.FC<{
   style?: React.CSSProperties
   onClick?: React.MouseEventHandler<HTMLImageElement>
 }> = (props) => {
-  const { data: tokenImage } = useCoingeckoTokenImage(props.chainId, props.address)
-  return <TokenIconImg {...props} src={tokenImage} />
+  const { data: tokenData } = useCoingeckoTokenData(props.chainId, props.address)
+  return <TokenIconImg {...props} src={tokenData?.image?.small} />
 }
 
 const TokenIconImg: React.FC<{
@@ -121,6 +120,7 @@ import TCAP from '../../assets/Tokens/tcap.png'
 import UNI_V2_LP_TICKET from '../../assets/Tokens/uni-v2-lp-pool.png'
 import WAVAX from '../../assets/Tokens/wavax.png'
 import OP from '../../assets/Tokens/optimism-icon.png'
+import { useCoingeckoTokenData } from '../../hooks/useCoingeckoTokenData'
 
 /**
  * Sometimes the CoinGecko images aren't the prettiest
@@ -168,6 +168,10 @@ export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
     '0xeb8928ee92efb06c44d072a24c2bcb993b61e543': UNI_V2_LP_TICKET,
     '0x85cb0bab616fe88a89a35080516a8928f38b518b': UNI
   },
+  [NETWORK.goerli]: {
+    '0xA2025B15a1757311bfD68cb14eaeFCc237AF5b43': USDC,
+    '0x8537C5a9AAd3ec1D31a84e94d19FcFC681E83ED0': PTaUSDC
+  },
   [NETWORK.rinkeby]: {
     '0xc4e90a8dc6caab329f08ed3c8abc6b197cf0f40a': POOL,
     '0x6a9865ade2b6207daac49f8bcba9705deb0b0e6d': DAI,
@@ -184,7 +188,8 @@ export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
     '0xc2132d05d31c914a87c6611c10748aeb04b58e8f': USDT,
     '0x25788a1a171ec66da6502f9975a15b609ff54cf6': POOL,
     '0x19c0e557ee5a9b456f613ba3d025a4dc45b52c35': PT_USDC_SPONSORSHIP,
-    '0x6a304dfdb9f808741244b6bfee65ca7b3b3a6076': PTaUSDC
+    '0x6a304dfdb9f808741244b6bfee65ca7b3b3a6076': PTaUSDC,
+    '0x2791bca1f2de4661ed88a30c99a7a9449aa84174': USDC
   },
   [NETWORK.bsc]: {
     '0xe9e7cea3dedca5984780bafc599bd69add087d56': BUSD,
@@ -200,12 +205,22 @@ export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
   },
   [NETWORK.avalanche]: {
     '0xb27f379c050f6ed0973a01667458af6ecebc1d90': PTaUSDC,
-    '0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7': WAVAX
+    '0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7': WAVAX,
+    '0xa7d7079b0fead91f3e65f86e8915cb59c1a4c664': USDC
   },
   [NETWORK.optimism]: {
     '0x5e5b54cd73872ba3103cd95a58067a7079d0259b': PTaUSDC,
+    '0x7F5c764cBc14f9669B88837ca1490cCa17c31607': USDC,
     '0x62bb4fc73094c83b5e952c2180b23fa7054954c4': PTaUSDC,
     '0x4200000000000000000000000000000000000042': OP
+  },
+  [NETWORK['optimism-goerli']]: {
+    '0xf1485aa729df94083ab61b2c65eea99894aabdb3': USDC,
+    '0x8537C5a9AAd3ec1D31a84e94d19FcFC681E83ED0': PTaUSDC
+  },
+  [NETWORK['arbitrum-goerli']]: {
+    '0x6775842AE82BF2F0f987b10526768Ad89d79536E': USDC,
+    '0x8739Da6c93D0CE6F5de9D2d71493fAF012F2bDbD': PTaUSDC
   }
 })
 

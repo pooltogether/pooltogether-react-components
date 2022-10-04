@@ -1,12 +1,12 @@
 import { getNetworkNiceNameByChainId } from '@pooltogether/utilities'
 import classNames from 'classnames'
-import React, { useContext, useState } from 'react'
-import { ViewProps } from 'src/components/Containers/ViewStateMachine'
+import { useTheme } from 'next-themes'
+import React, { useState } from 'react'
+import { ViewProps } from '../Containers/ViewStateMachine'
 import { i18nTranslate } from 'src/types'
 import { NetworkIcon } from '../Icons/NetworkIcon'
 import { SocialLinks } from '../Navigation/SocialLinks'
 import { TestnetSettingsItem } from '../PageHeader/Settings/TestnetSettingsItem'
-import { ColorTheme, ThemeContext } from '../ThemeContextProvider'
 import { ModalWithViewState, ModalWithViewStateView } from './ModalWithViewState'
 
 export enum ViewIds {
@@ -39,19 +39,22 @@ export const SettingsModal: React.FC<{
       id: ViewIds.network,
       view: networkView,
       title: 'Select a network',
-      previousViewId: ViewIds.main
+      previousViewId: ViewIds.main,
+      onCloseViewId: ViewIds.main
     },
     {
       id: ViewIds.language,
       view: LanguageView,
       title: 'Select your language',
-      previousViewId: ViewIds.main
+      previousViewId: ViewIds.main,
+      onCloseViewId: ViewIds.main
     },
     {
       id: ViewIds.currency,
       view: CurrencyView,
       title: 'Select your currency',
-      previousViewId: ViewIds.main
+      previousViewId: ViewIds.main,
+      onCloseViewId: ViewIds.main
     }
   ]
 
@@ -89,7 +92,7 @@ const MainView: React.FC<{ chainId: number; t: i18nTranslate } & ViewProps> = (p
       <div className='flex flex-col space-y-3'>
         <div className='flex space-x-3'>
           <NetworkButton chainId={chainId} onClick={() => setSelectedViewId(ViewIds.network)} />
-          <ThemeButton />
+          <ThemeButton t={t} />
         </div>
         <div className='flex space-x-3'>
           <CurrencyButton onClick={() => setSelectedViewId(ViewIds.currency)} disabled />
@@ -123,14 +126,39 @@ const CurrencyButton: React.FC<{ disabled?: boolean; onClick: () => void }> = (p
 const LanguageButton: React.FC<{ onClick: () => void }> = (props) => (
   <Button onClick={props.onClick} icon={'EN'} title='English' secondary='Language' />
 )
-const ThemeButton = () => {
-  const { theme, toggleTheme } = useContext(ThemeContext)
+const ThemeButton = (props: { t: i18nTranslate }) => {
+  const { t } = props
+  const { theme, themes, setTheme, systemTheme } = useTheme()
   return (
     <Button
-      onClick={() => toggleTheme()}
-      icon={theme === ColorTheme.dark ? '🌑' : '☀️'}
-      title={theme === ColorTheme.dark ? 'Dark mode' : 'Light mode'}
-      bgClassName={theme === ColorTheme.dark ? 'bg-pt-purple-darkest' : 'bg-gradient-yellow'}
+      onClick={() => setTheme(themes[(themes.indexOf(theme) + 1) % themes.length])}
+      icon={
+        <>
+          {theme === 'system' && '⚙️'}
+          {theme === 'light' && '☀️'}
+          {theme === 'dark' && '🌙'}
+        </>
+      }
+      title={
+        <>
+          {theme === 'system' && (
+            <b>{`${t?.('system') || 'System'} (${
+              systemTheme === 'dark' ? t?.('dark') || 'Dark' : t?.('light') || 'Light'
+            })`}</b>
+          )}
+          {theme === 'light' && <b>{t?.('light') || 'Light'}</b>}
+          {theme === 'dark' && <b>{t?.('dark') || 'Dark'}</b>}
+        </>
+      }
+      bgClassName={
+        theme === 'system'
+          ? systemTheme === 'dark'
+            ? 'bg-pt-purple-darkest'
+            : 'bg-gradient-yellow'
+          : theme === 'dark'
+          ? 'bg-pt-purple-darkest'
+          : 'bg-gradient-yellow'
+      }
       secondary='Theme'
     />
   )

@@ -1,9 +1,8 @@
 import React from 'react'
 import classNames from 'classnames'
-import { Amount, Token } from '@pooltogether/hooks'
 import { FieldValues, UseFormRegister, UseFormReturn, UseFormSetValue } from 'react-hook-form'
 
-import { i18nTranslate } from 'src/types'
+import { Amount, i18nTranslate, Token } from 'src/types'
 
 interface TokenAmountInputFlatProps {
   inputKey: string

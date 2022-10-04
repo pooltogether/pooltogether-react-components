@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import classnames from 'classnames'
 import FeatherIcon from 'feather-icons-react'
 import Dialog from '@reach/dialog'
-import { motion, AnimatePresence } from 'framer-motion'
-import { useReducedMotion } from '@pooltogether/hooks'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { NetworkIcon } from '../Icons/NetworkIcon'
 import classNames from 'classnames'
 
@@ -93,12 +92,21 @@ export const Modal = (props: ModalProps) => {
               overflowClassName
             )}
           >
-            <div className='z-1 sticky top-0 backdrop-filter backdrop-blur-xl'>
+            <div
+              className={classNames('z-1 sticky top-0', {
+                'backdrop-filter backdrop-blur-xl': !!title
+              })}
+            >
               <div className='absolute left-4 flex space-x-2 items-center top-2'>
                 {onPreviousClick && <PreviousButton onClick={onPreviousClick} />}
                 {onNextClick && <NextButton onClick={onNextClick} />}
               </div>
-              <CloseModalButton closeModal={closeModal} className='absolute top-2 right-4' />
+              <CloseModalButton
+                closeModal={closeModal}
+                className={classNames('absolute top-2 right-4', {
+                  'backdrop-filter backdrop-blur-xl rounded-full': !title
+                })}
+              />
               <div className='inset-x-0 top-0 flex justify-center'>
                 <SimpleModalTitle title={title} className='mx-auto leading-none my-4 xs:my-2' />
               </div>

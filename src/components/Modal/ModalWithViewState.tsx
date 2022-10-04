@@ -3,6 +3,7 @@ import { View, ViewStateMachine, ViewStateMachineProps } from '../Containers/Vie
 import { Modal, ModalProps } from './Modal'
 
 export type ModalWithViewStateView = View & {
+  closeModal?: () => void
   title?: React.ReactNode
   bgClassName?: string
   onCloseViewId?: string | number
@@ -13,6 +14,7 @@ export type ModalWithViewStateView = View & {
 export type ModalWithViewStateProps = Omit<ModalProps, 'children'> &
   ViewStateMachineProps<ModalWithViewStateView> & {
     hideNavButtons?: boolean
+    noAnimation?: boolean
     [key: string]: any
   }
 
@@ -26,6 +28,7 @@ export function ModalWithViewState(props: ModalWithViewStateProps) {
   const {
     isOpen,
     closeModal,
+    noAnimation,
     label,
     title,
     className,
@@ -97,6 +100,9 @@ export function ModalWithViewState(props: ModalWithViewStateProps) {
         selectedViewId={selectedViewId}
         setSelectedViewId={setSelectedViewId}
         onViewChange={onViewChange}
+        closeModal={closeModal}
+        // TODO: Fix this animation
+        noAnimation={true}
         {...viewProps}
       />
     </Modal>
