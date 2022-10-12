@@ -12,10 +12,11 @@ export interface Tab {
 export const Tabs: React.FC<{
   tabs: Tab[]
   initialTabId: string
+  onTabSelect?: (tab: Tab) => void
   titleClassName?: string
   className?: string
 }> = (props) => {
-  const { tabs, className, titleClassName, initialTabId } = props
+  const { tabs, onTabSelect, className, titleClassName, initialTabId } = props
   const [selectedTabId, setSelectedTabId] = useState(initialTabId)
   const selectedTab = useMemo(() => tabs.find((tab) => tab.id === selectedTabId), [selectedTabId])
   const shouldReduceMotion = useReducedMotion()
@@ -29,7 +30,10 @@ export const Tabs: React.FC<{
             key={`${id}-tab-${tab.id}`}
             {...tab}
             isSelected={tab.id === selectedTabId}
-            setSelected={() => setSelectedTabId(tab.id)}
+            setSelected={() => {
+              onTabSelect?.(tab)
+              setSelectedTabId(tab.id)
+            }}
           />
         ))}
       </div>

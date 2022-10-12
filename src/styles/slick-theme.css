@@ -2,14 +2,21 @@
 
 /* Icons */
 /* Arrows */
+.slick-arrow {
+  top: auto;
+  bottom: 0;
+}
+
 .slick-prev,
 .slick-next {
-  @apply block absolute p-0 w-8 h-8 top-1/2;
+  @apply block absolute p-0 w-8 h-8 bottom-0;
+  top: auto;
+  bottom: 0;
   font-size: 0;
   line-height: 0;
-  -webkit-transform: translate(0, -100%);
+  /* -webkit-transform: translate(0, -100%);
   -ms-transform: translate(0, -100%);
-  transform: translate(0, -100%);
+  transform: translate(0, -100%); */
 
   cursor: pointer;
 

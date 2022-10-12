@@ -1,10 +1,10 @@
 import React, { Suspense } from 'react'
+import { ThemeProvider, useTheme } from 'next-themes'
 import { HotKeys } from 'react-hotkeys'
 import { QueryClient, QueryClientProvider } from 'react-query'
 
 import { HOTKEYS_KEY_MAP } from '../src/constants'
 import { ThemeSettingsItem } from '../src/components/PageHeader/Settings/ThemeSettingsItem'
-import { ThemeContextProvider } from 'src/components/ThemeContextProvider'
 
 import 'react-spring-bottom-sheet/dist/style.css'
 
@@ -27,7 +27,7 @@ export const decorators = [
       className='outline-none focus:outline-none active:outline-none'
     >
       <QueryClientProvider client={queryClient}>
-        <ThemeContextProvider>
+        <ThemeProvider attribute='class' defaultTheme='dark'>
           <Suspense fallback={<Loader />}>
             <div className='flex justify-end'>
               <ThemeSettingsItem />
@@ -36,7 +36,7 @@ export const decorators = [
               <Story />
             </div>
           </Suspense>
-        </ThemeContextProvider>
+        </ThemeProvider>
       </QueryClientProvider>
     </HotKeys>
   )

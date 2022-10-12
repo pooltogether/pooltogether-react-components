@@ -15,6 +15,7 @@ export enum ButtonTheme {
   black = 'black',
   blackOutline = 'black-outline',
   rainbow = 'rainbow',
+  pinkToYellow = 'pink-to-yellow',
   transparent = 'transparent'
 }
 
@@ -131,14 +132,10 @@ const getChevronClassName = (size: ButtonSize): string => {
 }
 
 const getThemeClassName = (theme: ButtonTheme = ButtonTheme.teal): string => {
-  switch (theme) {
-    case ButtonTheme.rainbow: {
-      return 'pt-btn--rainbow gradient-background-anim'
-    }
-    default: {
-      return `pt-btn--${theme}`
-    }
-  }
+  return classNames(`pt-btn--${theme}`, {
+    'gradient-background-anim': ButtonTheme.pinkToYellow === theme,
+    'rainbow-background-anim': ButtonTheme.rainbow === theme
+  })
 }
 
 const getSizeClassName = (size: ButtonSize = ButtonSize.md): string => {

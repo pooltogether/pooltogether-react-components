@@ -69,16 +69,16 @@
 
 /* Transparent */
 .pt-btn--transparent {
-  @apply bg-actually-black bg-opacity-10 border-transparent border-opacity-0 text-inverse;
+  @apply bg-white bg-opacity-100 dark:bg-actually-black dark:bg-opacity-25 border-transparent border-opacity-0 text-inverse;
 }
 
 .pt-btn--transparent:not([disabled]):hover,
 .pt-btn--transparent:not([disabled]):focus {
-  @apply ring-2 ring-actually-black ring-opacity-5 text-opacity-90 bg-opacity-5;
+  @apply ring-2 ring-white ring-opacity-50 dark:ring-actually-black dark:ring-opacity-10 text-opacity-90 bg-opacity-50 dark:bg-opacity-10;
 }
 
 .pt-btn--transparent:not([disabled]):active {
-  @apply ring-2 ring-actually-black ring-opacity-10 text-opacity-95;
+  @apply ring-2 ring-white ring-opacity-100 dark:ring-actually-black dark:ring-opacity-25 text-opacity-95;
 }
 
 .pt-btn--transparent:disabled {
@@ -227,37 +227,6 @@
   padding-top: 0.625rem;
 }
 
-.gradient-background-anim {
-  background: #1d1f20;
-  position: relative;
-}
-
-.gradient-background-anim:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: linear-gradient(85deg, #f37055 -30%, #ef4e7b, #f947d2, #0dacf5, #f947d2, #fedc6f);
-  z-index: -1;
-  animation: animatedgradient 3s ease alternate infinite;
-  animation-timing-function: steps(30);
-  background-size: 300% 300%;
-}
-
-@keyframes animatedgradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
 .pt-btn--rainbow:not([disabled]):hover,
 .pt-btn--rainbow:not([disabled]):focus {
   @apply text-white;
@@ -275,6 +244,87 @@
   background-color: #1e012f;
   color: #000;
   opacity: 0.5;
+}
+
+.rainbow-background-anim {
+  background: #1d1f20;
+  position: relative;
+}
+
+.rainbow-background-anim:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(85deg, #f37055 -30%, #ef4e7b, #f947d2, #0dacf5, #f947d2, #fedc6f);
+  z-index: -1;
+  animation: animatedgradient 3s ease alternate infinite;
+  animation-timing-function: steps(30);
+  background-size: 300% 300%;
+}
+
+/* Pink to yellow */
+.pt-btn--pink-to-yellow {
+  @apply text-white;
+  border: none;
+  z-index: 1;
+}
+
+.pt-btn--md.pt-btn--pink-to-yellow {
+  padding-bottom: 0.625rem;
+  padding-top: 0.625rem;
+}
+
+.pt-btn--pink-to-yellow:not([disabled]):hover,
+.pt-btn--pink-to-yellow:not([disabled]):focus {
+  @apply text-white;
+
+  border-color: transparent;
+  box-shadow: 0 0 0 3px rgba(195, 120, 245, 0.5);
+}
+
+.pt-btn--pink-to-yellow:not([disabled]):active {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+.pt-btn--pink-to-yellow:disabled {
+  @apply border-transparent;
+  background-color: #1e012f;
+  color: #000;
+  opacity: 0.5;
+}
+
+.gradient-background-anim- {
+  background: #1d1f20;
+  position: relative;
+}
+
+.gradient-background-anim:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(95deg, #0dacf5, #f947d2, #fedc6f);
+  z-index: -1;
+  animation: animatedgradient 5s ease-in alternate infinite;
+  animation-timing-function: steps(30);
+  background-size: 300% 300%;
+}
+
+@keyframes animatedgradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* ------- Sizes ------- */

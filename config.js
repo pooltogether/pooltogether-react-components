@@ -193,7 +193,8 @@ const pooltogetherReactTailwindUIConfig = {
         '1/4': '25%',
         '1/2': '50%',
         '3/4': '75%',
-        'full': '100%'
+        'full': '100%',
+        'actually-full-screen': 'calc(var(--vh, 1vh) * 100)'
       },
       borderRadius: {
         'sm': '0.25rem',
@@ -239,7 +240,8 @@ const pooltogetherReactTailwindUIConfig = {
         '90-screen': '90vh',
         '1/4-screen': '25vh',
         '1/2-screen': '50vh',
-        '3/4-screen': '75vh'
+        '3/4-screen': '75vh',
+        'actually-full-screen': 'calc(var(--vh, 1vh) * 100)'
       },
       lineHeight: {
         relaxed: 1.75

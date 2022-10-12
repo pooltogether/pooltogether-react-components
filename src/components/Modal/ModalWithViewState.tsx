@@ -1,14 +1,20 @@
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { View, ViewStateMachine, ViewStateMachineProps } from '../Containers/ViewStateMachine'
 import { Modal, ModalProps } from './Modal'
 
 export type ModalWithViewStateView = View & {
   closeModal?: () => void
   title?: React.ReactNode
-  bgClassName?: string
   onCloseViewId?: string | number
   hideNextNavButton?: boolean
   hidePreviousNavButton?: boolean
+  // Optional styling overrides
+  bgClassName?: string
+  widthClassName?: string
+  modalHeightClassName?: string
+  maxWidthClassName?: string
+  maxHeightClassName?: string
+  paddingClassName?: string
 }
 
 export type ModalWithViewStateProps = Omit<ModalProps, 'children'> &
@@ -49,6 +55,7 @@ export function ModalWithViewState(props: ModalWithViewStateProps) {
     setSelectedViewId,
     onViewChange,
     hideNavButtons,
+    router,
     ...viewProps
   } = props
 
@@ -69,6 +76,26 @@ export function ModalWithViewState(props: ModalWithViewStateProps) {
       ? () => setSelectedViewId(selectedView.nextViewId)
       : null
 
+  // TODO: This barely works. Better than nothing though.
+  useEffect(() => {
+    router?.beforePopState(() => {
+      if (isOpen) {
+        if (!!previous) {
+          previous()
+        } else {
+          closeModal()
+        }
+        router.push(router.asPath, undefined, { shallow: true })
+        return false
+      }
+      return true
+    })
+
+    return () => {
+      router?.beforePopState(() => true)
+    }
+  }, [router, isOpen, previous])
+
   return (
     <Modal
       className={className}
@@ -81,11 +108,29 @@ export function ModalWithViewState(props: ModalWithViewStateProps) {
       }}
       label={label}
       title={selectedView.title !== undefined ? selectedView.title : title}
-      widthClassName={widthClassName}
-      modalHeightClassName={modalHeightClassName}
-      maxWidthClassName={maxWidthClassName}
-      maxHeightClassName={maxHeightClassName}
-      paddingClassName={paddingClassName}
+      widthClassName={
+        selectedView.widthClassName !== undefined ? selectedView.widthClassName : widthClassName
+      }
+      modalHeightClassName={
+        !!selectedView.modalHeightClassName
+          ? selectedView.modalHeightClassName
+          : modalHeightClassName
+      }
+      maxWidthClassName={
+        selectedView.maxWidthClassName !== undefined
+          ? selectedView.maxWidthClassName
+          : maxWidthClassName
+      }
+      maxHeightClassName={
+        selectedView.maxHeightClassName !== undefined
+          ? selectedView.maxHeightClassName
+          : maxHeightClassName
+      }
+      paddingClassName={
+        selectedView.paddingClassName !== undefined
+          ? selectedView.paddingClassName
+          : paddingClassName
+      }
       bgClassName={selectedView.bgClassName !== undefined ? selectedView.bgClassName : bgClassName}
       roundedClassName={roundedClassName}
       shadowClassName={shadowClassName}

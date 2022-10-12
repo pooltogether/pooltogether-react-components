@@ -4,14 +4,16 @@ import FeatherIcon from 'feather-icons-react'
 import Dialog from '@reach/dialog'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { NetworkIcon } from '../Icons/NetworkIcon'
+import { NextRouter } from 'next/router'
 import classNames from 'classnames'
 
 export interface ModalProps {
   isOpen: boolean
   closeModal: () => void
   label: string
-  title?: React.ReactNode
   children: React.ReactNode
+  router?: NextRouter
+  title?: React.ReactNode
   className?: string
   widthClassName?: string
   modalHeightClassName?: string
@@ -45,9 +47,26 @@ export const Modal = (props: ModalProps) => {
     shadowClassName,
     overflowClassName,
     style,
+    router,
     onPreviousClick,
     onNextClick
   } = props
+
+  // TODO: This barely works. Better than nothing though.
+  useEffect(() => {
+    router?.beforePopState(() => {
+      if (isOpen) {
+        closeModal()
+        router.replace(router.asPath, undefined, { shallow: true })
+        return false
+      }
+      return true
+    })
+
+    return () => {
+      router?.beforePopState(() => true)
+    }
+  }, [router, isOpen])
 
   const [isDialogOpen, setIsDialogOpen] = useState(isOpen)
   useEffect(() => {
@@ -126,7 +145,7 @@ Modal.defaultProps = {
   maxWidthClassName: 'xs:max-w-lg',
   widthClassName: 'w-screen xs:w-full',
   modalHeightClassName: 'h-actually-full-screen xs:h-auto',
-  maxHeightClassName: 'max-h-screen',
+  maxHeightClassName: 'max-h-actually-full-screen xs:max-h-90-screen',
   paddingClassName: 'px-2 xs:px-8 pt-2 pb-12 xs:py-12',
   shadowClassName: 'shadow-3xl',
   overflowClassName: 'overflow-y-auto minimal-scrollbar'
