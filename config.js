@@ -251,8 +251,6 @@ const pooltogetherReactTailwindUIConfig = {
         // base: ['16px', '24px'],
         // lg: ['20px', '28px'], // line height!
         // xl: ['24px', '32px'],
-        'xxxxxs': '0.5rem',
-        'xxxxs': '0.625rem',
         'xxxs': '0.75rem',
         'xxs': '0.875rem',
         'xs': '1rem',
@@ -272,7 +270,9 @@ const pooltogetherReactTailwindUIConfig = {
         '11xl': '4.25rem',
         '12xl': '4.5rem',
         '13xl': '4.75rem',
-        '14xl': '5rem'
+        '14xl': '5rem',
+        '15xl': '7rem',
+        '16xl': '9rem'
       },
       fontFamily: {
         sans: ['Averta', 'system-ui']
