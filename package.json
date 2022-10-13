@@ -1,6 +1,6 @@
 {
   "name": "@pooltogether/react-components",
-  "version": "2.0.0-beta.10",
+  "version": "2.0.0-beta.11",
   "description": "PoolTogether UI elements in a shared lib",
   "author": "PoolTogether Inc.",
   "license": "MIT",
@@ -56,7 +56,7 @@
   ],
   "peerDependencies": {
     "@pooltogether/current-pool-data": "^3.7.2",
-    "@pooltogether/utilities": "^0.6.2",
+    "@pooltogether/utilities": "^0.6.3",
     "beautiful-react-hooks": "^3.6.2",
     "eth-revert-reason": "^1.0.3",
     "ethers": "^5.6.4",
@@ -74,7 +74,7 @@
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.4",
     "@pooltogether/etherplex": "^1.1.2",
-    "@pooltogether/utilities": "^0.6.2",
+    "@pooltogether/utilities": "^0.6.3",
     "@rollup/plugin-url": "^6.1.0",
     "@size-limit/preset-small-lib": "^6.0.4",
     "@storybook/addon-actions": "^6.4.9",
