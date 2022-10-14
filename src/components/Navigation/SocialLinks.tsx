@@ -49,6 +49,18 @@ const socialsLinkData = [
         )
       },
       {
+        href: 'https://tools.pooltogether.com/',
+        langKey: 'toolsSite',
+        label: 'Tools',
+        icon: (
+          <FeatherIcon
+            icon='tool'
+            className='w-4 h-4 opacity-70 mx-auto'
+            style={{ color: '#BBB2CE' }}
+          />
+        )
+      },
+      {
         href: 'https://docs.pooltogether.com',
         langKey: 'knowledgeBase',
         label: 'Knowledge Base',

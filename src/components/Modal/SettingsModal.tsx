@@ -1,13 +1,13 @@
 import { getNetworkNiceNameByChainId } from '@pooltogether/utilities'
 import classNames from 'classnames'
 import { useTheme } from 'next-themes'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ViewProps } from '../Containers/ViewStateMachine'
 import { i18nTranslate } from 'src/types'
 import { NetworkIcon } from '../Icons/NetworkIcon'
 import { SocialLinks } from '../Navigation/SocialLinks'
-import { TestnetSettingsItem } from '../PageHeader/Settings/TestnetSettingsItem'
 import { ModalWithViewState, ModalWithViewStateView } from './ModalWithViewState'
+import { useIsTestnets } from '../../hooks/useIsTestnets'
 
 export enum ViewIds {
   main,
@@ -89,18 +89,13 @@ const MainView: React.FC<{ chainId: number; t: i18nTranslate } & ViewProps> = (p
   const { t, chainId, setSelectedViewId } = props
   return (
     <div className='flex flex-col justify-between xs:justify-start h-full'>
-      <div className='flex flex-col space-y-3'>
-        <div className='flex space-x-3'>
-          <NetworkButton chainId={chainId} onClick={() => setSelectedViewId(ViewIds.network)} />
-          <ThemeButton t={t} />
-        </div>
-        <div className='flex space-x-3'>
-          <CurrencyButton onClick={() => setSelectedViewId(ViewIds.currency)} disabled />
-          <LanguageButton onClick={() => setSelectedViewId(ViewIds.language)} />
-        </div>
+      <div className='grid grid-cols-2 gap-3'>
+        <NetworkButton chainId={chainId} onClick={() => setSelectedViewId(ViewIds.network)} />
+        <ThemeButton t={t} />
+        <CurrencyButton onClick={() => setSelectedViewId(ViewIds.currency)} disabled />
+        <LanguageButton onClick={() => setSelectedViewId(ViewIds.language)} />
+        <DeveloperButton />
       </div>
-
-      <TestnetSettingsItem t={t} />
 
       <div className='mt-8'>
         <SocialLinks t={t} />
@@ -126,6 +121,34 @@ const CurrencyButton: React.FC<{ disabled?: boolean; onClick: () => void }> = (p
 const LanguageButton: React.FC<{ onClick: () => void }> = (props) => (
   <Button onClick={props.onClick} icon={'EN'} title='English' secondary='Language' />
 )
+
+const DeveloperButton = () => {
+  const [count, setCount] = useState(0)
+  const { isTestnets, enableTestnets, disableTestnets } = useIsTestnets()
+
+  useEffect(() => {
+    if (count >= 5) {
+      if (isTestnets) {
+        disableTestnets()
+      } else {
+        enableTestnets()
+      }
+      // after updating the cookie reload the page or else the app crashes
+      window.location.reload()
+    }
+  }, [count])
+
+  return (
+    <Button
+      onClick={() => setCount(count + 1)}
+      title='Developer'
+      secondary={
+        count === 0 ? (isTestnets ? 'Enable mainnets' : 'Enable testnets') : `(${5 - count}) more`
+      }
+    />
+  )
+}
+
 const ThemeButton = (props: { t: i18nTranslate }) => {
   const { t } = props
   const { theme, themes, setTheme, systemTheme } = useTheme()
@@ -166,9 +189,9 @@ const ThemeButton = (props: { t: i18nTranslate }) => {
 
 const Button: React.FC<{
   onClick: () => void
-  icon: React.ReactNode
   title: React.ReactNode
   secondary: React.ReactNode
+  icon?: React.ReactNode
   bgClassName?: string
   disabled?: boolean
 }> = (props) => {
@@ -185,14 +208,16 @@ const Button: React.FC<{
         }
       )}
     >
-      <div
-        className={classNames(
-          bgClassName,
-          'h-11 w-11 text-xxs rounded-full flex flex-col text-center justify-center trans bg-opacity-10 dark:bg-opacity-80 mb-1'
-        )}
-      >
-        {icon}
-      </div>
+      {!!icon && (
+        <div
+          className={classNames(
+            bgClassName,
+            'h-11 w-11 text-xxs rounded-full flex flex-col text-center justify-center trans bg-opacity-10 dark:bg-opacity-80 mb-1'
+          )}
+        >
+          {icon}
+        </div>
+      )}
       <div className='text-xs'>{title}</div>
       <div className='text-xxxs opacity-50'>{secondary}</div>
     </button>

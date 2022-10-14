@@ -6,13 +6,16 @@ import MediumLogo from '../../assets/Socials/medium-logo.svg'
 import DiscordLogo from '../../assets/Socials/discord-logo.svg'
 import TwitterLogo from '../../assets/Socials/twitter-logo.svg'
 import TelegramLogo from '../../assets/Socials/telegram-logo.svg'
-// TODO: GitHub
+import GithubLogo from '../../assets/Socials/github-logo.svg'
+import Docs from '../../assets/Socials/docs.svg'
 
 export enum SocialKey {
   twitter = 'twitter',
   discord = 'discord',
   medium = 'medium',
-  telegram = 'telegram'
+  telegram = 'telegram',
+  github = 'github',
+  docs = 'docs'
 }
 
 export const SocialIcon: React.FC<{
@@ -60,5 +63,7 @@ export const SOCIAL_MAPPING = Object.freeze({
   [SocialKey.twitter]: TwitterLogo,
   [SocialKey.medium]: MediumLogo,
   [SocialKey.telegram]: TelegramLogo,
-  [SocialKey.discord]: DiscordLogo
+  [SocialKey.discord]: DiscordLogo,
+  [SocialKey.github]: GithubLogo,
+  [SocialKey.docs]: Docs
 })

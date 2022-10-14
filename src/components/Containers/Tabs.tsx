@@ -1,6 +1,5 @@
 import React, { ReactNode, useMemo, useState } from 'react'
 import { v4 as uuid } from 'uuid'
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import classNames from 'classnames'
 
 export interface Tab {
@@ -19,7 +18,6 @@ export const Tabs: React.FC<{
   const { tabs, onTabSelect, className, titleClassName, initialTabId } = props
   const [selectedTabId, setSelectedTabId] = useState(initialTabId)
   const selectedTab = useMemo(() => tabs.find((tab) => tab.id === selectedTabId), [selectedTabId])
-  const shouldReduceMotion = useReducedMotion()
   const id = useMemo(() => uuid(), [])
 
   return (
@@ -37,21 +35,7 @@ export const Tabs: React.FC<{
           />
         ))}
       </div>
-      <AnimatePresence>
-        <motion.div
-          key={`tab-animation-wrapper-${selectedTabId}`}
-          transition={{ duration: shouldReduceMotion ? 0 : 0.1, ease: 'easeIn' }}
-          initial={{
-            opacity: 0
-          }}
-          animate={{
-            opacity: 1
-          }}
-          className={classNames('flex flex-col', className)}
-        >
-          {selectedTab.view}
-        </motion.div>
-      </AnimatePresence>
+      <div className={classNames('flex flex-col', className)}>{selectedTab.view}</div>
     </>
   )
 }
