@@ -13,7 +13,7 @@ export interface ModalProps {
   label: string
   children: React.ReactNode
   router?: NextRouter
-  title?: React.ReactNode
+  header?: React.ReactNode
   className?: string
   widthClassName?: string
   modalHeightClassName?: string
@@ -35,7 +35,7 @@ export const Modal = (props: ModalProps) => {
     closeModal,
     children,
     label,
-    title,
+    header,
     className,
     widthClassName,
     modalHeightClassName,
@@ -111,25 +111,12 @@ export const Modal = (props: ModalProps) => {
               overflowClassName
             )}
           >
-            <div
-              className={classNames('z-1 sticky top-0', {
-                'backdrop-filter backdrop-blur-xl': !!title
-              })}
-            >
-              <div className='absolute left-4 flex space-x-2 items-center top-2'>
-                {onPreviousClick && <PreviousButton onClick={onPreviousClick} />}
-                {onNextClick && <NextButton onClick={onNextClick} />}
-              </div>
-              <CloseModalButton
-                closeModal={closeModal}
-                className={classNames('absolute top-2 right-4', {
-                  'backdrop-filter backdrop-blur-xl rounded-full': !title
-                })}
-              />
-              <div className='inset-x-0 top-0 flex justify-center'>
-                <SimpleModalTitle title={title} className='mx-auto leading-none my-4 xs:my-2' />
-              </div>
-            </div>
+            <ModalHeader
+              header={header}
+              closeModal={closeModal}
+              onPreviousClick={onPreviousClick}
+              onNextClick={onNextClick}
+            />
             <div className={classNames(paddingClassName, className)}>{children}</div>
           </motion.div>
         )}
@@ -151,11 +138,47 @@ Modal.defaultProps = {
   overflowClassName: 'overflow-y-auto minimal-scrollbar'
 }
 
-const CloseModalButton = (props) => (
+const ModalHeader = (props: {
+  header: React.ReactNode
+  closeModal: () => void
+  onPreviousClick: () => void
+  onNextClick: () => void
+}) => {
+  const { header, closeModal, onPreviousClick, onNextClick } = props
+  return (
+    <div
+      className={classNames('z-1 sticky top-0', {
+        'backdrop-filter backdrop-blur-xl': !!header
+      })}
+    >
+      <div className='absolute left-4 flex space-x-2 items-center top-2'>
+        {onPreviousClick && <PreviousButton onClick={onPreviousClick} />}
+        {onNextClick && <NextButton onClick={onNextClick} />}
+      </div>
+      <CloseModalButton
+        closeModal={closeModal}
+        className={classNames('absolute top-2 right-4', {
+          'backdrop-filter backdrop-blur-xl rounded-full': !header
+        })}
+      />
+      <div className='inset-x-0 top-0 flex justify-center'>
+        <span className={'text-inverse font-semibold px-1 mx-auto leading-none my-4 xs:my-2'}>
+          {header}
+        </span>
+      </div>
+    </div>
+  )
+}
+
+export const CloseModalButton = (props) => (
   <ModalHeaderButton icon='x' onClick={props.closeModal} className={props.className} />
 )
-const PreviousButton = (props) => <ModalHeaderButton icon='arrow-left' onClick={props.onClick} />
-const NextButton = (props) => <ModalHeaderButton icon='arrow-right' onClick={props.onClick} />
+export const PreviousButton = (props) => (
+  <ModalHeaderButton icon='arrow-left' onClick={props.onClick} />
+)
+export const NextButton = (props) => (
+  <ModalHeaderButton icon='arrow-right' onClick={props.onClick} />
+)
 
 const ModalHeaderButton: React.FC<{ onClick: () => void; className?: string; icon: string }> = (
   props
@@ -166,14 +189,9 @@ const ModalHeaderButton: React.FC<{ onClick: () => void; className?: string; ico
       className={classNames('trans text-inverse opacity-100 hover:opacity-70 stroke-2', className)}
       onClick={onClick}
     >
-      <FeatherIcon icon={icon} className='w-8 h-8 xs:w-6 xs:h-6' />
+      <FeatherIcon icon={icon} className='w-8 h-8 sm:w-6 sm:h-6' />
     </button>
   )
-}
-
-const SimpleModalTitle: React.FC<{ title?: React.ReactNode; className?: string }> = (props) => {
-  const { title, className } = props
-  return <span className={classNames('text-inverse font-semibold px-1', className)}>{title}</span>
 }
 
 interface ModalTitleProps {

@@ -9,7 +9,7 @@ export { useCookieOptions } from './hooks/useCookieOptions'
 export { useIsTestnets } from './hooks/useIsTestnets'
 export { useOnScroll } from './hooks/useOnScroll'
 export { useScreenSize, ScreenSize } from './hooks/useScreenSize'
-export { useTimeCountdown } from './hooks/useTimeCountdown'
+export { useCountdown } from './hooks/useCountdown'
 export { useWindowFocus } from './hooks/useWindowFocus'
 
 // ------- Component Groups -------
@@ -103,9 +103,11 @@ export { HeaderLogo } from './components/PageHeader/HeaderLogo'
 export { LanguagePickerDropdown } from './components/PageHeader/LanguagePickerDropdown'
 export { PageHeaderContainer } from './components/PageHeader/PageHeaderContainer'
 
-// Prizes
-export { SimpleCountDown } from './components/Prizes/SimpleCountdown'
-export { Time, TimeProps } from './components/Prizes/Time'
+// Time
+export { SimpleTimeCountDown } from './components/Time/SimpleTimeCountdown'
+export { TimeCountdown } from './components/Time/TimeCountdown'
+export { TimeDisplay } from './components/Time/TimeDisplay'
+export { SimpleTimeDisplay } from './components/Time/SimpleTimeDisplay'
 
 // Components
 export { Accordion, ContentWrapper } from './components/Accordion'
@@ -113,7 +115,7 @@ export {
   BottomSheet,
   BottomSheetProps,
   snapTo90,
-  BottomSheetTitle
+  snapToFull
 } from './components/BottomSheet/BottomSheet'
 export {
   BottomSheetWithViewState,

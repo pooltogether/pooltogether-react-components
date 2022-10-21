@@ -1,4 +1,3 @@
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import React, { useEffect, useMemo } from 'react'
 
 export type ViewProps = {
@@ -23,7 +22,6 @@ export type ViewStateMachineProps<T extends View> = {
   setSelectedViewId: (selectedViewId: string | number) => void
   onViewChange?: (selectedView: T) => void
   [key: string]: any
-  noAnimation?: boolean
 }
 
 /**
@@ -31,22 +29,12 @@ export type ViewStateMachineProps<T extends View> = {
  * @returns
  */
 export function ViewStateMachine<T extends View>(props: ViewStateMachineProps<T>) {
-  const {
-    views,
-    viewIds,
-    selectedViewId,
-    noAnimation,
-    setSelectedViewId,
-    onViewChange,
-    ...viewProps
-  } = props
+  const { views, viewIds, selectedViewId, setSelectedViewId, onViewChange, ...viewProps } = props
 
   const selectedView = useMemo(() => {
     const view = views.find((view) => view.id === selectedViewId)
     return view
   }, [selectedViewId])
-
-  const shouldReduceMotion = useReducedMotion()
 
   useEffect(() => {
     onViewChange?.(selectedView)
@@ -60,39 +48,13 @@ export function ViewStateMachine<T extends View>(props: ViewStateMachineProps<T>
   const next =
     selectedView.nextViewId !== undefined ? () => setSelectedViewId(selectedView.nextViewId) : null
 
-  if (noAnimation) {
-    return (
-      <selectedView.view
-        setSelectedViewId={setSelectedViewId}
-        viewIds={viewIds}
-        previous={previous}
-        next={next}
-        {...viewProps}
-      />
-    )
-  }
-
   return (
-    <AnimatePresence>
-      <motion.div
-        key={`view-state-machine-animation-wrapper-${selectedViewId}`}
-        transition={{ duration: shouldReduceMotion ? 0 : 0.1, ease: 'easeIn' }}
-        initial={{
-          opacity: 0
-        }}
-        animate={{
-          opacity: 1
-        }}
-        className='h-full'
-      >
-        <selectedView.view
-          setSelectedViewId={setSelectedViewId}
-          viewIds={viewIds}
-          previous={previous}
-          next={next}
-          {...viewProps}
-        />
-      </motion.div>
-    </AnimatePresence>
+    <selectedView.view
+      setSelectedViewId={setSelectedViewId}
+      viewIds={viewIds}
+      previous={previous}
+      next={next}
+      {...viewProps}
+    />
   )
 }

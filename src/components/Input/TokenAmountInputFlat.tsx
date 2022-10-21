@@ -1,7 +1,7 @@
 import React from 'react'
+// import FeatherIcon from 'feather-icons-react'
 import classNames from 'classnames'
 import { FieldValues, UseFormRegister, UseFormReturn, UseFormSetValue } from 'react-hook-form'
-
 import { Amount, i18nTranslate, Token } from 'src/types'
 
 interface TokenAmountInputFlatProps {
@@ -18,6 +18,7 @@ interface TokenAmountInputFlatProps {
   className?: string
   widthClassName?: string
   heightClassName?: string
+  inputClassName?: string
   bgClassName?: string
   autoComplete?: string
 }
@@ -32,6 +33,7 @@ export const TokenAmountInputFlat: React.FC<TokenAmountInputFlatProps> = (props)
     className,
     widthClassName,
     heightClassName,
+    inputClassName,
     form,
     inputKey,
     token,
@@ -52,30 +54,36 @@ export const TokenAmountInputFlat: React.FC<TokenAmountInputFlatProps> = (props)
         className,
         widthClassName,
         heightClassName,
-        'flex flex-row font-bold space-x-2 items-center'
+        'flex flex-col font-bold items-center'
       )}
     >
+      <div className='flex flex-row space-x-2 justify-center'>
+        <Input
+          fontSizeClassName={classNames('transition text-10xl', inputClassName, {
+            'w-1/3': inputVal?.length < 3,
+            'w-2/5': inputVal?.length >= 3 && inputVal?.length < 4,
+            'w-3/5': inputVal?.length >= 4 && inputVal?.length < 5,
+            'w-4/5': inputVal?.length >= 5 && inputVal?.length < 6,
+            'w-full': inputVal?.length >= 6
+            // 'text-xl sm:text-8xl': inputVal?.length >= 12,
+            // 'text-3xl sm:text-10xl': inputVal?.length >= 7 && inputVal?.length < 12,
+            // 'text-10xl': !inputVal || inputVal?.length < 7
+          })}
+          autoComplete={autoComplete}
+          register={register}
+          inputKey={inputKey}
+          validate={validate}
+          t={t}
+        />
+        <InputToken className='text-xl xs:text-2xl' chainId={chainId} token={token} />
+      </div>
       <MaxButton setValue={setValue} balance={balance} inputKey={inputKey} token={token} />
-      <Input
-        fontSizeClassName={classNames('transition', {
-          'text-xl sm:text-8xl': inputVal?.length >= 12,
-          'text-3xl sm:text-10xl': inputVal?.length >= 7 && inputVal?.length < 12,
-          'text-10xl': !inputVal || inputVal?.length < 7
-        })}
-        autoComplete={autoComplete}
-        register={register}
-        inputKey={inputKey}
-        validate={validate}
-        t={t}
-      />
-      <InputToken className='text-xl xs:text-2xl' chainId={chainId} token={token} />
     </div>
   )
 }
 
 TokenAmountInputFlat.defaultProps = {
-  heightClassName: 'h-24',
-  widthClassName: 'w-full',
+  inputClassName: '',
   bgClassName: 'bg-tertiary'
 }
 
@@ -118,11 +126,11 @@ const Input = (props: InputProps) => {
       className={classNames(
         fontSizeClassName,
         className,
-        'bg-transparent outline-none w-full focus:outline-none active:outline-none text-right flex-grow'
+        'bg-transparent outline-none focus:outline-none active:outline-none text-right leading-none'
       )}
       placeholder='0.0'
       autoComplete={autoComplete}
-      inputMode='numeric'
+      inputMode='decimal'
       {...register(inputKey, { required: true, pattern, validate })}
     />
   )
@@ -144,20 +152,20 @@ const MaxButton: React.FC<{
   const disabled = !balance || balance.amountUnformatted.isZero()
 
   return (
-    <button
-      type='button'
-      disabled={disabled}
-      onClick={() => setValue(inputKey, balance.amount, { shouldValidate: true })}
-      className={classNames(
-        'h-11 w-11 px-2 py-3 text-xxs rounded-full flex flex-col text-center justify-center trans',
-        {
-          'dark:bg-actually-black dark:opacity-10 bg-white opacity-10': disabled,
-          'dark:bg-actually-black dark:bg-opacity-30 dark:hover:bg-opacity-10 bg-white bg-opacity-30 hover:bg-opacity-10':
-            !disabled
-        }
-      )}
-    >
-      <span className='mx-auto'>{t?.('max') || 'Max'}</span>
-    </button>
+    <div className={classNames('flex flex-row space-x-2 ml-auto items-center')}>
+      <span className='font-light opacity-80'>Balance: {balance?.amountPretty || 0}</span>
+      <button
+        type='button'
+        disabled={disabled}
+        onClick={() => setValue(inputKey, balance.amount, { shouldValidate: true })}
+        className={classNames('transition', {
+          'opacity-50': disabled
+        })}
+      >
+        {/* <FeatherIcon icon='credit-card' className='w-4 h-4' /> */}
+
+        <span className='mx-auto font-bold'>{t?.('max') || 'Max'}</span>
+      </button>
+    </div>
   )
 }

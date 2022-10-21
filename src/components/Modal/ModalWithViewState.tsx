@@ -4,7 +4,7 @@ import { Modal, ModalProps } from './Modal'
 
 export type ModalWithViewStateView = View & {
   closeModal?: () => void
-  title?: React.ReactNode
+  header?: React.ReactNode
   onCloseViewId?: string | number
   hideNextNavButton?: boolean
   hidePreviousNavButton?: boolean
@@ -20,7 +20,6 @@ export type ModalWithViewStateView = View & {
 export type ModalWithViewStateProps = Omit<ModalProps, 'children'> &
   ViewStateMachineProps<ModalWithViewStateView> & {
     hideNavButtons?: boolean
-    noAnimation?: boolean
     [key: string]: any
   }
 
@@ -34,9 +33,8 @@ export function ModalWithViewState(props: ModalWithViewStateProps) {
   const {
     isOpen,
     closeModal,
-    noAnimation,
     label,
-    title,
+    header,
     className,
     outerClassName,
     widthClassName,
@@ -107,7 +105,7 @@ export function ModalWithViewState(props: ModalWithViewStateProps) {
         closeModal()
       }}
       label={label}
-      title={selectedView.title !== undefined ? selectedView.title : title}
+      header={selectedView.header !== undefined ? selectedView.header : header}
       widthClassName={
         selectedView.widthClassName !== undefined ? selectedView.widthClassName : widthClassName
       }
@@ -146,8 +144,6 @@ export function ModalWithViewState(props: ModalWithViewStateProps) {
         setSelectedViewId={setSelectedViewId}
         onViewChange={onViewChange}
         closeModal={closeModal}
-        // TODO: Fix this animation
-        noAnimation={true}
         {...viewProps}
       />
     </Modal>

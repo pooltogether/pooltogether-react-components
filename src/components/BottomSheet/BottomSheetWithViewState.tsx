@@ -1,17 +1,10 @@
 import React, { useMemo } from 'react'
-import { View, ViewStateMachine, ViewStateMachineProps } from '../Containers/ViewStateMachine'
-import { BottomSheet, BottomSheetProps, BottomSheetTitle } from './BottomSheet'
-
-export type BottomSheetWithViewStateView = View & {
-  title?: React.ReactNode
-  bgClassName?: string
-  onCloseViewId?: string | number
-  hideNextNavButton?: boolean
-  hidePreviousNavButton?: boolean
-}
+import { ViewStateMachine, ViewStateMachineProps } from '../Containers/ViewStateMachine'
+import { ModalWithViewStateView } from '../Modal/ModalWithViewState'
+import { BottomSheet, BottomSheetProps } from './BottomSheet'
 
 export type BottomSheetWithViewStateProps = Omit<BottomSheetProps, 'children'> &
-  ViewStateMachineProps<BottomSheetWithViewStateView> & {
+  ViewStateMachineProps<ModalWithViewStateView> & {
     hideNavButtons?: boolean
     [key: string]: any
   }
@@ -24,10 +17,10 @@ export type BottomSheetWithViewStateProps = Omit<BottomSheetProps, 'children'> &
 export function BottomSheetWithViewState(props: BottomSheetWithViewStateProps) {
   // Explicitly pull out all ModalProps and ViewStateMachineProps so we can pass every other prop down to the view that we are going to render
   const {
-    open,
+    isOpen,
+    closeModal,
     label,
-    onDismiss,
-    title,
+    header,
     className,
     outerClassName,
     widthClassName,
@@ -47,6 +40,7 @@ export function BottomSheetWithViewState(props: BottomSheetWithViewStateProps) {
     onViewChange,
     hideNavButtons,
     snapPoints,
+    defaultSnap,
     ...viewProps
   } = props
 
@@ -70,19 +64,38 @@ export function BottomSheetWithViewState(props: BottomSheetWithViewStateProps) {
   return (
     <BottomSheet
       className={className}
-      open={open}
-      onDismiss={() => {
+      isOpen={isOpen}
+      closeModal={() => {
         if (selectedView.onCloseViewId !== undefined) {
           setSelectedViewId(selectedView.onCloseViewId)
         }
-        onDismiss()
+        closeModal()
       }}
       label={label}
-      widthClassName={widthClassName}
-      modalHeightClassName={modalHeightClassName}
-      maxWidthClassName={maxWidthClassName}
-      maxHeightClassName={maxHeightClassName}
-      paddingClassName={paddingClassName}
+      header={selectedView.header !== undefined ? selectedView.header : header}
+      widthClassName={
+        selectedView.widthClassName !== undefined ? selectedView.widthClassName : widthClassName
+      }
+      modalHeightClassName={
+        !!selectedView.modalHeightClassName
+          ? selectedView.modalHeightClassName
+          : modalHeightClassName
+      }
+      maxWidthClassName={
+        selectedView.maxWidthClassName !== undefined
+          ? selectedView.maxWidthClassName
+          : maxWidthClassName
+      }
+      maxHeightClassName={
+        selectedView.maxHeightClassName !== undefined
+          ? selectedView.maxHeightClassName
+          : maxHeightClassName
+      }
+      paddingClassName={
+        selectedView.paddingClassName !== undefined
+          ? selectedView.paddingClassName
+          : paddingClassName
+      }
       bgClassName={selectedView.bgClassName !== undefined ? selectedView.bgClassName : bgClassName}
       roundedClassName={roundedClassName}
       shadowClassName={shadowClassName}
@@ -91,8 +104,8 @@ export function BottomSheetWithViewState(props: BottomSheetWithViewStateProps) {
       onPreviousClick={previous}
       onNextClick={next}
       snapPoints={snapPoints}
+      defaultSnap={defaultSnap}
     >
-      <BottomSheetTitle title={selectedView.title !== undefined ? selectedView.title : title} />
       <ViewStateMachine
         viewIds={viewIds}
         views={views}

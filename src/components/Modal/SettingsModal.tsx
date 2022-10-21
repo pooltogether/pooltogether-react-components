@@ -6,8 +6,10 @@ import { ViewProps } from '../Containers/ViewStateMachine'
 import { i18nTranslate } from 'src/types'
 import { NetworkIcon } from '../Icons/NetworkIcon'
 import { SocialLinks } from '../Navigation/SocialLinks'
-import { ModalWithViewState, ModalWithViewStateView } from './ModalWithViewState'
+import { ModalWithViewStateView } from './ModalWithViewState'
 import { useIsTestnets } from '../../hooks/useIsTestnets'
+import { BottomSheetWithViewState } from '../BottomSheet/BottomSheetWithViewState'
+import FeatherIcon from 'feather-icons-react'
 
 export enum ViewIds {
   main,
@@ -38,29 +40,29 @@ export const SettingsModal: React.FC<{
     {
       id: ViewIds.network,
       view: networkView,
-      title: 'Select a network',
+      header: 'Select a network',
       previousViewId: ViewIds.main,
       onCloseViewId: ViewIds.main
     },
     {
       id: ViewIds.language,
       view: LanguageView,
-      title: 'Select your language',
+      header: 'Select your language',
       previousViewId: ViewIds.main,
       onCloseViewId: ViewIds.main
     },
     {
       id: ViewIds.currency,
       view: CurrencyView,
-      title: 'Select your currency',
+      header: 'Select your currency',
       previousViewId: ViewIds.main,
       onCloseViewId: ViewIds.main
     }
   ]
 
   return (
-    <ModalWithViewState
-      title={'Customize your experience'}
+    <BottomSheetWithViewState
+      header={'Customize your experience'}
       label='settings-modal'
       bgClassName='bg-pt-purple-lightest dark:bg-pt-purple-darkest'
       isOpen={isOpen}
@@ -94,6 +96,7 @@ const MainView: React.FC<{ chainId: number; t: i18nTranslate } & ViewProps> = (p
         <ThemeButton t={t} />
         <CurrencyButton onClick={() => setSelectedViewId(ViewIds.currency)} disabled />
         <LanguageButton onClick={() => setSelectedViewId(ViewIds.language)} />
+        <ToolsButton />
         <DeveloperButton />
       </div>
 
@@ -146,6 +149,24 @@ const DeveloperButton = () => {
         count === 0 ? (isTestnets ? 'Enable mainnets' : 'Enable testnets') : `(${5 - count}) more`
       }
     />
+  )
+}
+
+const ToolsButton = () => {
+  return (
+    <a
+      href={'https://tools.pooltogether.com'}
+      className={classNames(
+        'flex flex-col items-center p-3 rounded-lg bg-white bg-opacity-100 dark:bg-white dark:bg-opacity-10 w-full transition hover:bg-opacity-50 dark:hover:bg-opacity-5'
+      )}
+      target='_blank'
+    >
+      <div className='text-xs flex space-x-1 items-center'>
+        <span>Tools</span>
+        <FeatherIcon icon='arrow-up-right' className='w-3 h-4' />
+      </div>
+      <div className='text-xxxs opacity-50'>PoolTogether Toolkit</div>
+    </a>
   )
 }
 

@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import { useTranslation } from 'next-i18next'
-
 import { SocialLinks } from 'src/components/Navigation/SocialLinks'
 import { SettingsContainer } from 'src/components/PageHeader/Settings/SettingsContainer'
 import { SettingsItem } from 'src/components/PageHeader/Settings/SettingsItem'
@@ -27,12 +25,9 @@ const Template = (args) => <TemplateWrapper />
 
 // Use wrapper so we don't break rule of hooks with `useTranslation()`
 const TemplateWrapper = (args) => {
-  const { t } = useTranslation()
-
   return (
     <>
       <SettingsContainer
-        t={t}
         className='ml-1 my-auto'
         title='Settings'
         sizeClassName='w-6 h-6 overflow-hidden'
@@ -41,11 +36,11 @@ const TemplateWrapper = (args) => {
         <div className='flex flex-col justify-between h-full sm:h-auto'>
           <div>
             <LanguagePicker />
-            <ThemeSettingsItem t={t} />
-            <TestnetSettingsItem t={t} />
+            <ThemeSettingsItem />
+            <TestnetSettingsItem />
           </div>
           <div className='sm:pt-24 pb-4 sm:pb-0'>
-            <SocialLinks t={t} />
+            <SocialLinks />
           </div>
         </div>
       </SettingsContainer>

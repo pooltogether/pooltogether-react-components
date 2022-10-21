@@ -8,7 +8,6 @@ import { ThemeSettingsItem } from '../src/components/PageHeader/Settings/ThemeSe
 
 import 'react-spring-bottom-sheet/dist/style.css'
 
-import '../stories/i18n'
 import '../public/globals.css'
 
 const queryClient = new QueryClient()

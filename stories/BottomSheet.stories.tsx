@@ -14,8 +14,8 @@ const BasicBottomSheetTemplateWrapper = (args) => {
       <Button onClick={() => setIsOpen(true)}>Open</Button>
 
       <BottomSheet
-        open={isOpen}
-        onDismiss={() => setIsOpen(false)}
+        isOpen={isOpen}
+        closeModal={() => setIsOpen(false)}
         label={`Bottom sheet example`}
         className='space-y-4'
       >

@@ -1,18 +1,21 @@
 import React from 'react'
-import FeatherIcon from 'feather-icons-react'
 import classNames from 'classnames'
-import { Modal } from '../Modal/Modal'
+import { CloseModalButton, Modal, NextButton, PreviousButton } from '../Modal/Modal'
 import {
   BottomSheet as ReactSpringBottomSheet,
   BottomSheetProps as ReactSpringBottomSheetProps
 } from 'react-spring-bottom-sheet'
-import { NetworkIcon } from '../Icons/NetworkIcon'
 import { SnapPointProps } from 'react-spring-bottom-sheet/dist/types'
 import { ScreenSize, useScreenSize } from '../../hooks/useScreenSize'
 
-export interface BottomSheetProps extends ReactSpringBottomSheetProps {
+/**
+ * @notice This component is a wrapper around react-spring-bottom-sheet
+ */
+export interface BottomSheetProps extends Omit<ReactSpringBottomSheetProps, 'onDismiss' | 'open'> {
+  isOpen: boolean
+  closeModal: () => void
   className?: string
-  label?: string
+  label: string
   hideCloseButton?: boolean
   // Modal specific props, pull from ModalProps as needed
   maxWidthClassName?: string
@@ -32,11 +35,11 @@ export interface BottomSheetProps extends ReactSpringBottomSheetProps {
 export const BottomSheet = (props: BottomSheetProps) => {
   const {
     children,
-    open,
-    onDismiss,
+    isOpen,
+    closeModal,
     className,
     label,
-    title,
+    header,
     hideCloseButton,
     maxWidthClassName,
     shadowClassName,
@@ -57,10 +60,10 @@ export const BottomSheet = (props: BottomSheetProps) => {
   if (size > ScreenSize.sm) {
     return (
       <Modal
-        title={title}
+        header={header}
         label={label}
-        isOpen={open}
-        closeModal={onDismiss}
+        isOpen={isOpen}
+        closeModal={closeModal}
         className={className}
         modalHeightClassName={modalHeightClassName}
         maxWidthClassName={maxWidthClassName}
@@ -80,9 +83,21 @@ export const BottomSheet = (props: BottomSheetProps) => {
   }
 
   return (
-    <ReactSpringBottomSheet {...sheetProps} open={open} onDismiss={onDismiss} className='z-40'>
-      {!!title && <BottomSheetTitle title={title} />}
-      <CloseBottomSheetButton closeModal={onDismiss} hide={hideCloseButton} />
+    <ReactSpringBottomSheet
+      {...sheetProps}
+      open={isOpen}
+      onDismiss={closeModal}
+      className='z-40'
+      header={
+        <BottomSheetHeader
+          header={header}
+          closeModal={closeModal}
+          onPreviousClick={onPreviousClick}
+          onNextClick={onNextClick}
+        />
+      }
+    >
+      {/* <CloseBottomSheetButton closeModal={closeModal} hide={hideCloseButton} /> */}
       <div className={classNames('px-4 pt-4 flex-grow pb-8', className, overflowClassName)}>
         {children}
       </div>
@@ -96,42 +111,45 @@ BottomSheet.defaultProps = {
 }
 
 export const snapTo90 = (snapPoints: SnapPointProps) => snapPoints.maxHeight * 0.9
-
-const CloseBottomSheetButton: React.FC<{ closeModal: () => void; hide: boolean }> = (props) => {
-  const { closeModal, hide } = props
-
-  if (hide) return null
-
-  return (
-    <button
-      className='my-auto ml-auto close-button trans text-inverse opacity-80 hover:opacity-100 absolute right-4 top-4'
-      onClick={closeModal}
-    >
-      <FeatherIcon icon='x' className='w-6 h-6' />
-    </button>
-  )
+export const snapToFull = (snapPoints: SnapPointProps) => {
+  return snapPoints.maxHeight
 }
 
-interface BottomSheetTitleProps {
-  title: React.ReactNode
-  className?: string
-  icon?: any
-  chainId?: number
-}
+// const CloseBottomSheetButton: React.FC<{ closeModal: () => void; hide: boolean }> = (props) => {
+//   const { closeModal, hide } = props
 
-export const BottomSheetTitle = (props: BottomSheetTitleProps) => {
-  const { className, title, chainId, icon } = props
+//   if (hide) return null
 
+//   return (
+//     <button
+//       className='my-auto ml-auto close-button trans text-inverse opacity-80 hover:opacity-100 absolute right-4 top-4'
+//       onClick={closeModal}
+//     >
+//       <FeatherIcon icon='x' className='w-6 h-6' />
+//     </button>
+//   )
+// }
+
+const BottomSheetHeader = (props: {
+  header: React.ReactNode
+  closeModal: () => void
+  onPreviousClick: () => void
+  onNextClick: () => void
+}) => {
+  const { header, closeModal, onPreviousClick, onNextClick } = props
   return (
-    <div className={classNames('flex flex-col mx-auto', className)}>
-      {chainId ? (
-        <NetworkIcon chainId={chainId} className='mx-auto mb-2' sizeClassName='w-8 h-8' />
-      ) : (
-        icon
-      )}
-      <div className='mx-auto text-sm xs:text-lg sm:text-xl mb-4 font-bold text-inverse text-center'>
-        {title}
+    <div className='h-6'>
+      <div className='absolute left-2 flex space-x-2 items-center top-3'>
+        {!!onPreviousClick && <PreviousButton onClick={onPreviousClick} />}
+        {!!onNextClick && <NextButton onClick={onNextClick} />}
       </div>
+      <CloseModalButton
+        closeModal={closeModal}
+        className={classNames('absolute top-3 right-2', {
+          'backdrop-filter backdrop-blur-xl rounded-full': !header
+        })}
+      />
+      <span className={'text-inverse font-semibold mx-auto leading-none'}>{header}</span>
     </div>
   )
 }
