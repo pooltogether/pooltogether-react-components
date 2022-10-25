@@ -112,6 +112,7 @@ export function BottomSheetWithViewState(props: BottomSheetWithViewStateProps) {
         selectedViewId={selectedViewId}
         setSelectedViewId={setSelectedViewId}
         onViewChange={onViewChange}
+        closeModal={closeModal}
         {...viewProps}
       />
     </BottomSheet>

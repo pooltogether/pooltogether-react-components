@@ -87,15 +87,26 @@ export const SettingsModal: React.FC<{
  * @param props
  * @returns
  */
-const MainView: React.FC<{ chainId: number; t: i18nTranslate } & ViewProps> = (props) => {
-  const { t, chainId, setSelectedViewId } = props
+const MainView: React.FC<
+  {
+    chainId: number
+    t: i18nTranslate
+    langs: { [locale: string]: { name: string; nativeName: string } }
+    currentLang: string
+  } & ViewProps
+> = (props) => {
+  const { t, chainId, setSelectedViewId, langs, currentLang } = props
   return (
     <div className='flex flex-col justify-between xs:justify-start h-full'>
       <div className='grid grid-cols-2 gap-3'>
         <NetworkButton chainId={chainId} onClick={() => setSelectedViewId(ViewIds.network)} />
         <ThemeButton t={t} />
         <CurrencyButton onClick={() => setSelectedViewId(ViewIds.currency)} disabled />
-        <LanguageButton onClick={() => setSelectedViewId(ViewIds.language)} />
+        <LanguageButton
+          onClick={() => setSelectedViewId(ViewIds.language)}
+          langs={langs}
+          currentLang={currentLang}
+        />
         <ToolsButton />
         <DeveloperButton />
       </div>
@@ -121,8 +132,17 @@ const NetworkButton: React.FC<{ chainId: number; onClick: () => void }> = (props
 const CurrencyButton: React.FC<{ disabled?: boolean; onClick: () => void }> = (props) => (
   <Button {...props} icon={'$'} title='Dollar (US)' secondary='Currency' />
 )
-const LanguageButton: React.FC<{ onClick: () => void }> = (props) => (
-  <Button onClick={props.onClick} icon={'EN'} title='English' secondary='Language' />
+const LanguageButton: React.FC<{
+  onClick: () => void
+  langs: { [locale: string]: { name: string; nativeName: string } }
+  currentLang: string
+}> = (props) => (
+  <Button
+    onClick={props.onClick}
+    icon={props.currentLang}
+    title={props.langs[props.currentLang].nativeName}
+    secondary='Language'
+  />
 )
 
 const DeveloperButton = () => {
@@ -222,7 +242,7 @@ const Button: React.FC<{
       onClick={onClick}
       disabled={disabled}
       className={classNames(
-        'flex flex-col items-center p-3 rounded-lg bg-white bg-opacity-100 dark:bg-white dark:bg-opacity-10 w-full transition',
+        'flex flex-col items-center p-3 rounded-lg bg-white bg-opacity-100 dark:bg-white dark:bg-opacity-10 w-full transition mt-auto',
         {
           'cursor-not-allowed opacity-50': disabled,
           'hover:bg-opacity-50 dark:hover:bg-opacity-5': !disabled
@@ -267,10 +287,12 @@ const LanguageView: React.FC<{
   closeModal: () => void
 }> = (props) => {
   const { langs, currentLang, changeLang, closeModal } = props
+  console.log({ props })
   return (
     <ul className={classNames('flex flex-col space-y-2')}>
       {Object.keys(langs).map((locale) => (
         <LanguageItem
+          key={`language-item-${locale}`}
           locale={locale}
           isSelected={locale === currentLang}
           {...langs[locale]}
