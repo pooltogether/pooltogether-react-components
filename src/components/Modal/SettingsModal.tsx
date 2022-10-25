@@ -40,21 +40,21 @@ export const SettingsModal: React.FC<{
     {
       id: ViewIds.network,
       view: networkView,
-      header: 'Select a network',
+      header: t?.('selectANetwork') || 'Select a network',
       previousViewId: ViewIds.main,
       onCloseViewId: ViewIds.main
     },
     {
       id: ViewIds.language,
       view: LanguageView,
-      header: 'Select your language',
+      header: t?.('selectALanguage') || 'Select a language',
       previousViewId: ViewIds.main,
       onCloseViewId: ViewIds.main
     },
     {
       id: ViewIds.currency,
       view: CurrencyView,
-      header: 'Select your currency',
+      header: t?.('selectACurrency') || 'Select a currency',
       previousViewId: ViewIds.main,
       onCloseViewId: ViewIds.main
     }
@@ -62,7 +62,7 @@ export const SettingsModal: React.FC<{
 
   return (
     <BottomSheetWithViewState
-      header={'Customize your experience'}
+      header={t?.('customizeYourExperience') || 'Customize your experience'}
       label='settings-modal'
       bgClassName='bg-pt-purple-lightest dark:bg-pt-purple-darkest'
       isOpen={isOpen}
@@ -99,16 +99,17 @@ const MainView: React.FC<
   return (
     <div className='flex flex-col justify-between xs:justify-start h-full'>
       <div className='grid grid-cols-2 gap-3'>
-        <NetworkButton chainId={chainId} onClick={() => setSelectedViewId(ViewIds.network)} />
+        <NetworkButton t={t} chainId={chainId} onClick={() => setSelectedViewId(ViewIds.network)} />
         <ThemeButton t={t} />
-        <CurrencyButton onClick={() => setSelectedViewId(ViewIds.currency)} disabled />
+        <CurrencyButton t={t} onClick={() => setSelectedViewId(ViewIds.currency)} disabled />
         <LanguageButton
+          t={t}
           onClick={() => setSelectedViewId(ViewIds.language)}
           langs={langs}
           currentLang={currentLang}
         />
-        <ToolsButton />
-        <DeveloperButton />
+        <ToolsButton t={t} />
+        <DeveloperButton t={t} />
       </div>
 
       <div className='mt-8'>
@@ -118,7 +119,9 @@ const MainView: React.FC<
   )
 }
 
-const NetworkButton: React.FC<{ chainId: number; onClick: () => void }> = (props) => (
+const NetworkButton: React.FC<{ chainId: number; onClick: () => void; t: i18nTranslate }> = (
+  props
+) => (
   <Button
     onClick={props.onClick}
     disabled={!props.chainId}
@@ -126,26 +129,35 @@ const NetworkButton: React.FC<{ chainId: number; onClick: () => void }> = (props
       !!props.chainId ? <NetworkIcon chainId={props.chainId} sizeClassName='' className='' /> : null
     }
     title={getNetworkNiceNameByChainId(props.chainId)}
-    secondary='Wallet Network'
+    secondary={props.t?.('walletNetwork') || 'Wallet Network'}
   />
 )
-const CurrencyButton: React.FC<{ disabled?: boolean; onClick: () => void }> = (props) => (
-  <Button {...props} icon={'$'} title='Dollar (US)' secondary='Currency' />
+const CurrencyButton: React.FC<{ disabled?: boolean; onClick: () => void; t: i18nTranslate }> = (
+  props
+) => (
+  <Button
+    {...props}
+    icon={'$'}
+    title='Dollar (US)'
+    secondary={props.t?.('currency') || 'Currency'}
+  />
 )
 const LanguageButton: React.FC<{
   onClick: () => void
   langs: { [locale: string]: { name: string; nativeName: string } }
   currentLang: string
+  t: i18nTranslate
 }> = (props) => (
   <Button
     onClick={props.onClick}
     icon={props.currentLang}
     title={props.langs[props.currentLang].nativeName}
-    secondary='Language'
+    secondary={props.t?.('language') || 'Language'}
   />
 )
 
-const DeveloperButton = () => {
+const DeveloperButton = (props: { t: i18nTranslate }) => {
+  const { t } = props
   const [count, setCount] = useState(0)
   const { isTestnets, enableTestnets, disableTestnets } = useIsTestnets()
 
@@ -164,15 +176,20 @@ const DeveloperButton = () => {
   return (
     <Button
       onClick={() => setCount(count + 1)}
-      title='Developer'
+      title={t?.('developer') || 'Developer'}
       secondary={
-        count === 0 ? (isTestnets ? 'Enable mainnets' : 'Enable testnets') : `(${5 - count}) more`
+        count === 0
+          ? isTestnets
+            ? t?.('enableMainnets') || 'Enable mainnets'
+            : t?.('enableTestnets') || 'Enable testnets'
+          : `(${5 - count})`
       }
     />
   )
 }
 
-const ToolsButton = () => {
+const ToolsButton = (props: { t: i18nTranslate }) => {
+  const { t } = props
   return (
     <a
       href={'https://tools.pooltogether.com'}
@@ -182,10 +199,12 @@ const ToolsButton = () => {
       target='_blank'
     >
       <div className='text-xs flex space-x-1 items-center'>
-        <span>Tools</span>
+        <span>{t?.('tools') || 'Tools'}</span>
         <FeatherIcon icon='arrow-up-right' className='w-3 h-4' />
       </div>
-      <div className='text-xxxs opacity-50'>PoolTogether Toolkit</div>
+      <div className='text-xxxs opacity-50'>
+        {t?.('pooltogetherToolkit') || 'PoolTogether Toolkit'}
+      </div>
     </a>
   )
 }
@@ -223,7 +242,7 @@ const ThemeButton = (props: { t: i18nTranslate }) => {
           ? 'bg-pt-purple-darkest'
           : 'bg-gradient-yellow'
       }
-      secondary='Theme'
+      secondary={t?.('theme') || 'Theme'}
     />
   )
 }
