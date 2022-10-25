@@ -253,7 +253,7 @@ const Button: React.FC<{
         <div
           className={classNames(
             bgClassName,
-            'h-11 w-11 text-xxs rounded-full flex flex-col text-center justify-center trans bg-opacity-10 dark:bg-opacity-80 mb-1'
+            'h-11 w-11 text-xxs rounded-full flex flex-col text-center justify-center trans bg-opacity-10 dark:bg-opacity-80 mb-1 uppercase'
           )}
         >
           {icon}
