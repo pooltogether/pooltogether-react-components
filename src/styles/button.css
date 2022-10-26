@@ -4,6 +4,24 @@
 
 /* ------- Themes ------- */
 
+/* Blue */
+.pt-btn--blue {
+  @apply border-transparent dark:bg-blue bg-blue text-inverse;
+}
+
+.pt-btn--blue:not([disabled]):hover,
+.pt-btn--blue:not([disabled]):focus {
+  @apply ring-2 dark:ring-blue ring-blue dark:ring-opacity-50 ring-opacity-50;
+}
+
+.pt-btn--blue:not([disabled]):active {
+  @apply ring-opacity-30 dark:ring-opacity-30;
+}
+
+.pt-btn--blue:disabled {
+  @apply opacity-50;
+}
+
 /* Teal */
 .pt-btn--teal {
   @apply border-pt-teal-bright bg-pt-teal text-purple;

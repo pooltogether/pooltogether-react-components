@@ -23,7 +23,11 @@ const pooltogetherReactTailwindUIConfig = {
       'white': colors.white,
       'transparent': colors.transparent,
       'cyan': {},
-      'blue': {},
+      'blue': {
+        light: '#68a7ff',
+        DEFAULT: '#4565ff',
+        dark: '#3857ee'
+      },
       'green': {},
       'purple': {},
       'orange': {},
@@ -100,7 +104,6 @@ const pooltogetherReactTailwindUIConfig = {
         'green': 'var(--color-bg-green)',
         'orange': 'var(--color-bg-orange)',
         'orange-darkened': 'var(--color-bg-orange-darkened)',
-        'blue': 'var(--color-bg-blue)',
         'teal': 'var(--color-bg-teal)',
         'accent-grey-1': 'var(--color-bg-accent-grey-1)',
         'accent-grey-2': 'var(--color-bg-accent-grey-2)',
@@ -144,7 +147,6 @@ const pooltogetherReactTailwindUIConfig = {
         'green': 'var(--color-text-green)',
         'orange': 'var(--color-text-orange)',
         'yellow': 'var(--color-text-yellow)',
-        'blue': 'var(--color-text-blue)',
         'teal': 'var(--color-text-teal)',
         'accent-grey-1': 'var(--color-text-accent-grey-1)',
         'purple': 'var(--color-text-purple)',

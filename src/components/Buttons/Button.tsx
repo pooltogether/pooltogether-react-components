@@ -16,7 +16,8 @@ export enum ButtonTheme {
   blackOutline = 'black-outline',
   rainbow = 'rainbow',
   pinkToYellow = 'pink-to-yellow',
-  transparent = 'transparent'
+  transparent = 'transparent',
+  blue = 'blue'
 }
 
 export enum ButtonSize {
