@@ -52,7 +52,7 @@ export const PageHeaderContainer: React.FC<{
 PageHeaderContainer.defaultProps = {
   maxWidthClassName: 'max-w-screen-lg',
   positionClassName: 'sticky top-0',
-  marginClassName: 'mb-4',
+  marginClassName: '',
   styleClassName: 'backdrop-filter backdrop-blur-xl',
   logo: <HeaderLogo />
 }

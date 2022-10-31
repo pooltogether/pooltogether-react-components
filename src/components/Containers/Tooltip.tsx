@@ -24,7 +24,8 @@ export const Tooltip = (props) => {
     place,
     effect,
     toolTipClassName,
-    isEnabled
+    isEnabled,
+    style
   } = props
   const ref = useRef(null)
 
@@ -42,6 +43,7 @@ export const Tooltip = (props) => {
         data-tip
         data-for={`${id}-tooltip`}
         className={classnames('inline cursor-pointer', className)}
+        style={style}
       >
         {children || (
           <FeatherIcon icon='info' className={classnames(iconSizeClassName, iconClassName)} />
@@ -61,7 +63,7 @@ export const Tooltip = (props) => {
         )}
         overridePosition={overrideToolTipPosition}
       >
-        <>
+        <div>
           <button
             onClick={() => {
               const current = ref.current
@@ -73,7 +75,7 @@ export const Tooltip = (props) => {
             <FeatherIcon icon='x' className='w-4 h-4 text-inverse' />
           </button>
           {tip}
-        </>
+        </div>
       </ReactTooltip>
     </>
   )

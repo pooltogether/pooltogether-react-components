@@ -5,9 +5,9 @@ import { NETWORK } from '@pooltogether/utilities'
 export const TokenIcon: React.FC<{
   chainId: number
   address: string
+  style?: React.CSSProperties
   sizeClassName?: string
   className?: string
-  style?: object
   onClick?: React.MouseEventHandler<HTMLImageElement>
 }> = (props) => {
   const imageOverride = getParameterCaseInsensitive(
@@ -26,10 +26,9 @@ const CoingeckoTokenIcon: React.FC<{
   address: string
   sizeClassName?: string
   className?: string
-  style?: object
+  style?: React.CSSProperties
   onClick?: React.MouseEventHandler<HTMLImageElement>
 }> = (props) => {
-  return null
   const { data: tokenData } = useCoingeckoTokenData(props.chainId, props.address)
   return <TokenIconImg {...props} src={tokenData?.image?.small} />
 }
@@ -38,12 +37,13 @@ const TokenIconImg: React.FC<{
   src: string
   sizeClassName?: string
   className?: string
-  style?: object
+  style?: React.CSSProperties
   onClick?: React.MouseEventHandler<HTMLImageElement>
 }> = (props) => {
   if (!props.src) {
     return (
       <div
+        style={props.style}
         className={classnames(
           'inline-block rounded-full bg-overlay-white',
           props.className,
@@ -188,7 +188,8 @@ export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
     '0xc2132d05d31c914a87c6611c10748aeb04b58e8f': USDT,
     '0x25788a1a171ec66da6502f9975a15b609ff54cf6': POOL,
     '0x19c0e557ee5a9b456f613ba3d025a4dc45b52c35': PT_USDC_SPONSORSHIP,
-    '0x6a304dfdb9f808741244b6bfee65ca7b3b3a6076': PTaUSDC
+    '0x6a304dfdb9f808741244b6bfee65ca7b3b3a6076': PTaUSDC,
+    '0x2791bca1f2de4661ed88a30c99a7a9449aa84174': USDC
   },
   [NETWORK.bsc]: {
     '0xe9e7cea3dedca5984780bafc599bd69add087d56': BUSD,
@@ -204,9 +205,11 @@ export const TOKEN_IMAGE_OVERRIDES = Object.freeze({
   },
   [NETWORK.avalanche]: {
     '0xb27f379c050f6ed0973a01667458af6ecebc1d90': PTaUSDC,
-    '0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7': WAVAX
+    '0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7': WAVAX,
+    '0xa7d7079b0fead91f3e65f86e8915cb59c1a4c664': USDC
   },
   [NETWORK.optimism]: {
+    '0x5e5b54cd73872ba3103cd95a58067a7079d0259b': PTaUSDC,
     '0x7F5c764cBc14f9669B88837ca1490cCa17c31607': USDC,
     '0x62bb4fc73094c83b5e952c2180b23fa7054954c4': PTaUSDC,
     '0x4200000000000000000000000000000000000042': OP

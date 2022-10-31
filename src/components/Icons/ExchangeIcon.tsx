@@ -10,18 +10,20 @@ export enum ExchangeKey {
 
 export const ExchangeIcon: React.FC<{
   exchange: ExchangeKey
+  style?: React.CSSProperties
   sizeClassName?: string
   className?: string
   radiusClassName?: string
   onClick?: React.MouseEventHandler<HTMLImageElement>
 }> = (props) => {
-  const { sizeClassName, radiusClassName, className, exchange, onClick } = props
+  const { sizeClassName, style, radiusClassName, className, exchange, onClick } = props
 
   const src = EXCHANGE_MAPPING[exchange]
 
   if (!src) {
     return (
       <div
+        style={style}
         className={classnames(
           'inline-block',
           'bg-actually-black bg-opacity-20',
@@ -35,6 +37,7 @@ export const ExchangeIcon: React.FC<{
 
   return (
     <img
+      style={style}
       src={src}
       className={classnames('inline-block', className, radiusClassName, sizeClassName)}
       onClick={onClick}

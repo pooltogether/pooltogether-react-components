@@ -4,19 +4,11 @@
   --uniswap-radial-gradient: linear-gradient(var(--color-bg-card), var(--color-bg-card)),
     radial-gradient(circle at top left, #feccd2 40%, rgba(240, 47, 198, 0.9));
 
-  --flashyGradient: linear-gradient(
-    40deg,
-    #ff9304 0%,
-    #ff04ea 10%,
-    #9b4beb 20%,
-    #0e8dd6 30%,
-    #0bc6df 40%,
-    #07d464 50%,
-    #dfd105 60%,
-    #ff04ab 78%,
-    #8933eb 90%,
-    #3b89ff 100%
-  );
+  --flashyGradient: linear-gradient(40deg, #ff77e1 0%, #17e1fd 50%, #7201ff 100%);
+}
+
+.dark * {
+  --flashyGradient: linear-gradient(40deg, #ff77e1 0%, #17e1fd 50%, #ffed47 100%);
 }
 
 html {
@@ -41,7 +33,7 @@ table {
 hr {
   border: 0;
   height: 0;
-  border-top: 3px solid rgba(60, 8, 165, 0.3);
+  border-top: 3px solid rgba(255, 255, 255, 0.05);
   border-bottom: none;
   background: transparent;
   margin: 20px auto;
@@ -49,7 +41,7 @@ hr {
 }
 
 .light hr {
-  border-color: var(--color-bg-accent-grey-3);
+  border-top: 3px solid rgba(0, 0, 0, 0.05);
 }
 
 a {

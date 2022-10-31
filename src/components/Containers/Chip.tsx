@@ -8,7 +8,7 @@ export const Chip = (props) => {
   bgClasses = bgClasses || 'bg-accent-grey-5'
   textClasses = textClasses || 'text-accent-1'
 
-  const sizeClasses = props.size || 'text-xxxxs xs:text-xxxs sm:text-xxxs lg:text-xxxs'
+  const sizeClasses = props.size || 'text-xxxs xs:text-xxxs sm:text-xxxs lg:text-xxxs'
 
   const classes = classnames(
     'rounded-full text-center py-2 px-2',

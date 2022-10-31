@@ -23,7 +23,11 @@ const pooltogetherReactTailwindUIConfig = {
       'white': colors.white,
       'transparent': colors.transparent,
       'cyan': {},
-      'blue': {},
+      'blue': {
+        light: '#68a7ff',
+        DEFAULT: '#4565ff',
+        dark: '#3857ee'
+      },
       'green': {},
       'purple': {},
       'orange': {},
@@ -100,7 +104,6 @@ const pooltogetherReactTailwindUIConfig = {
         'green': 'var(--color-bg-green)',
         'orange': 'var(--color-bg-orange)',
         'orange-darkened': 'var(--color-bg-orange-darkened)',
-        'blue': 'var(--color-bg-blue)',
         'teal': 'var(--color-bg-teal)',
         'accent-grey-1': 'var(--color-bg-accent-grey-1)',
         'accent-grey-2': 'var(--color-bg-accent-grey-2)',
@@ -144,7 +147,6 @@ const pooltogetherReactTailwindUIConfig = {
         'green': 'var(--color-text-green)',
         'orange': 'var(--color-text-orange)',
         'yellow': 'var(--color-text-yellow)',
-        'blue': 'var(--color-text-blue)',
         'teal': 'var(--color-text-teal)',
         'accent-grey-1': 'var(--color-text-accent-grey-1)',
         'purple': 'var(--color-text-purple)',
@@ -193,7 +195,8 @@ const pooltogetherReactTailwindUIConfig = {
         '1/4': '25%',
         '1/2': '50%',
         '3/4': '75%',
-        'full': '100%'
+        'full': '100%',
+        'actually-full-screen': 'calc(var(--vh, 1vh) * 100)'
       },
       borderRadius: {
         'sm': '0.25rem',
@@ -239,7 +242,8 @@ const pooltogetherReactTailwindUIConfig = {
         '90-screen': '90vh',
         '1/4-screen': '25vh',
         '1/2-screen': '50vh',
-        '3/4-screen': '75vh'
+        '3/4-screen': '75vh',
+        'actually-full-screen': 'calc(var(--vh, 1vh) * 100)'
       },
       lineHeight: {
         relaxed: 1.75
@@ -249,8 +253,6 @@ const pooltogetherReactTailwindUIConfig = {
         // base: ['16px', '24px'],
         // lg: ['20px', '28px'], // line height!
         // xl: ['24px', '32px'],
-        'xxxxxs': '0.5rem',
-        'xxxxs': '0.625rem',
         'xxxs': '0.75rem',
         'xxs': '0.875rem',
         'xs': '1rem',
@@ -270,7 +272,9 @@ const pooltogetherReactTailwindUIConfig = {
         '11xl': '4.25rem',
         '12xl': '4.5rem',
         '13xl': '4.75rem',
-        '14xl': '5rem'
+        '14xl': '5rem',
+        '15xl': '7rem',
+        '16xl': '9rem'
       },
       fontFamily: {
         sans: ['Averta', 'system-ui']
@@ -326,7 +330,7 @@ const pooltogetherReactTailwindUIConfig = {
       backgroundColor: ['hover', 'focus', 'active', 'responsive', 'focus-within'],
       borderRadius: ['responsive'],
       borderWidth: ['hover', 'first', 'last'],
-      opacity: ['hover', 'focus', 'disabled'],
+      opacity: ['dark', 'hover', 'focus', 'disabled'],
       animation: ['hover'],
       textAlign: ['last']
     }

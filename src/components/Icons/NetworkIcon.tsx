@@ -16,16 +16,18 @@ import ArbitrumLogo from '../../assets/Networks/arbitrum-icon.png'
 
 export const NetworkIcon: React.FC<{
   chainId: number
+  style?: React.CSSProperties
   sizeClassName?: string
   className?: string
   onClick?: React.MouseEventHandler<HTMLImageElement>
 }> = (props) => {
-  const { sizeClassName, className, chainId, onClick } = props
+  const { sizeClassName, style, className, chainId, onClick } = props
 
   const src = NETWORK_MAPPING[chainId] || DefaultNetworkLogo
 
   return (
     <img
+      style={style}
       src={src}
       className={classnames('rounded-full inline-block', className, sizeClassName)}
       onClick={onClick}

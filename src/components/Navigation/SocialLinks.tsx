@@ -13,13 +13,14 @@ import MediumLogo from '../../assets/Socials/medium-logo.svg'
 import DiscordLogo from '../../assets/Socials/discord-logo.svg'
 import TwitterLogo from '../../assets/Socials/twitter-logo.svg'
 import TelegramLogo from '../../assets/Socials/telegram-logo.svg'
+import { i18nTranslate } from 'src/types'
 
 const sharedClasses =
   'relative leading-none w-full flex justify-start items-center py-2 px-0 mb-1 ml-0 trans outline-none focus:outline-none active:outline-none h-10'
 
-const headerClasses = 'text-xs font-bold hover:text-highlight-2'
+const headerClasses = 'text-xs font-bold hover:text-gradient-magenta'
 
-const childClasses = 'text-xs opacity-70 hover:text-highlight-2'
+const childClasses = 'text-xs opacity-70 hover:text-gradient-magenta'
 
 const socialsLinkData = [
   {
@@ -45,6 +46,18 @@ const socialsLinkData = [
               </svg>
             </div>
           </div>
+        )
+      },
+      {
+        href: 'https://tools.pooltogether.com/',
+        langKey: 'toolsSite',
+        label: 'Tools',
+        icon: (
+          <FeatherIcon
+            icon='tool'
+            className='w-4 h-4 opacity-70 mx-auto'
+            style={{ color: '#BBB2CE' }}
+          />
         )
       },
       {
@@ -101,7 +114,7 @@ const socialsLinkData = [
   }
 ]
 
-export const SocialLinks = (props) => {
+export const SocialLinks: React.FC<{ t: i18nTranslate }> = (props) => {
   const { t } = props
 
   if (!t) {

@@ -8,7 +8,7 @@ export const TestnetSettingsItem = (props) => {
 
   return (
     <SettingsItem label={t('developmentMode', 'Development mode')}>
-      <Toggle label={t('useTestnets', 'Use testnets')} />
+      <Toggle label={t?.('useTestnets', 'Use testnets') || 'Use testnets'} />
     </SettingsItem>
   )
 }

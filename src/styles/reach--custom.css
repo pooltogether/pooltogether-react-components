@@ -20,13 +20,12 @@
 
 /* TOOLTIPS / PTHINTS */
 .device-is-touch [data-reach-tooltip] {
+  @apply h-actually-full-screen w-full;
   top: 154px !important;
   bottom: 0 !important;
   right: 0 !important;
   left: 0 !important;
   max-width: 100% !important;
-  width: 100% !important;
-  height: 100vh !important;
   border-radius: 0 !important;
 }
 
@@ -113,12 +112,11 @@
 }
 
 [data-reach-dialog-content] {
+  @apply h-actually-full-screen w-full;
   background: transparent;
   max-width: initial;
   margin: 0;
   padding: 0;
-  height: 100vh;
-  width: 100%;
   pointer-events: none;
   display: flex;
   flex-direction: column;

@@ -7,22 +7,12 @@ select:-internal-autofill-selected {
   background-color: white !important;
 }
 
-input {
-  @apply bg-pt-purple-darker text-inverse rounded-lg;
-}
-
 ::placeholder {
   opacity: 0.5;
 }
 
 label {
   @apply block cursor-pointer text-left;
-}
-
-form:after {
-  content: '';
-  display: table;
-  clear: both;
 }
 
 button {

@@ -15,7 +15,7 @@
   --color-almost-transparent: rgba(255, 255, 255, 0.1);
 
   /* Old format */
-  --color-bg-body: #2d0b5a;
+  --color-bg-body: #21064e;
   --color-bg-card: #341762;
   --color-bg-card-selected: #43286e;
   --color-bg-card-purple: #4c249f;
@@ -55,7 +55,6 @@
   --color-bg-green: #3ef3d4;
   --color-bg-orange-darkened: rgba(211, 120, 2, 0.171);
   --color-bg-orange: #ff9303;
-  --color-bg-blue: #4565ff;
   --color-bg-teal: #0ea3a4;
   --color-bg-purple: #401c94;
   --color-bg-light-purple-10: rgba(173, 153, 216, 0.1);
@@ -90,7 +89,6 @@
   --color-text-green: #5af5db;
   --color-text-orange: #ff9303;
   --color-text-yellow: #ffcc15;
-  --color-text-blue: #68a7ff;
   --color-text-teal: #049c9c;
   --color-text-purple: #401c94;
 
@@ -127,7 +125,7 @@
   --color-almost-transparent: rgba(255, 255, 255, 0.1);
 
   /* Old format */
-  --color-bg-body: #f7f7f7;
+  --color-bg-body: #f5f5f5;
   --color-bg-card: #fff;
   --color-bg-card-transparent: #ffffff00;
   --color-bg-card-selected: #fff;
@@ -139,7 +137,7 @@
   --color-bg-default: #f7f7f7;
   --color-bg-darkened: #e9e9e9;
   --color-bg-input: #fff;
-  --color-bg-inverse: #111;
+  --color-bg-inverse: #21064e;
   --color-bg-inverse-purple: #4c249f;
   --color-bg-overlay: rgba(0, 0, 0, 0.6);
   --color-bg-overlay-white: rgba(204, 201, 201, 0.521);
@@ -167,7 +165,6 @@
   --color-bg-green: #1ef7d6;
   --color-bg-orange: #ff9303;
   --color-bg-orange-darkened: rgba(233, 166, 79, 0.1);
-  --color-bg-blue: #4565ff;
   --color-bg-teal: #0ea3a4;
   --color-bg-purple: #4c249f;
   --color-bg-light-purple-10: rgba(173, 153, 216, 0.1);
@@ -184,8 +181,8 @@
   --color-text-default: #4c249f;
   --color-text-default-soft: #946fdf;
   --color-text-darkened: #341762;
-  --color-text-inverse: #4c249f;
-  --color-text-inverse-purple: #4c249f;
+  --color-text-inverse: #21064e;
+  --color-text-inverse-purple: #21064e;
   --color-text-match: #fff;
   --color-text-match-purple: #fff;
   --color-text-black: #111;
@@ -202,7 +199,6 @@
   --color-text-green: #0ea3a4;
   --color-text-orange: #ff9303;
   --color-text-yellow: #ffcc15;
-  --color-text-blue: #3857ee;
   --color-text-teal: #049c9c;
   --color-text-purple: #401c94;
 

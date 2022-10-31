@@ -1,0 +1,403 @@
+.pt-btn {
+  @apply border-2 transition-all font-semibold tracking-normal overflow-hidden;
+}
+
+/* ------- Themes ------- */
+
+/* Blue */
+.pt-btn--blue {
+  @apply border-transparent dark:bg-blue bg-blue text-inverse;
+}
+
+.pt-btn--blue:not([disabled]):hover,
+.pt-btn--blue:not([disabled]):focus {
+  @apply ring-2 dark:ring-blue ring-blue dark:ring-opacity-50 ring-opacity-50;
+}
+
+.pt-btn--blue:not([disabled]):active {
+  @apply ring-opacity-30 dark:ring-opacity-30;
+}
+
+.pt-btn--blue:disabled {
+  @apply opacity-50;
+}
+
+/* Teal */
+.pt-btn--teal {
+  @apply border-pt-teal-bright bg-pt-teal text-purple;
+}
+
+.pt-btn--teal:not([disabled]):hover,
+.pt-btn--teal:not([disabled]):focus {
+  @apply text-purple bg-pt-teal-bright;
+
+  box-shadow: 0 0 0 3px rgba(53, 240, 208, 0.5);
+}
+
+.pt-btn--teal:not([disabled]):active {
+  box-shadow: 0 0 0 2px rgba(53, 240, 208, 0.3);
+}
+
+.pt-btn--teal:disabled {
+  @apply border-transparent;
+  background-color: #270255;
+  color: #6c48a7;
+}
+
+/* Teal Outline */
+.pt-btn--teal-outline {
+  @apply border-pt-teal-bright text-pt-teal-bright;
+  background-color: transparent;
+}
+
+.pt-btn--teal-outline:not([disabled]):hover,
+.pt-btn--teal-outline:not([disabled]):focus {
+  @apply text-pt-teal-bright;
+  box-shadow: 0 0 0 3px rgba(53, 240, 208, 0.5);
+}
+
+.pt-btn--teal:not([disabled]):active {
+  box-shadow: 0 0 0 2px rgba(53, 240, 208, 0.3);
+}
+
+.pt-btn--teal-outline:disabled {
+  @apply border-transparent;
+  background-color: #2b2d6c;
+  border-color: #2b2d6c;
+  color: #8679b8;
+}
+
+/* Pink */
+.pt-btn--pink {
+  @apply border-transparent dark:bg-gradient-magenta bg-gradient-magenta text-inverse;
+}
+
+.pt-btn--pink:not([disabled]):hover,
+.pt-btn--pink:not([disabled]):focus {
+  @apply ring-2 dark:ring-gradient-magenta ring-gradient-magenta dark:ring-opacity-50 ring-opacity-50;
+}
+
+.pt-btn--pink:not([disabled]):active {
+  @apply ring-opacity-30 dark:ring-opacity-30;
+}
+
+.pt-btn--pink:disabled {
+  @apply opacity-50;
+}
+
+/* Transparent */
+.pt-btn--transparent {
+  @apply bg-white bg-opacity-100 dark:bg-actually-black dark:bg-opacity-25 border-transparent border-opacity-0 text-inverse;
+}
+
+.pt-btn--transparent:not([disabled]):hover,
+.pt-btn--transparent:not([disabled]):focus {
+  @apply ring-2 ring-white ring-opacity-50 dark:ring-actually-black dark:ring-opacity-10 text-opacity-90 bg-opacity-50 dark:bg-opacity-10;
+}
+
+.pt-btn--transparent:not([disabled]):active {
+  @apply ring-2 ring-white ring-opacity-100 dark:ring-actually-black dark:ring-opacity-25 text-opacity-95;
+}
+
+.pt-btn--transparent:disabled {
+  @apply border-transparent;
+}
+
+/* inverse */
+.pt-btn--inverse {
+  @apply border-pt-teal-bright bg-pt-teal text-purple;
+}
+
+.pt-btn--inverse:not([disabled]):hover,
+.pt-btn--inverse:not([disabled]):focus {
+  @apply text-purple bg-pt-teal-bright;
+
+  box-shadow: 0 0 0 3px rgba(53, 240, 208, 0.5);
+}
+
+.pt-btn--inverse:not([disabled]):active {
+  box-shadow: 0 0 0 2px rgba(53, 240, 208, 0.3);
+}
+
+.pt-btn--inverse:disabled {
+  @apply border-transparent;
+  background-color: #270255;
+  color: #6c48a7;
+}
+
+/* Purple */
+.pt-btn--purple {
+  @apply border-pt-purple-bright bg-pt-purple text-white;
+}
+
+.pt-btn--purple:not([disabled]):hover,
+.pt-btn--purple:not([disabled]):focus {
+  @apply text-white bg-pt-purple-bright;
+  box-shadow: 0 0 0 3px rgba(112, 13, 242, 0.25);
+}
+
+.pt-btn--purple:not([disabled]):active {
+  box-shadow: 0 0 0 2px #4c249f4c;
+}
+
+.pt-btn--purple:disabled {
+  @apply border-transparent;
+  background-color: #2b2d6c;
+  border-color: #2b2d6c;
+  color: #8679b8;
+}
+
+/* Purple Outline */
+.pt-btn--purple-outline {
+  color: #8b5ef5;
+  background-color: transparent;
+  border-color: #5d34a2;
+}
+
+.pt-btn--purple-outline:not([disabled]):hover,
+.pt-btn--purple-outline:not([disabled]):focus {
+  @apply text-purple;
+  box-shadow: 0 0 0 3px rgba(104, 9, 209, 0.563);
+  color: #baa2f2;
+}
+
+.pt-btn--purple-outline:not([disabled]):active {
+  box-shadow: 0 0 0 2px rgba(60, 20, 184, 0.171);
+}
+
+.pt-btn--purple-outline:disabled {
+  opacity: 50%;
+}
+
+/* Orange */
+.pt-btn--orange {
+  @apply border-orange text-white bg-orange;
+}
+
+.pt-btn--orange:not([disabled]):hover,
+.pt-btn--orange:not([disabled]):focus {
+  @apply text-white;
+  box-shadow: 0 0 0 3px rgba(211, 120, 2, 0.363);
+}
+
+.pt-btn--orange:not([disabled]):active {
+  box-shadow: 0 0 0 2px rgba(211, 120, 2, 0.171);
+}
+
+.pt-btn--orange:disabled {
+  opacity: 50%;
+}
+
+/* Orange Outline */
+.pt-btn--orange-outline {
+  @apply border-orange text-orange;
+  background-color: transparent;
+}
+
+.pt-btn--orange-outline:not([disabled]):hover,
+.pt-btn--orange-outline:not([disabled]):focus {
+  @apply text-orange;
+  box-shadow: 0 0 0 3px rgba(211, 120, 2, 0.363);
+}
+
+.pt-btn--orange-outline:not([disabled]):active {
+  box-shadow: 0 0 0 2px rgba(211, 120, 2, 0.171);
+}
+
+.pt-btn--orange-outline:disabled {
+  opacity: 50%;
+}
+
+/* Black */
+.pt-btn--black {
+  @apply text-white;
+  background-color: rgb(23, 2, 33);
+  border-color: rgba(23, 2, 33, 0.7);
+}
+
+.pt-btn--black:not([disabled]):hover,
+.pt-btn--black:not([disabled]):focus {
+  @apply text-white;
+
+  background-color: rgb(23, 2, 33);
+  box-shadow: 0 0 0 3px rgba(23, 2, 33, 0.2);
+}
+
+.pt-btn--black:not([disabled]):active {
+  box-shadow: 0 0 0 2px rgba(23, 2, 33, 0.1);
+}
+
+.pt-btn--black:disabled {
+  @apply border-transparent;
+  background-color: #1e012f;
+  color: #7a6d82;
+}
+
+/* Rainbow */
+.pt-btn--rainbow {
+  @apply text-white;
+  border: none;
+  z-index: 1;
+}
+
+.pt-btn--md.pt-btn--rainbow {
+  padding-bottom: 0.625rem;
+  padding-top: 0.625rem;
+}
+
+.pt-btn--rainbow:not([disabled]):hover,
+.pt-btn--rainbow:not([disabled]):focus {
+  @apply text-white;
+
+  border-color: transparent;
+  box-shadow: 0 0 0 3px rgba(195, 120, 245, 0.5);
+}
+
+.pt-btn--rainbow:not([disabled]):active {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+.pt-btn--rainbow:disabled {
+  @apply border-transparent;
+  background-color: #1e012f;
+  color: #000;
+  opacity: 0.5;
+}
+
+.rainbow-background-anim {
+  background: #1d1f20;
+  position: relative;
+}
+
+.rainbow-background-anim:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(85deg, #f37055 -30%, #ef4e7b, #f947d2, #0dacf5, #f947d2, #fedc6f);
+  z-index: -1;
+  animation: animatedgradient 3s ease alternate infinite;
+  animation-timing-function: steps(30);
+  background-size: 300% 300%;
+}
+
+/* Pink to yellow */
+.pt-btn--pink-to-yellow {
+  @apply text-white;
+  border: none;
+  z-index: 1;
+}
+
+.pt-btn--md.pt-btn--pink-to-yellow {
+  padding-bottom: 0.625rem;
+  padding-top: 0.625rem;
+}
+
+.pt-btn--pink-to-yellow:not([disabled]):hover,
+.pt-btn--pink-to-yellow:not([disabled]):focus {
+  @apply text-white;
+
+  border-color: transparent;
+  box-shadow: 0 0 0 3px rgba(195, 120, 245, 0.5);
+}
+
+.pt-btn--pink-to-yellow:not([disabled]):active {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+.pt-btn--pink-to-yellow:disabled {
+  @apply border-transparent;
+  background-color: #1e012f;
+  color: #000;
+  opacity: 0.5;
+}
+
+.gradient-background-anim- {
+  background: #1d1f20;
+  position: relative;
+}
+
+.gradient-background-anim:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(95deg, #0dacf5, #f947d2, #fedc6f);
+  z-index: -1;
+  animation: animatedgradient 5s ease-in alternate infinite;
+  animation-timing-function: steps(30);
+  background-size: 300% 300%;
+}
+
+@keyframes animatedgradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ------- Sizes ------- */
+
+.pt-btn--sm {
+  @apply py-1 px-2 text-xs;
+}
+
+.pt-btn--md {
+  @apply py-2 px-3 text-base;
+}
+
+.pt-btn--lg {
+  @apply py-2 px-4 text-lg;
+}
+
+.pt-btn--xl {
+  @apply py-4 px-8 text-lg xs:text-xl;
+}
+
+/* https://stackoverflow.com/questions/63787241/css-how-to-create-an-infinitely-moving-repeating-linear-gradient */
+.seamless-gradient-animation {
+  --d: 1800px;
+  --angle: 150deg;
+  --sin: 0.5; /* = sin(angle) */
+  --w: 100%;
+
+  position: relative;
+  z-index: 0;
+}
+
+.seamless-gradient-animation::before {
+  @apply rounded-lg;
+  content: '';
+  height: 100%;
+  left: 0;
+  width: var(--w);
+  position: absolute;
+  z-index: -1;
+
+  background: repeating-linear-gradient(
+    var(--angle),
+    var(--color-pt-gradient-cyan),
+    var(--color-pt-gradient-magenta),
+    var(--color-pt-gradient-yellow),
+    var(--color-pt-gradient-magenta),
+    var(--color-pt-gradient-cyan) var(--d)
+  );
+
+  background-size: calc(var(--d) / var(--sin)) 100%;
+  animation: seamless-gradient-animation 20s linear infinite reverse;
+}
+
+@keyframes seamless-gradient-animation {
+  0% {
+    background-position: calc(var(--d) / var(--sin)) 0;
+  }
+}

@@ -1,30 +1,34 @@
-import { getTimeBreakdown } from '@pooltogether/utilities'
-
 import classNames from 'classnames'
-import React, { useMemo } from 'react'
+import React from 'react'
 
-const SECONDS_PER_DAY = 86400
-const EIGHT_HOURS_IN_SECONDS = 28800
-
-export interface TimeProps {
+export const TimeDisplay = (props: {
   seconds: number
+  minutes: number
+  hours: number
+  days: number
   className?: string
   colonYOffset?: number
-  getTimeColorClassName?: (seconds: number) => string
+  getTimeColorClassName?: (time: {
+    seconds: number
+    minutes: number
+    hours: number
+    days: number
+  }) => string
   backgroundColorClassName?: string
   unitsColorClassName?: string
   timeClassName?: string
   unitsClassName?: string
   noColors?: boolean
-  hideDays?: boolean
-  hideHours?: boolean
-  hideMinutes?: boolean
   hideSeconds?: boolean
-}
-
-export const Time = (props: TimeProps) => {
+  hideMinutes?: boolean
+  hideHours?: boolean
+  hideDays?: boolean
+}) => {
   const {
     seconds,
+    minutes,
+    hours,
+    days,
     noColors,
     className,
     colonYOffset,
@@ -38,14 +42,19 @@ export const Time = (props: TimeProps) => {
     unitsClassName,
     unitsColorClassName
   } = props
-  const {
-    days,
-    hours,
-    minutes,
-    seconds: secs
-  } = useMemo(() => getTimeBreakdown(seconds), [seconds])
 
-  const textClassName = noColors ? undefined : getTimeColorClassName(seconds)
+  const textClassName = noColors
+    ? undefined
+    : getTimeColorClassName({ seconds, minutes, hours, days })
+
+  if (
+    (seconds === null || seconds === undefined) &&
+    (minutes === null || minutes === undefined) &&
+    (hours === null || hours === undefined) &&
+    (days === null || days === undefined)
+  ) {
+    return null
+  }
 
   return (
     <div className={classNames(className, 'flex')}>
@@ -88,7 +97,7 @@ export const Time = (props: TimeProps) => {
       {!hideSeconds && (
         <TimeUnit
           unit='sec'
-          amount={secs}
+          amount={seconds}
           textClassName={textClassName}
           backgroundColorClassName={backgroundColorClassName}
           timeClassName={timeClassName}
@@ -100,15 +109,18 @@ export const Time = (props: TimeProps) => {
   )
 }
 
-const getTimeColorClassName = (seconds: number) => {
-  return seconds >= SECONDS_PER_DAY
-    ? 'text-green'
-    : seconds >= EIGHT_HOURS_IN_SECONDS
-    ? 'text-orange'
-    : 'text-red'
+const getTimeColorClassName = (time: { seconds; minutes; hours; days }) => {
+  const { days, hours, minutes } = time
+  if (days <= 0 && hours <= 0 && minutes <= 60) {
+    return 'text-pt-red'
+  } else if (days <= 0 && hours <= 8) {
+    return 'text-orange'
+  } else {
+    return 'text-gradient-magenta'
+  }
 }
 
-Time.defaultProps = {
+TimeDisplay.defaultProps = {
   hideColors: false,
   timeClassName: 'text-sm xs:text-xs sm:text-base',
   unitsClassName: 'text-xxxs',
@@ -179,8 +191,9 @@ const TimeUnit = (props: {
 
 TimeUnit.defaultProps = {
   exactDigits: false,
-  backgroundColorClassName: 'bg-tertiary',
-  unitsColorClassName: 'text-accent-4',
+  backgroundColorClassName: 'bg-pt-purple-darkest bg-opacity-10 dark:bg-white dark:bg-opacity-10',
+  unitsColorClassName:
+    'text-pt-purple-darkest text-opacity-50 dark:text-white dark:text-opacity-50',
   unitsClassName: 'text-xxxs'
 }
 

@@ -9,10 +9,8 @@ import Logo from '../../assets/PoolTogetherLogos/pooltogether-p-purple.svg'
 export function LoadingLogo(props) {
   return (
     <div className={classnames('flex flex-col', props.className)} style={{ width: 'min-content' }}>
-      <div className='relative'>
-        <img src={Logo} className='block dark:hidden w-8 mx-auto' style={{ borderWidth: 0 }} />
-        <img src={LogoDark} className='hidden dark:block w-8 mx-auto' style={{ borderWidth: 0 }} />
-      </div>
+      <img src={LogoDark} className='hidden dark:block w-8 mx-auto' style={{ borderWidth: 0 }} />
+      <img src={Logo} className='block dark:hidden w-8 mx-auto' style={{ borderWidth: 0 }} />
       <LoadingDots />
     </div>
   )

@@ -17,7 +17,7 @@
 }
 
 [data-rsbs-overlay] {
-  max-height: 97vh;
+  @apply max-h-actually-full-screen;
 }
 
 [data-rsbs-content] {
