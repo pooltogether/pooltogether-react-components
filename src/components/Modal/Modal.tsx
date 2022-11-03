@@ -147,9 +147,7 @@ const ModalHeader = (props: {
   const { header, closeModal, onPreviousClick, onNextClick } = props
   return (
     <div
-      className={classNames('z-1 sticky top-0', {
-        'backdrop-filter backdrop-blur-xl': !!header
-      })}
+      className={classNames('z-1 sticky top-0')}
     >
       <div className='absolute left-4 flex space-x-2 items-center top-2'>
         {onPreviousClick && <PreviousButton onClick={onPreviousClick} />}
@@ -158,7 +156,7 @@ const ModalHeader = (props: {
       <CloseModalButton
         closeModal={closeModal}
         className={classNames('absolute top-2 right-4', {
-          'backdrop-filter backdrop-blur-xl rounded-full': !header
+          'rounded-full': !header
         })}
       />
       <div className='inset-x-0 top-0 flex justify-center'>
