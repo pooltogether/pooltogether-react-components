@@ -72,6 +72,7 @@ import { ButtonLink } from "@pooltogether/pooltogether-react-components";
 ## Local development (yalc)
 
 In `pooltogether-react-components`:
+`yarn`
 `yalc publish`
 
 In the app you're importing `pooltogether-react-components`:
@@ -83,6 +84,7 @@ In the app you're importing `pooltogether-react-components`:
 TODO: Make this better...
 
 In `pooltogether-react-components`:
+`yarn`
 `yarn link`
 
 In the app you're importing `pooltogether-react-components`:
