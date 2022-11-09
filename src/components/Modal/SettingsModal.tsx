@@ -279,7 +279,7 @@ const Button: React.FC<{
       onClick={onClick}
       disabled={disabled}
       className={classNames(
-        'flex flex-col items-center p-3 rounded-lg bg-white bg-opacity-100 dark:bg-white dark:bg-opacity-10 w-full transition mt-auto',
+        'flex flex-col items-center justify-center p-3 rounded-lg bg-white bg-opacity-100 dark:bg-white dark:bg-opacity-10 w-full transition mt-auto min-h-full',
         {
           'cursor-not-allowed opacity-50': disabled,
           'hover:bg-opacity-50 dark:hover:bg-opacity-5': !disabled
