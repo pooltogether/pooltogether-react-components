@@ -18,6 +18,8 @@ export enum ViewIds {
   currency
 }
 
+type CustomButtonType = 'core' | 'tools'
+
 export const SettingsModal: React.FC<{
   isOpen: boolean
   closeModal: () => void
@@ -27,8 +29,9 @@ export const SettingsModal: React.FC<{
   langs: { [locale: string]: { name: string; nativeName: string } }
   currentLang: string
   changeLang: (locale: string) => void
+  customButtonType?: CustomButtonType
 }> = (props) => {
-  const { isOpen, networkView, walletChainId, langs, currentLang, changeLang, closeModal, t } =
+  const { isOpen, networkView, walletChainId, langs, currentLang, changeLang, closeModal, t, customButtonType } =
     props
   const [selectedViewId, setSelectedViewId] = useState<string | number>(ViewIds.main)
 
@@ -78,6 +81,7 @@ export const SettingsModal: React.FC<{
       langs={langs}
       currentLang={currentLang}
       changeLang={changeLang}
+      customButtonType={customButtonType}
     />
   )
 }
@@ -93,9 +97,10 @@ const MainView: React.FC<
     t: i18nTranslate
     langs: { [locale: string]: { name: string; nativeName: string } }
     currentLang: string
+    customButtonType?: CustomButtonType
   } & ViewProps
 > = (props) => {
-  const { t, chainId, setSelectedViewId, langs, currentLang } = props
+  const { t, chainId, setSelectedViewId, langs, currentLang, customButtonType } = props
   return (
     <div className='flex flex-col justify-between xs:justify-start h-full'>
       <div className='grid grid-cols-2 gap-3'>
@@ -108,7 +113,7 @@ const MainView: React.FC<
           langs={langs}
           currentLang={currentLang}
         />
-        <ToolsButton t={t} />
+        <CustomButton type={customButtonType} t={t} />
         <DeveloperButton t={t} />
       </div>
 
@@ -188,22 +193,35 @@ const DeveloperButton = (props: { t: i18nTranslate }) => {
   )
 }
 
-const ToolsButton = (props: { t: i18nTranslate }) => {
-  const { t } = props
+const CustomButton = (props: { type?: CustomButtonType, t: i18nTranslate }) => {
+  const { type: buttonType, t } = props
+
+  // Default Custom Button (Tools):
+  let link = 'https://tools.pooltogether.com'
+  let topText = t?.('tools') || 'Tools'
+  let bottomText = t?.('pooltogetherToolkit') || 'PoolTogether Toolkit'
+
+  // Core App Button:
+  if (buttonType === 'core') {
+    link = 'https://app.pooltogether.com'
+    topText = t?.('coreApp') || 'Core App'
+    bottomText = t?.('pooltogetherCoreApp') || 'PoolTogether App'
+  }
+
   return (
     <a
-      href={'https://tools.pooltogether.com'}
+      href={link}
       className={classNames(
         'flex flex-col items-center p-3 rounded-lg bg-white bg-opacity-100 dark:bg-white dark:bg-opacity-10 w-full transition hover:bg-opacity-50 dark:hover:bg-opacity-5'
       )}
       target='_blank'
     >
       <div className='text-xs flex space-x-1 items-center'>
-        <span>{t?.('tools') || 'Tools'}</span>
+        <span>{topText}</span>
         <FeatherIcon icon='arrow-up-right' className='w-3 h-4' />
       </div>
       <div className='text-xxxs opacity-50'>
-        {t?.('pooltogetherToolkit') || 'PoolTogether Toolkit'}
+        {bottomText}
       </div>
     </a>
   )
