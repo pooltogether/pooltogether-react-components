@@ -22,22 +22,23 @@ export const Accordion = (props) => {
       {!openUpwards && header}
       <AnimatePresence initial={false}>
         <>
-        {isOpen && (
-          <motion.div
-            key='content'
-            initial='collapsed'
-            animate='open'
-            exit='collapsed'
-            variants={{
-              open: { opacity: 1, height: 'auto' },
-              collapsed: { opacity: 0, height: 0 }
-            }}
-            transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
-            className='accordion-motion-content'
-          >
-            <ContentWrapper>{props.content}</ContentWrapper>
-          </motion.div>
-        )}</>
+          {isOpen && (
+            <motion.div
+              key='content'
+              initial='collapsed'
+              animate='open'
+              exit='collapsed'
+              variants={{
+                open: { opacity: 1, height: 'auto' },
+                collapsed: { opacity: 0, height: 0 }
+              }}
+              transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
+              className='accordion-motion-content'
+            >
+              <ContentWrapper>{props.content}</ContentWrapper>
+            </motion.div>
+          )}
+        </>
       </AnimatePresence>
       {openUpwards && header}
     </>

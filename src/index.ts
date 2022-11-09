@@ -1,5 +1,8 @@
 // ------- Types -------
 
+// Styles
+import './styles/index.css'
+
 export { i18nTranslate } from './types'
 
 // ------- Hooks -------
@@ -126,6 +129,3 @@ export { ErrorsBox } from './components/ErrorsBox'
 export { PageTitleAndBreadcrumbs } from './components/PageTitleAndBreadcrumbs'
 export { PoolCurrencyIcon } from './components/PoolCurrencyIcon'
 export { PrizeFrequencyChip } from './components/PrizeFrequencyChip'
-
-// Styles
-import './styles/index.css'

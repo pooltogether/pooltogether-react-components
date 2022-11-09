@@ -35,8 +35,17 @@ export const SettingsModal: React.FC<{
   changeLang: (locale: string) => void
   customButton?: CustomButton
 }> = (props) => {
-  const { isOpen, networkView, walletChainId, langs, currentLang, changeLang, closeModal, t, customButton } =
-    props
+  const {
+    isOpen,
+    networkView,
+    walletChainId,
+    langs,
+    currentLang,
+    changeLang,
+    closeModal,
+    t,
+    customButton
+  } = props
   const [selectedViewId, setSelectedViewId] = useState<string | number>(ViewIds.main)
 
   const views: ModalWithViewStateView[] = [
@@ -197,7 +206,7 @@ const DeveloperButton = (props: { t: i18nTranslate }) => {
   )
 }
 
-const CustomButton = (props: { data?: CustomButton, t: i18nTranslate }) => {
+const CustomButton = (props: { data?: CustomButton; t: i18nTranslate }) => {
   const { data, t } = props
   return (
     <a
@@ -206,13 +215,14 @@ const CustomButton = (props: { data?: CustomButton, t: i18nTranslate }) => {
         'flex flex-col items-center p-3 rounded-lg bg-white bg-opacity-100 dark:bg-white dark:bg-opacity-10 w-full transition hover:bg-opacity-50 dark:hover:bg-opacity-5'
       )}
       target='_blank'
+      rel='noreferrer'
     >
       <div className='text-xs flex space-x-1 items-center'>
-        <span>{data?.title || (t?.('tools') || 'Tools')}</span>
+        <span>{data?.title || t?.('tools') || 'Tools'}</span>
         <FeatherIcon icon='arrow-up-right' className='w-3 h-4' />
       </div>
       <div className='text-xxxs opacity-50'>
-        {data?.description || (t?.('pooltogetherToolkit') || 'PoolTogether Toolkit')}
+        {data?.description || t?.('pooltogetherToolkit') || 'PoolTogether Toolkit'}
       </div>
     </a>
   )

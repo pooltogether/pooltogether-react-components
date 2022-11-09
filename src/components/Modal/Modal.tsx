@@ -146,9 +146,7 @@ const ModalHeader = (props: {
 }) => {
   const { header, closeModal, onPreviousClick, onNextClick } = props
   return (
-    <div
-      className={classNames('z-1 sticky top-0')}
-    >
+    <div className={classNames('z-1 sticky top-0')}>
       <div className='absolute left-4 flex space-x-2 items-center top-2'>
         {onPreviousClick && <PreviousButton onClick={onPreviousClick} />}
         {onNextClick && <NextButton onClick={onNextClick} />}
