@@ -187,7 +187,7 @@ const DeveloperButton = (props: { t: i18nTranslate }) => {
           ? isTestnets
             ? t?.('enableMainnets') || 'Enable mainnets'
             : t?.('enableTestnets') || 'Enable testnets'
-          : `(${5 - count})`
+          : `(${t?.('clickMoreTimes', { n: (5 - count).toString() }) || 5 - count})`
       }
     />
   )
