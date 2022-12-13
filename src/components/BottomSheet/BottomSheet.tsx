@@ -146,7 +146,7 @@ const BottomSheetHeader = (props: {
       <CloseModalButton
         closeModal={closeModal}
         className={classNames('absolute top-3 right-2', {
-          'backdrop-filter backdrop-blur-xl rounded-full': !header
+          'rounded-full': !header
         })}
       />
       <span className={'text-inverse font-semibold mx-auto leading-none'}>{header}</span>

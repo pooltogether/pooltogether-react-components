@@ -113,6 +113,7 @@ export const Modal = (props: ModalProps) => {
           >
             <ModalHeader
               header={header}
+              className={bgClassName}
               closeModal={closeModal}
               onPreviousClick={onPreviousClick}
               onNextClick={onNextClick}
@@ -140,13 +141,14 @@ Modal.defaultProps = {
 
 const ModalHeader = (props: {
   header: React.ReactNode
+  className?: string
   closeModal: () => void
   onPreviousClick: () => void
   onNextClick: () => void
 }) => {
-  const { header, closeModal, onPreviousClick, onNextClick } = props
+  const { header, className, closeModal, onPreviousClick, onNextClick } = props
   return (
-    <div className={classNames('z-1 sticky top-0')}>
+    <div className={classNames('z-1 sticky top-0', className)}>
       <div className='absolute left-4 flex space-x-2 items-center top-2'>
         {onPreviousClick && <PreviousButton onClick={onPreviousClick} />}
         {onNextClick && <NextButton onClick={onNextClick} />}
