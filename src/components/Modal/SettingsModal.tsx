@@ -380,10 +380,7 @@ const FeedbackPrompt = () => (
       i18nKey='feedbackTalkToUs'
       components={{
         LinkToDiscord: (
-          <ExternalLink
-            href={'https://pooltogether.com/discord/'}
-            children={undefined}
-          />
+          <ExternalLink href={'https://pooltogether.com/discord/'} children={undefined} />
         )
       }}
     />
