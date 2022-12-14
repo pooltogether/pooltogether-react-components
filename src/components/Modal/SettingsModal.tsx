@@ -10,6 +10,8 @@ import { ModalWithViewStateView } from './ModalWithViewState'
 import { useIsTestnets } from '../../hooks/useIsTestnets'
 import { BottomSheetWithViewState } from '../BottomSheet/BottomSheetWithViewState'
 import FeatherIcon from 'feather-icons-react'
+import { Trans } from 'react-i18next'
+import { ExternalLink } from '../Links/ExternalLink'
 
 export enum ViewIds {
   main,
@@ -132,6 +134,10 @@ const MainView: React.FC<
 
       <div className='mt-8'>
         <SocialLinks t={t} />
+      </div>
+
+      <div className='flex align-center justify-center mt-4'>
+        <FeedbackPrompt />
       </div>
     </div>
   )
@@ -367,3 +373,19 @@ const LanguageItem: React.FC<{
     </button>
   )
 }
+
+const FeedbackPrompt = () => (
+  <span className='text-xxs opacity-60'>
+    <Trans
+      i18nKey='feedbackTalkToUs'
+      components={{
+        LinkToDiscord: (
+          <ExternalLink
+            href={'https://pooltogether.com/discord/'}
+            children={undefined}
+          />
+        )
+      }}
+    />
+  </span>
+)
