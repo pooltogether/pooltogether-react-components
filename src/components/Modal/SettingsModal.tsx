@@ -374,7 +374,7 @@ const CurrencyItem: React.FC<{
   symbol: string
   onClick: () => void
 }> = (props) => {
-  const { id, isSelected, name, symbol, onClick } = props
+  const { isSelected, name, symbol, onClick } = props
   return (
     <button
       className={classNames('rounded px-2 py-2 bg-pt-purple border  hover:border-pt-teal', {
