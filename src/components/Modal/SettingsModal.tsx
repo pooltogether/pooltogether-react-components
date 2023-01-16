@@ -84,13 +84,18 @@ export const SettingsModal: React.FC<{
     }
   ]
 
+  const _closeModal = () => {
+    closeModal()
+    setSelectedViewId(ViewIds.main)
+  }
+
   return (
     <BottomSheetWithViewState
       header={t?.('customizeYourExperience') || 'Customize your experience'}
       label='settings-modal'
       bgClassName='bg-pt-purple-lightest dark:bg-pt-purple-darkest'
       isOpen={isOpen}
-      closeModal={closeModal}
+      closeModal={_closeModal}
       viewIds={ViewIds}
       views={views}
       selectedViewId={selectedViewId}
