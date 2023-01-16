@@ -16,7 +16,7 @@ export type Token = {
 }
 
 export type Currencies = {
-  [id: string]: { name: string, symbol: string }
+  [id: string]: { name: string; symbol: string }
 }
 
 export type Languages = {
