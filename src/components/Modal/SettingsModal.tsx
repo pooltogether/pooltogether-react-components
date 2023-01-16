@@ -384,7 +384,7 @@ const CurrencyItem: React.FC<{
       onClick={onClick}
     >
       <li>
-        {id} - <span>{name}</span> ({symbol})
+        <span>{name}</span> ({symbol})
       </li>
     </button>
   )
