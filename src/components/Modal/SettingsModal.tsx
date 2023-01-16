@@ -187,8 +187,8 @@ const CurrencyButton: React.FC<{
 }> = (props) => (
   <Button
     {...props}
-    icon={props.currencies[props.currentCurrency].symbol ?? '$'}
-    title={props.currencies[props.currentCurrency].name ?? 'US Dollar'}
+    icon={props.currencies[props.currentCurrency]?.symbol ?? '$'}
+    title={props.currencies[props.currentCurrency]?.name ?? 'US Dollar'}
     secondary={props.t?.('currency') || 'Currency'}
   />
 )
