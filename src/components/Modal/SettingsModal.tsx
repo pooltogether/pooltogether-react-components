@@ -342,7 +342,7 @@ const CurrencyView: React.FC<{
   currentCurrency: string
   changeCurrency: (id: string) => void
   closeModal: () => void
-}> = (props) => {
+} & ViewProps> = (props) => {
   const { currencies, currentCurrency, changeCurrency, closeModal } = props
   return (
     <ul className={classNames('flex flex-col space-y-2')}>
@@ -394,7 +394,7 @@ const LanguageView: React.FC<{
   currentLang: string
   changeLang: (locale: string) => void
   closeModal: () => void
-}> = (props) => {
+} & ViewProps> = (props) => {
   const { langs, currentLang, changeLang, closeModal } = props
   return (
     <ul className={classNames('flex flex-col space-y-2')}>
