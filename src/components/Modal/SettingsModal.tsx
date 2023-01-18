@@ -84,18 +84,13 @@ export const SettingsModal: React.FC<{
     }
   ]
 
-  const _closeModal = () => {
-    closeModal()
-    setSelectedViewId(ViewIds.main)
-  }
-
   return (
     <BottomSheetWithViewState
       header={t?.('customizeYourExperience') || 'Customize your experience'}
       label='settings-modal'
       bgClassName='bg-pt-purple-lightest dark:bg-pt-purple-darkest'
       isOpen={isOpen}
-      closeModal={_closeModal}
+      closeModal={closeModal}
       viewIds={ViewIds}
       views={views}
       selectedViewId={selectedViewId}
@@ -359,7 +354,7 @@ const CurrencyView: React.FC<
     closeModal: () => void
   } & ViewProps
 > = (props) => {
-  const { currencies, currentCurrency, changeCurrency, closeModal } = props
+  const { currencies, currentCurrency, changeCurrency, closeModal, setSelectedViewId } = props
   return (
     <ul className={classNames('flex flex-col space-y-2')}>
       {Object.keys(currencies).map((id) => (
@@ -371,6 +366,8 @@ const CurrencyView: React.FC<
           onClick={() => {
             changeCurrency(id)
             closeModal()
+            // NOTE: setting the view id manually here due to a `closeModal` bug
+            setSelectedViewId(ViewIds.main)
           }}
         />
       ))}
@@ -413,7 +410,7 @@ const LanguageView: React.FC<
     closeModal: () => void
   } & ViewProps
 > = (props) => {
-  const { langs, currentLang, changeLang, closeModal } = props
+  const { langs, currentLang, changeLang, closeModal, setSelectedViewId } = props
   return (
     <ul className={classNames('flex flex-col space-y-2')}>
       {Object.keys(langs).map((locale) => (
@@ -425,6 +422,8 @@ const LanguageView: React.FC<
           onClick={() => {
             changeLang(locale)
             closeModal()
+            // NOTE: setting the view id manually here due to a `closeModal` bug
+            setSelectedViewId(ViewIds.main)
           }}
         />
       ))}
