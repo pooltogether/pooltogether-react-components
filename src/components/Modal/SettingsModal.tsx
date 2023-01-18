@@ -351,12 +351,14 @@ Button.defaultProps = {
  *
  * @returns
  */
-const CurrencyView: React.FC<{
-  currencies: Currencies
-  currentCurrency: string
-  changeCurrency: (id: string) => void
-  closeModal: () => void
-} & ViewProps> = (props) => {
+const CurrencyView: React.FC<
+  {
+    currencies: Currencies
+    currentCurrency: string
+    changeCurrency: (id: string) => void
+    closeModal: () => void
+  } & ViewProps
+> = (props) => {
   const { currencies, currentCurrency, changeCurrency, closeModal } = props
   return (
     <ul className={classNames('flex flex-col space-y-2')}>
@@ -403,12 +405,14 @@ const CurrencyItem: React.FC<{
  *
  * @returns
  */
-const LanguageView: React.FC<{
-  langs: Languages
-  currentLang: string
-  changeLang: (locale: string) => void
-  closeModal: () => void
-} & ViewProps> = (props) => {
+const LanguageView: React.FC<
+  {
+    langs: Languages
+    currentLang: string
+    changeLang: (locale: string) => void
+    closeModal: () => void
+  } & ViewProps
+> = (props) => {
   const { langs, currentLang, changeLang, closeModal } = props
   return (
     <ul className={classNames('flex flex-col space-y-2')}>
