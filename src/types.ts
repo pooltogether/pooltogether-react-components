@@ -14,3 +14,11 @@ export type Token = {
   name: string
   decimals: string
 }
+
+export type Currencies = {
+  [id: string]: { name: string; symbol: string }
+}
+
+export type Languages = {
+  [locale: string]: { name: string; nativeName: string }
+}

@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { useTheme } from 'next-themes'
 import React, { useEffect, useState } from 'react'
 import { ViewProps } from '../Containers/ViewStateMachine'
-import { i18nTranslate } from 'src/types'
+import { Currencies, i18nTranslate, Languages } from 'src/types'
 import { NetworkIcon } from '../Icons/NetworkIcon'
 import { SocialLinks } from '../Navigation/SocialLinks'
 import { ModalWithViewStateView } from './ModalWithViewState'
@@ -32,9 +32,12 @@ export const SettingsModal: React.FC<{
   networkView: React.FC<ViewProps>
   walletChainId: number
   t: i18nTranslate
-  langs: { [locale: string]: { name: string; nativeName: string } }
+  langs: Languages
   currentLang: string
   changeLang: (locale: string) => void
+  currencies: Currencies
+  currentCurrency: string
+  changeCurrency: (id: string) => void
   customButton?: CustomButton
 }> = (props) => {
   const {
@@ -44,6 +47,9 @@ export const SettingsModal: React.FC<{
     langs,
     currentLang,
     changeLang,
+    currencies,
+    currentCurrency,
+    changeCurrency,
     closeModal,
     t,
     customButton
@@ -96,6 +102,9 @@ export const SettingsModal: React.FC<{
       langs={langs}
       currentLang={currentLang}
       changeLang={changeLang}
+      currencies={currencies}
+      currentCurrency={currentCurrency}
+      changeCurrency={changeCurrency}
       customButton={customButton}
     />
   )
@@ -110,18 +119,35 @@ const MainView: React.FC<
   {
     chainId: number
     t: i18nTranslate
-    langs: { [locale: string]: { name: string; nativeName: string } }
+    langs: Languages
     currentLang: string
+    currencies: Currencies
+    currentCurrency: string
     customButton?: CustomButton
   } & ViewProps
 > = (props) => {
-  const { t, chainId, setSelectedViewId, langs, currentLang, customButton } = props
+  const {
+    t,
+    chainId,
+    setSelectedViewId,
+    langs,
+    currentLang,
+    currencies,
+    currentCurrency,
+    customButton
+  } = props
   return (
     <div className='flex flex-col justify-between xs:justify-start h-full'>
       <div className='grid grid-cols-2 gap-3'>
         <NetworkButton t={t} chainId={chainId} onClick={() => setSelectedViewId(ViewIds.network)} />
         <ThemeButton t={t} />
-        <CurrencyButton t={t} onClick={() => setSelectedViewId(ViewIds.currency)} disabled />
+        <CurrencyButton
+          t={t}
+          onClick={() => setSelectedViewId(ViewIds.currency)}
+          currencies={currencies}
+          currentCurrency={currentCurrency}
+          disabled={Object.keys(currencies).length === 0}
+        />
         <LanguageButton
           t={t}
           onClick={() => setSelectedViewId(ViewIds.language)}
@@ -156,19 +182,23 @@ const NetworkButton: React.FC<{ chainId: number; onClick: () => void; t: i18nTra
     secondary={props.t?.('walletNetwork') || 'Wallet Network'}
   />
 )
-const CurrencyButton: React.FC<{ disabled?: boolean; onClick: () => void; t: i18nTranslate }> = (
-  props
-) => (
+const CurrencyButton: React.FC<{
+  onClick: () => void
+  currencies: Currencies
+  currentCurrency: string
+  t: i18nTranslate
+  disabled?: boolean
+}> = (props) => (
   <Button
     {...props}
-    icon={'$'}
-    title='Dollar (US)'
+    icon={props.currencies[props.currentCurrency]?.symbol ?? '$'}
+    title={props.currencies[props.currentCurrency]?.name ?? 'US Dollar'}
     secondary={props.t?.('currency') || 'Currency'}
   />
 )
 const LanguageButton: React.FC<{
   onClick: () => void
-  langs: { [locale: string]: { name: string; nativeName: string } }
+  langs: Languages
   currentLang: string
   t: i18nTranslate
 }> = (props) => (
@@ -316,22 +346,71 @@ Button.defaultProps = {
  *
  * @returns
  */
-const CurrencyView: React.FC<{}> = () => {
-  return null
+const CurrencyView: React.FC<
+  {
+    currencies: Currencies
+    currentCurrency: string
+    changeCurrency: (id: string) => void
+    closeModal: () => void
+  } & ViewProps
+> = (props) => {
+  const { currencies, currentCurrency, changeCurrency, closeModal, setSelectedViewId } = props
+  return (
+    <ul className={classNames('flex flex-col space-y-2')}>
+      {Object.keys(currencies).map((id) => (
+        <CurrencyItem
+          key={`currency-item-${id}`}
+          id={id}
+          isSelected={id === currentCurrency}
+          {...currencies[id]}
+          onClick={() => {
+            changeCurrency(id)
+            closeModal()
+            // NOTE: setting the view id manually here due to a `closeModal` bug
+            setSelectedViewId(ViewIds.main)
+          }}
+        />
+      ))}
+    </ul>
+  )
+}
+
+const CurrencyItem: React.FC<{
+  isSelected: boolean
+  id: string
+  name: string
+  symbol: string
+  onClick: () => void
+}> = (props) => {
+  const { isSelected, name, symbol, onClick } = props
+  return (
+    <button
+      className={classNames('rounded px-2 py-2 bg-pt-purple border  hover:border-pt-teal', {
+        'border-pt-purple-light': isSelected,
+        'border-transparent': !isSelected
+      })}
+      onClick={onClick}
+    >
+      <li>
+        <span>{name}</span> ({symbol})
+      </li>
+    </button>
+  )
 }
 
 /**
  *
  * @returns
  */
-const LanguageView: React.FC<{
-  langs: { [locale: string]: { name: string; nativeName: string } }
-  currentLang: string
-  changeLang: (locale: string) => void
-  closeModal: () => void
-}> = (props) => {
-  const { langs, currentLang, changeLang, closeModal } = props
-  console.log({ props })
+const LanguageView: React.FC<
+  {
+    langs: Languages
+    currentLang: string
+    changeLang: (locale: string) => void
+    closeModal: () => void
+  } & ViewProps
+> = (props) => {
+  const { langs, currentLang, changeLang, closeModal, setSelectedViewId } = props
   return (
     <ul className={classNames('flex flex-col space-y-2')}>
       {Object.keys(langs).map((locale) => (
@@ -343,6 +422,8 @@ const LanguageView: React.FC<{
           onClick={() => {
             changeLang(locale)
             closeModal()
+            // NOTE: setting the view id manually here due to a `closeModal` bug
+            setSelectedViewId(ViewIds.main)
           }}
         />
       ))}
