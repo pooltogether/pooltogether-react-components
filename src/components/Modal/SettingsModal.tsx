@@ -131,7 +131,16 @@ const MainView: React.FC<
     customButton?: CustomButton
   } & ViewProps
 > = (props) => {
-  const { t, chainId, setSelectedViewId, langs, currentLang, currencies, currentCurrency, customButton } = props
+  const {
+    t,
+    chainId,
+    setSelectedViewId,
+    langs,
+    currentLang,
+    currencies,
+    currentCurrency,
+    customButton
+  } = props
   return (
     <div className='flex flex-col justify-between xs:justify-start h-full'>
       <div className='grid grid-cols-2 gap-3'>
